@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Dr. Jesse Stewart" />
+
+<meta name="date" content="2025-08-05" />
+
+<title>R-basics</title>
+
+<script src="R-basics_files/header-attrs-2.28/header-attrs.js"></script>
+<script src="R-basics_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="R-basics_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="R-basics_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="R-basics_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="R-basics_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="R-basics_files/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="R-basics_files/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="R-basics_files/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="R-basics_files/navigation-1.1/tabsets.js"></script>
+<link href="R-basics_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="R-basics_files/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">R-basics</h1>
+<h4 class="author">Dr. Jesse Stewart</h4>
+<h4 class="date">2025-08-05</h4>
+
+</div>
+
+
+<div id="introduction-to-r-basics" class="section level2" number="1">
+<h2><span class="header-section-number">1</span> Introduction to R
+Basics</h2>
+<p>This document introduces basic R functionality and demonstrates how
+to work with linguistic annotation files using R. Specifically, we will
+focus on:</p>
+<ul>
+<li>1 Introduction to R Basics</li>
+<li>2 What is a Library in R?</li>
+<li>3 Loading data</li>
+<li>4 Writing Data to Your Computer</li>
+<li>5 Basic Data Manipulation</li>
+<li>6 Plotting</li>
+</ul>
+<p>These skills are fundamental for students working with linguistic
+corpora, especially for processing output from annotation tools such as
+ELAN and Praat.</p>
+<p>The main task of this module is to manipulate structured information
+from various datasets, clean and reformat the data, and generate
+readable output with speaker and tier information preserved.</p>
+</div>
+<div id="what-is-a-library-in-r" class="section level2" number="2">
+<h2><span class="header-section-number">2</span> What is a Library in
+R?</h2>
+<p>In R, a <strong>library</strong> is a collection of pre-written
+functions, datasets, and documentation that extends the functionality of
+R.</p>
+<p>More precisely: A <strong>library</strong> refers to a
+<em>package</em> that has been loaded into your current R session using
+the <code>library()</code> function.</p>
+<p><img src="screenshots/libraries.jpg" alt="Installing libraries" width="500"/></p>
+<p><a href="https://www.youtube.com/watch?v=1fYGN79JNsI">Watch on
+YouTube</a></p>
+<p>For example, the following code loads the <code>dplyr</code>
+package:</p>
+<pre class="r"><code>library(stringr)
+library(dplyr)
+library(readxl)
+library(tidyr)
+library(ggplot2)
+library(tidyverse)
+library(writexl)
+library(ggrepel)
+library(lme4)
+library(lmerTest)</code></pre>
+</div>
+<div id="loading-data" class="section level2" number="3">
+<h2><span class="header-section-number">3</span> Loading data</h2>
+<div id="importing-data-in-rstudio" class="section level3" number="3.1">
+<h3><span class="header-section-number">3.1</span> Importing Data in
+RStudio</h3>
+<p>When working with RStudio, you can import datasets using the
+<strong>Import Dataset</strong> button in the Environment pane. Below
+are the instructions for the first three options shown in the image.</p>
+<div class="float">
+<img src="screenshots/load_data.jpg" alt="Loading data" />
+<div class="figcaption">Loading data</div>
+</div>
+<hr />
+</div>
+<div id="from-text-base" class="section level3" number="3.2">
+<h3><span class="header-section-number">3.2</span> From Text (base)</h3>
+<p>This option uses base R functions such as <code>read.csv()</code> to
+import plain text or CSV files.</p>
+<p><strong>Steps:</strong> - Click
+<code>Import Dataset &gt; From Text (base)...</code> - Choose a
+<code>.txt</code> or <code>.csv</code> file from your hard drive - In
+the dialog: - Choose the correct separator (e.g., Comma or Tab) - Select
+<code>Header = TRUE</code> if your file contains column names - Click
+<strong>Import</strong></p>
+<p><strong>Generated Code Example:</strong></p>
+<pre class="r"><code>mydata &lt;- read.csv(&quot;path/to/your/file.csv&quot;, header = TRUE)</code></pre>
+<hr />
+</div>
+<div id="from-text-readr" class="section level3" number="3.3">
+<h3><span class="header-section-number">3.3</span> From Text
+(readr)</h3>
+<p>This option uses the <code>readr</code> package (part of the
+tidyverse) for importing delimited text files. It is more efficient and
+consistent than base R functions.</p>
+<p><a href="https://www.youtube.com/watch?v=5Qa8xXpGt24">Watch on
+YouTube</a></p>
+<ol style="list-style-type: decimal">
+<li>You select a <code>.csv</code> or <code>.txt</code> file from your
+system.</li>
+<li>The import wizard appears with similar options:
+<ul>
+<li>You can choose how the file is encoded (UTF-8, Latin1, etc.)</li>
+<li>You can specify column types or let R infer them automatically.</li>
+</ul></li>
+<li>When the import is complete, RStudio will display a data preview and
+show the <code>read_csv()</code> or <code>read_tsv()</code> command it
+generated using <code>readr</code>.</li>
+</ol>
+<hr />
+</div>
+<div id="from-excel" class="section level3" number="3.4">
+<h3><span class="header-section-number">3.4</span> From Excel</h3>
+<p>This option uses the <code>readxl</code> package to import Microsoft
+Excel files.</p>
+<p><a href="https://www.youtube.com/watch?v=yZI5HKKCouM">Watch on
+YouTube</a></p>
+<ol style="list-style-type: decimal">
+<li>After choosing this option, a dialog prompts you to select an
+<code>.xlsx</code> file.</li>
+<li>You can then choose which sheet from the Excel workbook to
+import.</li>
+<li>You may be asked if the first row should be treated as column
+names.</li>
+<li>Once confirmed, RStudio previews the data and generates the
+appropriate <code>read_excel()</code> command from the
+<code>readxl</code> package.</li>
+</ol>
+<hr />
+<p>These import tools help you quickly bring external data into your R
+session without needing to write code manually, though RStudio still
+shows you the code it used  which you can copy, modify, and reuse in
+your scripts.</p>
+<hr />
+</div>
+<div id="manually" class="section level3" number="3.5">
+<h3><span class="header-section-number">3.5</span> Manually:</h3>
+<p><a href="https://www.youtube.com/watch?v=9MEfulgK8Lk">Watch on
+YouTube</a></p>
+<p><strong>read_csv</strong></p>
+<pre class="r"><code>VOTData &lt;- read_csv(&quot;C:/Users/Courses/Computational Linguistics - LING 349 Fall/R-basics/VOTDataset.txt&quot;)
+View(VOTData)</code></pre>
+<p><img src="screenshots/ImportTextData.jpg" alt="Import text data using read_csv" width="500"/></p>
+<p><strong>readLines</strong></p>
+<pre class="r"><code>lines &lt;- readLines(&quot;C:\\Users\\Courses\\Computational Linguistics - LING 349 Fall\\02 - NLP\\TextGrids\\combined_output_cleaned.txt&quot;, encoding = &quot;UTF-8&quot;)
+lines=as.data.frame(lines)
+View(lines)</code></pre>
+<p><img src="screenshots/readLines.jpg" alt="Import text data using readLines" width="250"/></p>
+<p><strong>read_excel</strong></p>
+<pre class="r"><code>Data &lt;- read_excel(&quot;C:/Users/Computational Linguistics - LING 349 Fall/Dataset/Dataset - Ss version.xlsx&quot;)</code></pre>
+<p><img src="screenshots/readExcel.jpg" alt="Import data from MS Excel" width="500"/></p>
+</div>
+<div
+id="mac-users-you-can-manually-load-a-dataset-using-a-relative-path."
+class="section level3" number="3.6">
+<h3><span class="header-section-number">3.6</span> Mac users: You can
+manually load a dataset using a relative path.</h3>
+<p>If your file is on the Desktop, try:</p>
+<pre class="r"><code>mydata &lt;- read_csv(&quot;~/Desktop/myfile.csv&quot;)</code></pre>
+<p>The ~ refers to your home directory. Avoid using Windows-style paths
+like C:/Users/…</p>
+</div>
+</div>
+<div id="writing-data-to-your-computer" class="section level2"
+number="4">
+<h2><span class="header-section-number">4</span> Writing Data to Your
+Computer</h2>
+<p>Once you’ve finished processing or cleaning your data in R, you can
+write it back to your computer using functions like
+<code>write.csv()</code> or <code>write_xlsx()</code>. These functions
+allow you to save your dataframe in formats that can be opened in
+spreadsheet software like Excel.</p>
+<p>Here are a few examples:</p>
+<div id="using-write.csv-to-save-a-file-as-plain-text"
+class="section level3" number="4.1">
+<h3><span class="header-section-number">4.1</span> Using
+<code>write.csv()</code> to save a file as plain text</h3>
+<p><a href="https://www.youtube.com/watch?v=cHrKBPdn7GA">Watch on
+YouTube</a></p>
+<pre class="r"><code>write.csv(VOTData, &quot;C:/Users/Courses/Computational Linguistics - LING 349 Fall/R-basics/NEWdataset.txt&quot;)</code></pre>
+<p>This writes the contents of the VOTData dataframe to a text file in
+CSV format. The path must be adjusted to match the location on your own
+system.</p>
+</div>
+<div id="using-write_xlsx-to-save-an-excel-file" class="section level3"
+number="4.2">
+<h3><span class="header-section-number">4.2</span> Using write_xlsx() to
+save an Excel file</h3>
+<pre class="r"><code>write_xlsx(clean_df, &quot;C:\\Users\\mikey\\Dropbox\\Courses\\Computational Linguistics - LING 349 Fall\\02 - NLP\\TextGrids\\clean_df.xlsx&quot;)</code></pre>
+<p>This writes the clean_df dataframe to an .xlsx Excel file using the
+writexl package. Be sure to double backslash (\) your paths on
+Windows.</p>
+</div>
+<div id="for-mac-users" class="section level3" number="4.3">
+<h3><span class="header-section-number">4.3</span> For Mac users:</h3>
+<p>If you’re using a Mac, you can specify your Desktop or other folders
+using a tilde ~ to refer to your home directory.</p>
+<pre class="r"><code>write.csv(dataset, &quot;~/Desktop/NEWdataset.txt&quot;)</code></pre>
+</div>
+</div>
+<div id="basic-data-manipulation" class="section level2" number="5">
+<h2><span class="header-section-number">5</span> Basic Data
+Manipulation</h2>
+<p>Data manipulation in R is essential for preparing your dataset for
+analysis. This includes tasks like backing up your data, renaming
+columns, or making manual edits (though the latter is discouraged).</p>
+<hr />
+<div id="creating-a-backup-of-your-dataset" class="section level3"
+number="5.1">
+<h3><span class="header-section-number">5.1</span> Creating a Backup of
+Your Dataset</h3>
+<p>You may want to store your original data in a new object so you can
+return to it later if needed. This is sometimes called <em>copying a
+dataset</em> or <em>creating a new object</em> (or vector, list,
+dataframedepending on the data structure).</p>
+<pre class="r"><code>dataset &lt;- Data</code></pre>
+</div>
+<div id="changing-column-names" class="section level3" number="5.2">
+<h3><span class="header-section-number">5.2</span> Changing Column
+Names</h3>
+<p>Renaming columns can make your dataset easier to work with,
+especially if the default names are unclear or contain special
+characters. Consistent naming helps during analysis and plotting.<br />
+<a href="https://www.youtube.com/watch?v=b32Quh16HvQ">Watch on
+YouTube</a></p>
+<pre class="r"><code>colnames(dataset)[1] &lt;- &quot;Hablante&quot;
+colnames(dataset)[2] &lt;- &quot;Vocal&quot;
+colnames(dataset)[3] &lt;- &quot;Sexo&quot;
+colnames(dataset)[4] &lt;- &quot;Educación&quot;</code></pre>
+<div class="float">
+<img src="screenshots/columnNames.jpg" alt="Change column names" />
+<div class="figcaption">Change column names</div>
+</div>
+<p>To confirm the changes, run:</p>
+<pre class="r"><code>colnames(dataset)</code></pre>
+</div>
+<div id="manually-editing-your-data-not-recommended"
+class="section level3" number="5.3">
+<h3><span class="header-section-number">5.3</span> Manually Editing Your
+Data (Not Recommended)</h3>
+<p>While R allows you to manually edit your data using spreadsheet-style
+windows, this approach is not reproducible. Manual edits do not get
+recorded in your script, and it becomes difficult to track or reverse
+changes later.<br />
+<a href="https://www.youtube.com/watch?v=0vMMyUYTN8g">Watch on
+YouTube</a></p>
+<pre class="r"><code>x &lt;- edit(dataset)
+fix(dataset)</code></pre>
+<p><img src="screenshots/editing.jpg" alt="Manually editing data" width="400"/></p>
+<p><strong>Tip:</strong> Always prefer scripted data cleaning so your
+workflow is transparent, reproducible, and easier to debug.</p>
+</div>
+<div id="looking-at-structure" class="section level3" number="5.4">
+<h3><span class="header-section-number">5.4</span> Looking at
+Structure</h3>
+<p>Understanding the structure and distribution of your dataset is an
+essential part of any data analysis workflow. The following functions
+help you summarise your data, inspect variable types, and check levels
+of categorical variables.<br />
+<a href="https://www.youtube.com/watch?v=gS7jK91CZVU">Watch on
+YouTube</a></p>
+<pre class="r"><code>summary(dataset)</code></pre>
+<p><img src="screenshots/summary.jpg" alt="summary function" width="400"/></p>
+<p>Provides summary statistics (mean, min, max, etc.) for each
+column.</p>
+<pre class="r"><code>str(dataset)</code></pre>
+<p><img src="screenshots/str.jpg" alt="str function" width="400"/></p>
+<p>Displays the internal structure: variable types, lengths, and a data
+preview.</p>
+<p>You can also inspect how values are distributed in specific
+columns:</p>
+<pre class="r"><code>table(dataset$PoS)</code></pre>
+<p><img src="screenshots/table.jpg" alt="table function" width="500"/></p>
+<p>Shows the frequency of each part of speech tag.</p>
+<pre class="r"><code>levels(as.factor(dataset$PoS))</code></pre>
+<p><img src="screenshots/levels.jpg" alt="levels function" width="500"/></p>
+<p>Lists the unique levels for a categorical variable.</p>
+<p>Note that the following two commands produce the same output:</p>
+<pre class="r"><code>table(dataset$Language_origin)
+summary(as.factor(dataset$Language_origin))</code></pre>
+<p><img src="screenshots/tableSummary.jpg" alt="levels function" width="300"/></p>
+<p>You can convert data types using functions such as
+<code>as.factor()</code>, <code>as.numeric()</code>,
+<code>as.character()</code>, etc. This is often useful when preparing
+data for statistical modelling, where numeric values may be required, or
+when treating character data as categorical factors. <a
+href="https://www.youtube.com/watch?v=hKvrViYJBg0">Watch on
+YouTube</a></p>
+<pre class="r"><code>as.numeric(as.factor(dataset$Language_origin))</code></pre>
+<p>(This will result in an error as <em>Language_orgin</em> is not
+numeric)</p>
+</div>
+<div id="subsetting" class="section level3" number="5.5">
+<h3><span class="header-section-number">5.5</span> Subsetting</h3>
+<p>Subsetting is a crucial skill in R that allows you to focus your
+analysis on specific parts of your dataset. Whether you’re filtering by
+category, excluding values, or pulling certain columns, knowing how to
+subset accurately is essential for working efficiently with linguistic
+data.<br />
+<a href="https://www.youtube.com/watch?v=u7gLfdpydEs">Watch on
+YouTube</a></p>
+<hr />
+<div id="subsetting-by-a-single-condition" class="section level4"
+number="5.5.1">
+<h4><span class="header-section-number">5.5.1</span> Subsetting by a
+single condition</h4>
+<p>Use <code>subset()</code> to extract rows that meet a condition. For
+example, to keep only the nouns:</p>
+<pre class="r"><code>nouns &lt;- subset(dataset, PoS == &quot;Noun&quot;)
+View(nouns)</code></pre>
+<p><img src="screenshots/nouns.jpg" alt="subset of nouns" width="500"/></p>
+<p>You can apply the same logic to any variable.</p>
+</div>
+<div id="subsetting-by-negation" class="section level4" number="5.5.2">
+<h4><span class="header-section-number">5.5.2</span> Subsetting by
+negation</h4>
+<p>Negation is important when you want to exclude a certain
+category:</p>
+<pre class="r"><code>non_nouns &lt;- subset(dataset, PoS != &quot;Noun&quot;)
+View(non_nouns)</code></pre>
+<p><img src="screenshots/nonnouns.jpg" alt="subset of non-nouns" width="500"/></p>
+</div>
+<div id="subsetting-by-two-or-more-levels" class="section level4"
+number="5.5.3">
+<h4><span class="header-section-number">5.5.3</span> Subsetting by two
+or more levels</h4>
+<p>You can use the logical OR operator (|) to include multiple
+levels:</p>
+<pre class="r"><code>NV &lt;- subset(dataset, PoS == &quot;Noun&quot; | PoS == &quot;Verb&quot;)
+View(NV)</code></pre>
+<p><img src="screenshots/nounsVerbs.jpg" alt="subset of nouns and verbs" width="450"/></p>
+<p>To exclude both:</p>
+<pre class="r"><code>NNNV &lt;- subset(dataset, PoS != &quot;Noun&quot; &amp; PoS != &quot;Verb&quot;)
+View(NNNV)</code></pre>
+<p><img src="screenshots/NonnounsNonVerbs.jpg" alt="subset of non-nouns and non-verbs" width="450"/><br />
+<strong>Note:</strong> The difference between | and &amp; is that |
+keeps a row if either condition is true, while &amp; only keeps rows
+where both conditions are true.</p>
+</div>
+<div id="subsetting-by-column-names" class="section level4"
+number="5.5.4">
+<h4><span class="header-section-number">5.5.4</span> Subsetting by
+column names</h4>
+<p>You can also subset just specific columns by their names:</p>
+<pre class="r"><code>SF1F2 &lt;- subset(dataset, select = c(&quot;Speaker&quot;, &quot;F1&quot;, &quot;F2&quot;))
+View(SF1F2)</code></pre>
+<p><img src="screenshots/subsetColName.jpg" alt="subset by column names" width="150"/></p>
+</div>
+<div id="subsetting-by-column-numbers" class="section level4"
+number="5.5.5">
+<h4><span class="header-section-number">5.5.5</span> Subsetting by
+column numbers</h4>
+<p>Column numbers can be used when names are unknown or
+inconsistent:</p>
+<pre class="r"><code>SF1F2_2 &lt;- subset(dataset, select = c(1, 9, 10))
+View(SF1F2_2)</code></pre>
+<p><img src="screenshots/subsetColName.jpg" alt="subset by column names" width="150"/></p>
+</div>
+<div id="subsetting-with-regular-expressions" class="section level4"
+number="5.5.6">
+<h4><span class="header-section-number">5.5.6</span> Subsetting with
+regular expressions</h4>
+<p>You can subset using grepl() to match text patterns:</p>
+<pre class="r"><code>Adj &lt;- subset(dataset, grepl(&quot;([Aa][Dd][Jj]|[Aa]djective)&quot;, dataset$PoS))
+View(Adj)</code></pre>
+<p><img src="screenshots/adj.jpg" alt="subset of adjectives using regex" width="450"/></p>
+<p>To exclude a pattern:</p>
+<pre class="r"><code>non_adj &lt;- subset(dataset, !grepl(&quot;([Aa][Dd][Jj]|[Aa]djective)&quot;, dataset$PoS))
+View(non_adj)</code></pre>
+<p><img src="screenshots/nonadj.jpg" alt="subset anything but adjectives using regex" width="450"/></p>
+<p>Subsetting allows you to zoom in on the relevant data for your
+analysis, whether that means isolating a part of speech, removing
+irrelevant rows, or focusing on key variables.</p>
+</div>
+</div>
+<div id="creating-and-combining-data-frames" class="section level3"
+number="5.6">
+<h3><span class="header-section-number">5.6</span> Creating and
+Combining Data Frames</h3>
+<p>Often you’ll need to build your own datasets or merge existing ones.
+This section shows how to create simple vectors, convert them into data
+frames, and combine them using <code>cbind()</code> (column bind) or
+<code>rbind()</code> (row bind).<br />
+<a href="https://www.youtube.com/watch?v=DPNEy568V0w">Watch on
+YouTube</a></p>
+<hr />
+<div id="creating-lists-of-data" class="section level4" number="5.6.1">
+<h4><span class="header-section-number">5.6.1</span> Creating Lists of
+Data</h4>
+<p>You can start by creating a numeric vector of values from 1 to
+10:</p>
+<pre class="r"><code>Number &lt;- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+Number &lt;- as.data.frame(Number)
+View(Number)</code></pre>
+<p><img src="screenshots/number.jpg" alt="Creation of the `number` dataset" width="50"/></p>
+<p>Now let’s make a list of 10 animals:</p>
+<pre class="r"><code>Animal &lt;- c(&quot;cat&quot;, &quot;dog&quot;, &quot;moose&quot;, &quot;rat&quot;, &quot;marmot&quot;, &quot;rabbit&quot;, &quot;hamster&quot;, &quot;chinchilla&quot;, &quot;beaver&quot;, &quot;guinea pig&quot;)
+Animal &lt;- as.data.frame(Animal)
+View(Animal)</code></pre>
+<p><img src="screenshots/animal.jpg" alt="Creation of the `animal` dataset" width="50"/></p>
+<p>And finally, a vector for their sizes:</p>
+<pre class="r"><code>Size &lt;- c(&quot;M&quot;, &quot;M&quot;, &quot;L&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;S&quot;, &quot;M&quot;, &quot;S&quot;)
+Size &lt;- as.data.frame(Size)
+View(Size)</code></pre>
+<p><img src="screenshots/size.jpg" alt="Creation of the `size` dataset" width="50"/></p>
+</div>
+<div id="combining-columns-with-cbind" class="section level4"
+number="5.6.2">
+<h4><span class="header-section-number">5.6.2</span> Combining Columns
+with cbind()</h4>
+<p>We can now combine the <code>Number</code>, <code>Animal</code>, and
+<code>Size</code> data frames into a single table:</p>
+<pre class="r"><code>NAS &lt;- cbind(Number, Animal, Size)
+View(NAS)SF1F2_2 &lt;- subset(dataset, select = c(1, 9, 10))</code></pre>
+<p><img src="screenshots/NAS.jpg" alt="Combining the `Number`, `Animal`, and `Size` datasets" width="150"/></p>
+</div>
+<div id="combining-row-subsets-with-rbind" class="section level4"
+number="5.6.3">
+<h4><span class="header-section-number">5.6.3</span> Combining Row
+Subsets with rbind()</h4>
+<pre class="r"><code>Nouns &lt;- subset(dataset, PoS == &quot;Noun&quot;)
+Verbs &lt;- subset(dataset, PoS == &quot;Verb&quot;)
+NV &lt;- rbind(Nouns, Verbs)
+View(NV)</code></pre>
+<p><img src="screenshots/NV.jpg" alt="Combining the `Noun` and `Verb` subsets" width="450"/></p>
+</div>
+</div>
+<div id="rename-remove-replace-data" class="section level3"
+number="5.7">
+<h3><span class="header-section-number">5.7</span> Rename, Remove,
+Replace Data</h3>
+<p>These operations are essential for cleaning and reshaping your
+dataset.<br />
+<a href="https://www.youtube.com/watch?v=4ob7pAlcDG0">Watch on
+YouTube</a></p>
+<p>Back up your data</p>
+<pre class="r"><code>DS &lt;- dataset</code></pre>
+<div id="remove-rows-and-columns" class="section level4" number="5.7.1">
+<h4><span class="header-section-number">5.7.1</span> Remove Rows and
+Columns</h4>
+<p>Remove first row:</p>
+<pre class="r"><code>DS1 = DS[-1,]
+View(DS1)</code></pre>
+<p><img src="screenshots/rmRow.jpg" alt="Remove the first row of `DS`" width="450"/></p>
+<p>Remove rows 1 through 10</p>
+<pre class="r"><code>DS1 = DS[-1:-10,]
+View(DS1)</code></pre>
+<p><img src="screenshots/rmRow10.jpg" alt="Remove the first 10 rows of `DS`" width="450"/></p>
+<p>Remove the 2nd column (e.g., “Vowel”)</p>
+<pre class="r"><code>DS1 = DS[, -2]
+View(DS1)</code></pre>
+<p><img src="screenshots/rmVowel.jpg" alt="Remove the `Vowel` column" width="250"/></p>
+<p>Remove columns 2 through 5 (e.g., “Vowel” to “SES”)</p>
+<pre class="r"><code>DS1 = DS[, -2:-5]
+View(DS1)</code></pre>
+<p><img src="screenshots/rm2-5.jpg" alt="Remove columns 2 to 5" width="600"/></p>
+</div>
+<div id="subset-columns" class="section level4" number="5.7.2">
+<h4><span class="header-section-number">5.7.2</span> Subset
+Column(s)</h4>
+<p>View only column 1</p>
+<pre class="r"><code>DS1 = DS[, 1]
+View(as.data.frame(DS1))</code></pre>
+<p><img src="screenshots/speaker.jpg" alt="View only column 1" width="100"/></p>
+<p>View columns 1 through 10</p>
+<pre class="r"><code>DS1 = DS[, 1:10]
+View(DS1)</code></pre>
+<p><img src="screenshots/View1-10.jpg" alt="View columns 1 to 10" width="500"/></p>
+</div>
+<div id="replace-data-in-cells" class="section level4" number="5.7.3">
+<h4><span class="header-section-number">5.7.3</span> Replace Data in
+Cells</h4>
+<p>Change all instances of ‘Noun’ to ‘Verb’</p>
+<pre class="r"><code>DS$PoS[DS$PoS == &quot;Noun&quot;] = &quot;Verb&quot;
+View(DS)</code></pre>
+<p><img src="screenshots/renameItem.jpg" alt="Rename `Noun` to `Verb` in the `PoS` column" width="500"/></p>
+<p>Change ‘Noun’ and ‘Adjective’ to ‘Verb’</p>
+<pre class="r"><code>DS$PoS[DS$PoS == &quot;Noun&quot; | DS$PoS == &quot;Adjective&quot;] = &quot;Verb&quot;
+View(DS)</code></pre>
+<p><img src="screenshots/renameItem2.jpg" alt="Rename `Noun` and `Adjective` to `Verb` in the `PoS` column" width="500"/></p>
+</div>
+</div>
+<div id="formatting-your-data" class="section level3" number="5.8">
+<h3><span class="header-section-number">5.8</span> Formatting Your
+Data</h3>
+<p>These operations help extract and standardise key parts of your text
+data. <a href="https://www.youtube.com/watch?v=twOL1mfMPcY">Watch on
+YouTube</a></p>
+<pre class="r"><code>library(stringr)</code></pre>
+<p>Create the <code>Vowel</code> column.</p>
+<pre class="r"><code>#One character after the `@` sign from the phrase column.
+dataset$Vowel = str_extract(dataset$Phrase, &quot;@.&quot;)
+View(dataset)
+#Then replace the `@` sign with nothing (basically deleting it).
+dataset$Vowel = gsub(&quot;@&quot;, &quot;&quot;, dataset$Vowel)
+View(dataset)</code></pre>
+<p><img src="screenshots/vowelcol.jpg" alt="Creating the `Vowel` column" width="600"/></p>
+<p>Create the <code>Phrase</code> column Change underscore to space.</p>
+<pre class="r"><code>#Replace &quot;_&quot; with &quot; &quot;
+dataset$Phrase = gsub(&quot;[_]&quot;, &quot; &quot;, dataset$Phrase)
+View(dataset)</code></pre>
+<p><img src="screenshots/phrase.jpg" alt="Creating the `Phrase` column" width="600"/></p>
+<p>Extract words containing the <code>@</code> sign</p>
+<pre class="r"><code>#From the `Phrase` column, extract a word character(s) until the `@` sign and then the rest of the word character(s).  
+dataset$Word = str_extract(dataset$Phrase, &quot;\\w*@\\w*&quot;)
+View(dataset)</code></pre>
+<p><img src="screenshots/word.jpg" alt="Creating the `Word` column" width="600"/></p>
+<p>Add <code>%</code> to the beginning and end of the word</p>
+<pre class="r"><code>#Replace a word boundary at the beginning of a line with `%`
+dataset$Word = gsub(&quot;^\\b&quot;, &quot;%&quot;, dataset$Word)
+#Replace the end of the line (word in this case) with %
+dataset$Word = gsub(&quot;$&quot;, &quot;%&quot;, dataset$Word)
+View(dataset)</code></pre>
+<p><img src="screenshots/percentage.jpg" alt="adding `%` to the beginning and end of words" width="600"/></p>
+<p>Extract preceding sound Adds one character before the <code>@</code>
+and two after</p>
+<pre class="r"><code>#grab the character before the `@` sign, then two characters after the `@` sign.
+dataset$Preceding = str_extract(dataset$Word, &quot;.@..&quot;)
+#Grab whatever is in the first position.
+dataset$Preceding = str_extract(dataset$Preceding, &quot;^.{1}&quot;)</code></pre>
+<p><img src="screenshots/preceding.jpg" alt="Creating the `Preceding` column" width="500"/></p>
+<p>Extract following sound Adds one character before the <code>@</code>
+and two after</p>
+<pre class="r"><code>#grab the character before the `@` sign, then two characters after the `@` sign.
+dataset$Post = str_extract(dataset$Word, &quot;.@..&quot;)
+#Grab the character just before the end position.
+dataset$Post = str_extract(dataset$Post, &quot;.{1}$&quot;)</code></pre>
+<p><img src="screenshots/post.jpg" alt="Creating the `Preceding` column" width="500"/></p>
+</div>
+<div id="if-statements" class="section level3" number="5.9">
+<h3><span class="header-section-number">5.9</span> IF Statements</h3>
+<p>You can use <code>ifelse()</code> statements to categorise data and
+prepare it for analysis.<br />
+<a href="https://www.youtube.com/watch?v=wQOsFurgcv4">Watch on
+YouTube</a></p>
+<div id="nested-if-statements-vowel-height-classification"
+class="section level4" number="5.9.1">
+<h4><span class="header-section-number">5.9.1</span> Nested IF
+Statements (Vowel Height Classification)</h4>
+<p><a href="https://www.youtube.com/watch?v=PcOG-Aw3Uzs">Watch on
+YouTube</a></p>
+<pre class="r"><code>#If the vowel is `a` mark it as `Low`, if it&#39;s `e` or `o`, mark it as `Mid`, if it&#39;s `i` or `u`, mark it as `high`, if it&#39;s anything else mark it as `Error`.
+dataset$VowelType = ifelse(dataset$Vowel == &quot;a&quot;, &quot;Low&quot;,
+                     ifelse(dataset$Vowel %in% c(&quot;e&quot;, &quot;o&quot;), &quot;Mid&quot;,
+                     ifelse(dataset$Vowel %in% c(&quot;i&quot;, &quot;u&quot;), &quot;High&quot;, &quot;Error&quot;)))</code></pre>
+<p><img src="screenshots/VowelType.jpg" alt="Vowel height column" width="50"/></p>
+</div>
+<div id="class-of-sound-in-pre-vowel-position" class="section level4"
+number="5.9.2">
+<h4><span class="header-section-number">5.9.2</span> Class of Sound in
+Pre-Vowel Position</h4>
+<p><a href="https://www.youtube.com/watch?v=k6RiPKeSOxw">Watch on
+YouTube</a></p>
+<pre class="r"><code>#If there is a vowel in the preceding column, then we&#39;re dealing with two vowels in a row (a vowel sequence or diphthong), if the segments are `mnɲŋ`, mark as nasal etc.
+dataset$PrecedingClass = ifelse(grepl(&quot;[iueoa]&quot;, dataset$Preceding), &quot;Diphthong&quot;,
+                          ifelse(grepl(&quot;[mnɲŋ]&quot;, dataset$Preceding), &quot;Nasal&quot;,
+                          ifelse(grepl(&quot;[ptkbdg]&quot;, dataset$Preceding), &quot;Stop&quot;,
+                          ifelse(grepl(&quot;[ɸfszʃʒʐxhʧ]&quot;, dataset$Preceding), &quot;Fricative&quot;,
+                          ifelse(grepl(&quot;[pjɾlw]&quot;, dataset$Preceding), &quot;Sonorant&quot;,
+                          ifelse(grepl(&quot;%&quot;, dataset$Preceding), &quot;Initial&quot;, &quot;NA&quot;))))))</code></pre>
+<p><img src="screenshots/PrecedingClass.jpg" alt="Manner of articulation before the vowel in question" width="70"/></p>
+</div>
+<div id="class-of-sound-in-post-vowel-position" class="section level4"
+number="5.9.3">
+<h4><span class="header-section-number">5.9.3</span> Class of Sound in
+Post-Vowel Position</h4>
+<pre class="r"><code>#If there is a vowel in the post column, then we&#39;re dealing with two vowels in a row (a vowel sequence or diphthong), if the segments are `mnɲŋ`, mark as nasal etc.
+dataset$PostClass = ifelse(grepl(&quot;[iueoa]&quot;, dataset$Post), &quot;Diphthong&quot;,
+                    ifelse(grepl(&quot;[mnɲŋ]&quot;, dataset$Post), &quot;Nasal&quot;,
+                    ifelse(grepl(&quot;[ptkbdg]&quot;, dataset$Post), &quot;Stop&quot;,
+                    ifelse(grepl(&quot;[ɸfszʃʒʐxhʧ]&quot;, dataset$Post), &quot;Fricative&quot;,
+                    ifelse(grepl(&quot;[pjɾlw]&quot;, dataset$Post), &quot;Sonorant&quot;,
+                    ifelse(grepl(&quot;%&quot;, dataset$Post), &quot;Initial&quot;, &quot;NA&quot;))))))</code></pre>
+<p><img src="screenshots/PostClass.jpg" alt="Manner of articulation after the vowel in question" width="70"/></p>
+</div>
+<div id="voicing-classification" class="section level4" number="5.9.4">
+<h4><span class="header-section-number">5.9.4</span> Voicing
+Classification</h4>
+<pre class="r"><code>#Preceding sound voicing
+#If it&#39;s any of the voiceless segments (ptkɸfsʃxhʧ), mark as `Voiceless`, if it&#39;s any of the voiced segments (mnɲŋbdgzʒʐjlɾwaeiou), mark as `Voiced`; if the vowel in question is at the beginning, mark as `initial`
+dataset$VoicingPRE = ifelse(grepl(&quot;[ptkɸfsʃxhʧ]&quot;, dataset$Preceding), &quot;Voiceless&quot;,
+                      ifelse(grepl(&quot;[mnɲŋbdgzʒʐjlɾwaeiou]&quot;, dataset$Preceding), &quot;Voiced&quot;,
+                      ifelse(grepl(&quot;[%]&quot;, dataset$Preceding), &quot;Initial&quot;, &quot;NA&quot;)))
+
+#Following sound voicing
+dataset$VoicingPOST = ifelse(grepl(&quot;[ptkɸfsʃxhʧ]&quot;, dataset$Post), &quot;Voiceless&quot;,
+                       ifelse(grepl(&quot;[mnɲŋbdgzʒʐjlɾwaeiou]&quot;, dataset$Post), &quot;Voiced&quot;,
+                       ifelse(grepl(&quot;[%]&quot;, dataset$Post), &quot;Final&quot;, &quot;NA&quot;)))</code></pre>
+<p><img src="screenshots/Voicing.jpg" alt="Voicing of the preceding and post segment of the vowel in question" width="200"/></p>
+</div>
+<div id="binary-variable-creation" class="section level4"
+number="5.9.5">
+<h4><span class="header-section-number">5.9.5</span> Binary Variable
+Creation</h4>
+<p>These are helpful when running statistical models, particularly mixed
+effects models.<br />
+<a href="https://www.youtube.com/watch?v=h9GD_MgsSm0">Watch on
+YouTube</a></p>
+<pre class="r"><code>#If the preceding column contains `Diphthong`, mark it as TRUE, if not, mark it as FALSE
+dataset$Pre_Diphthong = ifelse(dataset$PrecedingClass == &quot;Diphthong&quot;, TRUE, FALSE)
+#If the post column contains `Diphthong`, mark it as TRUE, if not, mark it as FALSE
+dataset$Post_Diphthong = ifelse(dataset$PostClass == &quot;Diphthong&quot;, TRUE, FALSE)
+
+dataset$Pre_Nasal = ifelse(dataset$PrecedingClass == &quot;Nasal&quot;, TRUE, FALSE)
+dataset$Post_Nasal = ifelse(dataset$PostClass == &quot;Nasal&quot;, TRUE, FALSE)
+
+dataset$Pre_Stop = ifelse(dataset$PrecedingClass == &quot;Stop&quot;, TRUE, FALSE)
+dataset$Post_Stop = ifelse(dataset$PostClass == &quot;Stop&quot;, TRUE, FALSE)
+
+dataset$Pre_Fricative = ifelse(dataset$PrecedingClass == &quot;Fricative&quot;, TRUE, FALSE)
+dataset$Post_Fricative = ifelse(dataset$PostClass == &quot;Fricative&quot;, TRUE, FALSE)
+
+dataset$Pre_Sonorant = ifelse(dataset$PrecedingClass == &quot;Sonorant&quot;, TRUE, FALSE)
+dataset$Post_Sonorant = ifelse(dataset$PostClass == &quot;Sonorant&quot;, TRUE, FALSE)
+
+dataset$Pre_Voiceless = ifelse(dataset$PrecedingClass == &quot;Voiceless&quot;, TRUE, FALSE)
+dataset$Post_Voiceless = ifelse(dataset$PostClass == &quot;Voiceless&quot;, TRUE, FALSE)
+
+dataset$Pre_Voiced = ifelse(dataset$VoicingPRE == &quot;Voiced&quot;, TRUE, FALSE)
+dataset$Post_Voiced = ifelse(dataset$VoicingPOST == &quot;Voiced&quot;, TRUE, FALSE)
+
+dataset$Post_Initial = ifelse(dataset$PostClass == &quot;Initial&quot;, TRUE, FALSE)
+dataset$Post_Final = ifelse(dataset$PostClass == &quot;Final&quot;, TRUE, FALSE)</code></pre>
+<p><img src="screenshots/TFs.jpg" alt="Creating binary TRUE/FALSE columns" width="600"/></p>
+</div>
+</div>
+<div id="for-loops" class="section level3" number="5.10">
+<h3><span class="header-section-number">5.10</span> For Loops</h3>
+<p>A <code>for</code> loop allows you to repeat a set of commands for
+each item in a vector or list. It’s useful when you need to apply the
+same logic multiple times.</p>
+<p>Here’s a basic example for counting word frequencies This for loop
+goes through each row in <code>NEWdataset</code> and creates a table of
+word counts.</p>
+<pre class="r"><code># Create an empty list to store word counts
+word_list &lt;- list()
+
+# Loop through each row of the dataset
+for (i in 1:nrow(NEWdataset)) {                     # &#39;i&#39; is a holder. It will go from 1 to the last row in NEWdataset
+  
+  word &lt;- NEWdataset$Word[i]                        # This grabs the &#39;Word&#39; value in row &#39;i&#39; and puts it into a new object called &#39;word&#39;
+  
+  if (is.na(word) || word == &quot;&quot;) next               # If the word is missing (NA) or just an empty string, skip to the next row
+  
+  if (word %in% names(word_list)) {                 # If the word already exists in our list of words...
+    word_list[[word]] &lt;- word_list[[word]] + 1      # ...add 1 to its existing count - double bracks return the vowel itself
+  } else {                                          # If the word is NOT already in the list...
+    word_list[[word]] &lt;- 1                          # ...add it to the list and give it a starting count of 1
+  }
+}
+
+# Convert the list to a dataframe
+word_count_df &lt;- data.frame(                        
+  Word = names(word_list),                          # Turn the word names into a column
+  count = unlist(word_list),                        # Turn the counts into a numeric column
+  row.names = NULL                                  # Don&#39;t use the word as row names (optional but cleaner)
+)
+
+# Sort the dataframe by frequency
+word_count_df &lt;- word_count_df[order(-word_count_df$count), ]  # Reorder the dataframe so highest counts come first
+
+# Show top 50 words
+word_count_50 &lt;- head(word_count_df, 50)            # Keep only the top 50 most frequent words</code></pre>
+<p><img src="screenshots/ForLoop.jpg" alt="Counting words in NEWDataset" width="200"/></p>
+<p>Use loops carefully — for most data manipulation tasks in R,
+vectorised functions (like <code>apply</code>, <code>lapply</code>, or
+<code>ifelse</code>) are often more efficient. Personally, I am not a
+fan of for loops in R as I find them hard to work with, however, I use
+them all the time in JavaScript.<br />
+I would recommend using pipes:</p>
+</div>
+<div id="pipes" class="section level3" number="5.11">
+<h3><span class="header-section-number">5.11</span> Pipes %&gt;%</h3>
+<p>The pipe operator <code>%&gt;%</code> from the <code>magrittr</code>
+package (automatically loaded with <code>dplyr</code> or
+<code>tidyverse</code>) allows you to chain operations together in a
+readable, left-to-right sequence.</p>
+<p>Instead of nesting multiple functions, pipes allow you to “send” the
+output of one function directly into the next. This is especially useful
+when performing several data manipulation steps. However, they are
+sometimes hard to build and may require breaking them down into smaller
+segments before stacking.</p>
+<pre class="r"><code>library(dplyr)
+
+word_list &lt;- NEWdataset %&gt;% #Put NEWdataset in word_list AND THEN (%&gt;% = AND THEN)...
+  filter(!is.na(Word), Word != &quot;&quot;) %&gt;% #filter out NAs (is.na) and blanks (&quot;&quot;), AND THEN...
+  count(Word, sort = TRUE) #Count each word, and sort it from highest to lowest</code></pre>
+<p><img src="screenshots/ForLoop2.jpg" alt="Counting words in NEWDataset" width="200"/></p>
+<p>Or a more complex example that basically does the same thing, but
+with top 50 and a few other options added</p>
+<pre class="r"><code>library(dplyr)
+
+word_count_50 &lt;- NEWdataset %&gt;%
+  filter(!is.na(Word)) %&gt;%          # Step 1: Remove rows with NA in the &#39;Word&#39; column
+  filter(Word != &quot;&quot;) %&gt;%            # Step 2: Remove empty Word strings
+  group_by(Word) %&gt;%                # Step 3: Group by Word type
+  summarise(count = n(), .groups = &quot;drop&quot;) %&gt;%  # Step 4: Count occurrences
+  arrange(desc(count)) %&gt;%              # Step 5: Sort in descending order
+  slice_head(n = 50)                    # Step 6: Keep top 50 words only</code></pre>
+<p><img src="screenshots/Pipe.jpg" alt="Counting words using `pipes`" width="200"/></p>
+</div>
+<div id="regex" class="section level3" number="5.12">
+<h3><span class="header-section-number">5.12</span> RegEx</h3>
+<p>Delete rows containing a target string. This is good for removing
+problematic data.</p>
+<pre class="r"><code>#Removes any word ending in &lt;a&gt;  
+word_count_50=word_count_50[!grepl(&quot;a$&quot;, word_count_50$Word), ]  
+  
+#Removes any word ending in &lt;o&gt;  
+word_count_50=word_count_50[!grepl(&quot;o$&quot;, word_count_50$Word), ]  </code></pre>
+<p><img src="screenshots/NoaNoo.jpg" alt="Removes words ending with 'a' and 'o'" width="400"/></p>
+<p>Replacing a target string in items in a column with a different
+string. This is good for something like converting text to IPA.</p>
+<pre class="r"><code>#Looks for words containing &lt;11&gt; and replaces it with `/ʒ/`.  
+word_count_50$Word=gsub(&quot;ll&quot;, &quot;ʒ&quot;,word_count_50$Word)  
+  
+#Looks for wards containing `ca` and replaces them with `/ka/`  
+word_count_50$Word=gsub(&quot;ca&quot;, &quot;ka&quot;,word_count_50$Word)  </code></pre>
+<p><img src="screenshots/llca.jpg" alt="Changes 'll' to ʒ and 'ca' to /ka/" width="400"/></p>
+</div>
+</div>
+<div id="plotting" class="section level2" number="6">
+<h2><span class="header-section-number">6</span> Plotting</h2>
+<p>Before we begin plotting, we’re going to create a subset of the data
+that excludes words containing the letter <code>k</code>. I don’t know
+why there are ’k’s in the <code>Vowel</code> column, but there were.</p>
+<pre class="r"><code>dataset=subset(dataset, Vowel!=&quot;k&quot;)</code></pre>
+<p><img src="screenshots/plotSubset.jpg" alt="Removes words ending with 'a' and 'o'" width="200"/></p>
+<p>We will be plotting with <code>ggplot2</code>.</p>
+<pre class="r"><code>#Make sure ggplot2 is loaded
+library(ggplot2)
+#This package will allow us to plot multiple graphs in a single image.
+library(gridExtra)</code></pre>
+<p>The <code>ggplot2</code> package, which provides both
+<code>qplot()</code> and <code>ggplot()</code>—two approaches to data
+visualisation. Note: <code>qplot()</code> is being phased out in newer
+versions of <code>ggplot2</code>, so it’s worth knowing but not relying
+on long-term.</p>
+<div id="basic-plots-with-qplot" class="section level3" number="6.1">
+<h3><span class="header-section-number">6.1</span> Basic Plots with
+<code>qplot()</code></h3>
+<ul>
+<li><strong>Simple barplots of each formant point</strong>
+<ul>
+<li>These plots display the distribution of F1 and F2 values across the
+dataset.</li>
+<li>Useful for checking range, skewness, and general distribution.</li>
+</ul>
+<pre class="r"><code>qplot(F1, data=dataset)
+qplot(F2, data=dataset)</code></pre>
+<img src="graphs/qplot1.png" alt="Using qplot with F1" width="300"/><img src="graphs/qplot2.png" alt="Using qplot with F2" width="300"/></li>
+</ul>
+<p>If you’d like to plot these graphs in the same image, you have to
+save them to an object</p>
+<pre class="r"><code>F1 &lt;- qplot(F1, data=dataset)
+F2 &lt;- qplot(F2, data=dataset)
+#This will add them side-by-side (two columns)
+grid.arrange(F1, F2, ncol = 2)
+#or, stack them...
+grid.arrange(F1, F2, nrow = 2)</code></pre>
+<p><img src="graphs/qplot3.png" alt="side-by-side barplot" width="300"/><img src="graphs/qplot4.png" alt="stacked plots" width="300"/></p>
+<ul>
+<li><p><strong>Identifying individual vowels</strong></p>
+<ul>
+<li>These plots colour or fill the F1 distribution by vowel
+category.</li>
+<li>This helps distinguish overlapping vowel categories and visualise
+contrast.</li>
+</ul>
+<pre class="r"><code>qplot(F1, fill=Vowel, data=dataset)
+qplot(F1, colour=Vowel, data=dataset)</code></pre>
+<p><img src="graphs/qplot5.png" alt="filled barplot" width="300"/><img src="graphs/qplot6.png" alt="coloured barplot" width="300"/></p></li>
+<li><p><strong>Density plots by vowel</strong></p>
+<ul>
+<li>By setting <code>geom="density"</code>, we create smooth
+distributions for each vowel.</li>
+<li>Transparency (<code>fill=</code>) allows overlapping densities to be
+visually distinguished.</li>
+</ul>
+<pre class="r"><code>#Creating a density plot
+qplot(F1, color=Vowel, data=dataset, geom=&quot;density&quot;)
+#Creating a density plot - transparent
+qplot(F1, fill=Vowel, data=dataset, geom=&quot;density&quot;)</code></pre>
+<p><img src="graphs/qplot7.png" alt="coloured density" width="300"/><img src="graphs/qplot8.png" alt="filled density" width="300"/></p></li>
+<li><p><strong>Adding axis labels and a main title</strong></p>
+<ul>
+<li>These additions make the graph more interpretable.</li>
+<li>Always label your axes (e.g., Hz for F1) and give the graph a
+descriptive title (e.g., “F1 Distribution”).</li>
+</ul>
+<pre class="r"><code>#Adding axis labels
+qplot(F1, color=Vowel, xlab=&quot;Hz&quot;, ylab=&quot;Count&quot;, data=dataset, geom=&quot;density&quot;)
+#Adding a main title
+qplot(F1, color=Vowel, main=&quot;F1 Distribution&quot;, xlab=&quot;Hz&quot;, ylab=&quot;Count&quot;, data=dataset, geom=&quot;density&quot;)</code></pre>
+<p><img src="graphs/qplot9.png" alt="adding axis labels" width="300"/><img src="graphs/qplot10.png" alt="adding title" width="300"/></p></li>
+</ul>
+</div>
+<div id="transition-to-ggplot" class="section level3" number="6.2">
+<h3><span class="header-section-number">6.2</span> Transition to
+<code>ggplot()</code></h3>
+<p>We now move from <code>qplot()</code> to <code>ggplot()</code>, which
+gives us more control over layering, appearance, and statistical
+overlays. This is the standard approach used in most modern R data
+visualisation workflows.</p>
+<p>Start a vowel space plot with axes for F2 (x) and F1 (y), and fill
+points by vowel type. Nothing will appear in the chart yet, as we’re
+just setting up the parameters.</p>
+<pre class="r"><code>ggplot(dataset, aes(x=F2, y=F1, fill=Vowel))</code></pre>
+<p><img src="graphs/ggplot1.png" alt="Setting up parameters" width="300"/></p>
+<p>Add vowel labels to the vowel space plot Each vowel is shown at its
+F1/F2 coordinates, coloured by vowel category.</p>
+<pre class="r"><code>ggplot(dataset, aes(x=F2, y=F1, fill=Vowel)) +
+  geom_text(aes(label=Vowel, color=Vowel))</code></pre>
+<p><img src="graphs/ggplot2.png" alt="adding in the text, coloring each vowel" width="300"/></p>
+<p>Flip the y-axis so higher F1s are at the bottom — typical for vowel
+charts This better reflects the articulatory space</p>
+<pre class="r"><code>ggplot(dataset, aes(x=F2, y=F1, fill=Vowel)) +
+  geom_text(aes(label=Vowel, color=Vowel)) + 
+  ylim(1100, 150)</code></pre>
+<p><img src="graphs/ggplot3.png" alt="flipping the y coordinates" width="300"/></p>
+<p>Reverse both x and y axes to match IPA vowel chart conventions</p>
+<pre class="r"><code>ggplot(dataset, aes(x=F2, y=F1, fill=Vowel)) +
+  geom_text(aes(label=Vowel, color=Vowel)) + 
+  ylim(1100, 150) +
+  xlim(3100, 200)</code></pre>
+<p><img src="graphs/ggplot4.png" alt="flipping the x coordinates" width="300"/></p>
+<p>Add ellipses to represent vowel distribution Useful for showing
+dispersion and overlap between categories</p>
+<pre class="r"><code>ggplot(dataset, aes(x=F2, y=F1, fill=Vowel)) +
+  geom_text(aes(label=Vowel, color=Vowel)) + 
+  ylim(1100, 150) +
+  xlim(3100, 200) +
+  stat_ellipse()</code></pre>
+<p><img src="graphs/ggplot5.png" alt="adding ellipses" width="300"/></p>
+<p>Use filled polygons instead of outlines for ellipses Makes visual
+clustering more obvious</p>
+<pre class="r"><code>ggplot(dataset, aes(x=F2, y=F1, fill=Vowel)) +
+  geom_text(aes(label=Vowel, color=Vowel)) + 
+  ylim(1100, 150) +
+  xlim(3100, 200) +
+  stat_ellipse() +
+  stat_ellipse(geom = &quot;polygon&quot;)</code></pre>
+<p><img src="graphs/ggplot6.png" alt="adding filled ellipses" width="300"/></p>
+<p>Add transparency to polygon ellipses so they don’t obscure each
+other</p>
+<pre class="r"><code>ggplot(dataset, aes(x=F2, y=F1, fill=Vowel)) +
+  geom_text(aes(label=Vowel, color=Vowel)) + 
+  ylim(1100, 150) +
+  xlim(3100, 200) +
+  stat_ellipse() +
+  stat_ellipse(geom = &quot;polygon&quot;, alpha = 0.3)</code></pre>
+<p><img src="graphs/ggplot7.png" alt="adding semi-transparent ellipses" width="300"/></p>
+<p>Add 50% confidence ellipses (dashed) and outline ellipses This helps
+visualise central tendency and spread</p>
+<pre class="r"><code>ggplot(dataset, aes(x=F2, y=F1, fill=Vowel)) +
+  geom_text(aes(label=Vowel, color=Vowel)) + 
+  ylim(1100, 150) +
+  xlim(3100, 200) +
+  stat_ellipse() +
+  stat_ellipse(geom = &quot;polygon&quot;, alpha = 0.2) +
+  stat_ellipse(aes(color=Vowel), size=0.8) +
+  stat_ellipse(linetype = 2, size = 0.1, level = 0.5)</code></pre>
+<p><img src="graphs/ggplot8.png" alt="adding 50% ellipses" width="300"/></p>
+<p>Add a very tight ellipse (level = 0.001) to estimate mean (average)
+location</p>
+<pre class="r"><code>ggplot(dataset, aes(x=F2, y=F1, fill=Vowel)) +
+  geom_text(aes(label=Vowel, color=Vowel)) + 
+  ylim(1100, 150) +
+  xlim(3100, 200) +
+  stat_ellipse() +
+  stat_ellipse(geom = &quot;polygon&quot;, alpha = 0.2) +
+  stat_ellipse(aes(color=Vowel), size=0.8) +
+  stat_ellipse(linetype = 1, size = 1, level = 0.001)</code></pre>
+<p><img src="graphs/ggplot9.png" alt="adding the mean average" width="300"/></p>
+<pre class="r"><code># Add informative axis labels and a title to complete the plot
+ggplot(dataset, aes(x=F2, y=F1, fill=Vowel)) +
+  geom_text(aes(label=Vowel, color=Vowel)) + 
+  ylim(1100, 150) +
+  xlim(3100, 200) +
+  stat_ellipse() +
+  stat_ellipse(geom = &quot;polygon&quot;, alpha = 0.2) +
+  stat_ellipse(aes(color=Vowel), size=0.8) +
+  stat_ellipse(linetype = 1, size = 1, level = 0.001) + 
+  labs(x = &quot;F2 (Hz)&quot;, y = &quot;F1 (Hz)&quot;, title = &quot;Vowel Chart&quot;)</code></pre>
+<p><img src="graphs/ggplot10.png" alt="adding labels" width="300"/></p>
+</div>
+<div id="topographic-and-density-plots" class="section level3"
+number="6.3">
+<h3><span class="header-section-number">6.3</span> Topographic and
+Density Plots</h3>
+<p>Topographic map with vowel labels and black contour lines Highlights
+the frequency density of vowels over the formant space</p>
+<pre class="r"><code>ggplot(dataset, aes(x=F2, y=F1, fill=Vowel)) +
+  geom_text(aes(label=Vowel, color=Vowel)) + 
+  ylim(1100, 150) +
+  xlim(3100, 200) +
+  stat_ellipse() +
+  stat_ellipse(geom = &quot;polygon&quot;, alpha = 0.2) +
+  stat_ellipse(aes(color=Vowel), size=0.8) +
+  stat_ellipse(linetype = 1, size = 1, level = 0.001) + 
+  labs(x = &quot;F2 (Hz)&quot;, y = &quot;F1 (Hz)&quot;, title = &quot;Vowel Chart&quot;) + 
+  geom_density_2d(size = 0.25, colour = &quot;black&quot;)</code></pre>
+<p><img src="graphs/ggplot11.png" alt="Topographic density plot" width="300"/></p>
+<p>Topographic map with no text labels Only contour lines shown — for
+identifying distributions in the data that is not influenced by the
+vowels themselves</p>
+<pre class="r"><code>ggplot(dataset, aes(x=F2, y=F1,fill=Vowel)) + 
+  ylim(1100,150)+xlim(3100,200) + 
+  labs(x=&quot;F2 (Hz)&quot;, y=&quot;F1 (Hz)&quot;, title =&quot;Vowel Chart&quot;) + 
+  stat_density_2d(aes(fill = ..level..), bins=15)</code></pre>
+<p><img src="graphs/ggplot12.png" alt="adding labels" width="300"/><br />
+<br></p>
+<p>Topographic map with no text labels Only contour lines shown — for
+identifying distributions in the data that is not influenced by the
+vowels themselves</p>
+<pre class="r"><code>ggplot(dataset, aes(x=F2, y=F1,fill=Vowel)) + 
+  ylim(1100,150)+xlim(3100,200) + 
+  labs(x=&quot;F2 (Hz)&quot;, y=&quot;F1 (Hz)&quot;, title =&quot;Vowel Chart&quot;) + 
+  stat_density_2d(aes(fill = ..level..), bins=30)</code></pre>
+<p><img src="graphs/ggplot13.png" alt="adding labels" width="300"/></p>
+<p>Topology I — filled heatmap of vowel density Aesthetic shading
+indicates how many vowels appear in each region</p>
+<pre class="r"><code>ggplot(dataset, aes(x=F2, y=F1,fill=Vowel)) + 
+  ylim(1100,150)+xlim(3100,200) + 
+  labs(x=&quot;F2 (Hz)&quot;, y=&quot;F1 (Hz)&quot;, title =&quot;Vowel Chart&quot;) + 
+  stat_density_2d(aes(fill = ..level..), geom = &quot;polygon&quot;)</code></pre>
+<p><img src="graphs/ggplot14.png" alt="heatmap" width="300"/></p>
+<p>Topology II — same as above but with more defined 15 bin resolution
+Creates slightly sharper or chunkier zones of colour</p>
+<pre class="r"><code>ggplot(dataset, aes(x=F2, y=F1,fill=Vowel)) + 
+  ylim(1100,150)+xlim(3100,200) + 
+  labs(x=&quot;F2 (Hz)&quot;, y=&quot;F1 (Hz)&quot;, title =&quot;Vowel Chart&quot;) + 
+  stat_density_2d(aes(fill = ..level..), geom = &quot;polygon&quot;, bins=15)</code></pre>
+<p><img src="graphs/ggplot15.png" alt="heatmap with bins at 15" width="300"/></p>
+<p>Topology III — higher bin resolution (30) More finely detailed
+density map</p>
+<pre class="r"><code>ggplot(dataset, aes(x=F2, y=F1,fill=Vowel)) + 
+  ylim(1100,150)+xlim(3100,200) + 
+  labs(x=&quot;F2 (Hz)&quot;, y=&quot;F1 (Hz)&quot;, title =&quot;Vowel Chart&quot;) + 
+  stat_density_2d(aes(fill = ..level..), geom = &quot;polygon&quot;, bins=30)</code></pre>
+<p><img src="graphs/ggplot16.png" alt="heatmap with bins at 30" width="300"/></p>
+</div>
+<div id="polygons" class="section level3" number="6.4">
+<h3><span class="header-section-number">6.4</span> Polygons</h3>
+<p>To create filled polygonal outlines around vowel groupings, we’ll
+load two libraries:<br />
+- <code>concaveman</code>: generates concave hulls from clusters of
+points — more accurate than convex hulls for natural groupings<br />
+- <code>ggforce</code>: adds powerful tools like
+<code>geom_mark_hull()</code> for visual grouping and annotations</p>
+<p>Basic concave hull polygon per vowel Creates tighter-fitting
+boundaries around vowel clusters</p>
+<pre class="r"><code>library(concaveman)
+library(ggforce)
+
+ggplot(dataset, aes(x=F2, y=F1,fill=Vowel)) + 
+  geom_text(aes(label=Vowel, color=Vowel)) + 
+  ylim(1100,150)+xlim(3100,200) + 
+  geom_mark_hull(concavity = 10,expand=-0.025,radius=0,aes(fill=Vowel))</code></pre>
+<p><img src="graphs/ggplot17.png" alt="Polygons" width="300"/></p>
+<pre class="r"><code># Nested concave hulls — outer and inner contours per vowel group
+# Provides layered structure for emphasis or comparison
+ggplot(dataset, aes(x=F2, y=F1,fill=Vowel)) + 
+  geom_text(aes(label=Vowel, color=Vowel)) + 
+  ylim(1100,150)+xlim(3100,200) + 
+  geom_mark_hull(concavity = 10,expand=-0.025,radius=0,aes(fill=Vowel)) + 
+  geom_mark_hull(concavity = 10,expand=-0.1,radius=0,aes(fill=Vowel))</code></pre>
+<p><img src="graphs/ggplot18.png" alt="Nested polygons" width="300"/></p>
+</div>
+<div id="d-interactive-plotting" class="section level3" number="6.5">
+<h3><span class="header-section-number">6.5</span> 3D Interactive
+Plotting</h3>
+<p>For advanced visualisation, you can create interactive 3D vowel
+density surfaces. - <code>MASS</code>: provides <code>kde2d()</code> for
+2D kernel density estimation - <code>plotly</code>: allows interactive
+3D plotting</p>
+<p>Note: This is typically not used for publication but is excellent for
+data exploration and teaching.</p>
+<p>3D vowel density surface using Plotly Interactively rotate, zoom, and
+explore concentration patterns</p>
+<pre class="r"><code>library(MASS)
+library(plotly)
+
+iDensity=kde2d(dataset$F1, dataset$F2, lims=c(range(dataset$F1),range(dataset$F2)))
+iDensity2=as.data.frame(iDensity)
+iDensity3=iDensity2[,-1:-2]
+iDensity4=data.matrix(iDensity3, rownames.force=NA)
+plot_ly(z =iDensity4) %&gt;% add_surface()</code></pre>
+<iframe src="graphs/3d.html" width="100%" height="500" style="border:none;">
+</iframe>
+</div>
+</div>
+<div id="homework" class="section level2" number="7">
+<h2><span class="header-section-number">7</span> HOMEWORK</h2>
+<p>Ask 4 other students in class to share their F1 and F2 vowel plots
+from phonetics class. Plot vowels using R in the following way:<br />
+- 50% confidence ellipses (dashed) and outline ellipses,
+transparent<br />
+<br><br />
+<img src="graphs/ggplot8.png" alt="ggplot8.png" width="800"/><br />
+<br><br />
+- Topographic map with vowel labels and black contour lines Highlights
+the frequency density of vowels over the formant space<br />
+<br><br />
+<img src="graphs/ggplot11.png" alt="ggplot11.png" width="800"/><br />
+<br><br />
+- Topographic map with no text labels Only contour lines shown
+<br><br />
+<img src="graphs/ggplot12.png" alt="ggplot12.png" width="800"/><br />
+<br><br />
+- Filled heatmap of vowel density. <br><br />
+<img src="graphs/ggplot14.png" alt="ggplot14.png" width="800"/><br />
+<br> - Basic concave hull polygon.<br />
+<br>
+<img src="graphs/ggplot17.png" alt="ggplot17.png" width="800"/><br />
+<br> - <strong><em>Extra Credit</em></strong><br />
+<br> 1 pt: 3D Interactive Plot. Create an HTML version, upload it to
+GitHub, embed the link at the end of your assignment.<br />
+1 pt: Write up this assignment using R markdown, upload it to GitHUb,
+send me the URL.</p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
