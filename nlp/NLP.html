@@ -1,0 +1,2807 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Dr. Jesse Stewart" />
+
+<meta name="date" content="2025-08-12" />
+
+<title>Natural Language Processing</title>
+
+<script src="NLP_files/header-attrs-2.28/header-attrs.js"></script>
+<script src="NLP_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="NLP_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="NLP_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="NLP_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="NLP_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="NLP_files/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="NLP_files/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="NLP_files/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="NLP_files/navigation-1.1/tabsets.js"></script>
+<link href="NLP_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="NLP_files/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Natural Language Processing</h1>
+<h4 class="author">Dr. Jesse Stewart</h4>
+<h4 class="date">2025-08-12</h4>
+
+</div>
+
+
+<div id="introduction" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Introduction</h1>
+<div id="what-is-nlp-and-how-does-it-apply-to-computational-linguistics"
+class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> What is NLP and How
+Does it Apply to Computational Linguistics?</h2>
+<p><strong>Natural Language Processing (NLP)</strong> is a field at the
+intersection of computer science, linguistics, and artificial
+intelligence that focuses on enabling computers to process, analyse, and
+generate human language. NLP techniques allow us to transform raw
+linguistic data—whether written, spoken, or multimodal—into structured
+representations that can be searched, modelled, and interpreted by
+algorithms. These techniques range from simple tasks such as tokenising
+words and counting their frequencies, to complex operations like parsing
+syntactic structures or modelling semantic relationships between
+words.</p>
+<p>There are a variety of NLP tools available—such as
+<strong>NLTK</strong>, <strong>spaCy</strong>, <strong>Stanford
+CoreNLP</strong>, and <strong>UDPipe</strong>—that are specifically
+designed for major world languages like English and Spanish. While these
+resources are powerful for well-documented languages, they are often
+severely lacking for under-documented and under-studied languages, where
+no large annotated corpora or pre-trained models exist. As a result,
+researchers working with these languages often need to design customised
+tools and workflows from the ground up.</p>
+<p>In <strong>computational linguistics</strong>, NLP provides the
+toolkit for testing linguistic theories on large datasets, uncovering
+patterns that might not be apparent from small-scale qualitative
+analysis. For example, NLP methods can reveal statistical distributions
+of morphemes across a corpus, model phonotactic constraints, or measure
+the co-occurrence of syntactic structures across dialects. When combined
+with linguistic annotation tools such as ELAN and Praat, NLP enables
+researchers to work directly with annotated speech data, bridging the
+gap between manual annotation and large-scale quantitative analysis. In
+this module—and in other forthcoming modules—we focus on <strong>Media
+Lengua</strong>, an under-documented mixed language spoken in Ecuador,
+using NLP methods to explore its morphological and lexical patterns.</p>
+</div>
+<div id="this-module" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> This module</h2>
+<p>In this module, we will walk through the process of preparing
+linguistic data for NLP analysis, starting from annotated speech data in
+ELAN, converting it into a format compatible with Praat, and then
+processing it in R for statistical and visual analysis. The goal is to
+demonstrate how to move from raw, time-aligned annotations to structured
+datasets that can be used for <strong>frequency analysis</strong>,
+<strong>distributional studies</strong>, and <strong>statistical
+modelling</strong> of linguistic patterns. By the end of this module,
+you will have a better understanding of workflow for exporting,
+cleaning, and analysing linguistic data in a reproducible way.</p>
+</div>
+</div>
+<div id="elan" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> ELAN</h1>
+<p>ELAN (EUDICO Linguistic Annotator) is a free, open-source software
+tool developed by the <strong>Max Planck Institute for
+Psycholinguistics</strong> for creating, viewing, and analysing
+<strong>time-aligned annotations</strong> of audio and video
+recordings.<br />
+<img src="NLP_images/elan.jpg" alt="ELAN Icon" width="75"/></p>
+<div id="key-features" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Key Features</h2>
+<ul>
+<li><strong>Multiple annotation tiers</strong> – Create separate layers
+for orthographic transcription, phonetic transcription, morpheme
+segmentation, glossing, translation, etc.</li>
+<li><strong>Time alignment</strong> – Link each annotation to a precise
+point or segment in the media file for exact synchronisation between
+recording and annotations.</li>
+<li><strong>Custom tier types</strong> – Define tier hierarchies (e.g.,
+words → morphemes → glosses) that fit your project’s needs.</li>
+<li><strong>Search and filtering</strong> – Search across a single file
+or multiple files (via a <em>domain</em>).</li>
+<li><strong>Export formats</strong> – Export to formats like CSV,
+tab-delimited text, or <strong>Praat TextGrid</strong> for acoustic
+analysis.</li>
+</ul>
+</div>
+<div id="why-linguists-use-elan" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Why Linguists Use
+ELAN</h2>
+<p>ELAN is widely used in <strong>language documentation</strong>,
+<strong>phonetics/phonology</strong>, <strong>morphosyntax</strong>, and
+<strong>multimodal communication studies</strong> because it allows you
+to: - Create structured, multi-tier annotations of speech data. - Work
+with <strong>under-documented</strong> and <strong>under-studied
+languages</strong> that lack pre-existing computational tools. -
+Integrate audio/video with transcription, translation, and linguistic
+analysis.</p>
+<p>In our workflow, ELAN is the starting point: 1. Annotate speech
+recordings (segmentation, morphemes, glosses, translations). 2. Export
+the annotations (e.g., to <strong>Praat TextGrid</strong>) for acoustic
+or computational processing. 3. Prepare the exported data for
+<strong>NLP analysis</strong> in R.</p>
+</div>
+<div id="workflow" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Workflow</h2>
+<div id="files" class="section level3" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Files</h3>
+<ol style="list-style-type: decimal">
+<li>Download the following files:<br />
+<a
+href="NLP_textgrids_SS/001_AC-Mingas.eaf/">001_AC-Mingas.eaf</a><br />
+<a
+href="NLP_textgrids_SS/2010--43-01-ElicitationsLong--LG.eaf/">2010–43-01-ElicitationsLong–LG.eaf</a><br />
+<a
+href="NLP_textgrids_SS/2016--Zoom02--LG-MT.eaf">2016–Zoom02–LG-MT.eaf</a></li>
+</ol>
+</div>
+<div id="exploring-the-data" class="section level3" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Exploring the
+data</h3>
+<p><code>001_AC-Mingas.eaf</code> is a sample of narrations gathered
+between 2009-2010 that were used in the 2011 publication of <em>Stories
+and Traditions from Pijal: Told in Media Lengua</em> <a
+href="https://www.amazon.com/Cuentos-Tradiciones-Pijal-Relatos-Traditions/dp/0615906338">Available
+on Amazon</a> <br><br>
+<img src="NLP_images/stories.jpg" alt="A sample from Cuentos y Tradiciones de Pijal: Relatados en Media Lengua" width="600"/></p>
+<p><strong><em>“Narration”</em></strong> files contain three
+tiers:<br />
+- Media Lengua tier with the speaker’s name - Segmentation tier
+(morpheme divisions and IPA transcriptions)<br />
+- Interlinear glosses<br />
+<br> <code>2010--43-01-ElicitationsLong--LG.eaf</code> is a sample of
+elicitations gathered between 2009-2010 that have been used for a number
+of publications. They contain a lot more data than the “Narration”
+files.
+<img src="NLP_images/elicitations.jpg" alt="A sample of the elicited data" width="600"/><br />
+<br> <strong><em>“Elicitation”</em></strong> files contain 7 to 8
+tiers:<br />
+- Media Lengua tier with the speaker’s name<br />
+- Kichwa (Quichua) tier with a Kichwa translation of the Media Lengua
+utterances<br />
+- A (Rural) Spanish translation of the Media Lengua utterances<br />
+- A Standard Spanish translation of the Media Lengua utterances<br />
+- The elicited sentence<br />
+- Segmentation tier (morpheme divisions and IPA transcriptions)<br />
+- Interlinear glosses<br />
+- An English translation of the Media Lengua utterances (optional)<br />
+<br> <strong>Note:</strong> that if you right click on the tier names,
+then click <code>Sort Tiers</code>, you will see the hierarchies/
+dependencies used in this file.<br />
+<img src="NLP_images/hierarchies.jpg" alt="ELAN Hierarchies" width="400"/><br />
+<br></p>
+<p><code>2016--Zoom02--LG-MT.eaf</code> is a sample of the
+conversational data. This is the most common data type in the Media
+lengua collection.<br />
+<img src="NLP_images/conversations.jpg" alt="Sample of the conversational data" width="600"/><br />
+<br> <strong><em>“Conversation”</em></strong> files contain 6 tiers per
+speaker:<br />
+- Media Lengua tier with the speaker’s name<br />
+- Kichwa (Quichua) tier with a Kichwa translation of the Media Lengua
+utterances<br />
+- A (Rural) Spanish translation of the Media Lengua utterances<br />
+- A Standard Spanish translation of the Media Lengua utterances<br />
+- Segmentation tier (morpheme divisions and IPA transcriptions)<br />
+- Interlinear glosses</p>
+</div>
+<div id="creating-domains" class="section level3" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Creating
+Domains</h3>
+<p>A Domain is a saved list of files that you want to work with as a
+set.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Open <strong>ELAN</strong>.<br />
+</li>
+<li>Click <strong>Search → Search Multiple EAF…</strong><br />
+<img src="NLP_images/elan2.jpg" alt="Search Multiple EAF..." width="250"/><br />
+</li>
+<li>Click <strong>Define Search Domain → New Domain…</strong></li>
+<li>Select your <code>.eaf</code> files → click
+<strong>&gt;&gt;</strong> to add them → click <strong>OK</strong>.
+<img src="NLP_images/elan3.jpg" alt="New Domain" width="500"/></li>
+<li>When prompted, name the domain <strong>CompLING</strong>.<br />
+<img src="NLP_images/elan4.jpg" alt="Adding new domain" width="250"/><br />
+</li>
+<li>Return to the ELAN main screen.</li>
+</ol>
+</div>
+<div id="exporting-from-elan-to-praat-textgrid" class="section level3"
+number="2.3.4">
+<h3><span class="header-section-number">2.3.4</span> Exporting from ELAN
+to Praat (TextGrid)</h3>
+<p>ELAN has multiple options for exporting multiple files. However, none
+of the options are ideal for our purposes.<br />
+We want our data in the following format (see table below), however,
+this is not possible without substantial editing. We’ll, therefore,
+export all the files as Praat <code>textGrids</code>. There will still
+be substantial editing, but less so than with other export formats.</p>
+<div style="color:#00008B">
+<table>
+<colgroup>
+<col width="12%" />
+<col width="12%" />
+<col width="12%" />
+<col width="12%" />
+<col width="12%" />
+<col width="12%" />
+<col width="12%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">segmentation</th>
+<th align="left">gloss</th>
+<th align="left">ml_sentence</th>
+<th align="left">name</th>
+<th align="left">translation_available</th>
+<th align="left">word_count</th>
+<th align="left">Filename</th>
+<th align="left">entry_id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">aɲo enteɾo-pa=mi ese oxa-wa-ta=ka
+monto-na-nka-ɾka-nʧi</td>
+<td align="left">año entero-POSS//BEN=VAL ese hoja-DIM.wa-ACC=TOP
+amontonar-NOM.na-COND-PST-1p</td>
+<td align="left">Año enteropami ese hojawataka montonankarkanchi</td>
+<td align="left">Anita</td>
+<td align="left">FALSE</td>
+<td align="left">5</td>
+<td align="left">001_AC-Mingas</td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="left">mio edad=mi 39 aɲo-ta tene-ni</td>
+<td align="left">mi edad=VAL trenta.nueve año-ACC tener-1</td>
+<td align="left">Mio edadmi 39 añota teneni</td>
+<td align="left">Lucia</td>
+<td align="left">TRUE</td>
+<td align="left">5</td>
+<td align="left">2010–43-01-ElicitationsLong–LG</td>
+<td align="left">2</td>
+</tr>
+<tr class="odd">
+<td align="left">aki-ta=ka ja tɾankaʃka=ma ja no bale-nkaʃka
+pasa-ngapa=ka</td>
+<td align="left">aquí-ACC=TOP ya trancado=AFF ya no valer-PERF.COND
+pasar-SS.PURP=TOP</td>
+<td align="left">Aquitaca ya trancashcama ya no valencashca
+pasangapaca</td>
+<td align="left">Mercedes</td>
+<td align="left">TRUE</td>
+<td align="left">7</td>
+<td align="left">2016–Zoom02–LG-MT</td>
+<td align="left">3</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol start="8" style="list-style-type: decimal">
+<li><p>Go to <strong>File → Export Multiple Files As → Praat
+TextGrid…</strong><br />
+<img src="NLP_images/export.jpg" alt="Exporting an eaf file as a textgrid" width="300"/></p></li>
+<li><p>In <strong>Domain</strong>, choose <strong>CompLING</strong> →
+click <strong>Load</strong>.<br />
+<img src="NLP_images/load.jpg" alt="ELAN Icon" width="300"/><br />
+</p></li>
+<li><p>Click <strong>Select All</strong> → <strong>Next</strong>.<br />
+<img src="NLP_images/selectall.jpg" alt="ELAN Icon" width="300"/><br />
+</p></li>
+<li><p>Choose your destination folder → click
+<strong>Finish</strong>.<br />
+<img src="NLP_images/finish.jpg" alt="ELAN Icon" width="500"/></p></li>
+</ol>
+</div>
+<div id="underlying-formats" class="section level3" number="2.3.5">
+<h3><span class="header-section-number">2.3.5</span> Underlying
+formats</h3>
+<p>Now, if you open these <code>textGrid</code> files in Praat, we get
+something that looks like the following images:<br />
+<br> <code>001_AC-Mingas.eaf</code><br />
+<img src="NLP_images/praat.jpg" alt="ELAN Icon" width="500"/><br />
+<br> <code>2010--43-01-ElicitationsLong--LG.eaf</code><br />
+<img src="NLP_images/praat2.jpg" alt="ELAN Icon" width="500"/><br />
+<br> <code>2016--Zoom02--LG-MT.eaf</code><br />
+<img src="NLP_images/praat3.jpg" alt="ELAN Icon" width="500"/><br />
+<br> These files are pretty useless, especially for phonetic analysis
+since strings of text are annotated rather than e.g., segmental
+elements, which is the whole point of Praat. However, <strong><em>I
+find</em></strong> the underlying structure of Praat
+<code>textGrids</code> much easier to extract information from than ELAN
+<code>eaf</code> files (likely because I’m a phonetician and I’m more
+accustomed to Praat). It should be noted, however, that ELAN uses XML
+(Extensible Markup Language), which is a plain-text, tag-based format
+used to store and exchange structured data. It uses opening and closing
+tags to define elements and their hierarchy, XML is both human-readable
+and machine-readable, making it common for data interchange, document
+markup, and configuration files. Unlike HTML, XML doesn’t have
+predefined tags — you create tags that describe your specific
+data.<br />
+<br>
+<img src="NLP_images/underlying.jpg" alt="textGrid and ELAN underlying formats" width="700"/></p>
+</div>
+<div id="information-needed-from-praat-textgrids" class="section level3"
+number="2.3.6">
+<h3><span class="header-section-number">2.3.6</span> Information Needed
+from Praat <code>TextGrids</code></h3>
+<p>When we export annotations from ELAN to <strong>Praat
+TextGrid</strong> format, each tier in the <code>TextGrid</code>
+contains several key pieces of information. These will form the basis of
+our NLP data processing.</p>
+<ul>
+<li><strong>size</strong> – The total number of intervals (rows) in the
+tier.<br />
+</li>
+<li><strong>name</strong> – The name of the tier (e.g., <em>Media
+Lengua</em>, <em>Segmentation</em>, <em>Gloss</em>).<br />
+</li>
+<li><strong>xmin</strong> – The time (in seconds) at the beginning of
+each annotation interval.<br />
+</li>
+<li><strong>xmax</strong> – The time (in seconds) at the end of each
+annotation interval.<br />
+</li>
+<li><strong>text</strong> – The annotation text itself (e.g.,
+transcription, morpheme, or gloss).</li>
+</ul>
+<p>We will extract these values so that we can:<br />
+1. Keep track of the structure and timing of each annotation.<br />
+2. Align different tiers for analysis.<br />
+3. Convert the data into a tabular format suitable for NLP processing in
+R.</p>
+</div>
+</div>
+</div>
+<div id="nlp-code---data-wrangling" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> NLP Code - data
+wrangling</h1>
+<p>Data wrangling (sometimes called data munging) is the process of
+cleaning, transforming, and organising raw data so that it can be used
+effectively for analysis. Think of it as taking messy, inconsistent, or
+incomplete data and reshaping it into a tidy, structured format that’s
+ready for statistical modelling, visualisation, machine learning
+etc.</p>
+<div id="extracting-annotations-from-praat-textgrids"
+class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Extracting
+annotations from Praat TextGrids</h2>
+<ol style="list-style-type: decimal">
+<li>We first load minimal dependencies, point R at the folder of
+<code>.TextGrid</code> files, list those files, and start a helper that
+will parse each file into tier-level records. The immediate goal is to
+recover, for every tier, the <strong>tier name</strong> and the
+<strong>intervals</strong> (which we’ll pull in the next step).<br />
+<br> Load required libraries<br />
+</li>
+</ol>
+<pre class="r"><code>library(stringr)  # regex helpers (str_match, etc.)
+library(dplyr)    # data manipulation (group_by, summarise, mutate)</code></pre>
+<p><code>stringr</code> - An R package that makes working with strings
+(text) and regular expressions easier, more consistent, and more
+readable.<br />
+<code>dplyr</code> - An R package for fast, intuitive data manipulation
+using a consistent set of ‘verbs’ like <code>filter()</code>,
+<code>select()</code>, <code>mutate()</code>, <code>group_by()</code>,
+and <code>summarise()</code>.<br />
+<br></p>
+<table>
+<colgroup>
+<col width="8%" />
+<col width="27%" />
+<col width="32%" />
+<col width="31%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>dplyr Verb</th>
+<th>Purpose</th>
+<th>Example (dplyr)</th>
+<th>Base R Equivalent Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>filter()</code></td>
+<td>Select rows matching a condition</td>
+<td><code>filter(df, age &gt; 30)</code></td>
+<td><code>df[df$age &gt; 30, ]</code> or
+<code>subset(df, age &gt; 30)</code></td>
+</tr>
+<tr class="even">
+<td><code>select()</code></td>
+<td>Choose specific columns</td>
+<td><code>select(df, name, age)</code></td>
+<td><code>df[, c("name", "age")]</code></td>
+</tr>
+<tr class="odd">
+<td><code>mutate()</code></td>
+<td>Add or modify columns</td>
+<td><code>mutate(df, age_months = age * 12)</code></td>
+<td><code>df$age_months &lt;- df$age * 12; df</code></td>
+</tr>
+<tr class="even">
+<td><code>group_by()</code></td>
+<td>Group data for grouped operations</td>
+<td><code>group_by(df, gender)</code></td>
+<td><code>split(df, df$gender)</code> (returns list of data.frames)</td>
+</tr>
+<tr class="odd">
+<td><code>summarise()</code></td>
+<td>Collapse each group into summary statistics</td>
+<td><code>summarise(df, avg_age = mean(age))</code></td>
+<td><code>data.frame(avg_age = mean(df$age))</code> or with
+<code>tapply(df$age, df$gender, mean)</code> for groups</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>This sets the working directory path where R will look for the
+<code>textGrid</code> files.</p>
+<pre class="r"><code>folder &lt;- &quot;C:\\Users\\Courses\\Computational Linguistics - LING 349 Fall\\&quot;</code></pre>
+<p><br> Next we’re going to <code>list</code> all <code>files</code> in
+that directory, to return the full path of each
+<code>textGrid</code>.</p>
+<pre class="r"><code>files &lt;- list.files(folder, pattern = &quot;\\.textgrid$&quot;, full.names = TRUE, ignore.case = TRUE)
+View(files)</code></pre>
+<p><code>list.files()</code> - A base R function that lists all files in
+a given folder.<br />
+<code>folder</code> - contains the dirctory path that we just defined in
+the previous step. It Tells <code>list.files()</code> where to
+look.<br />
+<code>pattern = "\\.textgrid$"</code> - Only returns filenames that
+match this regular expression. <code>\\.</code> means a literal dot,
+followed by <code>textgrid</code> at the end (<code>$</code>) of
+string.<br />
+<code>full.names = TRUE</code> - Returns the full file path for each
+match, not just the filename. This is important because we’ll later need
+to read each file from its exact location.<br />
+<code>ignore.case = TRUE</code> - Makes the pattern match
+case-<strong>in</strong>sensitive, so it catches both
+<code>.TextGrid</code> and <code>.textgrid</code>. This avoids problems
+if file extensions have inconsistent capitalization. <code>files</code>
+- The variable name where all matching file paths are stored. This gives
+us a ready-to-use vector of file paths for processing in the next
+step.<br />
+See for yourself</p>
+<pre class="r"><code>edit=edit(files)</code></pre>
+<p><img src="NLP_images/files.jpg" alt="textGrid and ELAN underlying formats" width="700"/><br />
+<br></p>
+<p>Now we’re going to load additional libraries.</p>
+<pre class="r"><code>library(tibble)
+library(tidyr)
+library(ggplot2)
+library(forcats)</code></pre>
+<p><code>tibble</code> - Provides a modern version of data frames.<br />
+<code>tidyr</code> - Focuses on data tidying (as the name suggests):
+reshaping messy data into tidy formats.<br />
+<code>ggplot2</code> - A widely used package for data visualization
+based on the grammar of graphics.<br />
+<code>forcats</code> - Provides tools for working with categorical
+variables (factors).<br />
+<br> The next step in this workflow will be the creation of a list where
+we will eventually store our data:</p>
+<pre class="r"><code># Results list
+results &lt;- list()
+View(results)</code></pre>
+<ul>
+<li>There’s not much to explain here. It’s just an empty list. <br>
+<img src="NLP_images/resultslist.jpg" alt="The data frame" width="400"/><br />
+<br></li>
+</ul>
+<p>We’re now going to build a large <code>for loop</code> to do the bulk
+of the data wrangling.</p>
+</div>
+<div id="strategy-for-the-large-for-loop" class="section level2"
+number="3.2">
+<h2><span class="header-section-number">3.2</span> Strategy for the
+large For-Loop</h2>
+<p>We’ll go over the workflow in <strong>small chunks</strong>, explain
+each step, and only then wrap it in a single <code>for (...)</code>
+loop. This makes it clear <em>what</em> each line does and <em>why</em>
+we need it. Finally, we’ll include the entire loop so you can run it
+end-to-end.</p>
+<div id="read-a-single-textgrid-one-file-no-loop-yet"
+class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Read a single
+TextGrid (one file, no loop yet)</h3>
+<p>Goal: load raw lines, normalize whitespace, and keep only the lines
+we care about.<br />
+Practice data:</p>
+<pre class="r"><code># pick one file to run our workflow on.
+one_file &lt;- files[1]</code></pre>
+<ul>
+<li><code>[1]</code> selects the first file in the list
+(<code>[2]</code> would pick the second file etc.)</li>
+</ul>
+<p>Now to load the file:</p>
+<pre class="r"><code>textgrid_mani &lt;- read_lines(one_file, locale = locale(encoding = &quot;UTF-8&quot;)) |&gt; tibble(X1 = _)</code></pre>
+<ul>
+<li><code>read_lines</code> = rom the readr package reads a text file
+line by line.<br />
+</li>
+<li><code>one_file</code> = This is the file you are loading (e.g., a
+TextGrid or transcript).<br />
+</li>
+<li><code>locale</code> = ensures that the file is interpreted using
+UTF-8 encoding<br />
+</li>
+<li><code>|&gt;</code> = a pipe operator (can be interpreted as
+<strong><em>and then…</em></strong>)</li>
+<li><code>tibble</code> Converts the character vector into a tibble (a
+modern version of a data frame).</li>
+<li><code>X1 = _</code> names the column <code>X1</code> and fills it
+with the data coming through the “pipe” and <code>_</code> is shorthand
+for “use what came before”).</li>
+</ul>
+<p><img src="NLP_images/textgrid_mani.jpg" alt="The loaded textGird" width="200"/><br />
+<br></p>
+<p>Now we’re going to run a regular expression to remove any white
+spaces from the beginning of each line.</p>
+<pre class="r"><code>textgrid_mani$X1 &lt;- gsub(&quot;^\\s+&quot;, &quot;&quot;, textgrid_mani$X1, perl = TRUE)</code></pre>
+<p>When we loaded the textGrid, the column name defaulted to
+<code>X1</code>. The regEx code says, at the beginning of each line
+(<code>^</code>), followed by and number (<code>+</code>) of white
+spaces (<code>\\s</code>). We then want to replace this with nothing
+(<code>""</code>) in the <code>X1</code> column. <code>perl</code>
+supports more advanced constructs like ‘look ahead’. I keep
+<code>=TRUE</code> as the default.<br />
+<img src="NLP_images/textgrid_mani2.jpg" alt="The loaded textGrid with leading white spaces removed" width="200"/><br />
+<br></p>
+<pre class="r"><code>mani1 &lt;- filter(textgrid_test, grepl(&quot;^(name|intervals[^:]|text).*&quot;, X1))
+# I&#39;m using &#39;mani&#39; to mean &#39;manipulation&#39;. This will be the first of 11</code></pre>
+<ul>
+<li><code>filter</code> comes from dplyr. It’s similar to
+<code>subset</code> as it keeps only the rows of a data frame that
+satisfy a given condition.<br />
+</li>
+<li>The condition in this case is find the word <code>name</code> or
+(<code>|</code>) <code>interval</code> (<strong>not</strong>
+(<code>^</code>) followed by a colon <code>:</code>) or
+<code>text</code> at the beginning (<code>^</code>) followed by anything
+or nothing (<code>.*</code>).</li>
+</ul>
+<p><img src="NLP_images/mani1.jpg" alt="The textGrid with no leading spaces" width="200"/><br />
+<br></p>
+<p>We’re now going to join interval lines with their text.<br />
+Goal: ensure intervals [n] and the following text = live on the same
+line. That way each line of text will have a number associated with
+it.</p>
+<pre class="r"><code>mani2 &lt;- paste(mani1$X1, collapse = &quot;\n&quot;)</code></pre>
+<ul>
+<li><code>paste()</code> joins elements of a vector (<code>mani1</code>
+in this case) together.<br />
+</li>
+<li><code>collapse = "\n"</code> means that each element of
+<code>mani1$X1</code> will be separated by a newline character when
+combined.</li>
+</ul>
+<p><img src="NLP_images/mani2.jpg" alt="data frame converted to a single line" width="800"/></p>
+<p><br> Next, we’re doing a regular expression–based substitution to
+clean up the formatting of the textgrid content.</p>
+<pre class="r"><code>mani3 &lt;- gsub(&quot;(intervals\\s*\\[[0-9]+\\])\\s*\\n\\s*(text\\s*=)&quot;,
+  &quot;\\1 \\2&quot;, mani2, perl = TRUE)</code></pre>
+<ul>
+<li>This relatively complex regular expression reads: find group one
+(first set of parentheses) where we look for the literal word
+<strong>intervals</strong> followed by zero or more (<code>*</code>)
+white spaces (<code>\\s</code>), followed by a literal open bracket
+(<code>[</code>), then numbers <code>0-9</code> one or more times
+(<code>+</code>) followed by zero or more (<code>*</code>) white spaces
+(<code>\\s</code>), a newline (<code>\\n</code>), then again zero or
+more (<code>*</code>) white spaces (<code>\\s</code>). We then have our
+second group where we look for the literal word <code>text</code>
+followed by zero or more (<code>*</code>) white spaces followed by an
+equals sign (<code>=</code>).<br />
+</li>
+<li>Then group one is added, (<code>\\1</code>) followed by a space
+(<code></code>) and then the second group (<code>\\2</code>), which
+essentially removes the spaces and linebreak (<code>\\s*\\n\\s*</code>)
+replacing it with a space (<code></code>).<br />
+<strong>Note:</strong> When we view this, the is a single line of
+text.</li>
+</ul>
+<p><img src="NLP_images/mani3.jpg" alt="linebreaks removed between interval and text" width="800"/><br />
+<br></p>
+<p>Now we need to convert this back to a data frame where each new row
+is created based on a <em>newline</em> (<code>\\n</code>).<br />
+<strong>Note:</strong> There are only newline characters after our
+<code>text</code> string now, so this will essentially keep
+<code>interval</code> and <code>text</code> in the same row, which was
+our goal.</p>
+<pre class="r"><code>mani4 &lt;- data.frame(X1 = strsplit(mani3, &quot;\n&quot;, fixed = TRUE)[[1]],
+  stringsAsFactors = FALSE)</code></pre>
+<ul>
+<li><code>strsplit</code> = “string split”, splits the string
+<code>mani3</code> wherever there is a newline character
+(<code>\n</code>)<br />
+</li>
+<li><code>[[1]]</code> = The result is a list, where the first element
+([[1]]) contains a vector of all lines.<br />
+</li>
+<li><code>fixed = TRUE</code> = This tells R to treat “” literally, not
+as a regular expression.<br />
+</li>
+<li><code>stringsAsFactors = FALSE</code> = prevents automatic
+conversion of text into factors.</li>
+</ul>
+<p><img src="NLP_images/mani4.jpg" alt="interval and text on same line" width="200"/><br />
+<br></p>
+<p>Next we’re simply going to remove rows with no characters.</p>
+<pre class="r"><code>mani5 &lt;- mani4 %&gt;% 
+  filter(!grepl(&#39;&quot;&quot;&#39;, X1))</code></pre>
+<p>Run <code>nrow(mani4)</code> and then <code>nrow(mani5)</code> to see
+how many rows were removed.<br />
+<br></p>
+<p>Time to remove the meta data from the textGrid. We’ll do this in a
+two steps.</p>
+<pre class="r"><code>mani6 &lt;- mani5 %&gt;%
+  mutate(X1 = gsub(&quot;\\s*intervals\\s*\\[&quot;, &quot;&quot;, X1))
+
+mani7 &lt;- mani6 %&gt;%
+  mutate(X1 = gsub(&quot;\\] text =&quot;, &quot;\t&quot;, X1))</code></pre>
+<ul>
+<li>The first replaces the literal <code>intervals</code> text, any
+surrounding whitespace (<code>\\s*</code>), and the literal opening
+bracket (<code>[</code>) with nothing (<code>""</code>).<br />
+</li>
+<li>The second replaces the literal closing bracket (<code>]</code>), a
+space, the literal word <code>text</code>, a space and an equals sign
+(<code>=</code>) with a tab (<code>\t</code>).</li>
+</ul>
+<p><img src="NLP_images/mani7.jpg" alt="removing meta information" width="200"/><br />
+<br></p>
+<p>Based on the data in <code>mani7</code>, we’re going to create a new
+data frame that will contain the column names from the tier names in the
+Praat textGrid.</p>
+<pre class="r"><code>tier_names &lt;- mani7$X1[grepl(&quot;^name.*&quot;, mani7$X1)]
+tier_names2 &lt;- as.data.frame(tier_names)</code></pre>
+<p>To do this, we’re going to create a new object called
+<code>tier_names</code>, and add in data from mani7’s <code>X1</code>
+column. We want the data that starts (<code>^</code>) the word
+<code>name</code> followed by any other text.<br />
+<br>
+<img src="NLP_images/tier_names.jpg" alt="tier names as a string" width="500"/><br />
+<br> Then we convert this to a data frame.<br />
+<br>
+<img src="NLP_images/tier_names2.jpg" alt="tier names as a data frame" width="150"/><br />
+<br></p>
+<p>Next we’re going to obtain the name of the consultant. I’ll do this
+in three steps.</p>
+<pre class="r"><code>#1
+  consultant &lt;- tier_names2 %&gt;% 
+      filter(!grepl(&quot;(-|English)&quot;, tier_names))
+  colnames(consultant)[1] &lt;- &quot;X1&quot;
+#2
+  consultant2 &lt;- consultant %&gt;% 
+    mutate(X1 = gsub(&#39;name = &quot;&#39;, &quot;&quot;, X1))
+#3
+  consultant3 &lt;- consultant2 %&gt;% 
+    mutate(X1 = gsub(&#39;&quot;$&#39;, &quot;&quot;, X1))</code></pre>
+<ul>
+<li>In step one, we’re coping the rows from <code>tier_names2</code>
+that don’t contain a dash (<code>-</code>) or the word
+<code>English</code>. The only row that does not contain a dash is the
+row with the consultant’s name. When I wrote this code earlier, this was
+the case with <code>inglés-AB</code> as well, but one of the 80 + files
+accidentally has <code>English</code>, so we need to account for this as
+well (and no one’s name is “English”). After this, we name the column
+<code>X1</code> to keep things consistent (see above image).<br />
+</li>
+<li>Step 2, just deletes the meta data. Here, we removed the literal
+word <code>name</code> followed by <code>space</code>,
+<code>equals</code> sign, and the open quote (<code>"</code>).<br />
+</li>
+<li>Step 3 removes the closing quote (<code>"</code>) at the end of the
+string (<code>$</code>).</li>
+</ul>
+<p><img src="NLP_images/consultant3.jpg" alt="removing meta information" width="75"/><br />
+<br></p>
+<p>Next, we’re going to change the consultant’s name to
+<code>MediaLengua</code> because the Media Lengua utterances are found
+under the consultants names rather than under a generic
+<code>MediaLengua</code> title, which the computer needs for data
+processing. We’re going to go back to <code>tier_names2</code> to do
+this.</p>
+<pre class="r"><code>#1
+tier_names_ML &lt;- ifelse(!grepl(&quot;(-|English)&quot;, tier_names2$tier_names),
+                       &#39;name = &quot;MediaLengua&quot;&#39;,
+                       tier_names2$tier_names)
+
+#2
+tier_names_ML2 &lt;- as.data.frame(tier_names_ML)
+
+#3
+colnames(tier_names_ML2)[1] &lt;- &quot;Names&quot;
+
+#4
+all &lt;- tier_names_ML2</code></pre>
+<ul>
+<li>The first regular expression says, if a dash (<code>-</code>) or the
+literal word <code>English</code> is <strong>not</strong> found in a
+row, replace whatever is in that row with
+<code>name = "MediaLengua</code>. You’ll notice that this search and
+replace takes place in the <code>tier_names</code> column.<br />
+</li>
+<li>Then we convert this modification to a data frame.<br />
+</li>
+<li>We then change the name of the first column to
+<code>Names</code>.</li>
+<li>We finally pass <code>tier_names_ML2</code> to <code>all</code> for
+safe keeping.</li>
+</ul>
+<p><img src="NLP_images/all.jpg" alt="removing meta information" width="700"/><br />
+<br></p>
+<p>Now we’re back cleaning up the meta data here.</p>
+<pre class="r"><code>#1
+all2 &lt;- all %&gt;% 
+  mutate(Names = gsub(&#39;(name = &quot;|&quot;)&#39;, &quot;&quot;, Names))
+
+#2
+all3 &lt;- all2 %&gt;% 
+  mutate(Names = gsub(&#39;(-.*$|&quot;$)&#39;, &quot;&quot;, Names))
+  
+#3
+all3$count &lt;- seq(from = 1, to = nrow(all3))</code></pre>
+<ul>
+<li>The first regEx says find the literal word <code>name</code>
+followed by a space, equals sign, and another space (<code>=</code>) or
+(<code>|</code>) any quote (<code>"</code>) and replace these mathces
+with nothing.<br />
+</li>
+<li>The second says get rid of the dash (<code>-</code>) followed by
+anything else (<code>.*$</code>) until the end of the string or
+(<code>|</code>) a quote (<code>"</code>) at the end of the string.
+These names are now generic and can be applied to all the data.<br />
+</li>
+<li>In the third step, we a a new column called <code>count</code> that
+is a sequence from 1 to the last row.</li>
+</ul>
+<p><img src="NLP_images/all3.jpg" alt="removing meta information" width="300"/><br />
+<br></p>
+<p>We’re now moving back to the <code>mani</code> objects to work on the
+data some more as we now have the consultant name and data names
+isolated. Recall that the column name of this data frame is
+<code>X1</code>.</p>
+<pre class="r"><code>mani8 &lt;- mani7 %&gt;%
+  mutate(Number = str_extract(X1, &quot;^\\d+&quot;))</code></pre>
+<ul>
+<li>We’re going use the string extract function to make a new column
+with the number from the original <code>interval</code> entry. This
+regEx extracts one or more (<code>+</code>) numbers (<code>\\d</code>)
+from the beginning of a string (<code>^</code>).</li>
+</ul>
+<p><img src="NLP_images/mani8.jpg" alt="creating the Number column" width="300"/><br />
+<br></p>
+<p>After this, we’re going to arrange the values so that all 1’s are
+together, all 2’s are together, all the 3’s are together etc. What does
+this do? It takes each utterance and puts its corresponding information
+directly after it. For example, in the original <code>texGrid</code>,
+the Media Lengua utterances were all together under
+<code>name = MediaLengua</code> (previously the consultant’s name), then
+there was another section with the Kichwa translations under
+<code>name = Quichua-AB</code> and so on. Instead of having all the
+utterances together and all the translations together, we’re going to
+take each utterance and move its corresponding information directly
+under it.</p>
+<p>For example, the first 1 is the rural Spanish translation, the second
+1 is the Media Lengua sentence, the third 1 is the gloss, the fourth 1
+is standard Spanish translation, the fifth 1 is the Kichwa translation,
+the sixth 1 is the segmentation and IPA transcription, and the seventh 1
+is the English translation. So, putting all the 1s together puts the
+information from each utterance together.</p>
+<pre class="r"><code>mani9 &lt;- mani8 %&gt;% 
+  arrange(Number)</code></pre>
+<ul>
+<li>Here simply use the <code>arrange</code> (from the
+<code>dplyr</code> package) function on the <code>Number</code>
+column.</li>
+</ul>
+<p><img src="NLP_images/mani9.jpg" alt="arranging the dataset based on the Numbers column." width="300"/></p>
+<p>Our next goal is to create a column called ‘count’ that tells us how
+many columns are associated with each utterance.</p>
+<pre class="r"><code>mani10 &lt;- mani9 %&gt;%
+  group_by(Number) %&gt;%                                         # group by number
+  mutate(count = row_number()) %&gt;%                             # assign 1, 2, 3...
+  ungroup()</code></pre>
+<ul>
+<li>We’re going to use the <code>group</code> function, from the
+<code>dplyr</code> package, to essentially treat each unique entry as a
+group, so that anything in this group is manipulated the same way. So,
+all 1s are grouped together, all 2s are grouped together etc.<br />
+</li>
+<li><code>mutate</code> creates a new column called <code>count</code>
+and puts the row number of each unique group, so<br />
+
+<div style="color:#00008B">
+<p>1 = 1<br />
+1 = 2<br />
+1 = 3<br />
+1 = 4<br />
+1 = 5<br />
+1 = 6<br />
+1 = 7<br />
+2 = 1<br />
+2 = 2<br />
+2 = 3<br />
+2 = 4<br />
+2 = 5<br />
+2 = 6<br />
+2 = 7<br />
+etc… &lt;&gt;<br />
+This results in the following data set:<br />
+<img src="NLP_images/mani10.jpg" alt="adding the count column" width="325"/><br />
+<br></p>
+</div></li>
+</ul>
+<p>Now we’re going to match the numbers in the <code>count</code> column
+from the <code>all3</code> object to the numbers in the
+<code>count</code> column in the <code>mani10</code> object. The matches
+will be transferred to a new column in the <code>mani10</code> object
+called <code>Names</code></p>
+<pre class="r"><code>mani10$Names &lt;- all3$Names[ match(mani10$count, all3$count) ]</code></pre>
+<ul>
+<li>This transfers the name of the original tiers (now generalised) to
+each one of the strings based on whether its an utterance, translation,
+gloss, elicitation, or IPA segmentation. The result should look
+like:</li>
+</ul>
+<p><img src="NLP_images/mani10x.jpg" alt="tier names added" width="400"/><br />
+<br></p>
+<p>The next step is once again clean up.</p>
+<pre class="r"><code>#1
+mani11 &lt;- mani10 %&gt;%
+  mutate(X1 = gsub(&#39;(^\\d+\\s*&quot;|&quot;$)&#39;, &quot;&quot;, X1))</code></pre>
+<ul>
+<li>The first regEx removes one or more (<code>+</code>) number(s)
+(<code>\\d</code>) from the beginning of each row (<code>^</code>)
+followed by zero or more (<code>*</code>) white spaces
+(<code>\\s</code>) and then the open quote (<code>"</code>). After the
+<strong>or</strong> (<code>|</code>) symbol, we remove the final
+(<code>$</code>) quote (<code>"</code>) by replacing everything with
+nothing (<code>""</code>).</li>
+</ul>
+<p><img src="NLP_images/mani11.jpg" alt="tier names added" width="400"/><br />
+<br></p>
+<p>Now, let’s just back up our work. This is good as you progress into
+code that could mess up all your work.</p>
+<pre class="r"><code>mani12 &lt;- mani11</code></pre>
+<p>The next step is to make a data frame that puts each tier name as a
+column name.</p>
+<pre class="r"><code>dataset &lt;- data.frame(matrix(ncol = length(all3$Names), nrow = 0))
+colnames(dataset) &lt;- all3$Names</code></pre>
+<ul>
+<li>To make a data frame we create a matrix with the same number of
+columns that are present as rows in the <code>all3</code> object in the
+<code>Names</code> column. We don’t want any rows yet since the data
+will be transferred later, so we set <code>nrows</code> (number of rows)
+to zero (<code>= 0</code>).<br />
+</li>
+<li>Next, we import the rows from the <code>all3</code> as column names
+(<code>colnames</code>) in the new dataset.</li>
+</ul>
+<p><img src="NLP_images/dataset.jpg" alt="data frame with matrix" width="600"/><br />
+<br></p>
+<p>The next step is to split the data by column.</p>
+<pre class="r"><code>split_data &lt;- split(mani12$X1, mani12$Names)</code></pre>
+<ul>
+<li><code>mani12$X1</code> is the data to be split.<br />
+</li>
+<li><code>mani12$Names</code> are the “labels” that determine how to
+split (the column names in this case).</li>
+</ul>
+<p><img src="NLP_images/split_data.jpg" alt="splitting data by column" width="600"/><br />
+<br></p>
+<p>Now in the final (major) step, we’re going to move</p>
+<pre class="r"><code>reshaped &lt;- mani12 %&gt;%
+    select(Names, X1, Number) %&gt;%
+    group_by(Number, Names) %&gt;%
+    mutate(row = row_number()) %&gt;%
+    pivot_wider(
+      names_from = Names,
+      values_from = X1
+    ) %&gt;%
+    select(-row)</code></pre>
+<ul>
+<li>Select the relevant columns
+(<code>reshaped &lt;- mani12 %&gt;% select(Names, X1, Number)</code>)
+<ul>
+<li>Start by referencing <code>mani12</code> as our data frame and that
+we will place the modified data into <code>reshaped</code><br />
+</li>
+<li>We’ll only keep the three columns you care about:
+<code>Names</code>, <code>X1</code>, and <code>Number</code>.<br />
+</li>
+</ul></li>
+<li>Group the data (<code>group_by(Number, Names)</code>)
+<ul>
+<li>We’ll group the data by both Number and Names (all e.g., 1’s are a
+grouped; <code>Quichua</code> is a group; <code>MediaLengua</code> is a
+group etc.)<br />
+</li>
+<li>Grouping makes later operations (like mutate(row_number())) happen
+within each group.<br />
+</li>
+</ul></li>
+<li>Add a row index within groups
+<code>mutate(row = row_number())</code>
+<ul>
+<li>This means for each <code>Number</code> and <code>Names</code>
+group, you assign a row number (1, 2, 3, …).<br />
+</li>
+<li>This ensures that if there are multiple rows per group, each row
+gets a unique index.<br />
+</li>
+</ul></li>
+<li>Pivot from long → wide format
+(<code>pivot_wider(names_from = Names,values_from = X1))</code>)
+<ul>
+<li>Here, we transform the data so that the distinct values of
+<code>Names</code> become new columns.<br />
+</li>
+<li>The cell values for those new columns come from
+<code>X1</code>.</li>
+<li>Example: if <code>Names = "A"</code> and <code>Names = "B"</code>,
+you’ll end up with columns <code>A</code> and <code>B</code>.<br />
+</li>
+</ul></li>
+<li>Drop the helper row column (<code>select(-row)</code>)
+<ul>
+<li>This is just a clean up step since the row column was just a helper
+to avoid overwriting values during pivoting, you remove it
+afterwards.<br />
+<br>
+<img src="NLP_images/reshaped.jpg" alt="reshaped data set" width="700"/><br />
+<br></li>
+</ul></li>
+</ul>
+<p>To conclude this chuck there are three minor additions. The first
+involves placing the consultant’s name and the second involves adding in
+the file name. We will replace <code>[1]</code> with <code>[i]</code>
+once we put this in the loop.</p>
+<pre class="r"><code>reshaped$Name &lt;- rep(consultant3)
+reshaped$Filename &lt;- rep(basename(1))</code></pre>
+<ul>
+<li><code>rep</code> is short for ‘repeat’. It basically populates a
+column with the same information repeatedly.<br />
+</li>
+<li><code>basename()</code> is a utility function for working with file
+paths. It strips off the directory portion of a file path, leaving only
+the file name.<br />
+<br></li>
+</ul>
+</div>
+</div>
+<div id="the-for-loop" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> The
+<code>for loop</code></h2>
+<p>Until now, we’ve only been manipulating a single file, but the
+process we’ve created needs to be applied to all the files (81 in the
+total dataset). Since we want the same thing done to each file, we can
+automate this process with a <code>for loop</code>.<br />
+To do this, we’re going to remove <code>one_file</code> from our code
+and add the following:</p>
+<pre class="r"><code>for (i in files) {
+  cat(&quot;Processing:&quot;, basename(i), &quot;\n&quot;)</code></pre>
+<ul>
+<li>This code initiates the <code>for loop</code><br />
+</li>
+<li><code>i</code>
+<ul>
+<li>This is the loop variable (sometimes casually called a
+placeholder).<br />
+</li>
+<li>It takes on each value of the vector/list files in turn:
+<ul>
+<li>First loop: i is equal to the first element of files<br />
+</li>
+<li>Second loop: i is equal to the second element of files<br />
+</li>
+<li>…and so on, until the last element of files.<br />
+</li>
+<li>Since <code>files</code> is a list of file paths, then
+<code>i</code> will literally be:
+<ul>
+<li>“path/to/001_AC-Mingas.textgrid”<br />
+</li>
+<li>“path/to/2010–43-01-ElicitationsLong–LG.textgrid”<br />
+</li>
+<li>etc.<br />
+</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><code>cat()</code>
+<ul>
+<li>This is short for <code>concatenate</code> and
+<code>print</code>.<br />
+</li>
+<li>As we discussed earlier, <code>basename()</code> extracts the file
+name from a full path.<br />
+</li>
+<li>So, basically, this will let us know which file is processing during
+the loop as it will print the file name on the screen as it’s
+“Processing:” as per the text we outlined.</li>
+</ul></li>
+<li><code>\n</code>
+<ul>
+<li>This prints the name of the file being processed on a new
+line.<br />
+<br></li>
+</ul></li>
+</ul>
+<p>The next minor modification we need to make is in our initial
+<code>mani</code> file, so that on each loop, it’s grabbing data from
+the next textgrid.</p>
+<pre class="r"><code>  textgrid_mani &lt;- read_lines(i, locale = locale(encoding = &quot;UTF-8&quot;)) |&gt;
+    tibble(X1 = _)</code></pre>
+<ul>
+<li>Here, we simply replace <code>1</code> with <code>i</code> so that
+instead of only grabbing the first textGrid, it grabs the next one in
+sequence. Other than that change, the code is exactly the same.<br />
+<br></li>
+</ul>
+<p>The rest of the code stays exactly the same until the end of the
+loop.<br />
+At the end, we need to <code>append</code> the data to the original list
+we created outside the loop, so that on each iteration of the loop, the
+processed textGrid gets placed after the other until we reach the
+end.</p>
+<pre class="r"><code>results &lt;- append(results, list(reshaped))</code></pre>
+<ul>
+<li><code>append</code> adds the processed data to the list after each
+iteration from the list form of <code>reshape</code>.<br />
+After looping through each file, the results output (a list) will look
+like this:<br />
+<br>
+<img src="NLP_images/results2.jpg" alt="reshaped data set" width="500"/><br />
+<br></li>
+</ul>
+<p><strong>The entire code placed in the
+<code>for loop</code></strong></p>
+<pre class="r"><code>for (i in files) {
+  cat(&quot;Processing:&quot;, basename(i), &quot;\n&quot;)
+
+  textgrid_mani &lt;- read_lines(i, locale = locale(encoding = &quot;UTF-8&quot;)) |&gt;
+    tibble(X1 = _)
+
+  textgrid_mani$X1 &lt;- gsub(&quot;^\\s+&quot;, &quot;&quot;, textgrid_mani$X1, perl = TRUE)
+
+  mani1 &lt;- textgrid_mani %&gt;%
+      filter(grepl(&quot;^(name|intervals[^:]|text).*&quot;, X1))
+
+  mani2 &lt;- paste(mani1$X1, collapse = &quot;\n&quot;)
+
+  mani3 &lt;- gsub(&quot;(intervals\\s*\\[[0-9]+\\])\\s*\\n\\s*(text\\s*=)&quot;,
+    &quot;\\1 \\2&quot;, mani2, perl = TRUE)
+
+  mani4 &lt;- data.frame(X1 = strsplit(mani3, &quot;\n&quot;, fixed = TRUE)[[1]],
+                      stringsAsFactors = FALSE)
+
+  mani5 &lt;- mani4 %&gt;% 
+    filter(!grepl(&#39;&quot;&quot;&#39;, X1))
+
+  mani6 &lt;- mani5 %&gt;%
+      mutate(X1 = gsub(&quot;\\s*intervals\\s*\\[&quot;, &quot;&quot;, X1))
+
+  mani7 &lt;- mani6 %&gt;%
+    mutate(X1 = gsub(&quot;\\] text =&quot;, &quot;\t&quot;, X1))
+
+      tier_names &lt;- mani7$X1[grepl(&quot;^name.*&quot;, mani7$X1)]
+      tier_names2 &lt;- as.data.frame(tier_names)
+
+  consultant &lt;- tier_names2 %&gt;% 
+      filter(!grepl(&quot;(-|English)&quot;, tier_names))
+  colnames(consultant)[1] &lt;- &quot;X1&quot;
+
+  consultant2 &lt;- consultant %&gt;% 
+    mutate(X1 = gsub(&#39;name = &quot;&#39;, &quot;&quot;, X1))
+
+  consultant3 &lt;- consultant2 %&gt;% 
+    mutate(X1 = gsub(&#39;&quot;$&#39;, &quot;&quot;, X1))
+
+  tier_names_ML &lt;- ifelse(!grepl(&quot;(-|English)&quot;, tier_names2$tier_names),
+                       &#39;name = &quot;MediaLengua&quot;&#39;,
+                       tier_names2$tier_names)
+  tier_names_ML2 &lt;- as.data.frame(tier_names_ML)
+
+  colnames(tier_names_ML2)[1] &lt;- &quot;Names&quot;
+
+  all &lt;- tier_names_ML2
+
+  all2 &lt;- all %&gt;% 
+    mutate(Names = gsub(&#39;(name = &quot;|&quot;)&#39;, &quot;&quot;, Names))
+
+  all3 &lt;- all2 %&gt;% 
+    mutate(Names = gsub(&#39;(-.*$|&quot;$)&#39;, &quot;&quot;, Names))
+
+  all3$count &lt;- seq(from = 1, to = nrow(all3))
+
+  mani8 &lt;- mani7 %&gt;%
+    mutate(Number = str_extract(X1, &quot;^\\d+&quot;))
+
+  mani9 &lt;- mani8 %&gt;% 
+    arrange(Number)
+
+  mani10 &lt;- mani9 %&gt;%
+    mutate(Number = sub(&quot;^([0-9]+).*&quot;, &quot;\\1&quot;, X1)) %&gt;%
+    group_by(Number) %&gt;%
+    mutate(count = row_number()) %&gt;%
+    ungroup()
+    
+  mani10$Names &lt;- all3$Names[ match(mani10$count, all3$count) ]
+
+  mani11 &lt;- mani10 %&gt;%
+    mutate(X1 = gsub(&#39;(^\\d+\\s*&quot;|&quot;$)&#39;, &quot;&quot;, X1))
+
+  mani12 &lt;- mani11
+
+reshaped &lt;- mani12 %&gt;%
+    select(Names, X1, Number) %&gt;%
+    group_by(Number, Names) %&gt;%
+    mutate(row = row_number()) %&gt;%
+    pivot_wider(
+      names_from = Names,
+      values_from = X1
+    ) %&gt;%
+    select(-row)
+
+  reshaped$Name &lt;- rep(consultant3)
+  reshaped$Filename &lt;- rep(basename(i))
+  
+results &lt;- append(results, list(reshaped))
+}</code></pre>
+<p>Now we’re going to bind the rows converting the list to a data frame
+using <code>bind_rows</code>.</p>
+<pre class="r"><code>dataset &lt;- bind_rows(results)</code></pre>
+<p><br>
+<img src="NLP_images/dataPostLoop.jpg" alt="Data after processing it through the loop" width="600"/><br />
+<br></p>
+</div>
+<div id="clean-up" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Clean up</h2>
+<p>Now we have a dataset that the computer can read. However, it still
+needs a bit of clean up and more information should be added in case we
+want to use this for multiple projects.<br />
+<br></p>
+<p>If you view the data (<code>View(dataset)</code>), you’ll notice that
+there are 16,755 data points. Then if you begin scrolling through the
+data, using either <code>edit=edit(dataset)</code> or
+<code>View(dataset)</code>, you’ll notice towards the bottom there are
+some issues where the <code>MediaLengua</code> column has NAs. Why did
+this happen? I’m not sure. Likely one of the files is incorrectly
+formatted (we’ll blame Segundo’s file later on). This is why checks are
+important; we don’t want to blindly trust our code especially when
+dealing with natural languages. See the image below. <br>
+<img src="NLP_images/cleanup1.jpg" alt="Missing rows in the MediaLengua column" width="600"/><br />
+<br></p>
+<p>A similar issue is found with some of the
+<code>Segmentación+IPA</code> and in the <code>Glosa</code> columns.
+<br>
+<img src="NLP_images/cleanup2.jpg" alt="Missing rows in the MediaLengua column" width="600"/><br />
+<br></p>
+<p>We could, and probably should, go through and figure out what
+happened here, but we have a lot of data, and this issue only seems to
+be affecting a small portion, so let’s keep track of how much data is
+deleted if we just remove these issues. We’ll figure out the percentage
+later and that might be something we’d report in a publication, e.g.,
+“10% of the data were removed due to corrupt files” (or something to
+that effect.)</p>
+<pre class="r"><code>dataset &lt;- dataset[!is.na(dataset$MediaLengua), ]
+dataset &lt;- dataset[!is.na(dataset$Glosa), ]</code></pre>
+<ul>
+<li>Here we use the <code>is.na</code> function which identifies NAs in
+the dataset. We put the exclamation point (<code>!</code>) before it to
+negate the NAs. In other words, we’re saying, “Put the data in the
+dataset object if the <code>MediaLengua</code> column does
+<strong>not</strong> contain NAs. We then do the same for the
+<code>Glosa</code> column.<br />
+<br> If you run <code>View(dataset)</code> now, you’ll notice that there
+are now 12,811 points; we’ve thus far lost 24% of the data, which is a
+bit much, but we’re going to trudge on.<br />
+<br> Some of the entries in the <code>MediaLengua</code> column seem to
+also contain the wrong data. In the image below, it appears the data
+from the <code>Glosa</code> column appears in the
+<code>MediaLengua</code> column. <br>
+<img src="NLP_images/cleanup3.jpg" alt="Missing rows in the MediaLengua column" width="700"/><br />
+<br> So, we’re going to remove these rows as well.<br />
+</li>
+</ul>
+<pre class="r"><code>dataset &lt;- subset(dataset, !grepl(&quot;-&quot;, MediaLengua))</code></pre>
+<ul>
+<li>The code creates a <code>subset</code> of <code>dataset</code> where
+we do <strong>not</strong> take (<code>!</code>) the regular expression
+(<code>grepl</code>) match, which in this case is simply a dash
+(<code>-</code>) if one appears in the <code>MediaLengua</code> column,
+since nearly all segmented and glossed data contains a dash. However,
+this is not foolproof as <code>Glosa</code> or
+<code>Segmentación+IPA</code> entries without dashes will get by.<br />
+This removal wasn’t a huge hit, losing only 747 tokens, though, once
+again, we <em>should</em> fix this rather than deleting it for a
+professional publication.<br />
+<br></li>
+</ul>
+<p>Doing additional checks on the data, I noticed some additional issues
+with row names.<br />
+For example, there is <code>Oración elicitada</code> with a lower case
+‘e’, <code>Oración Elicitada</code> with a capital ‘E’, and
+<code>Oraciones Elicitadas</code>, and <code>Oración Elicitation</code>.
+We also have <code>Español Estandar</code> and
+<code>Español Estándar</code>. These were caused by typos (or not
+following good practices). However, looking that the columns, where
+there is data, the opposing columns have NAs. So, this is a simple fix:
+Move non-NAs to the main column, and then remove the in consistent
+rows.</p>
+<pre class="r"><code>clean &lt;- dataset %&gt;%
+  mutate(`Oración elicitada` = coalesce(`Oración elicitada`, `Oración Elicitada`, `Oraciones Elicitadas`, `Oración Elicitation`)) %&gt;%
+  select(-`Oración Elicitada`, `Oraciones Elicitadas`, `Oración Elicitation`)
+
+clean2 &lt;- clean %&gt;%
+  mutate(`Español Estándar` = coalesce(`Español Estándar`, `Español Estandar`)) %&gt;%
+  select(-`Español Estandar`)   # drop the duplicate column
+
+clean3 &lt;- clean2[, !names(clean2) %in% c(&#39;Oración Elicitada&#39;, &#39;Oraciones Elicitadas&#39;, &#39;Oración Elicitation&#39;, &#39;Español Estandar&#39;, &#39;Segundo&#39;,&#39;Translation&#39;)]</code></pre>
+<ul>
+<li>To do this, we’ll use the <code>mutate</code> function, First we
+define our main column (<code>Oración elicitada</code>) where the
+majority of the data is located, and we will <code>coalesce</code> the
+rest of the columns (<code>Oración elicitada</code>,
+<code>Oración Elicitada</code>, <code>Oraciones Elicitadas</code>,
+<code>Oración Elicitation</code>). Note that we’re using back ticks and
+not apostrophies here.<br />
+</li>
+<li>The same syntax applies to cleaning up
+<code>Español Estándar</code>.<br />
+</li>
+<li>Lastly, we remove the unwanted columns by negating the
+<code>names</code> function with (<code>!</code>). Note that we’re
+removing <code>Segundo</code> which seems to have had formatting errors,
+and I didn’t fully investigate the <code>Translation</code> column
+issue, but it’s 100% NAs, so it needs to go as well. Note that all of
+these columns are with single quotes (<code>'</code>).</li>
+</ul>
+<p>Next, if you scroll through the <code>Names</code> column, you will
+notice that when there were two or more speakers, meta data appears
+around the names. We want to remove this. Also, this column isn’t ideal,
+as we don’t actually know which utterance is assigned to which speaker;
+it simply says e.g., <code>Lucia and Mercedes</code>. We won’t be using
+this column in our analyses, but if we were looking for e.g., individual
+differences between speakers, we might, so we would have wanted to do
+further editing to assure each utterance was specifically assigned to
+each speaker. <br>
+<img src="NLP_images/names.jpg" alt="Meta data arounds names" width="700"/><br />
+<br> To remove this meta data, we’re simply going to use
+<code>gsub</code> in three steps:</p>
+<pre class="r"><code>clean3$Name=gsub(&#39;c\\(&quot;&#39;, &quot;&quot;,clean3$Name)
+clean3$Name=gsub(&#39;&quot;, &quot;&#39;, &quot; or &quot;,clean3$Name)
+clean3$Name=gsub(&#39;&quot;\\)&#39;, &quot;&quot;,clean3$Name)</code></pre>
+<ul>
+<li>The first removes <code>c("</code> and replaces it with nothing
+(<code>""</code>).<br />
+</li>
+<li>The second removes <code>", "</code> and replaces it with the
+literal word <code>or</code> (so that the result says e.g., Lucia
+<strong>or</strong> Mercedes)<br />
+</li>
+<li>The third removes <code>")</code> and replaces it with nothing.
+(<code>""</code>)</li>
+</ul>
+<p>At this point, structural modification is pretty much complete.
+However, during the analysis, there will be substantial data
+modification that would require linguistic knowledge of the language to
+complete. You don’t know this, as I happen to have this as I have worked
+with this language for 16+ years.<br />
+<br></p>
+</div>
+<div id="adding-new-columns-and-translating-old-ones"
+class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Adding new columns
+and translating old ones</h2>
+<p>First we’ll transfer the data frame to a new object.</p>
+<pre class="r"><code>dataset2 &lt;- clean3</code></pre>
+<div id="adding-new-columns" class="section level3" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Adding new
+columns</h3>
+<p><br> We’re now going to add additional columns that do not require
+loops. This process is relatively straightforward.</p>
+<p>The first column we want is a simple <code>entry_id</code> column
+that lists each data point subsequently 1-<em>n</em>.</p>
+<pre class="r"><code>dataset$entry_id &lt;- 1:nrow(dataset2)</code></pre>
+<ul>
+<li>This code simply writes <code>1</code> to the number of rows
+(<code>nrow</code>) in to the column <code>entry_id</code> in
+<code>dataset2</code>. <br></li>
+</ul>
+<p>We also want to know if the Media Lengua utterance has a translation.
+The easiest way to do this is to ask if there is something in either the
+<code>Quichua</code> column or one of the Spanish columns. We’ll avoid
+the English column as there are few English translations in this
+dataset.</p>
+<pre class="r"><code>dataset2$translation &lt;- ifelse(is.na(dataset2$Quichua), FALSE, TRUE)</code></pre>
+<ul>
+<li>This reads “If the Quichua row contains <code>NA</code> mark it as
+<code>FALSE</code>, if not mark it as <code>TRUE</code>. This is placed
+in the new <code>translation</code> column.<br />
+<br></li>
+</ul>
+<p>We also want to know how many words are in each MediaLengua
+utterance. This will be an important column during the analysis.</p>
+<pre class="r"><code>dataset2$word_count &lt;- str_count(dataset2$MediaLengua, &quot;\\S+&quot;)</code></pre>
+<ul>
+<li>Here, we do a string count using the <code>str_count</code> function
+from the <code>stringr</code> package. We’re going to look in the
+<code>MediaLengua</code> column and have it count the number of
+non-white spaces with capital <code>S</code> which negates white spaces.
+We want one or more hits (<code>+</code>).</li>
+</ul>
+</div>
+<div id="renaming-columns" class="section level3" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Renaming
+columns</h3>
+<pre><code>Yes, I want to actually make something easier on us. We&#39;re going to translate the column names to English and keep them consistently lowercase. The syntax for each `rename` is the same.  
+```r
+colnames(dataset2)[colnames(dataset2) == &quot;Number&quot;] &lt;- &quot;number&quot;
+colnames(dataset2)[colnames(dataset2) == &quot;Oración elicitada&quot;] &lt;- &quot;elicited_sentence&quot;
+colnames(dataset2)[colnames(dataset2) == &quot;MediaLengua&quot;] &lt;- &quot;ml_sentence&quot;
+colnames(dataset2)[colnames(dataset2) == &quot;Segmentación+IPA&quot;] &lt;- &quot;segmentation&quot;
+colnames(dataset2)[colnames(dataset2) == &quot;Español&quot;] &lt;- &quot;spanish&quot;
+colnames(dataset2)[colnames(dataset2) == &quot;Inglés&quot;] &lt;- &quot;english&quot;
+colnames(dataset2)[colnames(dataset2) == &quot;Español&quot;] &lt;- &quot;rural_spanish&quot;
+colnames(dataset2)[colnames(dataset2) == &quot;Quichua&quot;] &lt;- &quot;kichwa&quot;
+colnames(dataset2)[colnames(dataset2) == &quot;Español Estándar&quot;] &lt;- &quot;standard_spanish&quot;
+colnames(dataset2)[colnames(dataset2) == &quot;Glosa&quot;] &lt;- &quot;gloss&quot;
+colnames(dataset2)[colnames(dataset2) == &quot;Name&quot;] &lt;- &quot;name&quot;
+colnames(dataset2)[colnames(dataset2) == &quot;Filename&quot;] &lt;- &quot;filename&quot;</code></pre>
+<ul>
+<li><code>colnames(dataset2)</code> returns the names of the columns of
+the data frame <code>dataset2</code>.<br />
+</li>
+<li><code>colnames(dataset2) == "Filename"</code> this seems redundant
+(and in my brain it is), but it basically checks the name of each column
+to see if one exactly matches <code>Filename</code><br />
+</li>
+<li>We then place our rename into this position, in this case
+<code>filename</code>.</li>
+</ul>
+<p>We’re going to back up the data again.</p>
+<pre class="r"><code>ml_data = dataset2</code></pre>
+<p>After I completed the entire analysis, I learned something about the
+morphology of the language.<br />
+In most documented cases of Kichwa and Media Lengua, the second person
+plural marker (<code>-nguichi</code>) is dervied from historically
+separate morphemes; second person <code>-ngui</code> and the plural
+pronoun marker <code>-chi</code> (as still seen in the first person
+plural marker e.g., <em>cominchi</em> <code>comi-nchi</code> eat-1p).
+What I learned is that if you attempt to separate <code>-ngui</code> and
+<code>-chi</code> in modern Media Lengua, <code>-chi</code> is never
+preceded by another morpheme unlike the rest of the verbal morphology,
+so this quantitatively shows that these two morphemes
+(<code>-ngui</code> and <code>-chi</code>) are frozen as
+<code>-nguichi</code> in modern Media Lengua (and by proxy Kichwa). To
+account for this, we’re going to freeze these morphemes and any variants
+of them together.</p>
+<pre class="r"><code>ml_data$gloss=gsub(&quot;-2-p&quot;, &quot;-2p&quot;,ml_data$gloss)
+
+ml_data$segmentation=gsub(&quot;-ngi-chi&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ŋgi-chi&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ŋgi-ʧi&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ŋge-ʧi&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ŋgi-ʧe&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ŋge-ʧe&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ngi-chi&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ngi-ʧi&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-nge-ʧi&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ngi-ʧe&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-nge-ʧe&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+
+ml_data$segmentation=gsub(&quot;-ngui-chi&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ŋgui-chi&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ŋgui-ʧi&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ŋgue-ʧi&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ŋgui-ʧe&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ŋgue-ʧe&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ngui-chi&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ngui-ʧi&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ngue-ʧi&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ngui-ʧe&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ngue-ʧe&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+
+ml_data$segmentation=gsub(&quot;-ngi-chik&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ŋgi-chik&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ŋgi-ʧik&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ŋge-ʧik&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ŋgi-ʧek&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ŋge-ʧek&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ngi-chik&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ngi-ʧik&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-nge-ʧik&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ngi-ʧek&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-nge-ʧek&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-nge-ʧek&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+
+ml_data$segmentation=gsub(&quot;-ngui-chik&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ŋgui-chik&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ŋgui-ʧik&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ŋgue-ʧik&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ŋgui-ʧek&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ŋgue-ʧek&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ngui-chik&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ngui-ʧik&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ngue-ʧik&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ngui-ʧek&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ngue-ʧek&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)
+ml_data$segmentation=gsub(&quot;-ngue-ʧek&quot;, &quot;-ngiʧi&quot;,ml_data$segmentation)</code></pre>
+<ul>
+<li>This task involves <code>gsub</code>, which substitutes one pattern
+with another.<br />
+</li>
+<li>The first instance substitutes the gloss <code>-2-p</code> with
+<code>-2p</code> in the <code>gloss</code> column.<br />
+</li>
+<li>The rest substitute variants of the morpheme divisions to with
+-ngiʧi in the <code>segmentation</code> column assuring that most
+spelling variations are accounted for.</li>
+<li>The syntax is exactly the same for all these substitutions.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="analysis-1-morpheme-frequency" class="section level1"
+number="4">
+<h1><span class="header-section-number">4</span> Analysis 1: Morpheme
+Frequency</h1>
+<p>We’re now ready to start analyzing the data. Though, beware, that
+there will be more clean up throughout. We’re working with real world
+data transcribed by non-linguists on a language that has an oral
+tradition! This is NLP at its finest.<br />
+<br> <strong><em>Note:</em></strong> <em>The results you are about to
+see have not yet been documented, so your eyes are the first to feast
+upon this!</em><br />
+<br> ## Background</p>
+<p>When we look at languages, one of the first things we notice is that
+some words are extremely common, while most words are rare. English has
+<code>the</code>, <code>of</code>, and <code>and</code> at the top of
+the charts, but thousands of words that you’ll only see a handful of
+times in your life. That distribution is not unique to English—it’s
+universal. Every language has its own frequencies of word counts, shaped
+by grammar, style, and cultural context, but the underlying pattern
+repeats.<br />
+<br> Morphemes, the smaller building blocks inside words, follow the
+same principle. Some morphemes—like plural suffixes, tense markers, or
+derivational endings—show up constantly, while others are very rare,
+perhaps restricted to special registers or older forms. If you were to
+plot the counts, you’d see the same kind of skewed curve you find with
+whole words.<br />
+<br> This brings us to Zipf’s Law, one of the most famous observations
+in linguistics. Zipf noticed that if you rank words by frequency, the
+second most common word occurs about half as often as the first, the
+third about one third as often, and so on. It’s not exact, but
+remarkably close across languages and even across domains—whether you’re
+looking at novels, tweets, or morpheme counts. The result is a “long
+tail” distribution: a few forms used constantly, and a vast number of
+forms used rarely.<br />
+<br> Students usually find it fun that this isn’t just a linguistic
+quirk—it pops up in city sizes, internet traffic, even the popularity of
+baby names. Human behaviour tends to follow these heavy-tailed patterns.
+So, when you’re counting morphemes, you’re not just doing dry
+linguistics—you’re tapping into a fundamental law of how complex systems
+organise themselves.</p>
+<p><a href="https://www.youtube.com/watch?v=fCn8zs912OE">Great V-Sauce
+Video on Zipf’s Law</a><br />
+<br></p>
+<p>We are going to attempt to see if Media Lengua bound morphemes follow
+this law and later on, we’ll try it with words as well.</p>
+<div id="code" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Code</h2>
+<p>To begin, we’re going to only select relevant columns.</p>
+<pre class="r"><code>ml_data_2 &lt;- ml_data %&gt;% 
+    ungroup() %&gt;%
+    select(ml_sentence, gloss)
+
+View(ml_data_2)</code></pre>
+<ul>
+<li>First, we use <code>ungroup</code> so R forgets any old grouping
+(like by sentence number).</li>
+<li>Then we select just the two columns we care about.</li>
+<li>Lastly, we view the data. You’ll notice that there are only two
+columns here.<br />
+<br>
+<img src="NLP_images/ml_data_2.jpg" alt="relevant columns only" width="400"/><br />
+<br></li>
+</ul>
+<p>Now we need to pull the morphemes out of the gloss. To do this we
+need to make a column where each row is an independent morpheme. This
+process takes a number of steps. We’re going to begin by placing a space
+(<code></code>) in front of each dash (<code>-</code>) or equals sign
+(<code>=</code>).</p>
+<pre class="r"><code>ml_data_2$gloss=gsub(&quot;-&quot;, &quot; -&quot;,ml_data_2$gloss)
+ml_data_2$gloss=gsub(&quot;=&quot;, &quot; =&quot;,ml_data_2$gloss)
+View(ml_data_2)</code></pre>
+<ul>
+<li>We are using the gsub function that I explained previously. we are
+replacing <code>dash</code> with <code>space dash</code>, then
+<code>equals</code> with <code>space equals</code>.<br />
+</li>
+<li>When you view this, you’ll notice the spaces before each bound
+morpheme (<code>-</code>)/ clitic (<code>=</code>)<br />
+<br>
+<img src="NLP_images/ml_data_22.jpg" alt="Spaces added before morphemes and clitics" width="400"/><br />
+<br></li>
+</ul>
+<p>The next step involves a major clean up. This removes rows from the
+<code>gloss</code> column that are not glosses. These could be misplaced
+words, the morphemes themselves, random metadata that was carried over,
+morphemes that were not divided correctly etc. Note that in my version,
+there are 12,064 utterances before elimination.</p>
+<pre class="r"><code>ml_data_2=ml_data_2[!grepl(&quot;&#39;font&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;\\?&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;-1\\.&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;(^|\\s)-(\\s|$)&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;3\\.FUT\\.NEG&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;&lt;&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;&gt;&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;\\]&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;(\\s|^)-(\\s|$)&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;\\[&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;decir(\\s|$)&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;-a\\s&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;\\?(\\s|$)&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;AFFdecir&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;LIM\\.COND\\.SD&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;COND\\.3p&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;COP&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;PUES&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;\\[ACC\\]&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;j($|\\s)&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;kaʧi&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;-so&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;PST\\.&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;PL\\[&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;-p(\\s|$)&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;PRTdecir&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;[^R]EF&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;TOT.LOC&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;&#39;font&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;-encima(\\s|$)&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;TOT2&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;-Yo(\\s|$)&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;COND.PST.DS&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;wanmi&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;-wata(\\s|$)&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;ʧaɾambe(\\s|$)&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;=COND(\\s|$)&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;-xun(\\s|$)&quot;, ml_data_2$gloss), ]
+ml_data_2=ml_data_2[!grepl(&quot;-ʒapita(\\s|$)&quot;, ml_data_2$gloss), ]</code></pre>
+<ul>
+<li>After removal there are 11,207 data points. If removing 857 points
+(7% of the data) is a concern, we’d want to go back and fix each one of
+these issues instead of just removing them.<br />
+</li>
+<li>This code is simple and reiterative as it replaces the
+<code>ToRows3</code> object on each pass.<br />
+</li>
+<li>It simply reads, “subset the data leaving out (<code>!</code>)
+whatever is in the regEx pattern (<code>grepl</code>) found in the
+<code>morphemes</code> column.<br />
+</li>
+<li>No image here as these changes are sparsed throughout the data.</li>
+</ul>
+<p>Next we put each morpheme in a chain sequence into an individual
+row.</p>
+<pre class="r"><code>ToRows &lt;- ml_data_2 %&gt;% separate_rows(gloss, sep = &quot;\\s+&quot;)
+colnames(ToRows)[2]=&quot;morphemes&quot;
+View(ToRows)</code></pre>
+<ul>
+<li><code>separate_rows(gloss, sep = "\\s+")</code> takes the
+<code>gloss</code> column and splits it wherever there are spaces using
+the ‘separate’ function <code>sep</code>. Each element in the
+<code>gloss</code> column (whether it’s a headword or a suffix) gets its
+own row.<br />
+</li>
+<li>The <code>\\s+</code> means “one or more spaces” in regEx. That’s
+handy because our glosses already separate elements with spaces.<br />
+</li>
+<li>After splitting, we rename the third column <code>morphemes</code>
+for clarity. Recall from LING 111 or LING 243, that morphemes can be
+independent (covering headwords) or bound (prefixes, suffixes, infixes,
+circumfixes). So, the word <code>morpheme</code> covers what’s contained
+in this column.<br />
+<br>
+<img src="NLP_images/ml_data_22.jpg" alt="Renaming the gloss column to morphemes" width="400"/><br />
+<br></li>
+</ul>
+<p>Now we’re going to remove empty rows.</p>
+<pre class="r"><code>ToRows2 &lt;- ToRows %&gt;% filter(morphemes != &quot;&quot;)
+View(ToRows2)</code></pre>
+<ul>
+<li>Here, we just take rows that are not (<code>!</code>) blank
+(<code>""</code>) and place them in the new object
+<code>ToRows2</code>.</li>
+</ul>
+<p>Our next step involves classifying each row as containing a bound
+morpheme (<code>-</code>), bound clitic (<code>=</code>) or headword
+(anything that’s not a dash or equals sign.)</p>
+<pre class="r"><code>ToRows2$type &lt;- 
+  ifelse(str_detect(ToRows2$morphemes, &quot;-&quot;), &quot;bound_morpheme&quot;,
+  ifelse(str_detect(ToRows2$morphemes, &quot;=&quot;), &quot;bound_clitic&quot;, &quot;headword&quot;))
+View(ToRows2)</code></pre>
+<ul>
+<li>This is simply a nested <code>if statement</code> using regular
+expressions from the string dectect function (<code>str_detect</code>).
+It reads, “If <code>ToRows2</code>’s <code>morphemes</code> column
+contains a dash (<code>-</code>), put <code>bound_morpheme</code> in the
+new <code>type</code> column, if not, if <code>ToRows2</code>’s
+<code>morphemes</code> column contains an equals sign (<code>=</code>),
+put <code>bound_clitic</code> in the new <code>type</code> column, and
+if neither of these conditions are satisfied, put <code>headword</code>
+in the new type column.<br />
+<br>
+<img src="NLP_images/ToRows2.jpg" alt="Creating the type column" width="400"/><br />
+<br></li>
+</ul>
+<p>The next major clean up involves changes or fixes. This preferred
+over removals, but it can be more labourous trying to figure out what
+happened and what needs to be changed. It also require indepth knowledge
+of the language.</p>
+<pre class="r"><code>ToRows2$morphemes=gsub(&quot;-n$&quot;, &quot;-3&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-SUP$&quot;, &quot;=SUP&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ta$&quot;, &quot;-ACC&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ʒata$&quot;, &quot;-TOT&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-na$&quot;, &quot;-INF&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=jaɾin$&quot;, &quot;=SUP&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=ka$&quot;, &quot;=TOP&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-pama$&quot;, &quot;-ORI&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-paman$&quot;, &quot;-ORI&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-naja$&quot;, &quot;-DES&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-manta$&quot;, &quot;-ABL&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-paja$&quot;, &quot;-PEJ.f&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ngapa$&quot;, &quot;-SS.PURP&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=ta$&quot;, &quot;=Q.CON&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ma$&quot;, &quot;=AFF&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=ma$&quot;, &quot;=AFF&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-kuna$&quot;, &quot;-PL&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-man$&quot;, &quot;-DIR&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=ʒa$&quot;, &quot;=LIM&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ʃka$&quot;, &quot;-PRT&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=ima$&quot;, &quot;=ETC&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=ʧa$&quot;, &quot;=DUB&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ka$&quot;, &quot;=TOP&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=ʧaɾi$&quot;, &quot;=DUB&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ʧaɾi$&quot;, &quot;=DUB&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-wa$&quot;, &quot;-DIM.wa&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ɲaxu$&quot;, &quot;-RECP&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-naxu$&quot;, &quot;-RECP&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-nka$&quot;, &quot;-3.FUT&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-wan$&quot;, &quot;-INST&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-nga$&quot;, &quot;-3.FUT&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;^-pa$&quot;, &quot;-POSS//BEN&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=ACC$&quot;, &quot;-ACC&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-Q.CON$&quot;, &quot;=Q.CON&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=TOT$&quot;, &quot;-TOT&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=PRT$&quot;, &quot;-PRT&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-VAL$&quot;, &quot;=VAL&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-GEN$&quot;, &quot;-POSS//BEN&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-IMP.FORM$&quot;, &quot;-IMP&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-LIM$&quot;, &quot;=LIM&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-NEG$&quot;, &quot;=Q.POL//NEG&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-DUB$&quot;, &quot;=DUB&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-SEMB$&quot;, &quot;=SEMB&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=ʃna$&quot;, &quot;=SEMB&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ʧun$&quot;, &quot;-DS.PURP&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=POL$&quot;, &quot;=Q.POL&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ETC$&quot;, &quot;=ETC&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-CJTR$&quot;, &quot;=CJTR&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=SS.PURP$&quot;, &quot;-SS.PURP&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=TERM$&quot;, &quot;-TERM&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ʃpa$&quot;, &quot;-SS.CONV&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ngi$&quot;, &quot;-2&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=DIR$&quot;, &quot;-DIR&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-CONT$&quot;, &quot;-PROG&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-COND$&quot;, &quot;-COND.PST&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-COND.SD$&quot;, &quot;-DS.COND&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-REF$&quot;, &quot;-REFL&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=REF$&quot;, &quot;-REFL&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-COND.DS$&quot;, &quot;-DS.COND&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-DUB.1$&quot;, &quot;=DUB&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-LIM.DS.CONV$&quot;, &quot;-DS.PURP&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=ʧu$&quot;, &quot;=Q.POL//NEG&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-xu$&quot;, &quot;-PROG&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ɾi$&quot;, &quot;-REFL&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=Q.yn//NEG$&quot;, &quot;=Q.POL//NEG&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-Q.y/n$&quot;, &quot;=Q.POL//NEG&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ɾka$&quot;, &quot;-PST&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-pi$&quot;, &quot;-LOC&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-gu$&quot;, &quot;-DIM.gu&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=maɾe$&quot;, &quot;=AFF&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=mi$&quot;, &quot;=VAL&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-nʧi$&quot;, &quot;-3p&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-3P$&quot;, &quot;-3p&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=Q.Wh$&quot;, &quot;=Q.CON&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-Q.Wh$&quot;, &quot;=Q.CON&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=Wh.Q$&quot;, &quot;=Q.CON&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-Wh.Q$&quot;, &quot;=Q.CON&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-FUT.1s$&quot;, &quot;-1.FUT&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-BEN$&quot;, &quot;-POSS//BEN&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=Q.POL$&quot;, &quot;=Q.POL//NEG&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-POSS$&quot;, &quot;-POSS//BEN&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-FUT.1p$&quot;, &quot;-1p.FUT&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-PERF$&quot;, &quot;-PRT&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=PERF$&quot;, &quot;-PRT&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=SUPRAL$&quot;, &quot;=SUPRA&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=paʧa$&quot;, &quot;=SUPRA&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-SUPRAL$&quot;, &quot;=SUPRA&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=Q.POL//NEG//NEG$&quot;, &quot;=Q.POL//NEG&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=Q.NEG$&quot;, &quot;=Q.POL//NEG&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=Q.POL$&quot;, &quot;=Q.POL//NEG&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-Q.NEG$&quot;, &quot;=Q.POL//NEG&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-Q.POL$&quot;, &quot;=Q.POL//NEG&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=NEG$&quot;, &quot;=Q.POL//NEG&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-Q.POL//NEG$&quot;, &quot;=Q.POL//NEG&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-tan$&quot;, &quot;-CONJ.tan&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ɾia$&quot;, &quot;-HAB&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-RECP$&quot;, &quot;-REC&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-Q.yn//NEG$&quot;, &quot;=Q.POL//NEG&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-Q.yn$&quot;, &quot;=Q.POL//NEG&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ɾa$&quot;, &quot;-IMD&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=Q.yn//NEG$&quot;, &quot;=Q.POL//NEG&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-POL//NEG$&quot;, &quot;=Q.POL//NEG&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-REFLL$&quot;, &quot;-REFL&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-SS.CONVV$&quot;, &quot;-SS.CONV&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ʃa$&quot;, &quot;-1.FUT&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-GRN$&quot;, &quot;-GER&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-RELF$&quot;, &quot;-REFL&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-SS.CON$&quot;, &quot;-SS.CONV&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-INT$&quot;, &quot;-INST&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=DUB.1$&quot;, &quot;=1.DUB&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-AC$&quot;, &quot;-ACC&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ACCC$&quot;, &quot;-ACC&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-FUT.1$&quot;, &quot;-1.FUT&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-1FUT$&quot;, &quot;-1.FUT&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-TOT1$&quot;, &quot;-TOT&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=TOT1$&quot;, &quot;-TOT&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-DS.COND$&quot;, &quot;-DS.COND&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-DS.CONJ$&quot;, &quot;-DS.COND&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-COND.DS$&quot;, &quot;-DS.COND&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=Q.NEG$&quot;, &quot;=Q.POL//NEG&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=Wh.Q$&quot;, &quot;=Q.CON&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-FUT.3$&quot;, &quot;-3.FUT&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-1P.FUT$&quot;, &quot;-1p.FUT&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-FUT.IMD$&quot;, &quot;-FUT&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-COND.3p$&quot;, &quot;-COND.3p(Sp)&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-AGT$&quot;, &quot;-DS.CONV&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-1P$&quot;, &quot;-1p&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;VERB$&quot;, &quot;VERBALIZER&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-PURP$&quot;, &quot;-SS.PURP&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-PERF.COND$&quot;, &quot;-PRT&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-IMP.INFORM$&quot;, &quot;-IMP&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-IMP.IMFORM$&quot;, &quot;-IMP&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-AB$&quot;, &quot;-SUPRA&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-LIM.COND.SD$&quot;, &quot;-LIM.COND.DS&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=ETC//COND$&quot;, &quot;=ETC&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-COND.DS$&quot;, &quot;-DS.CONV&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-DS.COND$&quot;, &quot;-DS.CONV&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-1.OBJ$&quot;, &quot;-OBJ.1&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-xawa$&quot;, &quot;-SUPRA&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-COP$&quot;, &quot;COP&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-go$&quot;, &quot;-DIM.gu&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-gɾi$&quot;, &quot;-FUT&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-i$&quot;, &quot;-IMP&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-jaɾi$&quot;, &quot;=SUP&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=jaɾi$&quot;, &quot;=SUP&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-k$&quot;, &quot;-AGN&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ko$&quot;, &quot;-DIM.gu&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ku$&quot;, &quot;-DIM.gu&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-maɾi$&quot;, &quot;=AFF&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=maɾi$&quot;, &quot;=AFF&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-mu$&quot;, &quot;-TRANS&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ngapak$&quot;, &quot;-SS.PURP&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ni$&quot;, &quot;-1&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ni\\.$&quot;, &quot;-1&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-nmaɾi$&quot;, &quot;=AFF&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-nmaɾi$&quot;, &quot;=AFF&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-pe$&quot;, &quot;-LOC&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-piʃ$&quot;, &quot;=CONJ&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=piʃ$&quot;, &quot;=CONJ&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-paʃ$&quot;, &quot;=CONJ&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=paʃ$&quot;, &quot;=CONJ&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-tak$&quot;, &quot;=Q.CON&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=tak$&quot;, &quot;=Q.CON&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ŋgapak$&quot;, &quot;-SS.PURP&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ŋgi$&quot;, &quot;-2&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ɾe$&quot;, &quot;-REFL&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ɾka\\.$&quot;, &quot;-PST&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ʃi$&quot;, &quot;=CJTR&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=ʃi$&quot;, &quot;=CJTR&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ʐoko$&quot;, &quot;-PEJ.m&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ʐoku$&quot;, &quot;-PEJ.m&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ʧaɾe$&quot;, &quot;=DUB&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=ʧaɾe$&quot;, &quot;=DUB&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ʧi$&quot;, &quot;-CAU&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-ʧo$&quot;, &quot;=Q.POL//NEG&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=ʧo$&quot;, &quot;=Q.POL//NEG&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-kpe$&quot;, &quot;-DS.COND&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-kpi$&quot;, &quot;-DS.COND&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-CONJ$&quot;, &quot;=CONJ&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-TOP$&quot;, &quot;=TOP&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-FORM$&quot;, &quot;-POL&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-DIM$&quot;, &quot;-DIM.gu&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;=ACC$&quot;, &quot;-ACC&quot;,ToRows2$morphemes)
+ToRows2$morphemes=gsub(&quot;-AFF$&quot;, &quot;=AFF&quot;,ToRows2$morphemes)
+View(ToRows2)</code></pre>
+<ul>
+<li>A <strong>lot</strong> of changes have been made here!<br />
+</li>
+<li>The number of data points remains at 46,864 as no removals took
+place.<br />
+</li>
+<li>The code here has been explained previously
+<ul>
+<li>However, it is worth mentioning that it is <strong>not</strong>
+reiterative and modifies data within <code>ToRows3$morphemes</code>
+without overwriting it on each pass as with the previous clean up.</li>
+<li>Here we once again use <code>gsub</code> to search for a regEx
+pattern and the replace it with the clean version.</li>
+<li>All of this takes place in <code>ToRows3</code>’s
+<code>morphemes</code> column.<br />
+<br></li>
+</ul></li>
+</ul>
+<p>Now, since we’re just interested in the bound morphology in this
+analysis, we’re going to make a subset that only contains bound
+morphemes and bound clitics.</p>
+<pre class="r"><code>ToRows3=ToRows2[grepl(&quot;^[-=]&quot;, ToRows2$morphemes), ]
+View(ToRows3)</code></pre>
+<ul>
+<li>This reads, make a new object called <code>ToRows3</code>, where
+items from <code>ToRows2</code>’s <code>morphemes</code> column only
+contain a dash (<code>-</code>) or equals sign (<code>=</code>) at the
+beginning (<code>^</code>). There are other ways to do this like using
+<code>subset</code> for <code>filter</code>, but this form is a simple
+way to use regEx for subsetting.<br />
+</li>
+<li>Notice the absence of <code>headword</code>s in the image
+below:<br />
+<br>
+<img src="NLP_images/ToRows3.jpg" alt="Only bound morphology" width="400"/><br />
+<br></li>
+</ul>
+<p>Next, we’re now going to count each morpheme.</p>
+<pre class="r"><code>suffix_summary &lt;- ToRows3 %&gt;%
+  group_by(morphemes) %&gt;%
+  summarise(count = n(), .groups = &quot;drop&quot;)
+View(suffix_summary)</code></pre>
+<ul>
+<li>First we transfer <code>ToRows3</code> to a new object named
+<code>suffix_summary</code>.<br />
+</li>
+<li>Then we group the morphemes together using
+<code>group_by</code><br />
+</li>
+<li><code>summarise(count = n())</code> counts how many rows belong to
+each morpheme.<br />
+</li>
+<li>`<code>.groups = "drop"</code>removes the grouping after summarising
+so the result is just a clean table.<br />
+</li>
+<li>The result is a simple frequency table: one row per morpheme with
+the number of times it shows up.<br />
+<br>
+<img src="NLP_images/counts.jpg" alt="counts column added" width="150"/><br />
+<br></li>
+</ul>
+<p>It’s not needed, but if you want to see how many data points you’re
+dealing with, you can <code>sum</code> the count column.</p>
+<pre class="r"><code>sum(suffix_summary$count)</code></pre>
+<p>Next, we’re going to arrange the data in decending order.</p>
+<pre class="r"><code>morpheme_counts &lt;- suffix_summary %&gt;%
+  arrange(desc(count))
+View(morpheme_counts)</code></pre>
+<ul>
+<li>First we transfer <code>suffix_summary</code> to a new object named
+<code>morpheme_counts</code>.<br />
+</li>
+<li>Then we use the <code>arrange</code> function from
+<code>dplyr</code> and indicate that we want a descending order using
+<code>desc</code> on the <code>count</code> column.<br />
+<br>
+<img src="NLP_images/countsDesc.jpg" alt="put the data in descending order based on the count column" width="150"/><br />
+<br></li>
+</ul>
+<p>Lastly, we’re going to add a rank row (1-<em>n</em>) so each row has
+its own id. This is the same code we used before for the
+<code>entry_id</code> column from the main dataset.</p>
+<pre class="r"><code>morpheme_counts$entry_id &lt;- 1:nrow(morpheme_counts)
+View(morpheme_counts)</code></pre>
+<p><br>
+<img src="NLP_images/morphcountID.jpg" alt="adding a rank column" width="150"/><br />
+<br></p>
+</div>
+<div id="graphing-morpheme-counts" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Graphing morpheme
+counts</h2>
+<p>First we’re going to do a subset containing just the top 50
+morphemes.</p>
+<pre class="r"><code>morpheme_counts_50 &lt;- morpheme_counts %&gt;%
+  slice_head(n = 50)  # Keep only top 50</code></pre>
+<ul>
+<li>First we transfer <code>suffix_summary</code> to a new object named
+<code>morpheme_counts</code>.<br />
+</li>
+<li>Then we use the <code>slice_head</code> function from
+<code>dplyr</code> and indicate how many items we want to keep from the
+top (‘head’). In this case, we’re just going to graph the morphemes with
+the top-50 counts.<br />
+<br>
+<img src="NLP_images/top50.jpg" alt="top 50 morphemes" width="150"/><br />
+<br></li>
+</ul>
+<p>To graph the data, we’re going to use <code>ggplot2</code>, the most
+popular library in <code>R</code> for creating visualisations.
+<code>ggplot2</code> follows a “grammar of graphics” approach: instead
+of just making a plot in one step, you build it layer by layer. You
+start with your data and tell <code>ggplot2</code> how to map variables
+onto things like the x-axis, y-axis, or colours. Then you add layers
+(called <em>geoms</em>) to decide what kind of plot you want: points for
+a scatterplot, bars for a bar chart, lines for a line graph, etc. You
+can also add themes, labels, and custom styles to make plots look
+professional. It takes a while to get use to, but once you get a handle
+on it, it’s far more powerful than most other graphing options (e.g.,
+Excel).<br />
+<br> We will build this up layer by layer.<br />
+<strong>Layer 1</strong></p>
+<pre class="r"><code>ggplot(morpheme_counts_50, aes(x = fct_reorder(morphemes, count), y = count))</code></pre>
+<ul>
+<li><code>ggplot(morpheme_counts_50, aes(...))</code> starts a plot
+using the data frame <code>morpheme_counts_50</code>. Inside
+<code>aes()</code> (which stands for “aesthetics”), we map variables to
+the axes.<br />
+</li>
+<li>The result of this plot is not pretty. It, compresses all the
+morphemes along the x-axis and put the count on the y, like so: <br>
+<img src="NLP_images/ggplot1.jpg" alt="setting up the plot" width="800"/><br />
+<br></li>
+</ul>
+<p>Next we add the actual data with <code>geom_col</code> adds a bar
+chart (“column” plot). Each bar’s height = frequency. The bars are
+filled with a blue colour. We choose a colour with <code>fill</code>.
+This can be a name, like `green’ or a hex colour.</p>
+<pre class="r"><code>ggplot(morpheme_counts_50, aes(x = fct_reorder(morphemes, count), y = count)) + 
+  geom_col(fill = &quot;steelblue&quot;)</code></pre>
+<p><br>
+<img src="NLP_images/ggplot2.jpg" alt="adding data" width="700"/><br />
+<br></p>
+<p>After this, we’re going to flip the coordinates because having all
+the data on the x-axis compresses the labels. We do this by simply
+adding <code>coord_flip()</code> to the code.</p>
+<pre class="r"><code>ggplot(morpheme_counts_50, aes(x = fct_reorder(morphemes, count), y = count)) + 
+  geom_col(fill = &quot;steelblue&quot;) +
+  coord_flip()</code></pre>
+<p><br>
+<img src="NLP_images/ggplot3.jpg" alt="Piviting the axes" width="800"/><br />
+<br></p>
+<p>This is basically our chart, and we can observe frequency patterns of
+the top-50 morphemes. However, we can, and should, add more information
+to the plot like labels.<br />
+With <code>labs</code> we can add a <code>title</code>, the
+<code>x</code> label and <code>y</code> label. In this case I’m adding
+“Morpheme” for the <code>X</code> and “Frequency” for the
+<code>Y</code>. Recall that we flipped the axes, which is why this seems
+backwards.</p>
+<pre class="r"><code>ggplot(morpheme_counts_50, aes(x = fct_reorder(morphemes, count), y = count)) + 
+  geom_col(fill = &quot;steelblue&quot;) +
+  coord_flip() +
+  labs(
+    title = &quot;Top 50 Most Frequent Morphemes&quot;,
+    x = &quot;Morpheme&quot;,
+    y = &quot;Frequency&quot;
+  )</code></pre>
+<p><br>
+<img src="NLP_images/ggplot4.jpg" alt="adding labels" width="800"/><br />
+<br></p>
+<p>Finally, I’m going to add <code>theme_minimal</code> to account for
+the font size of the labels, and make the background white. You can play
+around with the <code>base_size</code> number and see how the chart
+changes.</p>
+<pre class="r"><code>ggplot(morpheme_counts_50, aes(x = fct_reorder(morphemes, count), y = count)) + 
+  geom_col(fill = &quot;steelblue&quot;) +
+  coord_flip() +
+  labs(
+    title = &quot;Top 50 Most Frequent Morphemes&quot;,
+    x = &quot;Morpheme&quot;,
+    y = &quot;Frequency&quot;
+  ) +
+  theme_minimal(base_size = 12)</code></pre>
+<p><br>
+<img src="NLP_images/ggplot5.jpg" alt="minimal theme details added" width="800"/><br />
+<br></p>
+<p>With these same settings, let’s swap out the top-50 with all the
+morphemes.</p>
+<pre class="r"><code>ggplot(morpheme_counts, aes(x = fct_reorder(morphemes, count), y = count)) +
+  geom_col(fill = &quot;#AD2003&quot;) +
+  coord_flip() +
+  labs(
+    title = &quot;All Morphemes&quot;,
+    x = &quot;Morpheme&quot;,
+    y = &quot;Frequency&quot;
+  ) +
+  theme_minimal(base_size = 14)</code></pre>
+<p><br>
+<img src="NLP_images/ggplot6.jpg" alt="All morphemes" width="800"/><br />
+<br></p>
+<p>How do our findings line up with Zipf’s Law? Once again, Zipf noticed
+that if you rank words by frequency, the second most common word occurs
+about half as often as the first, the third about one third as often,
+and so on. This creates a <code>power-law</code> distribution. It looks
+curved on a normal plot, but it becomes a straight line (linear) when
+plotted on log-log axes.</p>
+<pre class="r"><code>ggplot(morpheme_counts_50, aes(x = log10(entry_id), y = log10(count))) +
+    geom_point() +
+    geom_smooth(method = &quot;lm&quot;, se = TRUE, color = &quot;red&quot;) +
+    labs(
+        title = &quot;Zipf&#39;s Law: Top-50 most frequent morphemes&quot;,
+        x = &quot;log10(Rank)&quot;,
+        y = &quot;log10(Frequency)&quot;
+    ) +
+    theme_minimal()</code></pre>
+<ul>
+<li>There are only three major changes to this graph.<br />
+</li>
+<li>converting data to log10 using the <code>log10</code> function, and
+using the rank column (<code>entry_id</code>) with
+<code>count</code>.<br />
+</li>
+<li>Adding each data point with <code>geom_point()</code><br />
+</li>
+<li>Adding the linear trendline with <code>geom_smooth</code><br />
+</li>
+<li><code>method = "lm" means 'linear model' (for the linear trendline);</code>se<code>is the standard error. When set to</code>TRUE<code>, this shades a grey ribbon around the fitted line, which represents the uncertainty (confidence interval) of the regression. For</code>color<code>, I just picked</code>red`.</li>
+</ul>
+<p><br>
+<img src="NLP_images/zipfmorph50.jpg" alt="Zipf's law with top-50" width="800"/><br />
+<br></p>
+<p>The same code can be applied to all the morphemes. We just swap out
+<code>morpheme_counts_50</code> with <code>morpheme_counts</code> and
+change the title.</p>
+<pre class="r"><code>ggplot(morpheme_counts, aes(x = log10(entry_id), y = log10(count))) +
+    geom_point() +
+    geom_smooth(method = &quot;lm&quot;, se = TRUE, color = &quot;red&quot;) +
+    labs(
+        title = &quot;Zipf&#39;s Law: All morphemes&quot;,
+        x = &quot;log10(Rank)&quot;,
+        y = &quot;log10(Frequency)&quot;
+    ) +
+    theme_minimal()</code></pre>
+<p><br>
+<img src="NLP_images/zipfmorph.jpg" alt="Zipf's law all morphemes" width="800"/><br />
+<br></p>
+</div>
+</div>
+<div id="homework" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> HOMEWORK</h1>
+<p><br> <strong><em>Instructions:</em></strong> Write the NLP data
+manipulation code and graph the top-50 and top-500 most frequent
+headwords (lexical items) using barplots, then graph the data converted
+to log10 and place a linear trendline in the graph. I want the code for
+the data manipulation and graphs along with a write up (no longer than 3
+sentences) on whether the trend follows Zipf’s law or not.<br />
+<br> <strong><em>Hints: </em></strong><br />
+- Start with <code>ml_data</code> and process it with the same code but
+using the <code>segmentation</code> column rather than
+<code>gloss</code> column to get the <strong>actual</strong> words
+rather than their translations.<br />
+- Add the following lines to the clean up.</p>
+<pre class="r"><code>ml_data_2_LEX=ml_data_2_LEX[!grepl(&quot;\\d&quot;, ml_data_2_LEX$segmentation), ]
+ml_data_2_LEX=ml_data_2_LEX[!grepl(&quot;(á|é|í|ó|ú|͡i|͡͡i|͡azi)&quot;, ml_data_2_LEX$segmentation), ]
+ml_data_2_LEX=ml_data_2_LEX[!grepl(&quot;(c|y|ll|ch|h|/)&quot;, ml_data_2_LEX$segmentation), ]
+ml_data_2_LEX=ml_data_2_LEX[!grepl(&quot;[[:upper:]]&quot;, ml_data_2_LEX$segmentation), ]
+ml_data_2_LEX=ml_data_2_LEX[!grepl(&quot;(,|\\.|:|;|\\?|!|&#39;)&quot;, ml_data_2_LEX$segmentation), ]
+ml_data_2_LEX$segmentation=gsub(&quot;(mː|mmm)&quot;, &quot;FILLER&quot;,ml_data_2_LEX$segmentation)
+ml_data_2_LEX$segmentation=gsub(&quot;(noo|nooo)&quot;, &quot;no&quot;,ml_data_2_LEX$segmentation)
+ml_data_2_LEX$segmentation=gsub(&quot;ː&quot;, &quot;&quot;,ml_data_2_LEX$segmentation)
+ml_data_2_LEX$segmentation=gsub(&quot;(ese|esa|eso|este|esta)&quot;, &quot;ese&quot;,ml_data_2_LEX$segmentation)
+ml_data_2_LEX$segmentation=gsub(&quot;(\\ba\\b|aa|aaa|aaaa|aah)&quot;, &quot;FILLER&quot;,ml_data_2_LEX$segmentation)</code></pre>
+<ul>
+<li>Run it through the <strong>first</strong> block of clean up code
+(including the add-ons above) beginning with
+<code>ml_data_2=ml_data_2[!grepl("'font", ml_data_2$segmentation), ]</code><br />
+</li>
+<li>Continue until the <code>type</code> column is created.<br />
+</li>
+<li>Make a subset with only <code>headword</code>s.<br />
+</li>
+<li>Change the name of column 2 to <code>lexeme</code>.<br />
+</li>
+<li>Use <code>group_by</code> and <code>summarize</code> to get lexeme
+counts. Put this in an object called <code>lexical_summary</code><br />
+</li>
+<li>Re-order highest to lowest<br />
+</li>
+<li>Add a rank column (like <code>entry_id</code>)<br />
+</li>
+<li>Make a subset of the top 50.<br />
+</li>
+<li>Make a subset of the top 500.<br />
+</li>
+<li>Graph the top 50<br />
+</li>
+<li>Graph the top 500 (labels will not be legible)</li>
+<li>Save each graph</li>
+<li>Graph the Zipf distribution for each subset (50 &amp; 500).
+<br></li>
+<li>Extra: Turn in your assignment using R-markdown.<br />
+<br> —</li>
+</ul>
+</div>
+<div id="analysis-2-morpheme-position-and-frequency"
+class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Analysis 2: Morpheme
+position and Frequency</h1>
+<div id="background" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Background</h2>
+<p>Why do we care about this?<br />
+<strong>1. Morphological Typology &amp; Word Structure</strong><br />
+Linguists often want to know where morphemes appear in a chain
+because:<br />
+- Different morphological types (isolating, agglutinative, fusional,
+polysynthetic) have characteristic slot structures.<br />
+- In agglutinative languages (like Media Lengua), affixes typically
+appear in ordered “slots” (e.g., derivation before inflection and
+clitics at the end).<br />
+- By understanding morpheme positions, we can see whether the language
+enforces strict slot order, allows variability, or shows tendencies
+(e.g., evidentials tending to occur at the right edge) etc.<br />
+<br></p>
+<p><strong>2. Morphotactics (Rules of Morpheme Ordering)</strong><br />
+Slot-based frequency analysis is essentially studying
+morphotactics:<br />
+- Which combinations are possible?<br />
+- Which orders are frequent vs. marginal?<br />
+- Are there “forbidden” combinations?</p>
+<p>This helps in building finite-state morphological analyzers
+(computational linguistics) or describing morphological templates
+(descriptive linguistics). <br></p>
+<p><strong>3. Functional Distribution &amp;
+Grammaticalization</strong><br />
+Positions often correlate with function:<br />
+- Derivational morphemes tend to cluster closer to the root.<br />
+- Inflectional morphemes (tense, agreement, evidentials) often occur
+further out.<br />
+- High-frequency “edge” morphemes are more likely to grammaticalize
+(become bound, lose semantic weight).</p>
+<p>So, slot analysis helps answer: Which morphemes are “core”
+vs. “peripheral”? <br></p>
+<p><strong>4. Why Count Frequencies?</strong><br />
+Frequency gives us:<br />
+- Evidence of productivity (are some slots filled often, others
+rarely?).<br />
+- Insights into learner acquisition (high-frequency slots are acquired
+earlier).<br />
+- A way to compare different corpora (e.g., elicited vs. natural
+speech).</p>
+</div>
+<div id="code-1" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Code</h2>
+<p>We begin with placing <code>ToRows2</code> in a new object called
+<code>MO</code> (short for morpheme order). <code>ToRows2</code>
+contains the cleaned data before we separated out the bound
+morphology.</p>
+<pre class="r"><code>MO=ToRows2</code></pre>
+<p><br> The next step involves creating a new column called
+<code>slots</code>, where the position of each bound morpheme will be
+counted. We begin by inserting a <code>0</code> for each headword. This
+way we can write code that says count incrementally until a
+<code>0</code> is encountered, which signals a new word.</p>
+<pre class="r"><code>MO$slot=ifelse(str_detect(MO$morphemes, &quot;^[^-=]&quot;), 0,&quot;&quot;)</code></pre>
+<ul>
+<li>Here, we begin with an <code>ifelse</code> with <code>0</code> if
+the pattern is <code>TRUE</code> and nothing (<code>""</code>) if the
+pattern is <code>FALSE</code>.<br />
+</li>
+<li>We’ll be conducting this search in <code>MO</code>’s
+<code>morphemes</code> column.<br />
+</li>
+<li>We use <code>str_detect</code> to search for our pattern using
+regEx.<br />
+</li>
+<li>The regEx reads find at the beginning of a string (<code>^</code>)
+anything that is not <code>([^])</code> a dash (<code>-</code>) or
+equals sign (<code>=</code>).<br />
+<br> <img src="NLP_images/MO.jpg" alt="Zero inserts" width="500"/><br />
+<br></li>
+</ul>
+<p>We now have to build a small <code>for loop</code> to iterate through
+the data filling in the blank rows.<br />
+To begin, we need two place holder variables. The first is simply a list
+of <code>0</code>s the length of the <code>MO</code><br />
+<br> <code>out</code> – <em>this is the record we’re building</em>. It
+stores the result for every row in <code>MO$slot</code>, so that at the
+end of the loop you have a complete vector you can inspect, plot, or
+pass to another function. Without <code>out</code>, you’d only keep the
+most recent value instead of the whole history.<br />
+<em>Think of out as your spreadsheet column.</em></p>
+<pre class="r"><code>out &lt;- 0
+count &lt;- 0</code></pre>
+<p><code>counter</code> – <em>this is the running tally</em>. It holds a
+value that carries over from one iteration of the loop to the next. Each
+time you see a non-zero slot, <code>counter</code> increases by one; if
+you hit a zero, it resets. Its role is to “remember” where you are in
+the sequence so you can keep counting forward. If you tried to use
+<code>out</code> alone for this, you’d overwrite your results instead of
+maintaining that rolling state.<br />
+<em>Think of counter as the pen in your hand, keeping track of the next
+number to write.</em><br />
+<br> Here’s the loop.</p>
+<pre class="r"><code>for (i in seq_along(MO$slot)) { ToRows2
+  if (MO$slot[i] == 0) { ToRows2
+    counter &lt;- 0 ToRows2
+    out[i] &lt;- 0 ToRows2
+  } else { ToRows2
+    counter &lt;- counter + 1 ToRows2
+    out[i] &lt;- counter ToRows2
+  }
+}</code></pre>
+<ul>
+<li>Use <code>seq_along()</code> anytime you’re looping over a vector
+and want to safely index it (e.g., if there’s a blank row,
+<code>seq_along()</code> will jump over it without causing an
+issue.<br />
+</li>
+<li><code>MO$slot[i] == 0</code> means if the row number under analysis
+is <code>0</code>, go to the next step.<br />
+</li>
+<li><code>counter &lt;- 0</code> means put a zero in the
+<code>counter</code> vector if <code>MO$slot[i]</code>
+<strong>equals</strong> <code>0</code>.<br />
+</li>
+<li><code>out[i] &lt;- 0</code> also means put a zero in the ‘out’
+vector at row <code>i</code> if <code>MO$slot[i]</code>
+<strong>equals</strong> <code>0</code>.<br />
+</li>
+<li><code>} else {</code> means “if it’s not zero”, do the
+following.<br />
+</li>
+<li><code>counter &lt;- counter + 1</code> means take that 0 in the
+<code>counter</code> vector, and add <code>1</code> if
+<code>MO$slot[i]</code> is <strong>not equal</strong> to
+<code>0</code><br />
+</li>
+<li><code>out[i] &lt;- counter</code> means then throw that value into
+the <code>out</code> vector at row <code>i</code> if
+<code>MO$slot[i]</code> is <strong>not equal</strong> to
+<code>0</code><br />
+<br> Next, we put the output into a data frame.<br />
+</li>
+</ul>
+<pre class="r"><code>MO$slot=out</code></pre>
+<p><br>
+<img src="NLP_images/MO2.jpg" alt="sequence counts added" width="500"/><br />
+<br></p>
+<p>Now we’re going to count morphemes in each position/ slot.</p>
+<pre class="r"><code>slots &lt;- MO %&gt;%
+  count(slot, morphemes, sort = TRUE, name = &quot;count&quot;)
+View(slots)</code></pre>
+<ul>
+<li><code>count(slot, morphemes, …)</code> tells R to look at the
+columns <code>slot</code> and <code>morphemes</code>, group the data by
+their unique combinations, and then count how many times each
+combination occurs. It’s like a combination of <code>group_by</code> and
+<code>mutate</code>.<br />
+</li>
+<li><code>sort = TRUE</code> means the results will be arranged from
+most frequent to least frequent.<br />
+</li>
+<li><code>name = "count"</code> tells R to call the new column “count”
+instead of the default “n”.<br />
+<br>
+<img src="NLP_images/slots.jpg" alt="shows counts of each morphemes" width="200"/><br />
+<br></li>
+</ul>
+<p>At this point we can remove headwords from the dataset using
+<code>subset</code>.</p>
+<pre class="r"><code>slots2 &lt;- subset(slots, type==&quot;bound_clitic&quot; | type==&quot;bound_morpheme&quot;)</code></pre>
+<ul>
+<li>Here, we’re subsetting based on the <code>slots</code> dataset and
+if the <code>type</code> column contains either (<code>|</code>)
+<code>bound_clitic</code> or <code>bound_morpheme</code>.<br />
+<br>
+<img src="NLP_images/subset.jpg" alt="subset without headwords" width="300"/><br />
+<br></li>
+</ul>
+<p>Next we group by slot so we can compute frequencies - we’ll want to
+calculate the proportion of each morpheme within each slot.</p>
+<pre class="r"><code>slots3 &lt;- slots2 %&gt;%
+  group_by(slot) %&gt;%
+  mutate(freq = count / sum(count))
+print(slots3)   # shows it&#39;s grouped, this step isn&#39;t needed
+View(slots3)</code></pre>
+<ul>
+<li>Most of this code has been described before.<br />
+</li>
+<li>We first group the data by slot.<br />
+</li>
+<li>We then use <code>mutate</code> to create a new column called
+<code>freq</code> where we take the number in <code>count</code> and
+divided it by the total sum of <code>count</code> using the
+<code>sum</code> function.<br />
+</li>
+<li><code>print()</code> is a quick way to see how the data has been
+grouped with <code>group_by</code>.<br />
+</li>
+<li>All these changes appear in a new object called
+<code>slots2</code>.<br />
+<br>
+<img src="NLP_images/slots2.jpg" alt="adds the frequency column" width="300"/><br />
+<br></li>
+</ul>
+<p>Now, because we’re going to create a number of graphs, so we can’t
+have a ton of morphemes plotted, so we’re going to plot the top-10 from
+each slot.</p>
+<pre class="r"><code>freq_10 &lt;- slots3 %&gt;%
+  group_by(slot) %&gt;%
+  slice_head(n = 10)</code></pre>
+<ul>
+<li>We’ve already gone over this code, but <code>slice_head</code> grabs
+the top 10 from each unique grouping (as indicated in
+<code>group_by()</code>.</li>
+</ul>
+<p>Lastly, we graph the data.</p>
+<pre class="r"><code>ggplot(freq_10, aes(x = reorder(morphemes, -freq), y = freq)) +
+  geom_col(fill = &quot;steelblue&quot;) +
+  facet_wrap(~slot, scales = &quot;free_x&quot;) +
+  labs(
+    title = &quot;10 Most Frequent Morphemes by Slot Position&quot;,
+    x = &quot;Morpheme&quot;,
+    y = &quot;Proportion in Slot&quot;
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))</code></pre>
+<ul>
+<li><code>freq_10</code> is the dataset.<br />
+</li>
+<li><code>aes</code> stands for aesthetics.<br />
+</li>
+<li><code>x = reorder()</code> reorders the morpheme labels so the most
+frequent ones appear first (across the entire dataset not just per
+position).<br />
+</li>
+<li><code>y = freq</code> plots the frequency (proportion) on the
+vertical axis.<br />
+</li>
+<li><code>geom_col</code> means draw columns (bars) instead of
+points.<br />
+</li>
+<li><code>fill =</code> is for the color; I’ve chosen ‘steelblue’<br />
+</li>
+<li><code>facet_wrap()</code> makes a separate small plot (“facet”) for
+each slot value.<br />
+</li>
+<li><code>scales = "free_x"</code> lets each facet have its own x-axis
+labels, so you don’t need all morphemes across every slot.<br />
+</li>
+<li><code>labs()</code> contains all the label information e.g.,
+<code>title</code>, <code>x-label</code>, <code>y-label</code><br />
+</li>
+<li><code>theme_minimal()</code> uses the minimal theme, which strips
+the chart down to a clean, simple look.<br />
+</li>
+<li>In <code>theme</code> we add <code>text.x = element_text</code> to
+put each x label at a 45 degree angle for spacing. <code>hjust</code> is
+the height adjustment level, so the label isn’t directly on the
+tick.</li>
+</ul>
+<p>Because the topic marker shows up so frequently, it might be easier
+for learners to acquire and process. High-frequency morphemes are
+usually learned earlier and accessed faster in speech, since repeated
+exposure reinforces them in memory and makes them more predictable in
+context. Interestingly Rural Andean Spanish has also adopted the topic
+marker <em>=ka</em> from Kichwa.<br />
+<br>
+<img src="NLP_images/10MostSlot.jpg" alt="10 most frequent morphemes by slot" width="800"/><br />
+<br></p>
+<p>Now, we want the probability that a morpheme occurs
+<strong>root-adjacent</strong> (i.e., in the first slot next to the
+root). Why care? Because slot behavior tells us whether the language
+enforces strict ordering, merely prefers it, or permits free
+variation.<br />
+<br> - If a morpheme’s <strong>Position-1 probability</strong> ≈ 1, it’s
+basically glued to the root (strong morphotactic constraint).<br />
+- If a morpheme shows an intermediate probability of occurring in
+Position 1, this suggests that it has some flexibility in placement: it
+often appears root-adjacent but can also occur in other slots. This
+points to a probabilistic or preferential ordering rather than a
+categorical rule.<br />
+- If the probability is low, the morpheme is more typically realised in
+other positions within a morphological chain, such as in outer
+inflectional slots, in the clitic domain, or at clause edges (e.g.,
+evidentials). This reflects that its distribution is structurally
+constrained away from root adjacency.<br />
+<br></p>
+<p>We can figure this out in just 3 steps with the code we currently
+have. But first, we’ll pass <code>slots3</code> to
+<code>slots4</code>.</p>
+<pre class="r"><code>slots4=slots3</code></pre>
+<p><br> Step 1: We’re going to create two new columns called
+<code>total</code> and <code>one</code>. <code>total</code> will count
+how many of each morpheme appears in the data regardless of the slot.
+<code>one</code> will count the total number of each morpheme in slot 1
+and the divide to by the <code>total</code> value and multiply it by 100
+to get a percentage of frequency.</p>
+<pre class="r"><code>MOrderProb_1 &lt;- slots4 %&gt;%
+  group_by(morphemes) %&gt;%
+  mutate(
+    total = sum(count),
+    one = (sum(count[slot == 1]) / total)*100
+  ) %&gt;%
+  ungroup()</code></pre>
+<ul>
+<li>The new object name is <code>MOrderProb_1</code> (morpheme
+probability in slot 1) from <code>slots4</code><br />
+</li>
+<li><code>group_by</code> groups individual items in the
+<code>morphemes</code> column.<br />
+</li>
+<li><code>mutate</code> creates two columns <code>total</code> and
+<code>one</code>.</li>
+<li><code>total</code> sums (<code>sum</code>) the number of each
+morpheme in the dataset based on the <code>count</code> column.<br />
+</li>
+<li><code>one</code> sums (<code>sum</code>) the number of each morpheme
+in the dataset that is found in <code>slot 1</code>
+(<code>slot == 1</code>). We then divide this by the value in the
+<code>total</code> column and times it by <code>100</code> to reach a
+probablity of appearing in slot 1.</li>
+<li>We then <code>ungroup</code> the groupings we created with
+<code>group_by</code>.<br />
+<br>
+<img src="NLP_images/Prob.jpg" alt="Analyzing the probablity of morphemes appearing in slot 1" width="400"/><br />
+<br></li>
+</ul>
+<p>Next, we subset where only data from slot one appears as we don’t
+care about the other slots.</p>
+<pre class="r"><code>MO_one=subset(MOrderProb_1, slot == 1)</code></pre>
+<ul>
+<li>Here, we take <code>MOrderProb_1</code> and take the probabilities
+from slot 1 only (<code>slot == 1</code>).<br />
+<br>
+<img src="NLP_images/Prob1.jpg" alt="Analyzing the probability of morphemes appearing only in slot 1" width="400"/><br />
+<br></li>
+</ul>
+<p>FINALLY, we’ll graph this data.</p>
+<pre class="r"><code>ggplot(MO_one, aes(x = fct_reorder(morphemes, one), y = one)) + 
+    geom_point(color = &quot;steelblue&quot;) +
+    coord_flip() +
+    labs(
+        title = &quot;Position one probability&quot;,
+        x = &quot;Morpheme&quot;,
+        y = &quot;Probability&quot;
+    ) +
+    theme_minimal(base_size = 12)</code></pre>
+<ul>
+<li>Here, we graph the data from <code>MO_one</code>.<br />
+</li>
+<li>In aesthetics (<code>aes</code>) we reorder the data descending from
+100 to 0 from the <code>one</code> column, and if the value is the same,
+alphabetically from the <code>morpheme</code> column. These appears
+<em>originally</em> on the x-axis.<br />
+</li>
+<li>We’re going to use points in the chart because bars were messing up
+when I tried. We use <code>geom_points</code> to do this. We’ve also set
+the <code>color</code> to hex code #7F09C8, which is a purple (Vivid
+Mulberry if that’s your thing).<br />
+</li>
+<li>The y-axis <em>originally</em> contains the numeric values from
+<code>one</code>.<br />
+</li>
+<li>However, we flip the coordinates for readability, hence
+<code>coord_flip()</code><br />
+</li>
+<li><code>labs()</code> contain the <code>title</code>, <code>x</code>
+and <code>y</code> labels.<br />
+</li>
+<li>Lastly, the theme is set to minimal (<code>theme_minimal</code>)
+with a base font size of 12. <br>
+<img src="NLP_images/ProbGraph.jpg" alt="Analyzing the probablity of morphemes appearing only in slot 1 visually" width="800"/><br />
+<br></li>
+</ul>
+<p><strong><em>That’s it!!</em></strong></p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

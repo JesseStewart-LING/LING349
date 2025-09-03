@@ -1,0 +1,698 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0.0
+xmax = 117.43
+tiers? <exists>
+size = 3
+item []:
+    item[1]:
+        class = "IntervalTier"
+        name = "Segmentación+IPA-AC"
+        xmin = 0.0
+        xmax = 117.43
+        intervals: size = 56
+        intervals [1]
+            xmin = 0.0
+            xmax = 1.82
+            text = ""
+        intervals [2]
+            xmin = 1.82
+            xmax = 3.75
+            text = "ʧagɾa-wa-ta simbɾa-ngapa=ka"
+        intervals [3]
+            xmin = 3.75
+            xmax = 4.74
+            text = ""
+        intervals [4]
+            xmin = 4.74
+            xmax = 5.93
+            text = "kaba-ʃpa"
+        intervals [5]
+            xmin = 5.93
+            xmax = 6.58
+            text = ""
+        intervals [6]
+            xmin = 6.58
+            xmax = 10.16
+            text = "ladeɾa-wa-kuna-ta=ka kaba-ʃpa planada-wa-ta=ka"
+        intervals [7]
+            xmin = 10.16
+            xmax = 10.66
+            text = ""
+        intervals [8]
+            xmin = 10.66
+            xmax = 11.83
+            text = "aɾa-ʃpa"
+        intervals [9]
+            xmin = 11.83
+            xmax = 12.1
+            text = ""
+        intervals [10]
+            xmin = 12.1
+            xmax = 15.38
+            text = "mingaiwata aziʃpaka boʐigowata mataʃpami"
+        intervals [11]
+            xmin = 15.38
+            xmax = 15.57
+            text = ""
+        intervals [12]
+            xmin = 15.57
+            xmax = 16.66
+            text = "komida-wa-ta"
+        intervals [13]
+            xmin = 16.66
+            xmax = 16.87
+            text = ""
+        intervals [14]
+            xmin = 16.87
+            xmax = 19.61
+            text = "almueɾso-wa-ta ese pion xente-wa-kuna-man=ka"
+        intervals [15]
+            xmin = 19.61
+            xmax = 19.74
+            text = ""
+        intervals [16]
+            xmin = 19.74
+            xmax = 22.43
+            text = "mingai-wa-ta azi-ʃpa=mi komi-nʧik ka-ɾka-nʧi"
+        intervals [17]
+            xmin = 22.43
+            xmax = 22.92
+            text = ""
+        intervals [18]
+            xmin = 22.92
+            xmax = 24.47
+            text = "di ai-manta=mi ja buelta"
+        intervals [19]
+            xmin = 24.47
+            xmax = 24.77
+            text = ""
+        intervals [20]
+            xmin = 24.77
+            xmax = 25.72
+            text = "maduɾa-kpi=ka"
+        intervals [21]
+            xmin = 25.72
+            xmax = 25.88
+            text = ""
+        intervals [22]
+            xmin = 25.88
+            xmax = 28.48
+            text = "tɾigo-wa-ta=ka koɾta-nka-ɾka-nʧi"
+        intervals [23]
+            xmin = 28.48
+            xmax = 29.04
+            text = ""
+        intervals [24]
+            xmin = 29.04
+            xmax = 34.84
+            text = "piun-wan ʧiʧa-go-wan moti-go-wan sibada-wa-ta=paʃ koɾta-nka-ɾka-nʧi	"
+        intervals [25]
+            xmin = 34.84
+            xmax = 35.29
+            text = ""
+        intervals [26]
+            xmin = 35.29
+            xmax = 38.818
+            text = "tɾigo-wa-ta=piʃ koɾta-nga mais-wan maduɾa-kpi=paʃ"
+        intervals [27]
+            xmin = 38.818
+            xmax = 39.11
+            text = ""
+        intervals [28]
+            xmin = 39.11
+            xmax = 41.79
+            text = "ʧiʧa-gu-ta azi-ʃpa moti-gu-ta azi-ʃpa=mi"
+        intervals [29]
+            xmin = 41.79
+            xmax = 41.98
+            text = ""
+        intervals [30]
+            xmin = 41.98
+            xmax = 44.85
+            text = "mingai-wa-ta azi-ʃpa gɾano-wa-ta ʐekogi-nka-ɾka-nʧi"
+        intervals [31]
+            xmin = 44.85
+            xmax = 45.47
+            text = ""
+        intervals [32]
+            xmin = 45.47
+            xmax = 49.26
+            text = "di ai-manta=mi ese gɾano-wa-ta kozina-ʃpa komi-nka-ɾka-nʧi"
+        intervals [33]
+            xmin = 49.26
+            xmax = 49.86
+            text = ""
+        intervals [34]
+            xmin = 49.86
+            xmax = 54.25
+            text = "piedɾa-gu-pi moli-ʃpa"
+        intervals [35]
+            xmin = 54.25
+            xmax = 54.36
+            text = ""
+        intervals [36]
+            xmin = 54.36
+            xmax = 57.66
+            text = "ese tɾigo-wa-ta=ka"
+        intervals [37]
+            xmin = 57.66
+            xmax = 57.84
+            text = ""
+        intervals [38]
+            xmin = 57.84
+            xmax = 61.61
+            text = "koznaʃpa kominkaɾkanʧi leʧiwan salwan"
+        intervals [39]
+            xmin = 61.61
+            xmax = 62.03
+            text = ""
+        intervals [40]
+            xmin = 62.03
+            xmax = 66.84
+            text = "aʐozfala-wa-ta=ka tostado tosta-ʃpa kaʒana-pi tosta-ʃpa"
+        intervals [41]
+            xmin = 66.84
+            xmax = 67.22
+            text = ""
+        intervals [42]
+            xmin = 67.22
+            xmax = 74.47
+            text = "di ai-manta=mi muli-nka-ɾka-nʧi piedɾa-pi piedɾa-pi moli-ʃpa=mi axiʧa-nka-ɾka-nʧi aɾneɾo-pi"
+        intervals [43]
+            xmin = 74.47
+            xmax = 74.89
+            text = ""
+        intervals [44]
+            xmin = 74.89
+            xmax = 76.89
+            text = "de ai-manta=mi kozina-nka-ɾka-nʧi"
+        intervals [45]
+            xmin = 76.89
+            xmax = 79.16
+            text = ""
+        intervals [46]
+            xmin = 79.16
+            xmax = 81.69
+            text = "atɾas kebɾada-manta awa-gu-ta kaɾga-mu-ʃpa"
+        intervals [47]
+            xmin = 81.69
+            xmax = 82.05
+            text = ""
+        intervals [48]
+            xmin = 82.05
+            xmax = 92.31
+            text = "ese kebɾadami koxiʃpaka biʐugota koxiʃpi ese biʐugowanmi koznaʃpa kominkaɾkanʧi aʐozfalagotaka i asimi kozeʧankaɾkanʧi"
+        intervals [49]
+            xmin = 92.31
+            xmax = 92.86
+            text = ""
+        intervals [50]
+            xmin = 92.86
+            xmax = 97.76
+            text = "ese gɾano-wa maduɾa-kpi=ka nosotɾos=ka kozeʧa-nka-ɾka-nʧi piun-wan"
+        intervals [51]
+            xmin = 97.76
+            xmax = 98.19
+            text = ""
+        intervals [52]
+            xmin = 98.19
+            xmax = 105.26
+            text = "piun-taka mingai-ta azi-ʃpa=mi kozeʧa-ɾka-nʧi mais-wa-ta mais-wa-ta koxi-ʃka xipa=ka"
+        intervals [53]
+            xmin = 105.26
+            xmax = 105.36
+            text = ""
+        intervals [54]
+            xmin = 105.36
+            xmax = 113.28
+            text = "oxa-wa-ta kaɾga-ʃpa=mi montona-nka-ɾka-nʧi wagɾa-wa-man komi-ʧi-ngapak gɾande monton-ta azi-ʃpa=mi"
+        intervals [55]
+            xmin = 113.28
+            xmax = 113.63
+            text = ""
+        intervals [56]
+            xmin = 113.63
+            xmax = 117.43
+            text = "aɲo enteɾo-pa=mi ese oxa-wa-ta=ka monto-na-nka-ɾka-nʧi"
+    item[2]:
+        class = "IntervalTier"
+        name = "Glosa-AC"
+        xmin = 0.0
+        xmax = 117.43
+        intervals: size = 56
+        intervals [1]
+            xmin = 0.0
+            xmax = 1.82
+            text = ""
+        intervals [2]
+            xmin = 1.82
+            xmax = 3.75
+            text = "chacra-DIM.wa-ACC sembrar-SS.PURP=TOP"
+        intervals [3]
+            xmin = 3.75
+            xmax = 4.74
+            text = ""
+        intervals [4]
+            xmin = 4.74
+            xmax = 5.93
+            text = "cavar-SS.CONV"
+        intervals [5]
+            xmin = 5.93
+            xmax = 6.58
+            text = ""
+        intervals [6]
+            xmin = 6.58
+            xmax = 10.16
+            text = "ladera-DIM.wa-PL-ACC=TOP cavar-SS.CONV planada//planicie-DIM.wa-ACC=TOP"
+        intervals [7]
+            xmin = 10.16
+            xmax = 10.66
+            text = ""
+        intervals [8]
+            xmin = 10.66
+            xmax = 11.83
+            text = "arar-SS.CONV"
+        intervals [9]
+            xmin = 11.83
+            xmax = 12.1
+            text = ""
+        intervals [10]
+            xmin = 12.1
+            xmax = 15.38
+            text = "mingai-wa-ta azi-ʃpa=ka boʐigo-wata mata-ʃpa=mi"
+        intervals [11]
+            xmin = 15.38
+            xmax = 15.57
+            text = ""
+        intervals [12]
+            xmin = 15.57
+            xmax = 16.66
+            text = "comida-DIM.wa-ACC"
+        intervals [13]
+            xmin = 16.66
+            xmax = 16.87
+            text = ""
+        intervals [14]
+            xmin = 16.87
+            xmax = 19.61
+            text = "almuerzo-DIM.wa-ACC ese peón//trabajador//empleada gente-DIM.wa-PL-DIR=TOP"
+        intervals [15]
+            xmin = 19.61
+            xmax = 19.74
+            text = ""
+        intervals [16]
+            xmin = 19.74
+            xmax = 22.43
+            text = "minga-DIM.wa-ACC hacer-SS.CONV=VAL comer-1p ser//estar-PST-1p"
+        intervals [17]
+            xmin = 22.43
+            xmax = 22.92
+            text = ""
+        intervals [18]
+            xmin = 22.92
+            xmax = 24.47
+            text = "de ahí-ABL=VAL ya en.cambio//otra.vez"
+        intervals [19]
+            xmin = 24.47
+            xmax = 24.77
+            text = ""
+        intervals [20]
+            xmin = 24.77
+            xmax = 25.72
+            text = "madurar-DS.CONV=TOP"
+        intervals [21]
+            xmin = 25.72
+            xmax = 25.88
+            text = ""
+        intervals [22]
+            xmin = 25.88
+            xmax = 28.48
+            text = "trigo-DIM.wa-ACC=TOP cortar-COND-PST-1p"
+        intervals [23]
+            xmin = 28.48
+            xmax = 29.04
+            text = ""
+        intervals [24]
+            xmin = 29.04
+            xmax = 34.84
+            text = "trabajador-INST chicha-DIM.gu-INST mote-DIM.gu-INST cebada-DIM.wa-ACC=CONJ cortar-COND-PST-1p"
+        intervals [25]
+            xmin = 34.84
+            xmax = 35.29
+            text = ""
+        intervals [26]
+            xmin = 35.29
+            xmax = 38.818
+            text = "trigo-DIM.wa-ACC=CONJ cortar-3.FUT maíz-INST madurar-DS.CONV=CONJ"
+        intervals [27]
+            xmin = 38.818
+            xmax = 39.11
+            text = ""
+        intervals [28]
+            xmin = 39.11
+            xmax = 41.79
+            text = "chicha-DIM.gu-ACC hacer-SS.CONV mote-DIM.gu-ACC hacer-SS.CONV=VAL"
+        intervals [29]
+            xmin = 41.79
+            xmax = 41.98
+            text = ""
+        intervals [30]
+            xmin = 41.98
+            xmax = 44.85
+            text = "minga-DIM.wa-ACC hacer-SS.CONV grano-DIM.wa-ACC recoger-COND-PST-1p"
+        intervals [31]
+            xmin = 44.85
+            xmax = 45.47
+            text = ""
+        intervals [32]
+            xmin = 45.47
+            xmax = 49.26
+            text = "de ahí-ABL=VAL ese grano-DIM.wa-ACC cocinar-SS.CONV comer-COND-PST-1p"
+        intervals [33]
+            xmin = 49.26
+            xmax = 49.86
+            text = ""
+        intervals [34]
+            xmin = 49.86
+            xmax = 54.25
+            text = "piedra-DIM.gu-LOC moler-SS.CONV"
+        intervals [35]
+            xmin = 54.25
+            xmax = 54.36
+            text = ""
+        intervals [36]
+            xmin = 54.36
+            xmax = 57.66
+            text = "ese trigo-DIM.wa-ACC=TOP"
+        intervals [37]
+            xmin = 57.66
+            xmax = 57.84
+            text = ""
+        intervals [38]
+            xmin = 57.84
+            xmax = 61.61
+            text = "kozna-ʃpa komi-nka-ɾka-nʧi leʧi-wan sal-wan"
+        intervals [39]
+            xmin = 61.61
+            xmax = 62.03
+            text = ""
+        intervals [40]
+            xmin = 62.03
+            xmax = 66.84
+            text = "arroz.de.cebada-DIM.wa-ACC=TOP tostado tostar-SS.CONV tiesto-LOC tostar-SS.CONV"
+        intervals [41]
+            xmin = 66.84
+            xmax = 67.22
+            text = ""
+        intervals [42]
+            xmin = 67.22
+            xmax = 74.47
+            text = "de ahí-ABL=VAL moler-COND-PST-1p piedra-LOC piedra-LOC moler-SS.CONV=VAL ahechar-COND-PST-1p harnero-LOC"
+        intervals [43]
+            xmin = 74.47
+            xmax = 74.89
+            text = ""
+        intervals [44]
+            xmin = 74.89
+            xmax = 76.89
+            text = "de ahí-ABL=VAL cocinar-COND-PST-1p"
+        intervals [45]
+            xmin = 76.89
+            xmax = 79.16
+            text = ""
+        intervals [46]
+            xmin = 79.16
+            xmax = 81.69
+            text = "tras quebrada-ABL agua-DIM.gu-ACC cargar-TRANS-SS.CONV"
+        intervals [47]
+            xmin = 81.69
+            xmax = 82.05
+            text = ""
+        intervals [48]
+            xmin = 82.05
+            xmax = 92.31
+            text = "ese kebɾada=mi koxi-ʃpa=ka biʐugo-ta koxiʃ-pi ese biʐugo-wanmi kozna-ʃpa komi-nka-ɾka-nʧi aʐozfala-gu-ta=ka i asi=mi kozeʧa-nka-ɾka-nʧi"
+        intervals [49]
+            xmin = 92.31
+            xmax = 92.86
+            text = ""
+        intervals [50]
+            xmin = 92.86
+            xmax = 97.76
+            text = "ese grano-DIM.wa madurar-DS.CONV=TOP nosotros=TOP cosechar-COND-PST-1p trabajador-INST"
+        intervals [51]
+            xmin = 97.76
+            xmax = 98.19
+            text = ""
+        intervals [52]
+            xmin = 98.19
+            xmax = 105.26
+            text = "trabajador minga-ACC hacer-SS.CONV=VAL cosechar-PST-1p maíz-DIM.wa-ACC maíz-DIM.wa-ACC coger-PERF después=TOP"
+        intervals [53]
+            xmin = 105.26
+            xmax = 105.36
+            text = ""
+        intervals [54]
+            xmin = 105.36
+            xmax = 113.28
+            text = "hoja-DIM.wa-ACC cargar-SS.CONV=VAL amontonar-COND-PST-1p vaca-DIM.wa-DIR comer-CAU-SS.PURP grande montón-ACC hacer-SS.CONV=VAL"
+        intervals [55]
+            xmin = 113.28
+            xmax = 113.63
+            text = ""
+        intervals [56]
+            xmin = 113.63
+            xmax = 117.43
+            text = "año entero-POSS//BEN=VAL ese hoja-DIM.wa-ACC=TOP amontonar-NOM.na-COND-PST-1p"
+    item[3]:
+        class = "IntervalTier"
+        name = "Anita"
+        xmin = 0.0
+        xmax = 117.43
+        intervals: size = 56
+        intervals [1]
+            xmin = 0.0
+            xmax = 1.82
+            text = ""
+        intervals [2]
+            xmin = 1.82
+            xmax = 3.75
+            text = "Chagrawata simbrangapaka"
+        intervals [3]
+            xmin = 3.75
+            xmax = 4.74
+            text = ""
+        intervals [4]
+            xmin = 4.74
+            xmax = 5.93
+            text = "cabashpa"
+        intervals [5]
+            xmin = 5.93
+            xmax = 6.58
+            text = ""
+        intervals [6]
+            xmin = 6.58
+            xmax = 10.16
+            text = "laderawakunataka cabashpa planadawataka"
+        intervals [7]
+            xmin = 10.16
+            xmax = 10.66
+            text = ""
+        intervals [8]
+            xmin = 10.66
+            xmax = 11.83
+            text = "arashpa"
+        intervals [9]
+            xmin = 11.83
+            xmax = 12.1
+            text = ""
+        intervals [10]
+            xmin = 12.1
+            xmax = 15.38
+            text = "mingaywata azishpaka, borrigowata matashpami"
+        intervals [11]
+            xmin = 15.38
+            xmax = 15.57
+            text = ""
+        intervals [12]
+            xmin = 15.57
+            xmax = 16.66
+            text = "comidawata"
+        intervals [13]
+            xmin = 16.66
+            xmax = 16.87
+            text = ""
+        intervals [14]
+            xmin = 16.87
+            xmax = 19.61
+            text = "almuersowata ese pion gentewakunamanka"
+        intervals [15]
+            xmin = 19.61
+            xmax = 19.74
+            text = ""
+        intervals [16]
+            xmin = 19.74
+            xmax = 22.43
+            text = "mingaywata azishpami cominchik karkanchi."
+        intervals [17]
+            xmin = 22.43
+            xmax = 22.92
+            text = ""
+        intervals [18]
+            xmin = 22.92
+            xmax = 24.47
+            text = "Di ahimantami ya vuelta"
+        intervals [19]
+            xmin = 24.47
+            xmax = 24.77
+            text = ""
+        intervals [20]
+            xmin = 24.77
+            xmax = 25.72
+            text = "maduracpica"
+        intervals [21]
+            xmin = 25.72
+            xmax = 25.88
+            text = ""
+        intervals [22]
+            xmin = 25.88
+            xmax = 28.48
+            text = "trigowataka cortankarkanchi"
+        intervals [23]
+            xmin = 28.48
+            xmax = 29.04
+            text = ""
+        intervals [24]
+            xmin = 29.04
+            xmax = 34.84
+            text = "piunwan, chichagowan motigowan cibadawatapash cortankarkanchi,"
+        intervals [25]
+            xmin = 34.84
+            xmax = 35.29
+            text = ""
+        intervals [26]
+            xmin = 35.29
+            xmax = 38.818
+            text = "trigowatapish cortanga. Maizwan madurakpipash"
+        intervals [27]
+            xmin = 38.818
+            xmax = 39.11
+            text = ""
+        intervals [28]
+            xmin = 39.11
+            xmax = 41.79
+            text = "chichagota azishpa motigota azishpami"
+        intervals [29]
+            xmin = 41.79
+            xmax = 41.98
+            text = ""
+        intervals [30]
+            xmin = 41.98
+            xmax = 44.85
+            text = "mingaywata azishpa granowata recoginkarkanchi."
+        intervals [31]
+            xmin = 44.85
+            xmax = 45.47
+            text = ""
+        intervals [32]
+            xmin = 45.47
+            xmax = 49.26
+            text = "Di ahimantami ese granowata cozinashpa cominkarkanchi."
+        intervals [33]
+            xmin = 49.26
+            xmax = 49.86
+            text = ""
+        intervals [34]
+            xmin = 49.86
+            xmax = 54.25
+            text = "piedragopi molishpa."
+        intervals [35]
+            xmin = 54.25
+            xmax = 54.36
+            text = ""
+        intervals [36]
+            xmin = 54.36
+            xmax = 57.66
+            text = "Ese trigowataka"
+        intervals [37]
+            xmin = 57.66
+            xmax = 57.84
+            text = ""
+        intervals [38]
+            xmin = 57.84
+            xmax = 61.61
+            text = "coznashpa cominkarkanchi. Lechiwan salwan,"
+        intervals [39]
+            xmin = 61.61
+            xmax = 62.03
+            text = ""
+        intervals [40]
+            xmin = 62.03
+            xmax = 66.84
+            text = "arrozfalawataca tostado tostashpa kallanapi tostashpa"
+        intervals [41]
+            xmin = 66.84
+            xmax = 67.22
+            text = ""
+        intervals [42]
+            xmin = 67.22
+            xmax = 74.47
+            text = "Di ahimantami mulinkarkanchi piedrapi. Piedrapi molishpami ajichankarkanchi arneropi."
+        intervals [43]
+            xmin = 74.47
+            xmax = 74.89
+            text = ""
+        intervals [44]
+            xmin = 74.89
+            xmax = 76.89
+            text = "Di ahimantami cozinankarkanchi."
+        intervals [45]
+            xmin = 76.89
+            xmax = 79.16
+            text = ""
+        intervals [46]
+            xmin = 79.16
+            xmax = 81.69
+            text = "Atras quebradamanta aguagota cargamushpa."
+        intervals [47]
+            xmin = 81.69
+            xmax = 82.05
+            text = ""
+        intervals [48]
+            xmin = 82.05
+            xmax = 92.31
+            text = "Ese quebradami cojishpaka birrugota cojishpi, ese birrugowanmi coznashpa cominkarkanchi arrozfalagotaka. Y asimi cozechankarkanchi."
+        intervals [49]
+            xmin = 92.31
+            xmax = 92.86
+            text = ""
+        intervals [50]
+            xmin = 92.86
+            xmax = 97.76
+            text = "Ese granowa madurakpika nosotroska cozechankarkanchi piunwan."
+        intervals [51]
+            xmin = 97.76
+            xmax = 98.19
+            text = ""
+        intervals [52]
+            xmin = 98.19
+            xmax = 105.26
+            text = "Piuntaka mingayta azishpami cozecharkanchi maizwata. Maizwata cogishka jipaka"
+        intervals [53]
+            xmin = 105.26
+            xmax = 105.36
+            text = ""
+        intervals [54]
+            xmin = 105.36
+            xmax = 113.28
+            text = "Hojawata cargashpami montonankarkanchi wagrawaman comichingapak. Grande montonta azishpami."
+        intervals [55]
+            xmin = 113.28
+            xmax = 113.63
+            text = ""
+        intervals [56]
+            xmin = 113.63
+            xmax = 117.43
+            text = "Año enteropami ese hojawataka montonankarkanchi."

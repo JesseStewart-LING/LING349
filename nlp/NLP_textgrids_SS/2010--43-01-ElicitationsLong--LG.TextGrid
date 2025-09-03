@@ -1,0 +1,6523 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0.0
+xmax = 508.844
+tiers? <exists>
+size = 8
+item []:
+    item[1]:
+        class = "IntervalTier"
+        name = "Oración Elicitada-LG"
+        xmin = 0.0
+        xmax = 508.844
+        intervals: size = 202
+        intervals [1]
+            xmin = 0.0
+            xmax = 3.24
+            text = ""
+        intervals [2]
+            xmin = 3.24
+            xmax = 7.28
+            text = "Cuántos años tiene?"
+        intervals [3]
+            xmin = 7.28
+            xmax = 10.77
+            text = ""
+        intervals [4]
+            xmin = 10.77
+            xmax = 13.97
+            text = "Como se llama usted?"
+        intervals [5]
+            xmin = 13.97
+            xmax = 15.241
+            text = ""
+        intervals [6]
+            xmin = 15.241
+            xmax = 16.786
+            text = "yo como"
+        intervals [7]
+            xmin = 16.786
+            xmax = 17.552
+            text = ""
+        intervals [8]
+            xmin = 17.552
+            xmax = 19.002
+            text = "tu comes"
+        intervals [9]
+            xmin = 19.002
+            xmax = 20.136
+            text = ""
+        intervals [10]
+            xmin = 20.136
+            xmax = 21.488
+            text = "él/ella come"
+        intervals [11]
+            xmin = 21.488
+            xmax = 22.74
+            text = ""
+        intervals [12]
+            xmin = 22.74
+            xmax = 24.9
+            text = "nosotros comemos"
+        intervals [13]
+            xmin = 24.9
+            xmax = 27.204
+            text = ""
+        intervals [14]
+            xmin = 27.204
+            xmax = 28.81
+            text = "ustedes comen"
+        intervals [15]
+            xmin = 28.81
+            xmax = 30.236
+            text = ""
+        intervals [16]
+            xmin = 30.236
+            xmax = 31.696
+            text = "ellos/ellas comen"
+        intervals [17]
+            xmin = 31.696
+            xmax = 34.967
+            text = ""
+        intervals [18]
+            xmin = 34.967
+            xmax = 36.275
+            text = "yo comí"
+        intervals [19]
+            xmin = 36.275
+            xmax = 38.775
+            text = ""
+        intervals [20]
+            xmin = 38.775
+            xmax = 40.508
+            text = "tu comiste"
+        intervals [21]
+            xmin = 40.508
+            xmax = 41.786
+            text = ""
+        intervals [22]
+            xmin = 41.786
+            xmax = 43.251
+            text = "él/ella comio"
+        intervals [23]
+            xmin = 43.251
+            xmax = 44.885
+            text = ""
+        intervals [24]
+            xmin = 44.885
+            xmax = 46.833
+            text = "nosotros comemos"
+        intervals [25]
+            xmin = 46.833
+            xmax = 50.53
+            text = ""
+        intervals [26]
+            xmin = 50.53
+            xmax = 51.945
+            text = "ustedes comieron"
+        intervals [27]
+            xmin = 51.945
+            xmax = 55.749
+            text = ""
+        intervals [28]
+            xmin = 55.749
+            xmax = 57.152
+            text = "ellos/ellas comieron"
+        intervals [29]
+            xmin = 57.152
+            xmax = 60.418
+            text = ""
+        intervals [30]
+            xmin = 60.418
+            xmax = 61.699
+            text = "yo amaré"
+        intervals [31]
+            xmin = 61.699
+            xmax = 64.817
+            text = ""
+        intervals [32]
+            xmin = 64.817
+            xmax = 65.966
+            text = "tu amarás"
+        intervals [33]
+            xmin = 65.966
+            xmax = 67.727
+            text = ""
+        intervals [34]
+            xmin = 67.727
+            xmax = 69.082
+            text = "él/ella amará"
+        intervals [35]
+            xmin = 69.082
+            xmax = 70.824
+            text = ""
+        intervals [36]
+            xmin = 70.824
+            xmax = 72.681
+            text = "nosotros amaremos"
+        intervals [37]
+            xmin = 72.681
+            xmax = 75.28
+            text = ""
+        intervals [38]
+            xmin = 75.28
+            xmax = 77.49
+            text = "ustedes amarán"
+        intervals [39]
+            xmin = 77.49
+            xmax = 79.19
+            text = ""
+        intervals [40]
+            xmin = 79.19
+            xmax = 80.83
+            text = "ellos/ellas amarán"
+        intervals [41]
+            xmin = 80.83
+            xmax = 84.962
+            text = ""
+        intervals [42]
+            xmin = 84.962
+            xmax = 87.965
+            text = "yo saldré corriendo para recibirle, cuando usted venga."
+        intervals [43]
+            xmin = 87.965
+            xmax = 92.57
+            text = ""
+        intervals [44]
+            xmin = 92.57
+            xmax = 97.07
+            text = "habiendo comido el almuerzo, yo fui a la casa"
+        intervals [45]
+            xmin = 97.07
+            xmax = 100.166
+            text = ""
+        intervals [46]
+            xmin = 100.166
+            xmax = 102.999
+            text = "hemos encontrado a tu hermana comprando"
+        intervals [47]
+            xmin = 102.999
+            xmax = 106.65
+            text = ""
+        intervals [48]
+            xmin = 106.65
+            xmax = 110.025
+            text = "Estas cansado, pues descansa."
+        intervals [49]
+            xmin = 110.025
+            xmax = 113.442
+            text = ""
+        intervals [50]
+            xmin = 113.442
+            xmax = 115.199
+            text = "Cuando el venga me avisas."
+        intervals [51]
+            xmin = 115.199
+            xmax = 117.524
+            text = ""
+        intervals [52]
+            xmin = 117.524
+            xmax = 119.308
+            text = "quiero dormir"
+        intervals [53]
+            xmin = 119.308
+            xmax = 121.37
+            text = ""
+        intervals [54]
+            xmin = 121.37
+            xmax = 123.709
+            text = "quieres dormir"
+        intervals [55]
+            xmin = 123.709
+            xmax = 126.597
+            text = ""
+        intervals [56]
+            xmin = 126.597
+            xmax = 128.135
+            text = "el quiere comer"
+        intervals [57]
+            xmin = 128.135
+            xmax = 130.185
+            text = ""
+        intervals [58]
+            xmin = 130.185
+            xmax = 132.771
+            text = "queremos comer"
+        intervals [59]
+            xmin = 132.771
+            xmax = 135.539
+            text = ""
+        intervals [60]
+            xmin = 135.539
+            xmax = 138.526
+            text = "ustedes quieren jugar"
+        intervals [61]
+            xmin = 138.526
+            xmax = 140.981
+            text = ""
+        intervals [62]
+            xmin = 140.981
+            xmax = 142.996
+            text = "ellos quieren jugar"
+        intervals [63]
+            xmin = 142.996
+            xmax = 145.008
+            text = ""
+        intervals [64]
+            xmin = 145.008
+            xmax = 146.555
+            text = "Mi perro es el más negro."
+        intervals [65]
+            xmin = 146.555
+            xmax = 149.6
+            text = ""
+        intervals [66]
+            xmin = 149.6
+            xmax = 152.094
+            text = "Mi casa es tan nueva como la tuya."
+        intervals [67]
+            xmin = 152.094
+            xmax = 155.651
+            text = ""
+        intervals [68]
+            xmin = 155.651
+            xmax = 159.669
+            text = "El arból es más grande que el maiz."
+        intervals [69]
+            xmin = 159.669
+            xmax = 161.807
+            text = ""
+        intervals [70]
+            xmin = 161.807
+            xmax = 164.7
+            text = "Mi auto es más grande que el tuyo."
+        intervals [71]
+            xmin = 164.7
+            xmax = 171.186
+            text = ""
+        intervals [72]
+            xmin = 171.186
+            xmax = 174.433
+            text = "En la noche veo la tele antes de dormir."
+        intervals [73]
+            xmin = 174.433
+            xmax = 178.363
+            text = ""
+        intervals [74]
+            xmin = 178.363
+            xmax = 180.328
+            text = "Ya que escribiste mal bórralo."
+        intervals [75]
+            xmin = 180.328
+            xmax = 184.215
+            text = ""
+        intervals [76]
+            xmin = 184.215
+            xmax = 189.219
+            text = "yo fui a la casa de él para que (me) hace ver la sementera."
+        intervals [77]
+            xmin = 189.219
+            xmax = 192.001
+            text = ""
+        intervals [78]
+            xmin = 192.001
+            xmax = 194.068
+            text = "Quieres o no tienes que hacerlo."
+        intervals [79]
+            xmin = 194.068
+            xmax = 231.989
+            text = ""
+        intervals [80]
+            xmin = 231.989
+            xmax = 236.217
+            text = "el terreno fue hermoso"
+        intervals [81]
+            xmin = 236.217
+            xmax = 243.19
+            text = ""
+        intervals [82]
+            xmin = 243.19
+            xmax = 245.1
+            text = "la montaña es grande"
+        intervals [83]
+            xmin = 245.1
+            xmax = 247.154
+            text = ""
+        intervals [84]
+            xmin = 247.154
+            xmax = 249.166
+            text = "la vela está quemando"
+        intervals [85]
+            xmin = 249.166
+            xmax = 250.826
+            text = ""
+        intervals [86]
+            xmin = 250.826
+            xmax = 253.166
+            text = "el agua está fría"
+        intervals [87]
+            xmin = 253.166
+            xmax = 259.999
+            text = ""
+        intervals [88]
+            xmin = 259.999
+            xmax = 262.39
+            text = "la nube es blanca"
+        intervals [89]
+            xmin = 262.39
+            xmax = 265.429
+            text = ""
+        intervals [90]
+            xmin = 265.429
+            xmax = 269.461
+            text = "Yo amo a mi papa."
+        intervals [91]
+            xmin = 269.461
+            xmax = 273.547
+            text = ""
+        intervals [92]
+            xmin = 273.547
+            xmax = 276.891
+            text = "Yo soy amado por mi papá."
+        intervals [93]
+            xmin = 276.891
+            xmax = 280.732
+            text = ""
+        intervals [94]
+            xmin = 280.732
+            xmax = 284.653
+            text = "El gobierno dio computadores a las escuelas."
+        intervals [95]
+            xmin = 284.653
+            xmax = 289.83
+            text = ""
+        intervals [96]
+            xmin = 289.83
+            xmax = 295.208
+            text = "Los computadores fueron dados a las escuelas por el gobierno."
+        intervals [97]
+            xmin = 295.208
+            xmax = 303.903
+            text = ""
+        intervals [98]
+            xmin = 303.903
+            xmax = 305.463
+            text = "yo"
+        intervals [99]
+            xmin = 305.463
+            xmax = 308.355
+            text = ""
+        intervals [100]
+            xmin = 308.355
+            xmax = 309.27
+            text = "tú"
+        intervals [101]
+            xmin = 309.27
+            xmax = 310.28
+            text = ""
+        intervals [102]
+            xmin = 310.28
+            xmax = 310.99
+            text = "él"
+        intervals [103]
+            xmin = 310.99
+            xmax = 312.65
+            text = ""
+        intervals [104]
+            xmin = 312.65
+            xmax = 314.029
+            text = "nosotros"
+        intervals [105]
+            xmin = 314.029
+            xmax = 315.444
+            text = ""
+        intervals [106]
+            xmin = 315.444
+            xmax = 316.504
+            text = "ustedes"
+        intervals [107]
+            xmin = 316.504
+            xmax = 317.495
+            text = ""
+        intervals [108]
+            xmin = 317.495
+            xmax = 318.505
+            text = "ellos"
+        intervals [109]
+            xmin = 318.505
+            xmax = 319.61
+            text = ""
+        intervals [110]
+            xmin = 319.61
+            xmax = 320.56
+            text = "este"
+        intervals [111]
+            xmin = 320.56
+            xmax = 321.818
+            text = ""
+        intervals [112]
+            xmin = 321.818
+            xmax = 322.628
+            text = "ese, aquel"
+        intervals [113]
+            xmin = 322.628
+            xmax = 324.255
+            text = ""
+        intervals [114]
+            xmin = 324.255
+            xmax = 325.404
+            text = "aquí"
+        intervals [115]
+            xmin = 325.404
+            xmax = 326.42
+            text = ""
+        intervals [116]
+            xmin = 326.42
+            xmax = 327.36
+            text = "ahí"
+        intervals [117]
+            xmin = 327.36
+            xmax = 328.55
+            text = ""
+        intervals [118]
+            xmin = 328.55
+            xmax = 329.42
+            text = "quien"
+        intervals [119]
+            xmin = 329.42
+            xmax = 330.232
+            text = ""
+        intervals [120]
+            xmin = 330.232
+            xmax = 330.852
+            text = "que"
+        intervals [121]
+            xmin = 330.852
+            xmax = 331.471
+            text = ""
+        intervals [122]
+            xmin = 331.471
+            xmax = 332.181
+            text = "donde"
+        intervals [123]
+            xmin = 332.181
+            xmax = 333.161
+            text = ""
+        intervals [124]
+            xmin = 333.161
+            xmax = 333.761
+            text = "cuando"
+        intervals [125]
+            xmin = 333.761
+            xmax = 337.066
+            text = ""
+        intervals [126]
+            xmin = 337.066
+            xmax = 338.27
+            text = "estas bien?"
+        intervals [127]
+            xmin = 338.27
+            xmax = 340.246
+            text = ""
+        intervals [128]
+            xmin = 340.246
+            xmax = 342.16
+            text = "buenos días"
+        intervals [129]
+            xmin = 342.16
+            xmax = 343.936
+            text = ""
+        intervals [130]
+            xmin = 343.936
+            xmax = 345.126
+            text = "buenas tardes"
+        intervals [131]
+            xmin = 345.126
+            xmax = 346.528
+            text = ""
+        intervals [132]
+            xmin = 346.528
+            xmax = 347.728
+            text = "Buenas noches."
+        intervals [133]
+            xmin = 347.728
+            xmax = 349.074
+            text = ""
+        intervals [134]
+            xmin = 349.074
+            xmax = 351.08
+            text = "hasta mañana"
+        intervals [135]
+            xmin = 351.08
+            xmax = 352.623
+            text = ""
+        intervals [136]
+            xmin = 352.623
+            xmax = 353.495
+            text = "Hasta mañana."
+        intervals [137]
+            xmin = 353.495
+            xmax = 356.021
+            text = ""
+        intervals [138]
+            xmin = 356.021
+            xmax = 356.841
+            text = "hasta luego"
+        intervals [139]
+            xmin = 356.841
+            xmax = 357.692
+            text = ""
+        intervals [140]
+            xmin = 357.692
+            xmax = 358.522
+            text = "gracias"
+        intervals [141]
+            xmin = 358.522
+            xmax = 360.037
+            text = ""
+        intervals [142]
+            xmin = 360.037
+            xmax = 361.403
+            text = "Como te llamas?"
+        intervals [143]
+            xmin = 361.403
+            xmax = 362.984
+            text = ""
+        intervals [144]
+            xmin = 362.984
+            xmax = 364.523
+            text = "Como estas?"
+        intervals [145]
+            xmin = 364.523
+            xmax = 365.867
+            text = ""
+        intervals [146]
+            xmin = 365.867
+            xmax = 367.159
+            text = "Yo estoy bien."
+        intervals [147]
+            xmin = 367.159
+            xmax = 370.14
+            text = ""
+        intervals [148]
+            xmin = 370.14
+            xmax = 371.796
+            text = "Yo estoy más o menos."
+        intervals [149]
+            xmin = 371.796
+            xmax = 373.115
+            text = ""
+        intervals [150]
+            xmin = 373.115
+            xmax = 374.477
+            text = "Estoy enfermo."
+        intervals [151]
+            xmin = 374.477
+            xmax = 375.693
+            text = ""
+        intervals [152]
+            xmin = 375.693
+            xmax = 377.113
+            text = "No estoy bien."
+        intervals [153]
+            xmin = 377.113
+            xmax = 378.483
+            text = ""
+        intervals [154]
+            xmin = 378.483
+            xmax = 379.807
+            text = "Estoy cansado."
+        intervals [155]
+            xmin = 379.807
+            xmax = 381.032
+            text = ""
+        intervals [156]
+            xmin = 381.032
+            xmax = 382.552
+            text = "Estoy enojado."
+        intervals [157]
+            xmin = 382.552
+            xmax = 383.903
+            text = ""
+        intervals [158]
+            xmin = 383.903
+            xmax = 385.123
+            text = "Estoy con frío."
+        intervals [159]
+            xmin = 385.123
+            xmax = 386.516
+            text = ""
+        intervals [160]
+            xmin = 386.516
+            xmax = 387.927
+            text = "Estoy con calor."
+        intervals [161]
+            xmin = 387.927
+            xmax = 389.778
+            text = ""
+        intervals [162]
+            xmin = 389.778
+            xmax = 391.559
+            text = "cada (cada uno habla kichwa)"
+        intervals [163]
+            xmin = 391.559
+            xmax = 393.966
+            text = ""
+        intervals [164]
+            xmin = 393.966
+            xmax = 395.409
+            text = "casi (estoy casi alla)"
+        intervals [165]
+            xmin = 395.409
+            xmax = 396.896
+            text = ""
+        intervals [166]
+            xmin = 396.896
+            xmax = 398.807
+            text = "al frente (la tienda esta al frente)"
+        intervals [167]
+            xmin = 398.807
+            xmax = 400.891
+            text = ""
+        intervals [168]
+            xmin = 400.891
+            xmax = 402.46
+            text = "atrás, tras (la tienda esta atras)"
+        intervals [169]
+            xmin = 402.46
+            xmax = 404.224
+            text = ""
+        intervals [170]
+            xmin = 404.224
+            xmax = 406.462
+            text = "afuera (mi hija esta afuera)"
+        intervals [171]
+            xmin = 406.462
+            xmax = 408.118
+            text = ""
+        intervals [172]
+            xmin = 408.118
+            xmax = 410.066
+            text = "dentro (mi familia esta adentro)"
+        intervals [173]
+            xmin = 410.066
+            xmax = 413.11
+            text = ""
+        intervals [174]
+            xmin = 413.11
+            xmax = 415.365
+            text = "mañana (mañana voy a dormir tarde)"
+        intervals [175]
+            xmin = 415.365
+            xmax = 417.237
+            text = ""
+        intervals [176]
+            xmin = 417.237
+            xmax = 419.234
+            text = "Ayer (ayer me fui a la cuidad)"
+        intervals [177]
+            xmin = 419.234
+            xmax = 424.789
+            text = ""
+        intervals [178]
+            xmin = 424.789
+            xmax = 428.417
+            text = "antes (antes de cosinar yo lavo las manos)"
+        intervals [179]
+            xmin = 428.417
+            xmax = 432.262
+            text = ""
+        intervals [180]
+            xmin = 432.262
+            xmax = 435.519
+            text = "después (despues de la fiesta me fui a la casa)"
+        intervals [181]
+            xmin = 435.519
+            xmax = 438.304
+            text = ""
+        intervals [182]
+            xmin = 438.304
+            xmax = 440.709
+            text = "siempre (la gente viene aquí siempre)"
+        intervals [183]
+            xmin = 440.709
+            xmax = 443.91
+            text = ""
+        intervals [184]
+            xmin = 443.91
+            xmax = 446.182
+            text = "nunca (yo nunca hago mis deberes)"
+        intervals [185]
+            xmin = 446.182
+            xmax = 448.707
+            text = ""
+        intervals [186]
+            xmin = 448.707
+            xmax = 451.47
+            text = "bastante (y tengo bastante deberes)"
+        intervals [187]
+            xmin = 451.47
+            xmax = 454.002
+            text = ""
+        intervals [188]
+            xmin = 454.002
+            xmax = 455.878
+            text = "poquito"
+        intervals [189]
+            xmin = 455.878
+            xmax = 478.09
+            text = ""
+        intervals [190]
+            xmin = 478.09
+            xmax = 482.52
+            text = "más (usted puede hablar más despacio)"
+        intervals [191]
+            xmin = 482.52
+            xmax = 485.801
+            text = ""
+        intervals [192]
+            xmin = 485.801
+            xmax = 488.5
+            text = "demasiado (estoy demasiado cansado)"
+        intervals [193]
+            xmin = 488.5
+            xmax = 489.747
+            text = ""
+        intervals [194]
+            xmin = 489.747
+            xmax = 491.935
+            text = "muy (estoy muy cansado)"
+        intervals [195]
+            xmin = 491.935
+            xmax = 496.112
+            text = ""
+        intervals [196]
+            xmin = 496.112
+            xmax = 496.995
+            text = "así mismo"
+        intervals [197]
+            xmin = 496.995
+            xmax = 498.986
+            text = ""
+        intervals [198]
+            xmin = 498.986
+            xmax = 501.878
+            text = "varios (hay varios personas aquí)"
+        intervals [199]
+            xmin = 501.878
+            xmax = 503.734
+            text = ""
+        intervals [200]
+            xmin = 503.734
+            xmax = 504.777
+            text = "así (así es)"
+        intervals [201]
+            xmin = 504.777
+            xmax = 506.563
+            text = ""
+        intervals [202]
+            xmin = 506.563
+            xmax = 508.844
+            text = "algunos (hay aglunos personas aquí)"
+    item[2]:
+        class = "IntervalTier"
+        name = "Lucia"
+        xmin = 0.0
+        xmax = 508.844
+        intervals: size = 202
+        intervals [1]
+            xmin = 0.0
+            xmax = 3.24
+            text = ""
+        intervals [2]
+            xmin = 3.24
+            xmax = 7.28
+            text = "Mio edadmi 39 añota teneni"
+        intervals [3]
+            xmin = 7.28
+            xmax = 10.77
+            text = ""
+        intervals [4]
+            xmin = 10.77
+            xmax = 13.97
+            text = "Mio nombremi kapan Lucia Gonza."
+        intervals [5]
+            xmin = 13.97
+            xmax = 15.241
+            text = ""
+        intervals [6]
+            xmin = 15.241
+            xmax = 16.786
+            text = "Yuca comijunimi."
+        intervals [7]
+            xmin = 16.786
+            xmax = 17.552
+            text = ""
+        intervals [8]
+            xmin = 17.552
+            xmax = 19.002
+            text = "Vosca comijunguimi."
+        intervals [9]
+            xmin = 19.002
+            xmax = 20.136
+            text = ""
+        intervals [10]
+            xmin = 20.136
+            xmax = 21.488
+            text = "Elca comijunmi."
+        intervals [11]
+            xmin = 21.488
+            xmax = 22.74
+            text = ""
+        intervals [12]
+            xmin = 22.74
+            xmax = 24.9
+            text = "Ñucanchica cominajonchimi."
+        intervals [13]
+            xmin = 24.9
+            xmax = 27.204
+            text = ""
+        intervals [14]
+            xmin = 27.204
+            xmax = 28.81
+            text = "Voscuna cominajunguichi."
+        intervals [15]
+            xmin = 28.81
+            xmax = 30.236
+            text = ""
+        intervals [16]
+            xmin = 30.236
+            xmax = 31.696
+            text = "Elcuna cominajun."
+        intervals [17]
+            xmin = 31.696
+            xmax = 34.967
+            text = ""
+        intervals [18]
+            xmin = 34.967
+            xmax = 36.275
+            text = "Yu comircani (otro diaca yu comircani)."
+        intervals [19]
+            xmin = 36.275
+            xmax = 38.775
+            text = ""
+        intervals [20]
+            xmin = 38.775
+            xmax = 40.508
+            text = "Vos comircangui."
+        intervals [21]
+            xmin = 40.508
+            xmax = 41.786
+            text = ""
+        intervals [22]
+            xmin = 41.786
+            xmax = 43.251
+            text = "Elcuna comirca."
+        intervals [23]
+            xmin = 43.251
+            xmax = 44.885
+            text = ""
+        intervals [24]
+            xmin = 44.885
+            xmax = 46.833
+            text = "Nucanchi comircanchi (otro dia comircanchi)."
+        intervals [25]
+            xmin = 46.833
+            xmax = 50.53
+            text = ""
+        intervals [26]
+            xmin = 50.53
+            xmax = 51.945
+            text = "Voscuna comircanguichi (otro dia)."
+        intervals [27]
+            xmin = 51.945
+            xmax = 55.749
+            text = ""
+        intervals [28]
+            xmin = 55.749
+            xmax = 57.152
+            text = "Elcuna comirca."
+        intervals [29]
+            xmin = 57.152
+            xmax = 60.418
+            text = ""
+        intervals [30]
+            xmin = 60.418
+            xmax = 61.699
+            text = "Yo comircani."
+        intervals [31]
+            xmin = 61.699
+            xmax = 64.817
+            text = ""
+        intervals [32]
+            xmin = 64.817
+            xmax = 65.966
+            text = "Vos comingui."
+        intervals [33]
+            xmin = 65.966
+            xmax = 67.727
+            text = ""
+        intervals [34]
+            xmin = 67.727
+            xmax = 69.082
+            text = "Elca cominga."
+        intervals [35]
+            xmin = 69.082
+            xmax = 70.824
+            text = ""
+        intervals [36]
+            xmin = 70.824
+            xmax = 72.681
+            text = "Nosotrosca comishunmi (nucanchica comishunmi.)"
+        intervals [37]
+            xmin = 72.681
+            xmax = 75.28
+            text = ""
+        intervals [38]
+            xmin = 75.28
+            xmax = 77.49
+            text = "Voscuna cominguichimi."
+        intervals [39]
+            xmin = 77.49
+            xmax = 79.19
+            text = ""
+        intervals [40]
+            xmin = 79.19
+            xmax = 80.83
+            text = "Elcuna comingami."
+        intervals [41]
+            xmin = 80.83
+            xmax = 84.962
+            text = ""
+        intervals [42]
+            xmin = 84.962
+            xmax = 87.965
+            text = "Yo corrishpa salisha recibingapa voscunata."
+        intervals [43]
+            xmin = 87.965
+            xmax = 92.57
+            text = ""
+        intervals [44]
+            xmin = 92.57
+            xmax = 97.07
+            text = "Comida abicpi comircani casapi…yu casaman ircani."
+        intervals [45]
+            xmin = 97.07
+            xmax = 100.166
+            text = ""
+        intervals [46]
+            xmin = 100.166
+            xmax = 102.999
+            text = "Mi hermana tendapi comprajurca."
+        intervals [47]
+            xmin = 102.999
+            xmax = 106.65
+            text = ""
+        intervals [48]
+            xmin = 106.65
+            xmax = 110.025
+            text = "Cansashcachu cangui descansey."
+        intervals [49]
+            xmin = 110.025
+            xmax = 113.442
+            text = ""
+        intervals [50]
+            xmin = 113.442
+            xmax = 115.199
+            text = "El vinicpe avisawangui."
+        intervals [51]
+            xmin = 115.199
+            xmax = 117.524
+            text = ""
+        intervals [52]
+            xmin = 117.524
+            xmax = 119.308
+            text = "Yo dorminata kirini."
+        intervals [53]
+            xmin = 119.308
+            xmax = 121.37
+            text = ""
+        intervals [54]
+            xmin = 121.37
+            xmax = 123.709
+            text = "El dorminata kirin."
+        intervals [55]
+            xmin = 123.709
+            xmax = 126.597
+            text = ""
+        intervals [56]
+            xmin = 126.597
+            xmax = 128.135
+            text = "El cominata kirin."
+        intervals [57]
+            xmin = 128.135
+            xmax = 130.185
+            text = ""
+        intervals [58]
+            xmin = 130.185
+            xmax = 132.771
+            text = "Nosotros cominata kirinchi."
+        intervals [59]
+            xmin = 132.771
+            xmax = 135.539
+            text = ""
+        intervals [60]
+            xmin = 135.539
+            xmax = 138.526
+            text = "Voscuna juganata kiringuichi."
+        intervals [61]
+            xmin = 138.526
+            xmax = 140.981
+            text = ""
+        intervals [62]
+            xmin = 140.981
+            xmax = 142.996
+            text = "Elcuna juganata kirin."
+        intervals [63]
+            xmin = 142.996
+            xmax = 145.008
+            text = ""
+        intervals [64]
+            xmin = 145.008
+            xmax = 146.555
+            text = "Miu alcu grande."
+        intervals [65]
+            xmin = 146.555
+            xmax = 149.6
+            text = ""
+        intervals [66]
+            xmin = 149.6
+            xmax = 152.094
+            text = "Miu casaca nuevomi vospashna."
+        intervals [67]
+            xmin = 152.094
+            xmax = 155.651
+            text = ""
+        intervals [68]
+            xmin = 155.651
+            xmax = 159.669
+            text = "Ese ucaliptoca grande grandemi más que maiz."
+        intervals [69]
+            xmin = 159.669
+            xmax = 161.807
+            text = ""
+        intervals [70]
+            xmin = 161.807
+            xmax = 164.7
+            text = "Mio carroca más grandemi vospashna."
+        intervals [71]
+            xmin = 164.7
+            xmax = 171.186
+            text = ""
+        intervals [72]
+            xmin = 171.186
+            xmax = 174.433
+            text = "denoche yuca televisiontami vini antes de dormir."
+        intervals [73]
+            xmin = 174.433
+            xmax = 178.363
+            text = ""
+        intervals [74]
+            xmin = 178.363
+            xmax = 180.328
+            text = "Mal escribishcangui borray."
+        intervals [75]
+            xmin = 180.328
+            xmax = 184.215
+            text = ""
+        intervals [76]
+            xmin = 184.215
+            xmax = 189.219
+            text = "Elpax casami ircani (sementerata) llanuta vengapa."
+        intervals [77]
+            xmin = 189.219
+            xmax = 192.001
+            text = ""
+        intervals [78]
+            xmin = 192.001
+            xmax = 194.068
+            text = "quera o no quera hazingui."
+        intervals [79]
+            xmin = 194.068
+            xmax = 231.989
+            text = ""
+        intervals [80]
+            xmin = 231.989
+            xmax = 236.217
+            text = "Mio terrenoca bonitomi carca."
+        intervals [81]
+            xmin = 236.217
+            xmax = 243.19
+            text = ""
+        intervals [82]
+            xmin = 243.19
+            xmax = 245.1
+            text = "Ese serroca grandimi."
+        intervals [83]
+            xmin = 245.1
+            xmax = 247.154
+            text = ""
+        intervals [84]
+            xmin = 247.154
+            xmax = 249.166
+            text = "Esperma kemajun."
+        intervals [85]
+            xmin = 249.166
+            xmax = 250.826
+            text = ""
+        intervals [86]
+            xmin = 250.826
+            xmax = 253.166
+            text = "Aguaca friomi."
+        intervals [87]
+            xmin = 253.166
+            xmax = 259.999
+            text = ""
+        intervals [88]
+            xmin = 259.999
+            xmax = 262.39
+            text = "Ese nubecunaca blancumi."
+        intervals [89]
+            xmin = 262.39
+            xmax = 265.429
+            text = ""
+        intervals [90]
+            xmin = 265.429
+            xmax = 269.461
+            text = "Yomi kirini mio papasuta."
+        intervals [91]
+            xmin = 269.461
+            xmax = 273.547
+            text = ""
+        intervals [92]
+            xmin = 273.547
+            xmax = 276.891
+            text = "yoca mio papaso quirishcami kani"
+        intervals [93]
+            xmin = 276.891
+            xmax = 280.732
+            text = ""
+        intervals [94]
+            xmin = 280.732
+            xmax = 284.653
+            text = "Gobierno computadoracunata darca escuelacunaman."
+        intervals [95]
+            xmin = 284.653
+            xmax = 289.83
+            text = ""
+        intervals [96]
+            xmin = 289.83
+            xmax = 295.208
+            text = "Computadoracunaca dashcami escuelaman gobiernomanta."
+        intervals [97]
+            xmin = 295.208
+            xmax = 303.903
+            text = ""
+        intervals [98]
+            xmin = 303.903
+            xmax = 305.463
+            text = "Yuca."
+        intervals [99]
+            xmin = 305.463
+            xmax = 308.355
+            text = ""
+        intervals [100]
+            xmin = 308.355
+            xmax = 309.27
+            text = "Vosca."
+        intervals [101]
+            xmin = 309.27
+            xmax = 310.28
+            text = ""
+        intervals [102]
+            xmin = 310.28
+            xmax = 310.99
+            text = "ellaca"
+        intervals [103]
+            xmin = 310.99
+            xmax = 312.65
+            text = ""
+        intervals [104]
+            xmin = 312.65
+            xmax = 314.029
+            text = "Nucanchica."
+        intervals [105]
+            xmin = 314.029
+            xmax = 315.444
+            text = ""
+        intervals [106]
+            xmin = 315.444
+            xmax = 316.504
+            text = "Voscunaca."
+        intervals [107]
+            xmin = 316.504
+            xmax = 317.495
+            text = ""
+        intervals [108]
+            xmin = 317.495
+            xmax = 318.505
+            text = "Elcunaca."
+        intervals [109]
+            xmin = 318.505
+            xmax = 319.61
+            text = ""
+        intervals [110]
+            xmin = 319.61
+            xmax = 320.56
+            text = "Esecunaca."
+        intervals [111]
+            xmin = 320.56
+            xmax = 321.818
+            text = ""
+        intervals [112]
+            xmin = 321.818
+            xmax = 322.628
+            text = "Esecuna."
+        intervals [113]
+            xmin = 322.628
+            xmax = 324.255
+            text = ""
+        intervals [114]
+            xmin = 324.255
+            xmax = 325.404
+            text = "Aquipi."
+        intervals [115]
+            xmin = 325.404
+            xmax = 326.42
+            text = ""
+        intervals [116]
+            xmin = 326.42
+            xmax = 327.36
+            text = "Allapi."
+        intervals [117]
+            xmin = 327.36
+            xmax = 328.55
+            text = ""
+        intervals [118]
+            xmin = 328.55
+            xmax = 329.42
+            text = "Quiencuna."
+        intervals [119]
+            xmin = 329.42
+            xmax = 330.232
+            text = ""
+        intervals [120]
+            xmin = 330.232
+            xmax = 330.852
+            text = "Quita."
+        intervals [121]
+            xmin = 330.852
+            xmax = 331.471
+            text = ""
+        intervals [122]
+            xmin = 331.471
+            xmax = 332.181
+            text = "Undipi."
+        intervals [123]
+            xmin = 332.181
+            xmax = 333.161
+            text = ""
+        intervals [124]
+            xmin = 333.161
+            xmax = 333.761
+            text = "Cuandota."
+        intervals [125]
+            xmin = 333.761
+            xmax = 337.066
+            text = ""
+        intervals [126]
+            xmin = 337.066
+            xmax = 338.27
+            text = "Buenollachu cangui?"
+        intervals [127]
+            xmin = 338.27
+            xmax = 340.246
+            text = ""
+        intervals [128]
+            xmin = 340.246
+            xmax = 342.16
+            text = "Buenos dias."
+        intervals [129]
+            xmin = 342.16
+            xmax = 343.936
+            text = ""
+        intervals [130]
+            xmin = 343.936
+            xmax = 345.126
+            text = "Buenas tardes."
+        intervals [131]
+            xmin = 345.126
+            xmax = 346.528
+            text = ""
+        intervals [132]
+            xmin = 346.528
+            xmax = 347.728
+            text = "Buenas noches."
+        intervals [133]
+            xmin = 347.728
+            xmax = 349.074
+            text = ""
+        intervals [134]
+            xmin = 349.074
+            xmax = 351.08
+            text = "cayacama o hasta mañana."
+        intervals [135]
+            xmin = 351.08
+            xmax = 352.623
+            text = ""
+        intervals [136]
+            xmin = 352.623
+            xmax = 353.495
+            text = "Hasta mañana."
+        intervals [137]
+            xmin = 353.495
+            xmax = 356.021
+            text = ""
+        intervals [138]
+            xmin = 356.021
+            xmax = 356.841
+            text = "hasta luego"
+        intervals [139]
+            xmin = 356.841
+            xmax = 357.692
+            text = ""
+        intervals [140]
+            xmin = 357.692
+            xmax = 358.522
+            text = "pagui"
+        intervals [141]
+            xmin = 358.522
+            xmax = 360.037
+            text = ""
+        intervals [142]
+            xmin = 360.037
+            xmax = 361.403
+            text = "Que nombreta cangui."
+        intervals [143]
+            xmin = 361.403
+            xmax = 362.984
+            text = ""
+        intervals [144]
+            xmin = 362.984
+            xmax = 364.523
+            text = "Comota cangui?"
+        intervals [145]
+            xmin = 364.523
+            xmax = 365.867
+            text = ""
+        intervals [146]
+            xmin = 365.867
+            xmax = 367.159
+            text = "Buenochu cangui."
+        intervals [147]
+            xmin = 367.159
+            xmax = 370.14
+            text = ""
+        intervals [148]
+            xmin = 370.14
+            xmax = 371.796
+            text = "Mas o menos cani."
+        intervals [149]
+            xmin = 371.796
+            xmax = 373.115
+            text = ""
+        intervals [150]
+            xmin = 373.115
+            xmax = 374.477
+            text = "Enfermo cani."
+        intervals [151]
+            xmin = 374.477
+            xmax = 375.693
+            text = ""
+        intervals [152]
+            xmin = 375.693
+            xmax = 377.113
+            text = "No bueno cani."
+        intervals [153]
+            xmin = 377.113
+            xmax = 378.483
+            text = ""
+        intervals [154]
+            xmin = 378.483
+            xmax = 379.807
+            text = "Cansashca cani."
+        intervals [155]
+            xmin = 379.807
+            xmax = 381.032
+            text = ""
+        intervals [156]
+            xmin = 381.032
+            xmax = 382.552
+            text = "Enojashca cani."
+        intervals [157]
+            xmin = 382.552
+            xmax = 383.903
+            text = ""
+        intervals [158]
+            xmin = 383.903
+            xmax = 385.123
+            text = "Friowan cani."
+        intervals [159]
+            xmin = 385.123
+            xmax = 386.516
+            text = ""
+        intervals [160]
+            xmin = 386.516
+            xmax = 387.927
+            text = "Kemajun."
+        intervals [161]
+            xmin = 387.927
+            xmax = 389.778
+            text = ""
+        intervals [162]
+            xmin = 389.778
+            xmax = 391.559
+            text = "Cada uno hablanchi kichwata."
+        intervals [163]
+            xmin = 391.559
+            xmax = 393.966
+            text = ""
+        intervals [164]
+            xmin = 393.966
+            xmax = 395.409
+            text = "Casi aipi cani."
+        intervals [165]
+            xmin = 395.409
+            xmax = 396.896
+            text = ""
+        intervals [166]
+            xmin = 396.896
+            xmax = 398.807
+            text = "Tienda alla al frentepi."
+        intervals [167]
+            xmin = 398.807
+            xmax = 400.891
+            text = ""
+        intervals [168]
+            xmin = 400.891
+            xmax = 402.46
+            text = "Tienda alla atraspi."
+        intervals [169]
+            xmin = 402.46
+            xmax = 404.224
+            text = ""
+        intervals [170]
+            xmin = 404.224
+            xmax = 406.462
+            text = "Miu hija alla afuerapi."
+        intervals [171]
+            xmin = 406.462
+            xmax = 408.118
+            text = ""
+        intervals [172]
+            xmin = 408.118
+            xmax = 410.066
+            text = "Miu familia dentropi."
+        intervals [173]
+            xmin = 410.066
+            xmax = 413.11
+            text = ""
+        intervals [174]
+            xmin = 413.11
+            xmax = 415.365
+            text = "Mañanaca tardimi dormigrini."
+        intervals [175]
+            xmin = 415.365
+            xmax = 417.237
+            text = ""
+        intervals [176]
+            xmin = 417.237
+            xmax = 419.234
+            text = "Ayerca ircanimi Quitoman."
+        intervals [177]
+            xmin = 419.234
+            xmax = 424.789
+            text = ""
+        intervals [178]
+            xmin = 424.789
+            xmax = 428.417
+            text = "Cosnana antes manota lavana (lavarcani)."
+        intervals [179]
+            xmin = 428.417
+            xmax = 432.262
+            text = ""
+        intervals [180]
+            xmin = 432.262
+            xmax = 435.519
+            text = "Fiesta despues ircani casaman."
+        intervals [181]
+            xmin = 435.519
+            xmax = 438.304
+            text = ""
+        intervals [182]
+            xmin = 438.304
+            xmax = 440.709
+            text = "Genteca siempremi aquima vinin."
+        intervals [183]
+            xmin = 440.709
+            xmax = 443.91
+            text = ""
+        intervals [184]
+            xmin = 443.91
+            xmax = 446.182
+            text = "Yuca nunca no debersta azinichu."
+        intervals [185]
+            xmin = 446.182
+            xmax = 448.707
+            text = ""
+        intervals [186]
+            xmin = 448.707
+            xmax = 451.47
+            text = "Arto debertami tinini."
+        intervals [187]
+            xmin = 451.47
+            xmax = 454.002
+            text = ""
+        intervals [188]
+            xmin = 454.002
+            xmax = 455.878
+            text = "Poquitota azinichu - poquito comida abin."
+        intervals [189]
+            xmin = 455.878
+            xmax = 478.09
+            text = ""
+        intervals [190]
+            xmin = 478.09
+            xmax = 482.52
+            text = "Yuca mas despaciomi hablani."
+        intervals [191]
+            xmin = 482.52
+            xmax = 485.801
+            text = ""
+        intervals [192]
+            xmin = 485.801
+            xmax = 488.5
+            text = "Yuca desmasiado cansashca cani."
+        intervals [193]
+            xmin = 488.5
+            xmax = 489.747
+            text = ""
+        intervals [194]
+            xmin = 489.747
+            xmax = 491.935
+            text = "Demas cansashcami cani."
+        intervals [195]
+            xmin = 491.935
+            xmax = 496.112
+            text = ""
+        intervals [196]
+            xmin = 496.112
+            xmax = 496.995
+            text = "Asillatak."
+        intervals [197]
+            xmin = 496.995
+            xmax = 498.986
+            text = ""
+        intervals [198]
+            xmin = 498.986
+            xmax = 501.878
+            text = "Arto abishca (artopura canchi)."
+        intervals [199]
+            xmin = 501.878
+            xmax = 503.734
+            text = ""
+        intervals [200]
+            xmin = 503.734
+            xmax = 504.777
+            text = "Asimi cani."
+        intervals [201]
+            xmin = 504.777
+            xmax = 506.563
+            text = ""
+        intervals [202]
+            xmin = 506.563
+            xmax = 508.844
+            text = "Algunos gente abinchi."
+    item[3]:
+        class = "IntervalTier"
+        name = "Segmentación+IPA-LG"
+        xmin = 0.0
+        xmax = 508.844
+        intervals: size = 202
+        intervals [1]
+            xmin = 0.0
+            xmax = 3.24
+            text = ""
+        intervals [2]
+            xmin = 3.24
+            xmax = 7.28
+            text = "mio edad=mi 39 aɲo-ta tene-ni"
+        intervals [3]
+            xmin = 7.28
+            xmax = 10.77
+            text = ""
+        intervals [4]
+            xmin = 10.77
+            xmax = 13.97
+            text = "mio nombɾe=mi ka-pa-n lusia gonza"
+        intervals [5]
+            xmin = 13.97
+            xmax = 15.241
+            text = ""
+        intervals [6]
+            xmin = 15.241
+            xmax = 16.786
+            text = "ju=ka komi-xu-ni=mi"
+        intervals [7]
+            xmin = 16.786
+            xmax = 17.552
+            text = ""
+        intervals [8]
+            xmin = 17.552
+            xmax = 19.002
+            text = "bos=ka komi-xu-ngi=mi"
+        intervals [9]
+            xmin = 19.002
+            xmax = 20.136
+            text = ""
+        intervals [10]
+            xmin = 20.136
+            xmax = 21.488
+            text = "el=ka komi-xu-n=mi"
+        intervals [11]
+            xmin = 21.488
+            xmax = 22.74
+            text = ""
+        intervals [12]
+            xmin = 22.74
+            xmax = 24.9
+            text = "ɲukanʧi=ka komi-naxu-nʧi=mi"
+        intervals [13]
+            xmin = 24.9
+            xmax = 27.204
+            text = ""
+        intervals [14]
+            xmin = 27.204
+            xmax = 28.81
+            text = "bos-kuna komi-naxu-ngi-ʧi"
+        intervals [15]
+            xmin = 28.81
+            xmax = 30.236
+            text = ""
+        intervals [16]
+            xmin = 30.236
+            xmax = 31.696
+            text = "el-kuna komi-naxu-n"
+        intervals [17]
+            xmin = 31.696
+            xmax = 34.967
+            text = ""
+        intervals [18]
+            xmin = 34.967
+            xmax = 36.275
+            text = "ju komi-ɾka-ni otɾo dia=ka ju komi-ɾka-ni"
+        intervals [19]
+            xmin = 36.275
+            xmax = 38.775
+            text = ""
+        intervals [20]
+            xmin = 38.775
+            xmax = 40.508
+            text = "bos komi-ɾka-ngi"
+        intervals [21]
+            xmin = 40.508
+            xmax = 41.786
+            text = ""
+        intervals [22]
+            xmin = 41.786
+            xmax = 43.251
+            text = "el-kuna komi-ɾka"
+        intervals [23]
+            xmin = 43.251
+            xmax = 44.885
+            text = ""
+        intervals [24]
+            xmin = 44.885
+            xmax = 46.833
+            text = "nukanʧi komi-ɾka-nʧi otɾo dia komi-ɾka-nʧi"
+        intervals [25]
+            xmin = 46.833
+            xmax = 50.53
+            text = ""
+        intervals [26]
+            xmin = 50.53
+            xmax = 51.945
+            text = "bos-kuna komi-ɾka-ngi-ʧi otɾo dia"
+        intervals [27]
+            xmin = 51.945
+            xmax = 55.749
+            text = ""
+        intervals [28]
+            xmin = 55.749
+            xmax = 57.152
+            text = "el-kuna komi-ɾka"
+        intervals [29]
+            xmin = 57.152
+            xmax = 60.418
+            text = ""
+        intervals [30]
+            xmin = 60.418
+            xmax = 61.699
+            text = "jo komi-ɾka-ni"
+        intervals [31]
+            xmin = 61.699
+            xmax = 64.817
+            text = ""
+        intervals [32]
+            xmin = 64.817
+            xmax = 65.966
+            text = "bos komi-ngi"
+        intervals [33]
+            xmin = 65.966
+            xmax = 67.727
+            text = ""
+        intervals [34]
+            xmin = 67.727
+            xmax = 69.082
+            text = "el=ka komi-nga"
+        intervals [35]
+            xmin = 69.082
+            xmax = 70.824
+            text = ""
+        intervals [36]
+            xmin = 70.824
+            xmax = 72.681
+            text = "nosotɾos=ka komi-ʃun=mi nukanʧi=ka komi-ʃun=mi"
+        intervals [37]
+            xmin = 72.681
+            xmax = 75.28
+            text = ""
+        intervals [38]
+            xmin = 75.28
+            xmax = 77.49
+            text = "bos-kuna komi-ngi-ʧi=mi"
+        intervals [39]
+            xmin = 77.49
+            xmax = 79.19
+            text = ""
+        intervals [40]
+            xmin = 79.19
+            xmax = 80.83
+            text = "el-kuna komi-nga=mi"
+        intervals [41]
+            xmin = 80.83
+            xmax = 84.962
+            text = ""
+        intervals [42]
+            xmin = 84.962
+            xmax = 87.965
+            text = "jo koʐi-ʃpa sali-ʃa ʐesibi-ngapa bos-kuna-ta"
+        intervals [43]
+            xmin = 87.965
+            xmax = 92.57
+            text = ""
+        intervals [44]
+            xmin = 92.57
+            xmax = 97.07
+            text = "komida abi-kpi komi-ɾka-ni kasa-pi ju kasa-man i-ɾka-ni"
+        intervals [45]
+            xmin = 97.07
+            xmax = 100.166
+            text = ""
+        intervals [46]
+            xmin = 100.166
+            xmax = 102.999
+            text = "mi eɾmana tenda-pi kompɾa-xu-ɾka"
+        intervals [47]
+            xmin = 102.999
+            xmax = 106.65
+            text = ""
+        intervals [48]
+            xmin = 106.65
+            xmax = 110.025
+            text = "kansaʃka=ʧu ka-ngi deskanse-i"
+        intervals [49]
+            xmin = 110.025
+            xmax = 113.442
+            text = ""
+        intervals [50]
+            xmin = 113.442
+            xmax = 115.199
+            text = "el bini-kpi aβisa-wa-ngi"
+        intervals [51]
+            xmin = 115.199
+            xmax = 117.524
+            text = ""
+        intervals [52]
+            xmin = 117.524
+            xmax = 119.308
+            text = "jo doɾmi-na-ta kiɾi-ni"
+        intervals [53]
+            xmin = 119.308
+            xmax = 121.37
+            text = ""
+        intervals [54]
+            xmin = 121.37
+            xmax = 123.709
+            text = "el doɾmi-na-ta kiɾi-n"
+        intervals [55]
+            xmin = 123.709
+            xmax = 126.597
+            text = ""
+        intervals [56]
+            xmin = 126.597
+            xmax = 128.135
+            text = "el komi-na-ta kiɾi-n"
+        intervals [57]
+            xmin = 128.135
+            xmax = 130.185
+            text = ""
+        intervals [58]
+            xmin = 130.185
+            xmax = 132.771
+            text = "nosotɾos komi-na-ta kiɾi-nʧi"
+        intervals [59]
+            xmin = 132.771
+            xmax = 135.539
+            text = ""
+        intervals [60]
+            xmin = 135.539
+            xmax = 138.526
+            text = "bos-kuna xuga-na-ta kiɾi-ngi-ʧi"
+        intervals [61]
+            xmin = 138.526
+            xmax = 140.981
+            text = ""
+        intervals [62]
+            xmin = 140.981
+            xmax = 142.996
+            text = "el-kuna xuga-na-ta kiɾi-n"
+        intervals [63]
+            xmin = 142.996
+            xmax = 145.008
+            text = ""
+        intervals [64]
+            xmin = 145.008
+            xmax = 146.555
+            text = "miu alku gɾande"
+        intervals [65]
+            xmin = 146.555
+            xmax = 149.6
+            text = ""
+        intervals [66]
+            xmin = 149.6
+            xmax = 152.094
+            text = "miu kasa=ka nueβo=mi bos-pa=ʃna"
+        intervals [67]
+            xmin = 152.094
+            xmax = 155.651
+            text = ""
+        intervals [68]
+            xmin = 155.651
+            xmax = 159.669
+            text = "ese ukalipto=ka gɾande gɾande=mi mas ke mais"
+        intervals [69]
+            xmin = 159.669
+            xmax = 161.807
+            text = ""
+        intervals [70]
+            xmin = 161.807
+            xmax = 164.7
+            text = "mio kaʐo=ka mas gɾande=mi bos-pa=ʃna"
+        intervals [71]
+            xmin = 164.7
+            xmax = 171.186
+            text = ""
+        intervals [72]
+            xmin = 171.186
+            xmax = 174.433
+            text = "denoʧe ju=ka teleβision-ta=mi bi-ni antes de doɾmi"
+        intervals [73]
+            xmin = 174.433
+            xmax = 178.363
+            text = ""
+        intervals [74]
+            xmin = 178.363
+            xmax = 180.328
+            text = "mal eskɾibi-ʃka-ngi boʐa-i"
+        intervals [75]
+            xmin = 180.328
+            xmax = 184.215
+            text = ""
+        intervals [76]
+            xmin = 184.215
+            xmax = 189.219
+            text = "el-pak kasa=mi i-ɾka-ni sementeɾa-ta ʒanu-ta be-ngapa"
+        intervals [77]
+            xmin = 189.219
+            xmax = 192.001
+            text = ""
+        intervals [78]
+            xmin = 192.001
+            xmax = 194.068
+            text = "keɾa o no keɾa azi-ngi"
+        intervals [79]
+            xmin = 194.068
+            xmax = 231.989
+            text = ""
+        intervals [80]
+            xmin = 231.989
+            xmax = 236.217
+            text = "mio teʐeno=ka bonito=mi ka-ɾka"
+        intervals [81]
+            xmin = 236.217
+            xmax = 243.19
+            text = ""
+        intervals [82]
+            xmin = 243.19
+            xmax = 245.1
+            text = "ese seʐo=ka gɾandi=mi"
+        intervals [83]
+            xmin = 245.1
+            xmax = 247.154
+            text = ""
+        intervals [84]
+            xmin = 247.154
+            xmax = 249.166
+            text = "espeɾma kema-xu-n"
+        intervals [85]
+            xmin = 249.166
+            xmax = 250.826
+            text = ""
+        intervals [86]
+            xmin = 250.826
+            xmax = 253.166
+            text = "awa=ka fɾio=mi"
+        intervals [87]
+            xmin = 253.166
+            xmax = 259.999
+            text = ""
+        intervals [88]
+            xmin = 259.999
+            xmax = 262.39
+            text = "ese nube-kuna=ka blanku=mi"
+        intervals [89]
+            xmin = 262.39
+            xmax = 265.429
+            text = ""
+        intervals [90]
+            xmin = 265.429
+            xmax = 269.461
+            text = "jo=mi kiɾi-ni mio papasu-ta"
+        intervals [91]
+            xmin = 269.461
+            xmax = 273.547
+            text = ""
+        intervals [92]
+            xmin = 273.547
+            xmax = 276.891
+            text = "jo=ka mio papaso kiɾi-ʃka=mi ka-ni"
+        intervals [93]
+            xmin = 276.891
+            xmax = 280.732
+            text = ""
+        intervals [94]
+            xmin = 280.732
+            xmax = 284.653
+            text = "gobieɾno komputadoɾa-kuna-ta da-ɾka eskuela-kuna-man"
+        intervals [95]
+            xmin = 284.653
+            xmax = 289.83
+            text = ""
+        intervals [96]
+            xmin = 289.83
+            xmax = 295.208
+            text = "komputadoɾa-kuna=ka da-ʃka=mi eskuela-man gobieɾno-manta"
+        intervals [97]
+            xmin = 295.208
+            xmax = 303.903
+            text = ""
+        intervals [98]
+            xmin = 303.903
+            xmax = 305.463
+            text = "ju=ka"
+        intervals [99]
+            xmin = 305.463
+            xmax = 308.355
+            text = ""
+        intervals [100]
+            xmin = 308.355
+            xmax = 309.27
+            text = "bos=ka"
+        intervals [101]
+            xmin = 309.27
+            xmax = 310.28
+            text = ""
+        intervals [102]
+            xmin = 310.28
+            xmax = 310.99
+            text = "eʒa=ka"
+        intervals [103]
+            xmin = 310.99
+            xmax = 312.65
+            text = ""
+        intervals [104]
+            xmin = 312.65
+            xmax = 314.029
+            text = "nukanʧi=ka"
+        intervals [105]
+            xmin = 314.029
+            xmax = 315.444
+            text = ""
+        intervals [106]
+            xmin = 315.444
+            xmax = 316.504
+            text = "bos-kuna=ka"
+        intervals [107]
+            xmin = 316.504
+            xmax = 317.495
+            text = ""
+        intervals [108]
+            xmin = 317.495
+            xmax = 318.505
+            text = "el-kuna=ka"
+        intervals [109]
+            xmin = 318.505
+            xmax = 319.61
+            text = ""
+        intervals [110]
+            xmin = 319.61
+            xmax = 320.56
+            text = "ese-kuna=ka"
+        intervals [111]
+            xmin = 320.56
+            xmax = 321.818
+            text = ""
+        intervals [112]
+            xmin = 321.818
+            xmax = 322.628
+            text = "ese-kuna"
+        intervals [113]
+            xmin = 322.628
+            xmax = 324.255
+            text = ""
+        intervals [114]
+            xmin = 324.255
+            xmax = 325.404
+            text = "aki-pi"
+        intervals [115]
+            xmin = 325.404
+            xmax = 326.42
+            text = ""
+        intervals [116]
+            xmin = 326.42
+            xmax = 327.36
+            text = "aʒa-pi"
+        intervals [117]
+            xmin = 327.36
+            xmax = 328.55
+            text = ""
+        intervals [118]
+            xmin = 328.55
+            xmax = 329.42
+            text = "kien-kuna"
+        intervals [119]
+            xmin = 329.42
+            xmax = 330.232
+            text = ""
+        intervals [120]
+            xmin = 330.232
+            xmax = 330.852
+            text = "ke=ta"
+        intervals [121]
+            xmin = 330.852
+            xmax = 331.471
+            text = ""
+        intervals [122]
+            xmin = 331.471
+            xmax = 332.181
+            text = "undi-pi"
+        intervals [123]
+            xmin = 332.181
+            xmax = 333.161
+            text = ""
+        intervals [124]
+            xmin = 333.161
+            xmax = 333.761
+            text = "kuando=ta"
+        intervals [125]
+            xmin = 333.761
+            xmax = 337.066
+            text = ""
+        intervals [126]
+            xmin = 337.066
+            xmax = 338.27
+            text = "bueno=ʒa=ʧu ka-ngi"
+        intervals [127]
+            xmin = 338.27
+            xmax = 340.246
+            text = ""
+        intervals [128]
+            xmin = 340.246
+            xmax = 342.16
+            text = "buenos dias"
+        intervals [129]
+            xmin = 342.16
+            xmax = 343.936
+            text = ""
+        intervals [130]
+            xmin = 343.936
+            xmax = 345.126
+            text = "buenas taɾdes"
+        intervals [131]
+            xmin = 345.126
+            xmax = 346.528
+            text = ""
+        intervals [132]
+            xmin = 346.528
+            xmax = 347.728
+            text = "buenas noʧes"
+        intervals [133]
+            xmin = 347.728
+            xmax = 349.074
+            text = ""
+        intervals [134]
+            xmin = 349.074
+            xmax = 351.08
+            text = "kajakama o asta maɲana"
+        intervals [135]
+            xmin = 351.08
+            xmax = 352.623
+            text = ""
+        intervals [136]
+            xmin = 352.623
+            xmax = 353.495
+            text = "asta maɲana"
+        intervals [137]
+            xmin = 353.495
+            xmax = 356.021
+            text = ""
+        intervals [138]
+            xmin = 356.021
+            xmax = 356.841
+            text = "asta luego"
+        intervals [139]
+            xmin = 356.841
+            xmax = 357.692
+            text = ""
+        intervals [140]
+            xmin = 357.692
+            xmax = 358.522
+            text = "pagi"
+        intervals [141]
+            xmin = 358.522
+            xmax = 360.037
+            text = ""
+        intervals [142]
+            xmin = 360.037
+            xmax = 361.403
+            text = "ke nombɾe-ta ka-ngi"
+        intervals [143]
+            xmin = 361.403
+            xmax = 362.984
+            text = ""
+        intervals [144]
+            xmin = 362.984
+            xmax = 364.523
+            text = "komo-ta ka-ngi"
+        intervals [145]
+            xmin = 364.523
+            xmax = 365.867
+            text = ""
+        intervals [146]
+            xmin = 365.867
+            xmax = 367.159
+            text = "bueno=ʧu ka-ngi"
+        intervals [147]
+            xmin = 367.159
+            xmax = 370.14
+            text = ""
+        intervals [148]
+            xmin = 370.14
+            xmax = 371.796
+            text = "mas o menos ka-ni"
+        intervals [149]
+            xmin = 371.796
+            xmax = 373.115
+            text = ""
+        intervals [150]
+            xmin = 373.115
+            xmax = 374.477
+            text = "enfeɾmo ka-ni"
+        intervals [151]
+            xmin = 374.477
+            xmax = 375.693
+            text = ""
+        intervals [152]
+            xmin = 375.693
+            xmax = 377.113
+            text = "no bueno ka-ni"
+        intervals [153]
+            xmin = 377.113
+            xmax = 378.483
+            text = ""
+        intervals [154]
+            xmin = 378.483
+            xmax = 379.807
+            text = "kansaʃka ka-ni"
+        intervals [155]
+            xmin = 379.807
+            xmax = 381.032
+            text = ""
+        intervals [156]
+            xmin = 381.032
+            xmax = 382.552
+            text = "enoxa-ʃka ka-ni"
+        intervals [157]
+            xmin = 382.552
+            xmax = 383.903
+            text = ""
+        intervals [158]
+            xmin = 383.903
+            xmax = 385.123
+            text = "fɾio-wan ka-ni"
+        intervals [159]
+            xmin = 385.123
+            xmax = 386.516
+            text = ""
+        intervals [160]
+            xmin = 386.516
+            xmax = 387.927
+            text = "kema-xu-n"
+        intervals [161]
+            xmin = 387.927
+            xmax = 389.778
+            text = ""
+        intervals [162]
+            xmin = 389.778
+            xmax = 391.559
+            text = "kada uno abla-nʧi kiʧua-ta"
+        intervals [163]
+            xmin = 391.559
+            xmax = 393.966
+            text = ""
+        intervals [164]
+            xmin = 393.966
+            xmax = 395.409
+            text = "kazi ai-pi ka-ni"
+        intervals [165]
+            xmin = 395.409
+            xmax = 396.896
+            text = ""
+        intervals [166]
+            xmin = 396.896
+            xmax = 398.807
+            text = "tienda aʒa al fɾente-pi"
+        intervals [167]
+            xmin = 398.807
+            xmax = 400.891
+            text = ""
+        intervals [168]
+            xmin = 400.891
+            xmax = 402.46
+            text = "tienda aʒa atɾas-pi"
+        intervals [169]
+            xmin = 402.46
+            xmax = 404.224
+            text = ""
+        intervals [170]
+            xmin = 404.224
+            xmax = 406.462
+            text = "miu ixa aʒa afueɾa-pi"
+        intervals [171]
+            xmin = 406.462
+            xmax = 408.118
+            text = ""
+        intervals [172]
+            xmin = 408.118
+            xmax = 410.066
+            text = "miu familia dentɾo-pi"
+        intervals [173]
+            xmin = 410.066
+            xmax = 413.11
+            text = ""
+        intervals [174]
+            xmin = 413.11
+            xmax = 415.365
+            text = "maɲana=ka taɾdi=mi doɾmi-gɾi-ni"
+        intervals [175]
+            xmin = 415.365
+            xmax = 417.237
+            text = ""
+        intervals [176]
+            xmin = 417.237
+            xmax = 419.234
+            text = "ajeɾʂ=ka i-ɾka-ni=mi kito-man"
+        intervals [177]
+            xmin = 419.234
+            xmax = 424.789
+            text = ""
+        intervals [178]
+            xmin = 424.789
+            xmax = 428.417
+            text = "kozna-na antes mano-ta laβa-na laβa-ɾka-ni"
+        intervals [179]
+            xmin = 428.417
+            xmax = 432.262
+            text = ""
+        intervals [180]
+            xmin = 432.262
+            xmax = 435.519
+            text = "fiesta despues i-ɾka-ni kasa-man"
+        intervals [181]
+            xmin = 435.519
+            xmax = 438.304
+            text = ""
+        intervals [182]
+            xmin = 438.304
+            xmax = 440.709
+            text = "xente=ka siempɾe=mi aki=ma bini-n"
+        intervals [183]
+            xmin = 440.709
+            xmax = 443.91
+            text = ""
+        intervals [184]
+            xmin = 443.91
+            xmax = 446.182
+            text = "ju=ka nunka no debeɾs-ta azi-ni=ʧu"
+        intervals [185]
+            xmin = 446.182
+            xmax = 448.707
+            text = ""
+        intervals [186]
+            xmin = 448.707
+            xmax = 451.47
+            text = "aɾto debeɾ-ta=mi tini-ni"
+        intervals [187]
+            xmin = 451.47
+            xmax = 454.002
+            text = ""
+        intervals [188]
+            xmin = 454.002
+            xmax = 455.878
+            text = "pokito-ta azi-ni=ʧu azi pokito komida abi-n"
+        intervals [189]
+            xmin = 455.878
+            xmax = 478.09
+            text = ""
+        intervals [190]
+            xmin = 478.09
+            xmax = 482.52
+            text = "ju=ka mas despasio=mi abla-ni"
+        intervals [191]
+            xmin = 482.52
+            xmax = 485.801
+            text = ""
+        intervals [192]
+            xmin = 485.801
+            xmax = 488.5
+            text = "ju=ka desmasiado kansaʃka ka-ni"
+        intervals [193]
+            xmin = 488.5
+            xmax = 489.747
+            text = ""
+        intervals [194]
+            xmin = 489.747
+            xmax = 491.935
+            text = "demas kansaʃka=mi ka-ni"
+        intervals [195]
+            xmin = 491.935
+            xmax = 496.112
+            text = ""
+        intervals [196]
+            xmin = 496.112
+            xmax = 496.995
+            text = "asi-ʒatak"
+        intervals [197]
+            xmin = 496.995
+            xmax = 498.986
+            text = ""
+        intervals [198]
+            xmin = 498.986
+            xmax = 501.878
+            text = "aɾto abi-ʃka aɾto-puɾa ka-nʧi"
+        intervals [199]
+            xmin = 501.878
+            xmax = 503.734
+            text = ""
+        intervals [200]
+            xmin = 503.734
+            xmax = 504.777
+            text = "asi=mi ka-ni"
+        intervals [201]
+            xmin = 504.777
+            xmax = 506.563
+            text = ""
+        intervals [202]
+            xmin = 506.563
+            xmax = 508.844
+            text = "algunos xente abi-nʧi"
+    item[4]:
+        class = "IntervalTier"
+        name = "Español-LG"
+        xmin = 0.0
+        xmax = 508.844
+        intervals: size = 202
+        intervals [1]
+            xmin = 0.0
+            xmax = 3.24
+            text = ""
+        intervals [2]
+            xmin = 3.24
+            xmax = 7.28
+            text = "Tengo 39 años."
+        intervals [3]
+            xmin = 7.28
+            xmax = 10.77
+            text = ""
+        intervals [4]
+            xmin = 10.77
+            xmax = 13.97
+            text = "Mi nombre es Lucia Gonza."
+        intervals [5]
+            xmin = 13.97
+            xmax = 15.241
+            text = ""
+        intervals [6]
+            xmin = 15.241
+            xmax = 16.786
+            text = "Yo estoy comiendo."
+        intervals [7]
+            xmin = 16.786
+            xmax = 17.552
+            text = ""
+        intervals [8]
+            xmin = 17.552
+            xmax = 19.002
+            text = "Vos estas comiendo."
+        intervals [9]
+            xmin = 19.002
+            xmax = 20.136
+            text = ""
+        intervals [10]
+            xmin = 20.136
+            xmax = 21.488
+            text = "El esta comiendo."
+        intervals [11]
+            xmin = 21.488
+            xmax = 22.74
+            text = ""
+        intervals [12]
+            xmin = 22.74
+            xmax = 24.9
+            text = "Nosotros estamos comiendo."
+        intervals [13]
+            xmin = 24.9
+            xmax = 27.204
+            text = ""
+        intervals [14]
+            xmin = 27.204
+            xmax = 28.81
+            text = "Ustedes comen."
+        intervals [15]
+            xmin = 28.81
+            xmax = 30.236
+            text = ""
+        intervals [16]
+            xmin = 30.236
+            xmax = 31.696
+            text = "Ellos comen."
+        intervals [17]
+            xmin = 31.696
+            xmax = 34.967
+            text = ""
+        intervals [18]
+            xmin = 34.967
+            xmax = 36.275
+            text = "Yo comi   (otro dia yo comi.)"
+        intervals [19]
+            xmin = 36.275
+            xmax = 38.775
+            text = ""
+        intervals [20]
+            xmin = 38.775
+            xmax = 40.508
+            text = "Tu comiste."
+        intervals [21]
+            xmin = 40.508
+            xmax = 41.786
+            text = ""
+        intervals [22]
+            xmin = 41.786
+            xmax = 43.251
+            text = "Ellos comieron."
+        intervals [23]
+            xmin = 43.251
+            xmax = 44.885
+            text = ""
+        intervals [24]
+            xmin = 44.885
+            xmax = 46.833
+            text = "Nosotros comimos (otro dia comimos.)"
+        intervals [25]
+            xmin = 46.833
+            xmax = 50.53
+            text = ""
+        intervals [26]
+            xmin = 50.53
+            xmax = 51.945
+            text = "Ustedes comieron."
+        intervals [27]
+            xmin = 51.945
+            xmax = 55.749
+            text = ""
+        intervals [28]
+            xmin = 55.749
+            xmax = 57.152
+            text = "Ellos comieron."
+        intervals [29]
+            xmin = 57.152
+            xmax = 60.418
+            text = ""
+        intervals [30]
+            xmin = 60.418
+            xmax = 61.699
+            text = "Yo comi."
+        intervals [31]
+            xmin = 61.699
+            xmax = 64.817
+            text = ""
+        intervals [32]
+            xmin = 64.817
+            xmax = 65.966
+            text = "Tu comes."
+        intervals [33]
+            xmin = 65.966
+            xmax = 67.727
+            text = ""
+        intervals [34]
+            xmin = 67.727
+            xmax = 69.082
+            text = "El come."
+        intervals [35]
+            xmin = 69.082
+            xmax = 70.824
+            text = ""
+        intervals [36]
+            xmin = 70.824
+            xmax = 72.681
+            text = "Nosotros comemos."
+        intervals [37]
+            xmin = 72.681
+            xmax = 75.28
+            text = ""
+        intervals [38]
+            xmin = 75.28
+            xmax = 77.49
+            text = "Ustedes comeran."
+        intervals [39]
+            xmin = 77.49
+            xmax = 79.19
+            text = ""
+        intervals [40]
+            xmin = 79.19
+            xmax = 80.83
+            text = "Ellos comeran."
+        intervals [41]
+            xmin = 80.83
+            xmax = 84.962
+            text = ""
+        intervals [42]
+            xmin = 84.962
+            xmax = 87.965
+            text = "Yo salir corriendo a conoser a ustedes."
+        intervals [43]
+            xmin = 87.965
+            xmax = 92.57
+            text = ""
+        intervals [44]
+            xmin = 92.57
+            xmax = 97.07
+            text = "Abia comida comi en casa   yo me fui a mi casa."
+        intervals [45]
+            xmin = 97.07
+            xmax = 100.166
+            text = ""
+        intervals [46]
+            xmin = 100.166
+            xmax = 102.999
+            text = "Mi hermana compra en la tienda."
+        intervals [47]
+            xmin = 102.999
+            xmax = 106.65
+            text = ""
+        intervals [48]
+            xmin = 106.65
+            xmax = 110.025
+            text = "Estas cansado descansa."
+        intervals [49]
+            xmin = 110.025
+            xmax = 113.442
+            text = ""
+        intervals [50]
+            xmin = 113.442
+            xmax = 115.199
+            text = "Cuando venga me avisas."
+        intervals [51]
+            xmin = 115.199
+            xmax = 117.524
+            text = ""
+        intervals [52]
+            xmin = 117.524
+            xmax = 119.308
+            text = "Yo quiero dormir."
+        intervals [53]
+            xmin = 119.308
+            xmax = 121.37
+            text = ""
+        intervals [54]
+            xmin = 121.37
+            xmax = 123.709
+            text = "El quiere dormir."
+        intervals [55]
+            xmin = 123.709
+            xmax = 126.597
+            text = ""
+        intervals [56]
+            xmin = 126.597
+            xmax = 128.135
+            text = "El quiere comer."
+        intervals [57]
+            xmin = 128.135
+            xmax = 130.185
+            text = ""
+        intervals [58]
+            xmin = 130.185
+            xmax = 132.771
+            text = "Nosotros queremos comer."
+        intervals [59]
+            xmin = 132.771
+            xmax = 135.539
+            text = ""
+        intervals [60]
+            xmin = 135.539
+            xmax = 138.526
+            text = "Ustedes quieren jugar."
+        intervals [61]
+            xmin = 138.526
+            xmax = 140.981
+            text = ""
+        intervals [62]
+            xmin = 140.981
+            xmax = 142.996
+            text = "Ellos quieren jugar."
+        intervals [63]
+            xmin = 142.996
+            xmax = 145.008
+            text = ""
+        intervals [64]
+            xmin = 145.008
+            xmax = 146.555
+            text = "Mi perro es muy grande."
+        intervals [65]
+            xmin = 146.555
+            xmax = 149.6
+            text = ""
+        intervals [66]
+            xmin = 149.6
+            xmax = 152.094
+            text = "Mi casa es nuevesita no como el tuyo."
+        intervals [67]
+            xmin = 152.094
+            xmax = 155.651
+            text = ""
+        intervals [68]
+            xmin = 155.651
+            xmax = 159.669
+            text = "El eucalipto es muy grande mas que el maiz."
+        intervals [69]
+            xmin = 159.669
+            xmax = 161.807
+            text = ""
+        intervals [70]
+            xmin = 161.807
+            xmax = 164.7
+            text = "Mi carro es grande como el tuyo."
+        intervals [71]
+            xmin = 164.7
+            xmax = 171.186
+            text = ""
+        intervals [72]
+            xmin = 171.186
+            xmax = 174.433
+            text = "Denoche veo la televicion despues voy a dormir."
+        intervals [73]
+            xmin = 174.433
+            xmax = 178.363
+            text = ""
+        intervals [74]
+            xmin = 178.363
+            xmax = 180.328
+            text = "Has escrito mal borrale."
+        intervals [75]
+            xmin = 180.328
+            xmax = 184.215
+            text = ""
+        intervals [76]
+            xmin = 184.215
+            xmax = 189.219
+            text = "Me fui ala casa de el a ver la sementera el llano."
+        intervals [77]
+            xmin = 189.219
+            xmax = 192.001
+            text = ""
+        intervals [78]
+            xmin = 192.001
+            xmax = 194.068
+            text = "Quieres o no quieres hazlo."
+        intervals [79]
+            xmin = 194.068
+            xmax = 231.989
+            text = ""
+        intervals [80]
+            xmin = 231.989
+            xmax = 236.217
+            text = "Mi terreno es bonito."
+        intervals [81]
+            xmin = 236.217
+            xmax = 243.19
+            text = ""
+        intervals [82]
+            xmin = 243.19
+            xmax = 245.1
+            text = "Esta montaña es grande."
+        intervals [83]
+            xmin = 245.1
+            xmax = 247.154
+            text = ""
+        intervals [84]
+            xmin = 247.154
+            xmax = 249.166
+            text = "La esperma esta quemando."
+        intervals [85]
+            xmin = 249.166
+            xmax = 250.826
+            text = ""
+        intervals [86]
+            xmin = 250.826
+            xmax = 253.166
+            text = "Agua fria."
+        intervals [87]
+            xmin = 253.166
+            xmax = 259.999
+            text = ""
+        intervals [88]
+            xmin = 259.999
+            xmax = 262.39
+            text = "Esas nuves son blancas."
+        intervals [89]
+            xmin = 262.39
+            xmax = 265.429
+            text = ""
+        intervals [90]
+            xmin = 265.429
+            xmax = 269.461
+            text = "Yo quiero a mi papa."
+        intervals [91]
+            xmin = 269.461
+            xmax = 273.547
+            text = ""
+        intervals [92]
+            xmin = 273.547
+            xmax = 276.891
+            text = "Yo soy querido por mi papa."
+        intervals [93]
+            xmin = 276.891
+            xmax = 280.732
+            text = ""
+        intervals [94]
+            xmin = 280.732
+            xmax = 284.653
+            text = "El gobierno dio computadoras para las escuelas."
+        intervals [95]
+            xmin = 284.653
+            xmax = 289.83
+            text = ""
+        intervals [96]
+            xmin = 289.83
+            xmax = 295.208
+            text = "Las computadoras dio alas escuelas el gobierno."
+        intervals [97]
+            xmin = 295.208
+            xmax = 303.903
+            text = ""
+        intervals [98]
+            xmin = 303.903
+            xmax = 305.463
+            text = "Yo."
+        intervals [99]
+            xmin = 305.463
+            xmax = 308.355
+            text = ""
+        intervals [100]
+            xmin = 308.355
+            xmax = 309.27
+            text = "Vos."
+        intervals [101]
+            xmin = 309.27
+            xmax = 310.28
+            text = ""
+        intervals [102]
+            xmin = 310.28
+            xmax = 310.99
+            text = "Ella."
+        intervals [103]
+            xmin = 310.99
+            xmax = 312.65
+            text = ""
+        intervals [104]
+            xmin = 312.65
+            xmax = 314.029
+            text = "Nosotros."
+        intervals [105]
+            xmin = 314.029
+            xmax = 315.444
+            text = ""
+        intervals [106]
+            xmin = 315.444
+            xmax = 316.504
+            text = "Ustedes."
+        intervals [107]
+            xmin = 316.504
+            xmax = 317.495
+            text = ""
+        intervals [108]
+            xmin = 317.495
+            xmax = 318.505
+            text = "Ellos."
+        intervals [109]
+            xmin = 318.505
+            xmax = 319.61
+            text = ""
+        intervals [110]
+            xmin = 319.61
+            xmax = 320.56
+            text = "Esos."
+        intervals [111]
+            xmin = 320.56
+            xmax = 321.818
+            text = ""
+        intervals [112]
+            xmin = 321.818
+            xmax = 322.628
+            text = "Ese."
+        intervals [113]
+            xmin = 322.628
+            xmax = 324.255
+            text = ""
+        intervals [114]
+            xmin = 324.255
+            xmax = 325.404
+            text = "Aquí."
+        intervals [115]
+            xmin = 325.404
+            xmax = 326.42
+            text = ""
+        intervals [116]
+            xmin = 326.42
+            xmax = 327.36
+            text = "Alli o alla."
+        intervals [117]
+            xmin = 327.36
+            xmax = 328.55
+            text = ""
+        intervals [118]
+            xmin = 328.55
+            xmax = 329.42
+            text = "Quienes."
+        intervals [119]
+            xmin = 329.42
+            xmax = 330.232
+            text = ""
+        intervals [120]
+            xmin = 330.232
+            xmax = 330.852
+            text = "Que."
+        intervals [121]
+            xmin = 330.852
+            xmax = 331.471
+            text = ""
+        intervals [122]
+            xmin = 331.471
+            xmax = 332.181
+            text = "Donde."
+        intervals [123]
+            xmin = 332.181
+            xmax = 333.161
+            text = ""
+        intervals [124]
+            xmin = 333.161
+            xmax = 333.761
+            text = "Cuando ."
+        intervals [125]
+            xmin = 333.761
+            xmax = 337.066
+            text = ""
+        intervals [126]
+            xmin = 337.066
+            xmax = 338.27
+            text = "Estas bien?"
+        intervals [127]
+            xmin = 338.27
+            xmax = 340.246
+            text = ""
+        intervals [128]
+            xmin = 340.246
+            xmax = 342.16
+            text = "Buenos dias."
+        intervals [129]
+            xmin = 342.16
+            xmax = 343.936
+            text = ""
+        intervals [130]
+            xmin = 343.936
+            xmax = 345.126
+            text = "Buenas tardes."
+        intervals [131]
+            xmin = 345.126
+            xmax = 346.528
+            text = ""
+        intervals [132]
+            xmin = 346.528
+            xmax = 347.728
+            text = "Buenas noches."
+        intervals [133]
+            xmin = 347.728
+            xmax = 349.074
+            text = ""
+        intervals [134]
+            xmin = 349.074
+            xmax = 351.08
+            text = "Hasta mañana.
+"
+        intervals [135]
+            xmin = 351.08
+            xmax = 352.623
+            text = ""
+        intervals [136]
+            xmin = 352.623
+            xmax = 353.495
+            text = "Hasta mañana."
+        intervals [137]
+            xmin = 353.495
+            xmax = 356.021
+            text = ""
+        intervals [138]
+            xmin = 356.021
+            xmax = 356.841
+            text = "Hasta luego.
+"
+        intervals [139]
+            xmin = 356.841
+            xmax = 357.692
+            text = ""
+        intervals [140]
+            xmin = 357.692
+            xmax = 358.522
+            text = "gracias"
+        intervals [141]
+            xmin = 358.522
+            xmax = 360.037
+            text = ""
+        intervals [142]
+            xmin = 360.037
+            xmax = 361.403
+            text = "Como te llamas."
+        intervals [143]
+            xmin = 361.403
+            xmax = 362.984
+            text = ""
+        intervals [144]
+            xmin = 362.984
+            xmax = 364.523
+            text = "Como estas?"
+        intervals [145]
+            xmin = 364.523
+            xmax = 365.867
+            text = ""
+        intervals [146]
+            xmin = 365.867
+            xmax = 367.159
+            text = "Esta bien."
+        intervals [147]
+            xmin = 367.159
+            xmax = 370.14
+            text = ""
+        intervals [148]
+            xmin = 370.14
+            xmax = 371.796
+            text = "Mas o menos."
+        intervals [149]
+            xmin = 371.796
+            xmax = 373.115
+            text = ""
+        intervals [150]
+            xmin = 373.115
+            xmax = 374.477
+            text = "Estoy emfermo."
+        intervals [151]
+            xmin = 374.477
+            xmax = 375.693
+            text = ""
+        intervals [152]
+            xmin = 375.693
+            xmax = 377.113
+            text = "No estoy bien."
+        intervals [153]
+            xmin = 377.113
+            xmax = 378.483
+            text = ""
+        intervals [154]
+            xmin = 378.483
+            xmax = 379.807
+            text = "Estoy cansado."
+        intervals [155]
+            xmin = 379.807
+            xmax = 381.032
+            text = ""
+        intervals [156]
+            xmin = 381.032
+            xmax = 382.552
+            text = "Estoy enojado."
+        intervals [157]
+            xmin = 382.552
+            xmax = 383.903
+            text = ""
+        intervals [158]
+            xmin = 383.903
+            xmax = 385.123
+            text = "Estoy con frio."
+        intervals [159]
+            xmin = 385.123
+            xmax = 386.516
+            text = ""
+        intervals [160]
+            xmin = 386.516
+            xmax = 387.927
+            text = "Quemando."
+        intervals [161]
+            xmin = 387.927
+            xmax = 389.778
+            text = ""
+        intervals [162]
+            xmin = 389.778
+            xmax = 391.559
+            text = "Cada quien hablamos quichua."
+        intervals [163]
+            xmin = 391.559
+            xmax = 393.966
+            text = ""
+        intervals [164]
+            xmin = 393.966
+            xmax = 395.409
+            text = "Casi aquí estoy."
+        intervals [165]
+            xmin = 395.409
+            xmax = 396.896
+            text = ""
+        intervals [166]
+            xmin = 396.896
+            xmax = 398.807
+            text = "La tienda esta al frente."
+        intervals [167]
+            xmin = 398.807
+            xmax = 400.891
+            text = ""
+        intervals [168]
+            xmin = 400.891
+            xmax = 402.46
+            text = "La tienda esta atrás."
+        intervals [169]
+            xmin = 402.46
+            xmax = 404.224
+            text = ""
+        intervals [170]
+            xmin = 404.224
+            xmax = 406.462
+            text = "Mi hija esta afuera."
+        intervals [171]
+            xmin = 406.462
+            xmax = 408.118
+            text = ""
+        intervals [172]
+            xmin = 408.118
+            xmax = 410.066
+            text = "Mi familia esta adentro."
+        intervals [173]
+            xmin = 410.066
+            xmax = 413.11
+            text = ""
+        intervals [174]
+            xmin = 413.11
+            xmax = 415.365
+            text = "Mañana voy a dormir tarde."
+        intervals [175]
+            xmin = 415.365
+            xmax = 417.237
+            text = ""
+        intervals [176]
+            xmin = 417.237
+            xmax = 419.234
+            text = "Ayer me fuy a quito."
+        intervals [177]
+            xmin = 419.234
+            xmax = 424.789
+            text = ""
+        intervals [178]
+            xmin = 424.789
+            xmax = 428.417
+            text = "Antes de cosinar lavar las manos."
+        intervals [179]
+            xmin = 428.417
+            xmax = 432.262
+            text = ""
+        intervals [180]
+            xmin = 432.262
+            xmax = 435.519
+            text = "Despues de la fiesta me fuy ala casa."
+        intervals [181]
+            xmin = 435.519
+            xmax = 438.304
+            text = ""
+        intervals [182]
+            xmin = 438.304
+            xmax = 440.709
+            text = "Las gentes siempre vienen aca."
+        intervals [183]
+            xmin = 440.709
+            xmax = 443.91
+            text = ""
+        intervals [184]
+            xmin = 443.91
+            xmax = 446.182
+            text = "Yo nunca hago los deberes."
+        intervals [185]
+            xmin = 446.182
+            xmax = 448.707
+            text = ""
+        intervals [186]
+            xmin = 448.707
+            xmax = 451.47
+            text = "Tengo muchos deberes."
+        intervals [187]
+            xmin = 451.47
+            xmax = 454.002
+            text = ""
+        intervals [188]
+            xmin = 454.002
+            xmax = 455.878
+            text = "Hago un poquito   hay un poco de comida."
+        intervals [189]
+            xmin = 455.878
+            xmax = 478.09
+            text = ""
+        intervals [190]
+            xmin = 478.09
+            xmax = 482.52
+            text = "Yo hablo despacio."
+        intervals [191]
+            xmin = 482.52
+            xmax = 485.801
+            text = ""
+        intervals [192]
+            xmin = 485.801
+            xmax = 488.5
+            text = "Yo estoy muy cansado."
+        intervals [193]
+            xmin = 488.5
+            xmax = 489.747
+            text = ""
+        intervals [194]
+            xmin = 489.747
+            xmax = 491.935
+            text = "Cansado demaciado."
+        intervals [195]
+            xmin = 491.935
+            xmax = 496.112
+            text = ""
+        intervals [196]
+            xmin = 496.112
+            xmax = 496.995
+            text = "Asi mismo."
+        intervals [197]
+            xmin = 496.995
+            xmax = 498.986
+            text = ""
+        intervals [198]
+            xmin = 498.986
+            xmax = 501.878
+            text = "Hay bastante somos bastantes."
+        intervals [199]
+            xmin = 501.878
+            xmax = 503.734
+            text = ""
+        intervals [200]
+            xmin = 503.734
+            xmax = 504.777
+            text = "Haci soy."
+        intervals [201]
+            xmin = 504.777
+            xmax = 506.563
+            text = ""
+        intervals [202]
+            xmin = 506.563
+            xmax = 508.844
+            text = "Abemos algunas personas."
+    item[5]:
+        class = "IntervalTier"
+        name = "Inglés-LG"
+        xmin = 0.0
+        xmax = 508.844
+        intervals: size = 202
+        intervals [1]
+            xmin = 0.0
+            xmax = 3.24
+            text = ""
+        intervals [2]
+            xmin = 3.24
+            xmax = 7.28
+            text = "I'm 39 years old."
+        intervals [3]
+            xmin = 7.28
+            xmax = 10.77
+            text = ""
+        intervals [4]
+            xmin = 10.77
+            xmax = 13.97
+            text = "My name is Lucia Gonza."
+        intervals [5]
+            xmin = 13.97
+            xmax = 15.241
+            text = ""
+        intervals [6]
+            xmin = 15.241
+            xmax = 16.786
+            text = "I'm eating."
+        intervals [7]
+            xmin = 16.786
+            xmax = 17.552
+            text = ""
+        intervals [8]
+            xmin = 17.552
+            xmax = 19.002
+            text = "You are eating."
+        intervals [9]
+            xmin = 19.002
+            xmax = 20.136
+            text = ""
+        intervals [10]
+            xmin = 20.136
+            xmax = 21.488
+            text = "He is eating."
+        intervals [11]
+            xmin = 21.488
+            xmax = 22.74
+            text = ""
+        intervals [12]
+            xmin = 22.74
+            xmax = 24.9
+            text = "We are eating."
+        intervals [13]
+            xmin = 24.9
+            xmax = 27.204
+            text = ""
+        intervals [14]
+            xmin = 27.204
+            xmax = 28.81
+            text = "You eat."
+        intervals [15]
+            xmin = 28.81
+            xmax = 30.236
+            text = ""
+        intervals [16]
+            xmin = 30.236
+            xmax = 31.696
+            text = "They eat."
+        intervals [17]
+            xmin = 31.696
+            xmax = 34.967
+            text = ""
+        intervals [18]
+            xmin = 34.967
+            xmax = 36.275
+            text = "I ate (the other day I ate.)"
+        intervals [19]
+            xmin = 36.275
+            xmax = 38.775
+            text = ""
+        intervals [20]
+            xmin = 38.775
+            xmax = 40.508
+            text = "You ate."
+        intervals [21]
+            xmin = 40.508
+            xmax = 41.786
+            text = ""
+        intervals [22]
+            xmin = 41.786
+            xmax = 43.251
+            text = "They ate."
+        intervals [23]
+            xmin = 43.251
+            xmax = 44.885
+            text = ""
+        intervals [24]
+            xmin = 44.885
+            xmax = 46.833
+            text = "We eat (the other day we ate.)"
+        intervals [25]
+            xmin = 46.833
+            xmax = 50.53
+            text = ""
+        intervals [26]
+            xmin = 50.53
+            xmax = 51.945
+            text = "You ate."
+        intervals [27]
+            xmin = 51.945
+            xmax = 55.749
+            text = ""
+        intervals [28]
+            xmin = 55.749
+            xmax = 57.152
+            text = "They ate."
+        intervals [29]
+            xmin = 57.152
+            xmax = 60.418
+            text = ""
+        intervals [30]
+            xmin = 60.418
+            xmax = 61.699
+            text = "I ate."
+        intervals [31]
+            xmin = 61.699
+            xmax = 64.817
+            text = ""
+        intervals [32]
+            xmin = 64.817
+            xmax = 65.966
+            text = "You eat."
+        intervals [33]
+            xmin = 65.966
+            xmax = 67.727
+            text = ""
+        intervals [34]
+            xmin = 67.727
+            xmax = 69.082
+            text = "He eats."
+        intervals [35]
+            xmin = 69.082
+            xmax = 70.824
+            text = ""
+        intervals [36]
+            xmin = 70.824
+            xmax = 72.681
+            text = "We eat."
+        intervals [37]
+            xmin = 72.681
+            xmax = 75.28
+            text = ""
+        intervals [38]
+            xmin = 75.28
+            xmax = 77.49
+            text = "You will eat."
+        intervals [39]
+            xmin = 77.49
+            xmax = 79.19
+            text = ""
+        intervals [40]
+            xmin = 79.19
+            xmax = 80.83
+            text = "They will eat."
+        intervals [41]
+            xmin = 80.83
+            xmax = 84.962
+            text = ""
+        intervals [42]
+            xmin = 84.962
+            xmax = 87.965
+            text = "I will run out to meet you."
+        intervals [43]
+            xmin = 87.965
+            xmax = 92.57
+            text = ""
+        intervals [44]
+            xmin = 92.57
+            xmax = 97.07
+            text = "There was food, I ate at home. I went to my house."
+        intervals [45]
+            xmin = 97.07
+            xmax = 100.166
+            text = ""
+        intervals [46]
+            xmin = 100.166
+            xmax = 102.999
+            text = "My sister buys at the store."
+        intervals [47]
+            xmin = 102.999
+            xmax = 106.65
+            text = ""
+        intervals [48]
+            xmin = 106.65
+            xmax = 110.025
+            text = "Are you tired? Rest!"
+        intervals [49]
+            xmin = 110.025
+            xmax = 113.442
+            text = ""
+        intervals [50]
+            xmin = 113.442
+            xmax = 115.199
+            text = "When he comes, let me know."
+        intervals [51]
+            xmin = 115.199
+            xmax = 117.524
+            text = ""
+        intervals [52]
+            xmin = 117.524
+            xmax = 119.308
+            text = "I want to sleep."
+        intervals [53]
+            xmin = 119.308
+            xmax = 121.37
+            text = ""
+        intervals [54]
+            xmin = 121.37
+            xmax = 123.709
+            text = "He wants to sleep."
+        intervals [55]
+            xmin = 123.709
+            xmax = 126.597
+            text = ""
+        intervals [56]
+            xmin = 126.597
+            xmax = 128.135
+            text = "He wants to eat."
+        intervals [57]
+            xmin = 128.135
+            xmax = 130.185
+            text = ""
+        intervals [58]
+            xmin = 130.185
+            xmax = 132.771
+            text = "We want to eat."
+        intervals [59]
+            xmin = 132.771
+            xmax = 135.539
+            text = ""
+        intervals [60]
+            xmin = 135.539
+            xmax = 138.526
+            text = "You want to play."
+        intervals [61]
+            xmin = 138.526
+            xmax = 140.981
+            text = ""
+        intervals [62]
+            xmin = 140.981
+            xmax = 142.996
+            text = "They want to play."
+        intervals [63]
+            xmin = 142.996
+            xmax = 145.008
+            text = ""
+        intervals [64]
+            xmin = 145.008
+            xmax = 146.555
+            text = "My dog is very big."
+        intervals [65]
+            xmin = 146.555
+            xmax = 149.6
+            text = ""
+        intervals [66]
+            xmin = 149.6
+            xmax = 152.094
+            text = "My house is brand new, not like yours."
+        intervals [67]
+            xmin = 152.094
+            xmax = 155.651
+            text = ""
+        intervals [68]
+            xmin = 155.651
+            xmax = 159.669
+            text = "The tree is very big, bigger than the corn stock."
+        intervals [69]
+            xmin = 159.669
+            xmax = 161.807
+            text = ""
+        intervals [70]
+            xmin = 161.807
+            xmax = 164.7
+            text = "My car is big like yours."
+        intervals [71]
+            xmin = 164.7
+            xmax = 171.186
+            text = ""
+        intervals [72]
+            xmin = 171.186
+            xmax = 174.433
+            text = "At night I watch television, then I go to bed."
+        intervals [73]
+            xmin = 174.433
+            xmax = 178.363
+            text = ""
+        intervals [74]
+            xmin = 178.363
+            xmax = 180.328
+            text = "You wrote incorrectly. Erase it!"
+        intervals [75]
+            xmin = 180.328
+            xmax = 184.215
+            text = ""
+        intervals [76]
+            xmin = 184.215
+            xmax = 189.219
+            text = "I went to his home to see the field."
+        intervals [77]
+            xmin = 189.219
+            xmax = 192.001
+            text = ""
+        intervals [78]
+            xmin = 192.001
+            xmax = 194.068
+            text = "Whether you want to or not, you have to do it."
+        intervals [79]
+            xmin = 194.068
+            xmax = 231.989
+            text = ""
+        intervals [80]
+            xmin = 231.989
+            xmax = 236.217
+            text = "My land was beautiful."
+        intervals [81]
+            xmin = 236.217
+            xmax = 243.19
+            text = ""
+        intervals [82]
+            xmin = 243.19
+            xmax = 245.1
+            text = "This mountain is big."
+        intervals [83]
+            xmin = 245.1
+            xmax = 247.154
+            text = ""
+        intervals [84]
+            xmin = 247.154
+            xmax = 249.166
+            text = "The candle is burning."
+        intervals [85]
+            xmin = 249.166
+            xmax = 250.826
+            text = ""
+        intervals [86]
+            xmin = 250.826
+            xmax = 253.166
+            text = "Cold water."
+        intervals [87]
+            xmin = 253.166
+            xmax = 259.999
+            text = ""
+        intervals [88]
+            xmin = 259.999
+            xmax = 262.39
+            text = "Those clouds are white."
+        intervals [89]
+            xmin = 262.39
+            xmax = 265.429
+            text = ""
+        intervals [90]
+            xmin = 265.429
+            xmax = 269.461
+            text = "I love my dad."
+        intervals [91]
+            xmin = 269.461
+            xmax = 273.547
+            text = ""
+        intervals [92]
+            xmin = 273.547
+            xmax = 276.891
+            text = "I'm loved by my dad."
+        intervals [93]
+            xmin = 276.891
+            xmax = 280.732
+            text = ""
+        intervals [94]
+            xmin = 280.732
+            xmax = 284.653
+            text = "The government gave computers for schools."
+        intervals [95]
+            xmin = 284.653
+            xmax = 289.83
+            text = ""
+        intervals [96]
+            xmin = 289.83
+            xmax = 295.208
+            text = "The government gave computers for schools."
+        intervals [97]
+            xmin = 295.208
+            xmax = 303.903
+            text = ""
+        intervals [98]
+            xmin = 303.903
+            xmax = 305.463
+            text = "I."
+        intervals [99]
+            xmin = 305.463
+            xmax = 308.355
+            text = ""
+        intervals [100]
+            xmin = 308.355
+            xmax = 309.27
+            text = "You."
+        intervals [101]
+            xmin = 309.27
+            xmax = 310.28
+            text = ""
+        intervals [102]
+            xmin = 310.28
+            xmax = 310.99
+            text = "She."
+        intervals [103]
+            xmin = 310.99
+            xmax = 312.65
+            text = ""
+        intervals [104]
+            xmin = 312.65
+            xmax = 314.029
+            text = "We."
+        intervals [105]
+            xmin = 314.029
+            xmax = 315.444
+            text = ""
+        intervals [106]
+            xmin = 315.444
+            xmax = 316.504
+            text = "You."
+        intervals [107]
+            xmin = 316.504
+            xmax = 317.495
+            text = ""
+        intervals [108]
+            xmin = 317.495
+            xmax = 318.505
+            text = "They."
+        intervals [109]
+            xmin = 318.505
+            xmax = 319.61
+            text = ""
+        intervals [110]
+            xmin = 319.61
+            xmax = 320.56
+            text = "Those."
+        intervals [111]
+            xmin = 320.56
+            xmax = 321.818
+            text = ""
+        intervals [112]
+            xmin = 321.818
+            xmax = 322.628
+            text = "That."
+        intervals [113]
+            xmin = 322.628
+            xmax = 324.255
+            text = ""
+        intervals [114]
+            xmin = 324.255
+            xmax = 325.404
+            text = "Here."
+        intervals [115]
+            xmin = 325.404
+            xmax = 326.42
+            text = ""
+        intervals [116]
+            xmin = 326.42
+            xmax = 327.36
+            text = "There or over there."
+        intervals [117]
+            xmin = 327.36
+            xmax = 328.55
+            text = ""
+        intervals [118]
+            xmin = 328.55
+            xmax = 329.42
+            text = "Who."
+        intervals [119]
+            xmin = 329.42
+            xmax = 330.232
+            text = ""
+        intervals [120]
+            xmin = 330.232
+            xmax = 330.852
+            text = "What."
+        intervals [121]
+            xmin = 330.852
+            xmax = 331.471
+            text = ""
+        intervals [122]
+            xmin = 331.471
+            xmax = 332.181
+            text = "Where."
+        intervals [123]
+            xmin = 332.181
+            xmax = 333.161
+            text = ""
+        intervals [124]
+            xmin = 333.161
+            xmax = 333.761
+            text = "When."
+        intervals [125]
+            xmin = 333.761
+            xmax = 337.066
+            text = ""
+        intervals [126]
+            xmin = 337.066
+            xmax = 338.27
+            text = "Are you ok?"
+        intervals [127]
+            xmin = 338.27
+            xmax = 340.246
+            text = ""
+        intervals [128]
+            xmin = 340.246
+            xmax = 342.16
+            text = "Good morning."
+        intervals [129]
+            xmin = 342.16
+            xmax = 343.936
+            text = ""
+        intervals [130]
+            xmin = 343.936
+            xmax = 345.126
+            text = "Good afternoon."
+        intervals [131]
+            xmin = 345.126
+            xmax = 346.528
+            text = ""
+        intervals [132]
+            xmin = 346.528
+            xmax = 347.728
+            text = "Good evening (good night)."
+        intervals [133]
+            xmin = 347.728
+            xmax = 349.074
+            text = ""
+        intervals [134]
+            xmin = 349.074
+            xmax = 351.08
+            text = "See you tomorrow."
+        intervals [135]
+            xmin = 351.08
+            xmax = 352.623
+            text = ""
+        intervals [136]
+            xmin = 352.623
+            xmax = 353.495
+            text = "See you tomorrow."
+        intervals [137]
+            xmin = 353.495
+            xmax = 356.021
+            text = ""
+        intervals [138]
+            xmin = 356.021
+            xmax = 356.841
+            text = "See you."
+        intervals [139]
+            xmin = 356.841
+            xmax = 357.692
+            text = ""
+        intervals [140]
+            xmin = 357.692
+            xmax = 358.522
+            text = "Thank you"
+        intervals [141]
+            xmin = 358.522
+            xmax = 360.037
+            text = ""
+        intervals [142]
+            xmin = 360.037
+            xmax = 361.403
+            text = "What is your name?"
+        intervals [143]
+            xmin = 361.403
+            xmax = 362.984
+            text = ""
+        intervals [144]
+            xmin = 362.984
+            xmax = 364.523
+            text = "How are you?"
+        intervals [145]
+            xmin = 364.523
+            xmax = 365.867
+            text = ""
+        intervals [146]
+            xmin = 365.867
+            xmax = 367.159
+            text = "It's ok."
+        intervals [147]
+            xmin = 367.159
+            xmax = 370.14
+            text = ""
+        intervals [148]
+            xmin = 370.14
+            xmax = 371.796
+            text = "More or less."
+        intervals [149]
+            xmin = 371.796
+            xmax = 373.115
+            text = ""
+        intervals [150]
+            xmin = 373.115
+            xmax = 374.477
+            text = "I'm sick."
+        intervals [151]
+            xmin = 374.477
+            xmax = 375.693
+            text = ""
+        intervals [152]
+            xmin = 375.693
+            xmax = 377.113
+            text = "I'm not fine."
+        intervals [153]
+            xmin = 377.113
+            xmax = 378.483
+            text = ""
+        intervals [154]
+            xmin = 378.483
+            xmax = 379.807
+            text = "I'm tired."
+        intervals [155]
+            xmin = 379.807
+            xmax = 381.032
+            text = ""
+        intervals [156]
+            xmin = 381.032
+            xmax = 382.552
+            text = "I'm angry."
+        intervals [157]
+            xmin = 382.552
+            xmax = 383.903
+            text = ""
+        intervals [158]
+            xmin = 383.903
+            xmax = 385.123
+            text = "I'm cold."
+        intervals [159]
+            xmin = 385.123
+            xmax = 386.516
+            text = ""
+        intervals [160]
+            xmin = 386.516
+            xmax = 387.927
+            text = "Burning."
+        intervals [161]
+            xmin = 387.927
+            xmax = 389.778
+            text = ""
+        intervals [162]
+            xmin = 389.778
+            xmax = 391.559
+            text = "Every one speaks Quichua."
+        intervals [163]
+            xmin = 391.559
+            xmax = 393.966
+            text = ""
+        intervals [164]
+            xmin = 393.966
+            xmax = 395.409
+            text = "I'm almost here."
+        intervals [165]
+            xmin = 395.409
+            xmax = 396.896
+            text = ""
+        intervals [166]
+            xmin = 396.896
+            xmax = 398.807
+            text = "The store is in front."
+        intervals [167]
+            xmin = 398.807
+            xmax = 400.891
+            text = ""
+        intervals [168]
+            xmin = 400.891
+            xmax = 402.46
+            text = "The store is behind."
+        intervals [169]
+            xmin = 402.46
+            xmax = 404.224
+            text = ""
+        intervals [170]
+            xmin = 404.224
+            xmax = 406.462
+            text = "My daughter is outside."
+        intervals [171]
+            xmin = 406.462
+            xmax = 408.118
+            text = ""
+        intervals [172]
+            xmin = 408.118
+            xmax = 410.066
+            text = "My family is inside."
+        intervals [173]
+            xmin = 410.066
+            xmax = 413.11
+            text = ""
+        intervals [174]
+            xmin = 413.11
+            xmax = 415.365
+            text = "Tomorrow I will sleep late."
+        intervals [175]
+            xmin = 415.365
+            xmax = 417.237
+            text = ""
+        intervals [176]
+            xmin = 417.237
+            xmax = 419.234
+            text = "Yesterday I went to Quito."
+        intervals [177]
+            xmin = 419.234
+            xmax = 424.789
+            text = ""
+        intervals [178]
+            xmin = 424.789
+            xmax = 428.417
+            text = "Before cooking, I wash my hands."
+        intervals [179]
+            xmin = 428.417
+            xmax = 432.262
+            text = ""
+        intervals [180]
+            xmin = 432.262
+            xmax = 435.519
+            text = "After the party, I went home."
+        intervals [181]
+            xmin = 435.519
+            xmax = 438.304
+            text = ""
+        intervals [182]
+            xmin = 438.304
+            xmax = 440.709
+            text = "People always come here."
+        intervals [183]
+            xmin = 440.709
+            xmax = 443.91
+            text = ""
+        intervals [184]
+            xmin = 443.91
+            xmax = 446.182
+            text = "I never do the tasks."
+        intervals [185]
+            xmin = 446.182
+            xmax = 448.707
+            text = ""
+        intervals [186]
+            xmin = 448.707
+            xmax = 451.47
+            text = "I have a lot of tasks."
+        intervals [187]
+            xmin = 451.47
+            xmax = 454.002
+            text = ""
+        intervals [188]
+            xmin = 454.002
+            xmax = 455.878
+            text = "I do a little bit, there is a bit of food."
+        intervals [189]
+            xmin = 455.878
+            xmax = 478.09
+            text = ""
+        intervals [190]
+            xmin = 478.09
+            xmax = 482.52
+            text = "I speak slow."
+        intervals [191]
+            xmin = 482.52
+            xmax = 485.801
+            text = ""
+        intervals [192]
+            xmin = 485.801
+            xmax = 488.5
+            text = "I'm so tired."
+        intervals [193]
+            xmin = 488.5
+            xmax = 489.747
+            text = ""
+        intervals [194]
+            xmin = 489.747
+            xmax = 491.935
+            text = "I'm so tired."
+        intervals [195]
+            xmin = 491.935
+            xmax = 496.112
+            text = ""
+        intervals [196]
+            xmin = 496.112
+            xmax = 496.995
+            text = "Likewise."
+        intervals [197]
+            xmin = 496.995
+            xmax = 498.986
+            text = ""
+        intervals [198]
+            xmin = 498.986
+            xmax = 501.878
+            text = "There is a lot, we are many."
+        intervals [199]
+            xmin = 501.878
+            xmax = 503.734
+            text = ""
+        intervals [200]
+            xmin = 503.734
+            xmax = 504.777
+            text = "I'm like that."
+        intervals [201]
+            xmin = 504.777
+            xmax = 506.563
+            text = ""
+        intervals [202]
+            xmin = 506.563
+            xmax = 508.844
+            text = "There are some people."
+    item[6]:
+        class = "IntervalTier"
+        name = "Quichua-LG"
+        xmin = 0.0
+        xmax = 508.844
+        intervals: size = 202
+        intervals [1]
+            xmin = 0.0
+            xmax = 3.24
+            text = ""
+        intervals [2]
+            xmin = 3.24
+            xmax = 7.28
+            text = "39 watata charini."
+        intervals [3]
+            xmin = 7.28
+            xmax = 10.77
+            text = ""
+        intervals [4]
+            xmin = 10.77
+            xmax = 13.97
+            text = "Ñuka shutimi Lucia Gonza."
+        intervals [5]
+            xmin = 13.97
+            xmax = 15.241
+            text = ""
+        intervals [6]
+            xmin = 15.241
+            xmax = 16.786
+            text = "Ñukaca mikujuni."
+        intervals [7]
+            xmin = 16.786
+            xmax = 17.552
+            text = ""
+        intervals [8]
+            xmin = 17.552
+            xmax = 19.002
+            text = "Kan mikujungui."
+        intervals [9]
+            xmin = 19.002
+            xmax = 20.136
+            text = ""
+        intervals [10]
+            xmin = 20.136
+            xmax = 21.488
+            text = "Payca mikujunmi."
+        intervals [11]
+            xmin = 21.488
+            xmax = 22.74
+            text = ""
+        intervals [12]
+            xmin = 22.74
+            xmax = 24.9
+            text = "Ñukanchica mikunajunchimy."
+        intervals [13]
+            xmin = 24.9
+            xmax = 27.204
+            text = ""
+        intervals [14]
+            xmin = 27.204
+            xmax = 28.81
+            text = "Cankuna mikunajunguichi."
+        intervals [15]
+            xmin = 28.81
+            xmax = 30.236
+            text = ""
+        intervals [16]
+            xmin = 30.236
+            xmax = 31.696
+            text = "Paykuna mikunajun."
+        intervals [17]
+            xmin = 31.696
+            xmax = 34.967
+            text = ""
+        intervals [18]
+            xmin = 34.967
+            xmax = 36.275
+            text = "Ñuka mikurcani (caynany puncha ñuka mikuny.)"
+        intervals [19]
+            xmin = 36.275
+            xmax = 38.775
+            text = ""
+        intervals [20]
+            xmin = 38.775
+            xmax = 40.508
+            text = "Can mikurcangui."
+        intervals [21]
+            xmin = 40.508
+            xmax = 41.786
+            text = ""
+        intervals [22]
+            xmin = 41.786
+            xmax = 43.251
+            text = "Paykuna mikurca."
+        intervals [23]
+            xmin = 43.251
+            xmax = 44.885
+            text = ""
+        intervals [24]
+            xmin = 44.885
+            xmax = 46.833
+            text = "Ñukanchi mikurcanchi (cayna puncha mikurcanchi.)"
+        intervals [25]
+            xmin = 46.833
+            xmax = 50.53
+            text = ""
+        intervals [26]
+            xmin = 50.53
+            xmax = 51.945
+            text = "Cankuna mikurcanguichi (caynany puncha.)"
+        intervals [27]
+            xmin = 51.945
+            xmax = 55.749
+            text = ""
+        intervals [28]
+            xmin = 55.749
+            xmax = 57.152
+            text = "Paykuna mikurca."
+        intervals [29]
+            xmin = 57.152
+            xmax = 60.418
+            text = ""
+        intervals [30]
+            xmin = 60.418
+            xmax = 61.699
+            text = "Ñuka mikurcany."
+        intervals [31]
+            xmin = 61.699
+            xmax = 64.817
+            text = ""
+        intervals [32]
+            xmin = 64.817
+            xmax = 65.966
+            text = "Can mikungui."
+        intervals [33]
+            xmin = 65.966
+            xmax = 67.727
+            text = ""
+        intervals [34]
+            xmin = 67.727
+            xmax = 69.082
+            text = "Payka mikunga."
+        intervals [35]
+            xmin = 69.082
+            xmax = 70.824
+            text = ""
+        intervals [36]
+            xmin = 70.824
+            xmax = 72.681
+            text = "Ñukanchica mikushunmy."
+        intervals [37]
+            xmin = 72.681
+            xmax = 75.28
+            text = ""
+        intervals [38]
+            xmin = 75.28
+            xmax = 77.49
+            text = "Cankuna mikunguichimy."
+        intervals [39]
+            xmin = 77.49
+            xmax = 79.19
+            text = ""
+        intervals [40]
+            xmin = 79.19
+            xmax = 80.83
+            text = "Paykuna mikungami."
+        intervals [41]
+            xmin = 80.83
+            xmax = 84.962
+            text = ""
+        intervals [42]
+            xmin = 84.962
+            xmax = 87.965
+            text = "Ñuka volashpa llukshisha reksingapa cankunata."
+        intervals [43]
+            xmin = 87.965
+            xmax = 92.57
+            text = ""
+        intervals [44]
+            xmin = 92.57
+            xmax = 97.07
+            text = "Mikuna tiakpi mikurcani huasypi ñuka huasyman rircany."
+        intervals [45]
+            xmin = 97.07
+            xmax = 100.166
+            text = ""
+        intervals [46]
+            xmin = 100.166
+            xmax = 102.999
+            text = "Ñuka ñaña tiendapi randijurca."
+        intervals [47]
+            xmin = 102.999
+            xmax = 106.65
+            text = ""
+        intervals [48]
+            xmin = 106.65
+            xmax = 110.025
+            text = "Shayajushcachu cangui samay."
+        intervals [49]
+            xmin = 110.025
+            xmax = 113.442
+            text = ""
+        intervals [50]
+            xmin = 113.442
+            xmax = 115.199
+            text = "Pay shamukpi villahuangui."
+        intervals [51]
+            xmin = 115.199
+            xmax = 117.524
+            text = ""
+        intervals [52]
+            xmin = 117.524
+            xmax = 119.308
+            text = "Ñuka puñonata munany."
+        intervals [53]
+            xmin = 119.308
+            xmax = 121.37
+            text = ""
+        intervals [54]
+            xmin = 121.37
+            xmax = 123.709
+            text = "Pay puñonata munan."
+        intervals [55]
+            xmin = 123.709
+            xmax = 126.597
+            text = ""
+        intervals [56]
+            xmin = 126.597
+            xmax = 128.135
+            text = "Pay mikunata munan.
+"
+        intervals [57]
+            xmin = 128.135
+            xmax = 130.185
+            text = ""
+        intervals [58]
+            xmin = 130.185
+            xmax = 132.771
+            text = "Ñukanchi mikunata munanchi."
+        intervals [59]
+            xmin = 132.771
+            xmax = 135.539
+            text = ""
+        intervals [60]
+            xmin = 135.539
+            xmax = 138.526
+            text = "Cankuna pukllanata munanguichi."
+        intervals [61]
+            xmin = 138.526
+            xmax = 140.981
+            text = ""
+        intervals [62]
+            xmin = 140.981
+            xmax = 142.996
+            text = "Paykuna pukllanata munan."
+        intervals [63]
+            xmin = 142.996
+            xmax = 145.008
+            text = ""
+        intervals [64]
+            xmin = 145.008
+            xmax = 146.555
+            text = "Ñuka alku jatun jatunmi."
+        intervals [65]
+            xmin = 146.555
+            xmax = 149.6
+            text = ""
+        intervals [66]
+            xmin = 149.6
+            xmax = 152.094
+            text = "Ñuka huasyka mushukmi cambashna."
+        intervals [67]
+            xmin = 152.094
+            xmax = 155.651
+            text = ""
+        intervals [68]
+            xmin = 155.651
+            xmax = 159.669
+            text = "Chay ocalitoca jatun jatunmi zaratapash yalishka."
+        intervals [69]
+            xmin = 159.669
+            xmax = 161.807
+            text = ""
+        intervals [70]
+            xmin = 161.807
+            xmax = 164.7
+            text = "Ñuka autoca jatunmi cambashna."
+        intervals [71]
+            xmin = 164.7
+            xmax = 171.186
+            text = ""
+        intervals [72]
+            xmin = 171.186
+            xmax = 174.433
+            text = "Tuta ñuka televiciontami rikuny ricushka jipa puñony."
+        intervals [73]
+            xmin = 174.433
+            xmax = 178.363
+            text = ""
+        intervals [74]
+            xmin = 178.363
+            xmax = 180.328
+            text = "Na alyta llancashkangui borray."
+        intervals [75]
+            xmin = 180.328
+            xmax = 184.215
+            text = ""
+        intervals [76]
+            xmin = 184.215
+            xmax = 189.219
+            text = "Paypa huasyman rircani sementerata pambata rikungapa."
+        intervals [77]
+            xmin = 189.219
+            xmax = 192.001
+            text = ""
+        intervals [78]
+            xmin = 192.001
+            xmax = 194.068
+            text = "munashpa o na munashpachu, ruray!"
+        intervals [79]
+            xmin = 194.068
+            xmax = 231.989
+            text = ""
+        intervals [80]
+            xmin = 231.989
+            xmax = 236.217
+            text = "Ñuka alpaca juyaynagumi carca."
+        intervals [81]
+            xmin = 236.217
+            xmax = 243.19
+            text = ""
+        intervals [82]
+            xmin = 243.19
+            xmax = 245.1
+            text = "Cay urkuca jatunmi."
+        intervals [83]
+            xmin = 245.1
+            xmax = 247.154
+            text = ""
+        intervals [84]
+            xmin = 247.154
+            xmax = 249.166
+            text = "Espelma rupajun."
+        intervals [85]
+            xmin = 249.166
+            xmax = 250.826
+            text = ""
+        intervals [86]
+            xmin = 250.826
+            xmax = 253.166
+            text = "Yakuca chirimi."
+        intervals [87]
+            xmin = 253.166
+            xmax = 259.999
+            text = ""
+        intervals [88]
+            xmin = 259.999
+            xmax = 262.39
+            text = "Chay fuyuka yurakmi."
+        intervals [89]
+            xmin = 262.39
+            xmax = 265.429
+            text = ""
+        intervals [90]
+            xmin = 265.429
+            xmax = 269.461
+            text = "Ñuka munany ñuka taitata."
+        intervals [91]
+            xmin = 269.461
+            xmax = 273.547
+            text = ""
+        intervals [92]
+            xmin = 273.547
+            xmax = 276.891
+            text = "ñucaca ñucapa tayta munashca kani."
+        intervals [93]
+            xmin = 276.891
+            xmax = 280.732
+            text = ""
+        intervals [94]
+            xmin = 280.732
+            xmax = 284.653
+            text = "Gobiernoca computadoracunata cararca yachajuna huasycunaman."
+        intervals [95]
+            xmin = 284.653
+            xmax = 289.83
+            text = ""
+        intervals [96]
+            xmin = 289.83
+            xmax = 295.208
+            text = "Computadorakunaca carashkamy yachachik huasyman gobiernomanta."
+        intervals [97]
+            xmin = 295.208
+            xmax = 303.903
+            text = ""
+        intervals [98]
+            xmin = 303.903
+            xmax = 305.463
+            text = "Ñuka."
+        intervals [99]
+            xmin = 305.463
+            xmax = 308.355
+            text = ""
+        intervals [100]
+            xmin = 308.355
+            xmax = 309.27
+            text = "Kanca."
+        intervals [101]
+            xmin = 309.27
+            xmax = 310.28
+            text = ""
+        intervals [102]
+            xmin = 310.28
+            xmax = 310.99
+            text = "Payka."
+        intervals [103]
+            xmin = 310.99
+            xmax = 312.65
+            text = ""
+        intervals [104]
+            xmin = 312.65
+            xmax = 314.029
+            text = "Ñukanchica."
+        intervals [105]
+            xmin = 314.029
+            xmax = 315.444
+            text = ""
+        intervals [106]
+            xmin = 315.444
+            xmax = 316.504
+            text = "Cankunaca."
+        intervals [107]
+            xmin = 316.504
+            xmax = 317.495
+            text = ""
+        intervals [108]
+            xmin = 317.495
+            xmax = 318.505
+            text = "Paykunaca."
+        intervals [109]
+            xmin = 318.505
+            xmax = 319.61
+            text = ""
+        intervals [110]
+            xmin = 319.61
+            xmax = 320.56
+            text = "Caykunaca."
+        intervals [111]
+            xmin = 320.56
+            xmax = 321.818
+            text = ""
+        intervals [112]
+            xmin = 321.818
+            xmax = 322.628
+            text = "Caycuna."
+        intervals [113]
+            xmin = 322.628
+            xmax = 324.255
+            text = ""
+        intervals [114]
+            xmin = 324.255
+            xmax = 325.404
+            text = "Caypi."
+        intervals [115]
+            xmin = 325.404
+            xmax = 326.42
+            text = ""
+        intervals [116]
+            xmin = 326.42
+            xmax = 327.36
+            text = "chaypy."
+        intervals [117]
+            xmin = 327.36
+            xmax = 328.55
+            text = ""
+        intervals [118]
+            xmin = 328.55
+            xmax = 329.42
+            text = "Pikuna."
+        intervals [119]
+            xmin = 329.42
+            xmax = 330.232
+            text = ""
+        intervals [120]
+            xmin = 330.232
+            xmax = 330.852
+            text = "Imata."
+        intervals [121]
+            xmin = 330.852
+            xmax = 331.471
+            text = ""
+        intervals [122]
+            xmin = 331.471
+            xmax = 332.181
+            text = "Maypi."
+        intervals [123]
+            xmin = 332.181
+            xmax = 333.161
+            text = ""
+        intervals [124]
+            xmin = 333.161
+            xmax = 333.761
+            text = "Imaurata ."
+        intervals [125]
+            xmin = 333.761
+            xmax = 337.066
+            text = ""
+        intervals [126]
+            xmin = 337.066
+            xmax = 338.27
+            text = "Alyllachu cangui?"
+        intervals [127]
+            xmin = 338.27
+            xmax = 340.246
+            text = ""
+        intervals [128]
+            xmin = 340.246
+            xmax = 342.16
+            text = "Aly puncha ."
+        intervals [129]
+            xmin = 342.16
+            xmax = 343.936
+            text = ""
+        intervals [130]
+            xmin = 343.936
+            xmax = 345.126
+            text = "Aly chishi."
+        intervals [131]
+            xmin = 345.126
+            xmax = 346.528
+            text = ""
+        intervals [132]
+            xmin = 346.528
+            xmax = 347.728
+            text = "Aly tuta ."
+        intervals [133]
+            xmin = 347.728
+            xmax = 349.074
+            text = ""
+        intervals [134]
+            xmin = 349.074
+            xmax = 351.08
+            text = "Cayacaman."
+        intervals [135]
+            xmin = 351.08
+            xmax = 352.623
+            text = ""
+        intervals [136]
+            xmin = 352.623
+            xmax = 353.495
+            text = "Cayacaman."
+        intervals [137]
+            xmin = 353.495
+            xmax = 356.021
+            text = ""
+        intervals [138]
+            xmin = 356.021
+            xmax = 356.841
+            text = "Ashtacaman."
+        intervals [139]
+            xmin = 356.841
+            xmax = 357.692
+            text = ""
+        intervals [140]
+            xmin = 357.692
+            xmax = 358.522
+            text = "pagui"
+        intervals [141]
+            xmin = 358.522
+            xmax = 360.037
+            text = ""
+        intervals [142]
+            xmin = 360.037
+            xmax = 361.403
+            text = "Ima shuti cangui."
+        intervals [143]
+            xmin = 361.403
+            xmax = 362.984
+            text = ""
+        intervals [144]
+            xmin = 362.984
+            xmax = 364.523
+            text = "Imanalla cangui?"
+        intervals [145]
+            xmin = 364.523
+            xmax = 365.867
+            text = ""
+        intervals [146]
+            xmin = 365.867
+            xmax = 367.159
+            text = "Alychu cangui."
+        intervals [147]
+            xmin = 367.159
+            xmax = 370.14
+            text = ""
+        intervals [148]
+            xmin = 370.14
+            xmax = 371.796
+            text = "Ashtaca alilla cani."
+        intervals [149]
+            xmin = 371.796
+            xmax = 373.115
+            text = ""
+        intervals [150]
+            xmin = 373.115
+            xmax = 374.477
+            text = "Wañujurkany."
+        intervals [151]
+            xmin = 374.477
+            xmax = 375.693
+            text = ""
+        intervals [152]
+            xmin = 375.693
+            xmax = 377.113
+            text = "Na aly cani."
+        intervals [153]
+            xmin = 377.113
+            xmax = 378.483
+            text = ""
+        intervals [154]
+            xmin = 378.483
+            xmax = 379.807
+            text = "Shayjushca cany."
+        intervals [155]
+            xmin = 379.807
+            xmax = 381.032
+            text = ""
+        intervals [156]
+            xmin = 381.032
+            xmax = 382.552
+            text = "Colerashka cany."
+        intervals [157]
+            xmin = 382.552
+            xmax = 383.903
+            text = ""
+        intervals [158]
+            xmin = 383.903
+            xmax = 385.123
+            text = "Chiyrihua can."
+        intervals [159]
+            xmin = 385.123
+            xmax = 386.516
+            text = ""
+        intervals [160]
+            xmin = 386.516
+            xmax = 387.927
+            text = "Rupajun."
+        intervals [161]
+            xmin = 387.927
+            xmax = 389.778
+            text = ""
+        intervals [162]
+            xmin = 389.778
+            xmax = 391.559
+            text = "Cadauno parlanchi quichuata."
+        intervals [163]
+            xmin = 391.559
+            xmax = 393.966
+            text = ""
+        intervals [164]
+            xmin = 393.966
+            xmax = 395.409
+            text = "Casi chaypi cany."
+        intervals [165]
+            xmin = 395.409
+            xmax = 396.896
+            text = ""
+        intervals [166]
+            xmin = 396.896
+            xmax = 398.807
+            text = "Tiendaka cay frente ladopi."
+        intervals [167]
+            xmin = 398.807
+            xmax = 400.891
+            text = ""
+        intervals [168]
+            xmin = 400.891
+            xmax = 402.46
+            text = "Tiendaka cay washapy."
+        intervals [169]
+            xmin = 402.46
+            xmax = 404.224
+            text = ""
+        intervals [170]
+            xmin = 404.224
+            xmax = 406.462
+            text = "Ñuka hijaca cay canchapi."
+        intervals [171]
+            xmin = 406.462
+            xmax = 408.118
+            text = ""
+        intervals [172]
+            xmin = 408.118
+            xmax = 410.066
+            text = "Ñuca aylluca ocupimi."
+        intervals [173]
+            xmin = 410.066
+            xmax = 413.11
+            text = ""
+        intervals [174]
+            xmin = 413.11
+            xmax = 415.365
+            text = "Cayaka chishimy puñugrini."
+        intervals [175]
+            xmin = 415.365
+            xmax = 417.237
+            text = ""
+        intervals [176]
+            xmin = 417.237
+            xmax = 419.234
+            text = "Caynaka rircanimi quitoman."
+        intervals [177]
+            xmin = 419.234
+            xmax = 424.789
+            text = ""
+        intervals [178]
+            xmin = 424.789
+            xmax = 428.417
+            text = "Yanungapaca maquita mayllana."
+        intervals [179]
+            xmin = 428.417
+            xmax = 432.262
+            text = ""
+        intervals [180]
+            xmin = 432.262
+            xmax = 435.519
+            text = "Fishta jipaka huasyman rircani."
+        intervals [181]
+            xmin = 435.519
+            xmax = 438.304
+            text = ""
+        intervals [182]
+            xmin = 438.304
+            xmax = 440.709
+            text = "Gentekunaca siempreme cayman shamun."
+        intervals [183]
+            xmin = 440.709
+            xmax = 443.91
+            text = ""
+        intervals [184]
+            xmin = 443.91
+            xmax = 446.182
+            text = "Ñukaca nunca na devertaca ruranichu."
+        intervals [185]
+            xmin = 446.182
+            xmax = 448.707
+            text = ""
+        intervals [186]
+            xmin = 448.707
+            xmax = 451.47
+            text = "Achiya debertami chariny."
+        intervals [187]
+            xmin = 451.47
+            xmax = 454.002
+            text = ""
+        intervals [188]
+            xmin = 454.002
+            xmax = 455.878
+            text = "Ashanaguta ruranichu ashana micunaka tianmy."
+        intervals [189]
+            xmin = 455.878
+            xmax = 478.09
+            text = ""
+        intervals [190]
+            xmin = 478.09
+            xmax = 482.52
+            text = "Ñukaca alyllagutami parlany."
+        intervals [191]
+            xmin = 482.52
+            xmax = 485.801
+            text = ""
+        intervals [192]
+            xmin = 485.801
+            xmax = 488.5
+            text = "Ñukaca ashtaca shayjushka cany."
+        intervals [193]
+            xmin = 488.5
+            xmax = 489.747
+            text = ""
+        intervals [194]
+            xmin = 489.747
+            xmax = 491.935
+            text = "Yapata shayjushca cany."
+        intervals [195]
+            xmin = 491.935
+            xmax = 496.112
+            text = ""
+        intervals [196]
+            xmin = 496.112
+            xmax = 496.995
+            text = "Shinallata."
+        intervals [197]
+            xmin = 496.995
+            xmax = 498.986
+            text = ""
+        intervals [198]
+            xmin = 498.986
+            xmax = 501.878
+            text = "Achiya tiashka achiya pura canchi."
+        intervals [199]
+            xmin = 501.878
+            xmax = 503.734
+            text = ""
+        intervals [200]
+            xmin = 503.734
+            xmax = 504.777
+            text = "Shinami cany."
+        intervals [201]
+            xmin = 504.777
+            xmax = 506.563
+            text = ""
+        intervals [202]
+            xmin = 506.563
+            xmax = 508.844
+            text = "Waquinlla gentecuna tianchi."
+    item[7]:
+        class = "IntervalTier"
+        name = "Español Estándar-LG"
+        xmin = 0.0
+        xmax = 508.844
+        intervals: size = 202
+        intervals [1]
+            xmin = 0.0
+            xmax = 3.24
+            text = ""
+        intervals [2]
+            xmin = 3.24
+            xmax = 7.28
+            text = "Tengo 39 años."
+        intervals [3]
+            xmin = 7.28
+            xmax = 10.77
+            text = ""
+        intervals [4]
+            xmin = 10.77
+            xmax = 13.97
+            text = "Mi nombre es Lucia Gonza."
+        intervals [5]
+            xmin = 13.97
+            xmax = 15.241
+            text = ""
+        intervals [6]
+            xmin = 15.241
+            xmax = 16.786
+            text = "Yo estoy comiendo."
+        intervals [7]
+            xmin = 16.786
+            xmax = 17.552
+            text = ""
+        intervals [8]
+            xmin = 17.552
+            xmax = 19.002
+            text = "Tu estás comiendo."
+        intervals [9]
+            xmin = 19.002
+            xmax = 20.136
+            text = ""
+        intervals [10]
+            xmin = 20.136
+            xmax = 21.488
+            text = "Él está comiendo."
+        intervals [11]
+            xmin = 21.488
+            xmax = 22.74
+            text = ""
+        intervals [12]
+            xmin = 22.74
+            xmax = 24.9
+            text = "Nosotros estamos comiendo."
+        intervals [13]
+            xmin = 24.9
+            xmax = 27.204
+            text = ""
+        intervals [14]
+            xmin = 27.204
+            xmax = 28.81
+            text = "Ustedes comen."
+        intervals [15]
+            xmin = 28.81
+            xmax = 30.236
+            text = ""
+        intervals [16]
+            xmin = 30.236
+            xmax = 31.696
+            text = "Ellos comen."
+        intervals [17]
+            xmin = 31.696
+            xmax = 34.967
+            text = ""
+        intervals [18]
+            xmin = 34.967
+            xmax = 36.275
+            text = "Yo comí (el otro día yo comí.)"
+        intervals [19]
+            xmin = 36.275
+            xmax = 38.775
+            text = ""
+        intervals [20]
+            xmin = 38.775
+            xmax = 40.508
+            text = "Tú comiste."
+        intervals [21]
+            xmin = 40.508
+            xmax = 41.786
+            text = ""
+        intervals [22]
+            xmin = 41.786
+            xmax = 43.251
+            text = "Ellos comieron."
+        intervals [23]
+            xmin = 43.251
+            xmax = 44.885
+            text = ""
+        intervals [24]
+            xmin = 44.885
+            xmax = 46.833
+            text = "Nosotros comimos (el otro día comimos.)"
+        intervals [25]
+            xmin = 46.833
+            xmax = 50.53
+            text = ""
+        intervals [26]
+            xmin = 50.53
+            xmax = 51.945
+            text = "Ustedes comieron."
+        intervals [27]
+            xmin = 51.945
+            xmax = 55.749
+            text = ""
+        intervals [28]
+            xmin = 55.749
+            xmax = 57.152
+            text = "Ellos comieron."
+        intervals [29]
+            xmin = 57.152
+            xmax = 60.418
+            text = ""
+        intervals [30]
+            xmin = 60.418
+            xmax = 61.699
+            text = "Yo comí."
+        intervals [31]
+            xmin = 61.699
+            xmax = 64.817
+            text = ""
+        intervals [32]
+            xmin = 64.817
+            xmax = 65.966
+            text = "Tú comes."
+        intervals [33]
+            xmin = 65.966
+            xmax = 67.727
+            text = ""
+        intervals [34]
+            xmin = 67.727
+            xmax = 69.082
+            text = "Él come."
+        intervals [35]
+            xmin = 69.082
+            xmax = 70.824
+            text = ""
+        intervals [36]
+            xmin = 70.824
+            xmax = 72.681
+            text = "Nosotros comemos."
+        intervals [37]
+            xmin = 72.681
+            xmax = 75.28
+            text = ""
+        intervals [38]
+            xmin = 75.28
+            xmax = 77.49
+            text = "Ustedes comerán."
+        intervals [39]
+            xmin = 77.49
+            xmax = 79.19
+            text = ""
+        intervals [40]
+            xmin = 79.19
+            xmax = 80.83
+            text = "Ellos comerán."
+        intervals [41]
+            xmin = 80.83
+            xmax = 84.962
+            text = ""
+        intervals [42]
+            xmin = 84.962
+            xmax = 87.965
+            text = "Yo saldré corriendo a conocerlos a ustedes."
+        intervals [43]
+            xmin = 87.965
+            xmax = 92.57
+            text = ""
+        intervals [44]
+            xmin = 92.57
+            xmax = 97.07
+            text = "Cuando hay comida en la casa yo comía... yo fuera a la casa."
+        intervals [45]
+            xmin = 97.07
+            xmax = 100.166
+            text = ""
+        intervals [46]
+            xmin = 100.166
+            xmax = 102.999
+            text = "Mi hermana compra en la tienda."
+        intervals [47]
+            xmin = 102.999
+            xmax = 106.65
+            text = ""
+        intervals [48]
+            xmin = 106.65
+            xmax = 110.025
+            text = "¿Estás cansado? ¡Descansa!"
+        intervals [49]
+            xmin = 110.025
+            xmax = 113.442
+            text = ""
+        intervals [50]
+            xmin = 113.442
+            xmax = 115.199
+            text = "Cuando venga, me avisas."
+        intervals [51]
+            xmin = 115.199
+            xmax = 117.524
+            text = ""
+        intervals [52]
+            xmin = 117.524
+            xmax = 119.308
+            text = "Yo quiero dormir."
+        intervals [53]
+            xmin = 119.308
+            xmax = 121.37
+            text = ""
+        intervals [54]
+            xmin = 121.37
+            xmax = 123.709
+            text = "Él quiere dormir."
+        intervals [55]
+            xmin = 123.709
+            xmax = 126.597
+            text = ""
+        intervals [56]
+            xmin = 126.597
+            xmax = 128.135
+            text = "Él quiere comer."
+        intervals [57]
+            xmin = 128.135
+            xmax = 130.185
+            text = ""
+        intervals [58]
+            xmin = 130.185
+            xmax = 132.771
+            text = "Nosotros queremos comer."
+        intervals [59]
+            xmin = 132.771
+            xmax = 135.539
+            text = ""
+        intervals [60]
+            xmin = 135.539
+            xmax = 138.526
+            text = "Ustedes quieren jugar."
+        intervals [61]
+            xmin = 138.526
+            xmax = 140.981
+            text = ""
+        intervals [62]
+            xmin = 140.981
+            xmax = 142.996
+            text = "Ellos quieren jugar."
+        intervals [63]
+            xmin = 142.996
+            xmax = 145.008
+            text = ""
+        intervals [64]
+            xmin = 145.008
+            xmax = 146.555
+            text = "Mi perro es grande."
+        intervals [65]
+            xmin = 146.555
+            xmax = 149.6
+            text = ""
+        intervals [66]
+            xmin = 149.6
+            xmax = 152.094
+            text = "Mi casa es nuevecita no como la tuya."
+        intervals [67]
+            xmin = 152.094
+            xmax = 155.651
+            text = ""
+        intervals [68]
+            xmin = 155.651
+            xmax = 159.669
+            text = "El eucalipto es muy grande, más que el maíz."
+        intervals [69]
+            xmin = 159.669
+            xmax = 161.807
+            text = ""
+        intervals [70]
+            xmin = 161.807
+            xmax = 164.7
+            text = "Mi carro es grande como el tuyo."
+        intervals [71]
+            xmin = 164.7
+            xmax = 171.186
+            text = ""
+        intervals [72]
+            xmin = 171.186
+            xmax = 174.433
+            text = "De noche veo la televisión, después me voy a dormir."
+        intervals [73]
+            xmin = 174.433
+            xmax = 178.363
+            text = ""
+        intervals [74]
+            xmin = 178.363
+            xmax = 180.328
+            text = "Has escrito mal. ¡Bórrale!"
+        intervals [75]
+            xmin = 180.328
+            xmax = 184.215
+            text = ""
+        intervals [76]
+            xmin = 184.215
+            xmax = 189.219
+            text = "Me fui a la casa de él a ver la sementera."
+        intervals [77]
+            xmin = 189.219
+            xmax = 192.001
+            text = ""
+        intervals [78]
+            xmin = 192.001
+            xmax = 194.068
+            text = "Quieras o no quieras tiene que hacerlo."
+        intervals [79]
+            xmin = 194.068
+            xmax = 231.989
+            text = ""
+        intervals [80]
+            xmin = 231.989
+            xmax = 236.217
+            text = "Mi terreno era bonito."
+        intervals [81]
+            xmin = 236.217
+            xmax = 243.19
+            text = ""
+        intervals [82]
+            xmin = 243.19
+            xmax = 245.1
+            text = "Esta montaña es grande."
+        intervals [83]
+            xmin = 245.1
+            xmax = 247.154
+            text = ""
+        intervals [84]
+            xmin = 247.154
+            xmax = 249.166
+            text = "La vela está quemando."
+        intervals [85]
+            xmin = 249.166
+            xmax = 250.826
+            text = ""
+        intervals [86]
+            xmin = 250.826
+            xmax = 253.166
+            text = "Agua fría."
+        intervals [87]
+            xmin = 253.166
+            xmax = 259.999
+            text = ""
+        intervals [88]
+            xmin = 259.999
+            xmax = 262.39
+            text = "Esas nubes son blancas."
+        intervals [89]
+            xmin = 262.39
+            xmax = 265.429
+            text = ""
+        intervals [90]
+            xmin = 265.429
+            xmax = 269.461
+            text = "Yo quiero a mi papá."
+        intervals [91]
+            xmin = 269.461
+            xmax = 273.547
+            text = ""
+        intervals [92]
+            xmin = 273.547
+            xmax = 276.891
+            text = "Yo soy amado por mi papa."
+        intervals [93]
+            xmin = 276.891
+            xmax = 280.732
+            text = ""
+        intervals [94]
+            xmin = 280.732
+            xmax = 284.653
+            text = "El gobierno dio computadoras para las escuelas."
+        intervals [95]
+            xmin = 284.653
+            xmax = 289.83
+            text = ""
+        intervals [96]
+            xmin = 289.83
+            xmax = 295.208
+            text = "El gobierno dio computadoras a las escuelas."
+        intervals [97]
+            xmin = 295.208
+            xmax = 303.903
+            text = ""
+        intervals [98]
+            xmin = 303.903
+            xmax = 305.463
+            text = "Yo."
+        intervals [99]
+            xmin = 305.463
+            xmax = 308.355
+            text = ""
+        intervals [100]
+            xmin = 308.355
+            xmax = 309.27
+            text = "Tú."
+        intervals [101]
+            xmin = 309.27
+            xmax = 310.28
+            text = ""
+        intervals [102]
+            xmin = 310.28
+            xmax = 310.99
+            text = "Ella."
+        intervals [103]
+            xmin = 310.99
+            xmax = 312.65
+            text = ""
+        intervals [104]
+            xmin = 312.65
+            xmax = 314.029
+            text = "Nosotros."
+        intervals [105]
+            xmin = 314.029
+            xmax = 315.444
+            text = ""
+        intervals [106]
+            xmin = 315.444
+            xmax = 316.504
+            text = "Ustedes."
+        intervals [107]
+            xmin = 316.504
+            xmax = 317.495
+            text = ""
+        intervals [108]
+            xmin = 317.495
+            xmax = 318.505
+            text = "They."
+        intervals [109]
+            xmin = 318.505
+            xmax = 319.61
+            text = ""
+        intervals [110]
+            xmin = 319.61
+            xmax = 320.56
+            text = "Esos."
+        intervals [111]
+            xmin = 320.56
+            xmax = 321.818
+            text = ""
+        intervals [112]
+            xmin = 321.818
+            xmax = 322.628
+            text = "Ese."
+        intervals [113]
+            xmin = 322.628
+            xmax = 324.255
+            text = ""
+        intervals [114]
+            xmin = 324.255
+            xmax = 325.404
+            text = "Aquí."
+        intervals [115]
+            xmin = 325.404
+            xmax = 326.42
+            text = ""
+        intervals [116]
+            xmin = 326.42
+            xmax = 327.36
+            text = "Ahí o allá."
+        intervals [117]
+            xmin = 327.36
+            xmax = 328.55
+            text = ""
+        intervals [118]
+            xmin = 328.55
+            xmax = 329.42
+            text = "Quienes."
+        intervals [119]
+            xmin = 329.42
+            xmax = 330.232
+            text = ""
+        intervals [120]
+            xmin = 330.232
+            xmax = 330.852
+            text = "Que."
+        intervals [121]
+            xmin = 330.852
+            xmax = 331.471
+            text = ""
+        intervals [122]
+            xmin = 331.471
+            xmax = 332.181
+            text = "Donde."
+        intervals [123]
+            xmin = 332.181
+            xmax = 333.161
+            text = ""
+        intervals [124]
+            xmin = 333.161
+            xmax = 333.761
+            text = "Cuando."
+        intervals [125]
+            xmin = 333.761
+            xmax = 337.066
+            text = ""
+        intervals [126]
+            xmin = 337.066
+            xmax = 338.27
+            text = "¿Estás bien?"
+        intervals [127]
+            xmin = 338.27
+            xmax = 340.246
+            text = ""
+        intervals [128]
+            xmin = 340.246
+            xmax = 342.16
+            text = "Buenos días."
+        intervals [129]
+            xmin = 342.16
+            xmax = 343.936
+            text = ""
+        intervals [130]
+            xmin = 343.936
+            xmax = 345.126
+            text = "Buenas tardes."
+        intervals [131]
+            xmin = 345.126
+            xmax = 346.528
+            text = ""
+        intervals [132]
+            xmin = 346.528
+            xmax = 347.728
+            text = "Buenas noches."
+        intervals [133]
+            xmin = 347.728
+            xmax = 349.074
+            text = ""
+        intervals [134]
+            xmin = 349.074
+            xmax = 351.08
+            text = "Hasta mañana."
+        intervals [135]
+            xmin = 351.08
+            xmax = 352.623
+            text = ""
+        intervals [136]
+            xmin = 352.623
+            xmax = 353.495
+            text = "Hasta mañana."
+        intervals [137]
+            xmin = 353.495
+            xmax = 356.021
+            text = ""
+        intervals [138]
+            xmin = 356.021
+            xmax = 356.841
+            text = "Hasta luego."
+        intervals [139]
+            xmin = 356.841
+            xmax = 357.692
+            text = ""
+        intervals [140]
+            xmin = 357.692
+            xmax = 358.522
+            text = "gracias"
+        intervals [141]
+            xmin = 358.522
+            xmax = 360.037
+            text = ""
+        intervals [142]
+            xmin = 360.037
+            xmax = 361.403
+            text = "¿Cómo te llamas?"
+        intervals [143]
+            xmin = 361.403
+            xmax = 362.984
+            text = ""
+        intervals [144]
+            xmin = 362.984
+            xmax = 364.523
+            text = "¿Cómo estás?"
+        intervals [145]
+            xmin = 364.523
+            xmax = 365.867
+            text = ""
+        intervals [146]
+            xmin = 365.867
+            xmax = 367.159
+            text = "Está bien."
+        intervals [147]
+            xmin = 367.159
+            xmax = 370.14
+            text = ""
+        intervals [148]
+            xmin = 370.14
+            xmax = 371.796
+            text = "Más o menos."
+        intervals [149]
+            xmin = 371.796
+            xmax = 373.115
+            text = ""
+        intervals [150]
+            xmin = 373.115
+            xmax = 374.477
+            text = "Estoy enfermo."
+        intervals [151]
+            xmin = 374.477
+            xmax = 375.693
+            text = ""
+        intervals [152]
+            xmin = 375.693
+            xmax = 377.113
+            text = "No estoy bien."
+        intervals [153]
+            xmin = 377.113
+            xmax = 378.483
+            text = ""
+        intervals [154]
+            xmin = 378.483
+            xmax = 379.807
+            text = "Estoy cansado."
+        intervals [155]
+            xmin = 379.807
+            xmax = 381.032
+            text = ""
+        intervals [156]
+            xmin = 381.032
+            xmax = 382.552
+            text = "Estoy enojado."
+        intervals [157]
+            xmin = 382.552
+            xmax = 383.903
+            text = ""
+        intervals [158]
+            xmin = 383.903
+            xmax = 385.123
+            text = "Estoy con frío."
+        intervals [159]
+            xmin = 385.123
+            xmax = 386.516
+            text = ""
+        intervals [160]
+            xmin = 386.516
+            xmax = 387.927
+            text = "Quemando."
+        intervals [161]
+            xmin = 387.927
+            xmax = 389.778
+            text = ""
+        intervals [162]
+            xmin = 389.778
+            xmax = 391.559
+            text = "Cada quien hablamos quichua."
+        intervals [163]
+            xmin = 391.559
+            xmax = 393.966
+            text = ""
+        intervals [164]
+            xmin = 393.966
+            xmax = 395.409
+            text = "Casi aquí estoy."
+        intervals [165]
+            xmin = 395.409
+            xmax = 396.896
+            text = ""
+        intervals [166]
+            xmin = 396.896
+            xmax = 398.807
+            text = "La tienda está al frente."
+        intervals [167]
+            xmin = 398.807
+            xmax = 400.891
+            text = ""
+        intervals [168]
+            xmin = 400.891
+            xmax = 402.46
+            text = "La tienda está atrás."
+        intervals [169]
+            xmin = 402.46
+            xmax = 404.224
+            text = ""
+        intervals [170]
+            xmin = 404.224
+            xmax = 406.462
+            text = "Mi hija está afuera."
+        intervals [171]
+            xmin = 406.462
+            xmax = 408.118
+            text = ""
+        intervals [172]
+            xmin = 408.118
+            xmax = 410.066
+            text = "Mi familia está adentro."
+        intervals [173]
+            xmin = 410.066
+            xmax = 413.11
+            text = ""
+        intervals [174]
+            xmin = 413.11
+            xmax = 415.365
+            text = "Mañana voy a dormir tarde."
+        intervals [175]
+            xmin = 415.365
+            xmax = 417.237
+            text = ""
+        intervals [176]
+            xmin = 417.237
+            xmax = 419.234
+            text = "Ayer me fui a Quito."
+        intervals [177]
+            xmin = 419.234
+            xmax = 424.789
+            text = ""
+        intervals [178]
+            xmin = 424.789
+            xmax = 428.417
+            text = "Antes de cocinar tengo que lavar las manos."
+        intervals [179]
+            xmin = 428.417
+            xmax = 432.262
+            text = ""
+        intervals [180]
+            xmin = 432.262
+            xmax = 435.519
+            text = "Después de la fiesta me fui a la casa."
+        intervals [181]
+            xmin = 435.519
+            xmax = 438.304
+            text = ""
+        intervals [182]
+            xmin = 438.304
+            xmax = 440.709
+            text = "Las gentes siempre vienen acá."
+        intervals [183]
+            xmin = 440.709
+            xmax = 443.91
+            text = ""
+        intervals [184]
+            xmin = 443.91
+            xmax = 446.182
+            text = "Yo nunca hago los deberes."
+        intervals [185]
+            xmin = 446.182
+            xmax = 448.707
+            text = ""
+        intervals [186]
+            xmin = 448.707
+            xmax = 451.47
+            text = "Tengo muchos deberes."
+        intervals [187]
+            xmin = 451.47
+            xmax = 454.002
+            text = ""
+        intervals [188]
+            xmin = 454.002
+            xmax = 455.878
+            text = "Hago un poquito, hay un poco de comida."
+        intervals [189]
+            xmin = 455.878
+            xmax = 478.09
+            text = ""
+        intervals [190]
+            xmin = 478.09
+            xmax = 482.52
+            text = "Yo hablo despacio."
+        intervals [191]
+            xmin = 482.52
+            xmax = 485.801
+            text = ""
+        intervals [192]
+            xmin = 485.801
+            xmax = 488.5
+            text = "Yo estoy muy cansado."
+        intervals [193]
+            xmin = 488.5
+            xmax = 489.747
+            text = ""
+        intervals [194]
+            xmin = 489.747
+            xmax = 491.935
+            text = "Demasiado cansado."
+        intervals [195]
+            xmin = 491.935
+            xmax = 496.112
+            text = ""
+        intervals [196]
+            xmin = 496.112
+            xmax = 496.995
+            text = "Así mismo."
+        intervals [197]
+            xmin = 496.995
+            xmax = 498.986
+            text = ""
+        intervals [198]
+            xmin = 498.986
+            xmax = 501.878
+            text = "Hay bastante, somos bastantes."
+        intervals [199]
+            xmin = 501.878
+            xmax = 503.734
+            text = ""
+        intervals [200]
+            xmin = 503.734
+            xmax = 504.777
+            text = "Así soy."
+        intervals [201]
+            xmin = 504.777
+            xmax = 506.563
+            text = ""
+        intervals [202]
+            xmin = 506.563
+            xmax = 508.844
+            text = "Habemos algunas personas."
+    item[8]:
+        class = "IntervalTier"
+        name = "Glosa-LG"
+        xmin = 0.0
+        xmax = 508.844
+        intervals: size = 202
+        intervals [1]
+            xmin = 0.0
+            xmax = 3.24
+            text = ""
+        intervals [2]
+            xmin = 3.24
+            xmax = 7.28
+            text = "mi edad=VAL trenta.nueve año-ACC tener-1"
+        intervals [3]
+            xmin = 7.28
+            xmax = 10.77
+            text = ""
+        intervals [4]
+            xmin = 10.77
+            xmax = 13.97
+            text = "mi nombre=VAL ser-POL-3 Lucía Gonza"
+        intervals [5]
+            xmin = 13.97
+            xmax = 15.241
+            text = ""
+        intervals [6]
+            xmin = 15.241
+            xmax = 16.786
+            text = "yo=TOP comer-PROG-1=VAL"
+        intervals [7]
+            xmin = 16.786
+            xmax = 17.552
+            text = ""
+        intervals [8]
+            xmin = 17.552
+            xmax = 19.002
+            text = "vos=TOP comer-PROG-2=VAL"
+        intervals [9]
+            xmin = 19.002
+            xmax = 20.136
+            text = ""
+        intervals [10]
+            xmin = 20.136
+            xmax = 21.488
+            text = "él=TOP comer-PROG-3=VAL"
+        intervals [11]
+            xmin = 21.488
+            xmax = 22.74
+            text = ""
+        intervals [12]
+            xmin = 22.74
+            xmax = 24.9
+            text = "nosotros=TOP comer-REC-1p=VAL"
+        intervals [13]
+            xmin = 24.9
+            xmax = 27.204
+            text = ""
+        intervals [14]
+            xmin = 27.204
+            xmax = 28.81
+            text = "vos-PL comer-REC-2-p"
+        intervals [15]
+            xmin = 28.81
+            xmax = 30.236
+            text = ""
+        intervals [16]
+            xmin = 30.236
+            xmax = 31.696
+            text = "él-PL comer-REC-3"
+        intervals [17]
+            xmin = 31.696
+            xmax = 34.967
+            text = ""
+        intervals [18]
+            xmin = 34.967
+            xmax = 36.275
+            text = "yo comer-PST-1 otro día=TOP yo comer-PST-1"
+        intervals [19]
+            xmin = 36.275
+            xmax = 38.775
+            text = ""
+        intervals [20]
+            xmin = 38.775
+            xmax = 40.508
+            text = "vos comer-PST-2"
+        intervals [21]
+            xmin = 40.508
+            xmax = 41.786
+            text = ""
+        intervals [22]
+            xmin = 41.786
+            xmax = 43.251
+            text = "él-PL comer-PST"
+        intervals [23]
+            xmin = 43.251
+            xmax = 44.885
+            text = ""
+        intervals [24]
+            xmin = 44.885
+            xmax = 46.833
+            text = "nosotros comer-PST-1p otro día comer-PST-1p"
+        intervals [25]
+            xmin = 46.833
+            xmax = 50.53
+            text = ""
+        intervals [26]
+            xmin = 50.53
+            xmax = 51.945
+            text = "vos-PL comer-PST-2-p otro día"
+        intervals [27]
+            xmin = 51.945
+            xmax = 55.749
+            text = ""
+        intervals [28]
+            xmin = 55.749
+            xmax = 57.152
+            text = "él-PL comer-PST"
+        intervals [29]
+            xmin = 57.152
+            xmax = 60.418
+            text = ""
+        intervals [30]
+            xmin = 60.418
+            xmax = 61.699
+            text = "yo comer-PST-1"
+        intervals [31]
+            xmin = 61.699
+            xmax = 64.817
+            text = ""
+        intervals [32]
+            xmin = 64.817
+            xmax = 65.966
+            text = "vos comer-2"
+        intervals [33]
+            xmin = 65.966
+            xmax = 67.727
+            text = ""
+        intervals [34]
+            xmin = 67.727
+            xmax = 69.082
+            text = "él//ella=TOP comer-3.FUT"
+        intervals [35]
+            xmin = 69.082
+            xmax = 70.824
+            text = ""
+        intervals [36]
+            xmin = 70.824
+            xmax = 72.681
+            text = "nosotros=TOP comer-FUT.1p=VAL nosotros=TOP comer-FUT.1p=VAL"
+        intervals [37]
+            xmin = 72.681
+            xmax = 75.28
+            text = ""
+        intervals [38]
+            xmin = 75.28
+            xmax = 77.49
+            text = "vos-PL comer-2-p=VAL"
+        intervals [39]
+            xmin = 77.49
+            xmax = 79.19
+            text = ""
+        intervals [40]
+            xmin = 79.19
+            xmax = 80.83
+            text = "él//ella-PL comer-3.FUT=VAL"
+        intervals [41]
+            xmin = 80.83
+            xmax = 84.962
+            text = ""
+        intervals [42]
+            xmin = 84.962
+            xmax = 87.965
+            text = "yo correr-GEN salir-FUT.1s recibir-SS.PURP vos-PL-ACC"
+        intervals [43]
+            xmin = 87.965
+            xmax = 92.57
+            text = ""
+        intervals [44]
+            xmin = 92.57
+            xmax = 97.07
+            text = "comida haber-DS.CONV comer-PST-1 casa-LOC yo casa-DIR ir-PST-1"
+        intervals [45]
+            xmin = 97.07
+            xmax = 100.166
+            text = ""
+        intervals [46]
+            xmin = 100.166
+            xmax = 102.999
+            text = "mi hermana tienda-LOC comprar-PROG-PST"
+        intervals [47]
+            xmin = 102.999
+            xmax = 106.65
+            text = ""
+        intervals [48]
+            xmin = 106.65
+            xmax = 110.025
+            text = "cansado=Q.POL estar-2 descansar-IMP"
+        intervals [49]
+            xmin = 110.025
+            xmax = 113.442
+            text = ""
+        intervals [50]
+            xmin = 113.442
+            xmax = 115.199
+            text = " él venir-DS.CONV avisar-OBJ.1-2"
+        intervals [51]
+            xmin = 115.199
+            xmax = 117.524
+            text = ""
+        intervals [52]
+            xmin = 117.524
+            xmax = 119.308
+            text = "yo dormir-NOM.na-ACC querer-1"
+        intervals [53]
+            xmin = 119.308
+            xmax = 121.37
+            text = ""
+        intervals [54]
+            xmin = 121.37
+            xmax = 123.709
+            text = "él dormir-NOM.na-ACC querer-3"
+        intervals [55]
+            xmin = 123.709
+            xmax = 126.597
+            text = ""
+        intervals [56]
+            xmin = 126.597
+            xmax = 128.135
+            text = "él comer-NOM.na-ACC querer-3"
+        intervals [57]
+            xmin = 128.135
+            xmax = 130.185
+            text = ""
+        intervals [58]
+            xmin = 130.185
+            xmax = 132.771
+            text = "nosotros comer-NOM.na-ACC querer-1p"
+        intervals [59]
+            xmin = 132.771
+            xmax = 135.539
+            text = ""
+        intervals [60]
+            xmin = 135.539
+            xmax = 138.526
+            text = "vos-PL jugar-NOM.na-ACC querer-2-p"
+        intervals [61]
+            xmin = 138.526
+            xmax = 140.981
+            text = ""
+        intervals [62]
+            xmin = 140.981
+            xmax = 142.996
+            text = "él-PL jugar-NOM.na-ACC querer-3"
+        intervals [63]
+            xmin = 142.996
+            xmax = 145.008
+            text = ""
+        intervals [64]
+            xmin = 145.008
+            xmax = 146.555
+            text = "mi perro grande"
+        intervals [65]
+            xmin = 146.555
+            xmax = 149.6
+            text = ""
+        intervals [66]
+            xmin = 149.6
+            xmax = 152.094
+            text = "mi casa=TOP nuevo=VAL vos-POSS=SEMB"
+        intervals [67]
+            xmin = 152.094
+            xmax = 155.651
+            text = ""
+        intervals [68]
+            xmin = 155.651
+            xmax = 159.669
+            text = "ese eucalipto=TOP grande grande=VAL más qué maíz"
+        intervals [69]
+            xmin = 159.669
+            xmax = 161.807
+            text = ""
+        intervals [70]
+            xmin = 161.807
+            xmax = 164.7
+            text = "mi carro=TOP más grande=VAL vos-POSS=SEMB"
+        intervals [71]
+            xmin = 164.7
+            xmax = 171.186
+            text = ""
+        intervals [72]
+            xmin = 171.186
+            xmax = 174.433
+            text = "de.noche yo=TOP televisión-ACC=VAL ver-1 antes de dormir"
+        intervals [73]
+            xmin = 174.433
+            xmax = 178.363
+            text = ""
+        intervals [74]
+            xmin = 178.363
+            xmax = 180.328
+            text = "mal escribir-PRT-2 borrar-IMP"
+        intervals [75]
+            xmin = 180.328
+            xmax = 184.215
+            text = ""
+        intervals [76]
+            xmin = 184.215
+            xmax = 189.219
+            text = "él-POSS casa=VAL ir-PST-1 sementera-ACC llano-ACC ver-SS.PURP"
+        intervals [77]
+            xmin = 189.219
+            xmax = 192.001
+            text = ""
+        intervals [78]
+            xmin = 192.001
+            xmax = 194.068
+            text = "quiera o no quiera hacer-2"
+        intervals [79]
+            xmin = 194.068
+            xmax = 231.989
+            text = ""
+        intervals [80]
+            xmin = 231.989
+            xmax = 236.217
+            text = "mi terreno=TOP bonito=VAL ser-PST"
+        intervals [81]
+            xmin = 236.217
+            xmax = 243.19
+            text = ""
+        intervals [82]
+            xmin = 243.19
+            xmax = 245.1
+            text = "ese cerro=TOP grande=VAL"
+        intervals [83]
+            xmin = 245.1
+            xmax = 247.154
+            text = ""
+        intervals [84]
+            xmin = 247.154
+            xmax = 249.166
+            text = "vela quemar-PROG-3"
+        intervals [85]
+            xmin = 249.166
+            xmax = 250.826
+            text = ""
+        intervals [86]
+            xmin = 250.826
+            xmax = 253.166
+            text = "agua=TOP frío=VAL"
+        intervals [87]
+            xmin = 253.166
+            xmax = 259.999
+            text = ""
+        intervals [88]
+            xmin = 259.999
+            xmax = 262.39
+            text = "ese nube-PL=TOP blanco=VAL"
+        intervals [89]
+            xmin = 262.39
+            xmax = 265.429
+            text = ""
+        intervals [90]
+            xmin = 265.429
+            xmax = 269.461
+            text = "yo=VAL querer-1 mi papá-ACC"
+        intervals [91]
+            xmin = 269.461
+            xmax = 273.547
+            text = ""
+        intervals [92]
+            xmin = 273.547
+            xmax = 276.891
+            text = "yo=TOP mi papá querer-PRT=VAL ser-1"
+        intervals [93]
+            xmin = 276.891
+            xmax = 280.732
+            text = ""
+        intervals [94]
+            xmin = 280.732
+            xmax = 284.653
+            text = "gobierno computadora-PL-ACC dar-PST escuela-PL-DIR"
+        intervals [95]
+            xmin = 284.653
+            xmax = 289.83
+            text = ""
+        intervals [96]
+            xmin = 289.83
+            xmax = 295.208
+            text = "computadora-PL=TOP dar-PRT=VAL escuela-DIR gobierno-ABL"
+        intervals [97]
+            xmin = 295.208
+            xmax = 303.903
+            text = ""
+        intervals [98]
+            xmin = 303.903
+            xmax = 305.463
+            text = "yo=TOP"
+        intervals [99]
+            xmin = 305.463
+            xmax = 308.355
+            text = ""
+        intervals [100]
+            xmin = 308.355
+            xmax = 309.27
+            text = "vos=TOP"
+        intervals [101]
+            xmin = 309.27
+            xmax = 310.28
+            text = ""
+        intervals [102]
+            xmin = 310.28
+            xmax = 310.99
+            text = "ella=TOP"
+        intervals [103]
+            xmin = 310.99
+            xmax = 312.65
+            text = ""
+        intervals [104]
+            xmin = 312.65
+            xmax = 314.029
+            text = "nosotros=TOP"
+        intervals [105]
+            xmin = 314.029
+            xmax = 315.444
+            text = ""
+        intervals [106]
+            xmin = 315.444
+            xmax = 316.504
+            text = "vos-PL=TOP"
+        intervals [107]
+            xmin = 316.504
+            xmax = 317.495
+            text = ""
+        intervals [108]
+            xmin = 317.495
+            xmax = 318.505
+            text = "él-PL=TOP"
+        intervals [109]
+            xmin = 318.505
+            xmax = 319.61
+            text = ""
+        intervals [110]
+            xmin = 319.61
+            xmax = 320.56
+            text = "ese-PL=TOP"
+        intervals [111]
+            xmin = 320.56
+            xmax = 321.818
+            text = ""
+        intervals [112]
+            xmin = 321.818
+            xmax = 322.628
+            text = "ese-PL"
+        intervals [113]
+            xmin = 322.628
+            xmax = 324.255
+            text = ""
+        intervals [114]
+            xmin = 324.255
+            xmax = 325.404
+            text = "aquí-LOC"
+        intervals [115]
+            xmin = 325.404
+            xmax = 326.42
+            text = ""
+        intervals [116]
+            xmin = 326.42
+            xmax = 327.36
+            text = "allá-LOC"
+        intervals [117]
+            xmin = 327.36
+            xmax = 328.55
+            text = ""
+        intervals [118]
+            xmin = 328.55
+            xmax = 329.42
+            text = "quién-PL"
+        intervals [119]
+            xmin = 329.42
+            xmax = 330.232
+            text = ""
+        intervals [120]
+            xmin = 330.232
+            xmax = 330.852
+            text = "qué=Q.CON"
+        intervals [121]
+            xmin = 330.852
+            xmax = 331.471
+            text = ""
+        intervals [122]
+            xmin = 331.471
+            xmax = 332.181
+            text = "dónde-LOC"
+        intervals [123]
+            xmin = 332.181
+            xmax = 333.161
+            text = ""
+        intervals [124]
+            xmin = 333.161
+            xmax = 333.761
+            text = "cuándo=Q.CON"
+        intervals [125]
+            xmin = 333.761
+            xmax = 337.066
+            text = ""
+        intervals [126]
+            xmin = 337.066
+            xmax = 338.27
+            text = "bueno=LIM=Q.POL estar-2"
+        intervals [127]
+            xmin = 338.27
+            xmax = 340.246
+            text = ""
+        intervals [128]
+            xmin = 340.246
+            xmax = 342.16
+            text = "bueno día"
+        intervals [129]
+            xmin = 342.16
+            xmax = 343.936
+            text = ""
+        intervals [130]
+            xmin = 343.936
+            xmax = 345.126
+            text = "buena tarde"
+        intervals [131]
+            xmin = 345.126
+            xmax = 346.528
+            text = ""
+        intervals [132]
+            xmin = 346.528
+            xmax = 347.728
+            text = "buena noche"
+        intervals [133]
+            xmin = 347.728
+            xmax = 349.074
+            text = ""
+        intervals [134]
+            xmin = 349.074
+            xmax = 351.08
+            text = "hasta.mañana o hasta mañana"
+        intervals [135]
+            xmin = 351.08
+            xmax = 352.623
+            text = ""
+        intervals [136]
+            xmin = 352.623
+            xmax = 353.495
+            text = "hasta mañana"
+        intervals [137]
+            xmin = 353.495
+            xmax = 356.021
+            text = ""
+        intervals [138]
+            xmin = 356.021
+            xmax = 356.841
+            text = "hasta luego"
+        intervals [139]
+            xmin = 356.841
+            xmax = 357.692
+            text = ""
+        intervals [140]
+            xmin = 357.692
+            xmax = 358.522
+            text = "gracias"
+        intervals [141]
+            xmin = 358.522
+            xmax = 360.037
+            text = ""
+        intervals [142]
+            xmin = 360.037
+            xmax = 361.403
+            text = "qué nombre=Q.CON ser-2"
+        intervals [143]
+            xmin = 361.403
+            xmax = 362.984
+            text = ""
+        intervals [144]
+            xmin = 362.984
+            xmax = 364.523
+            text = "cómo=Q.CON estar-2"
+        intervals [145]
+            xmin = 364.523
+            xmax = 365.867
+            text = ""
+        intervals [146]
+            xmin = 365.867
+            xmax = 367.159
+            text = "bueno=Q.POL estar-2"
+        intervals [147]
+            xmin = 367.159
+            xmax = 370.14
+            text = ""
+        intervals [148]
+            xmin = 370.14
+            xmax = 371.796
+            text = "más o menos estar-1"
+        intervals [149]
+            xmin = 371.796
+            xmax = 373.115
+            text = ""
+        intervals [150]
+            xmin = 373.115
+            xmax = 374.477
+            text = "enfermo estar-1"
+        intervals [151]
+            xmin = 374.477
+            xmax = 375.693
+            text = ""
+        intervals [152]
+            xmin = 375.693
+            xmax = 377.113
+            text = "no bueno estar-1"
+        intervals [153]
+            xmin = 377.113
+            xmax = 378.483
+            text = ""
+        intervals [154]
+            xmin = 378.483
+            xmax = 379.807
+            text = "cansado estar-1"
+        intervals [155]
+            xmin = 379.807
+            xmax = 381.032
+            text = ""
+        intervals [156]
+            xmin = 381.032
+            xmax = 382.552
+            text = "enojar-PRT estar-1"
+        intervals [157]
+            xmin = 382.552
+            xmax = 383.903
+            text = ""
+        intervals [158]
+            xmin = 383.903
+            xmax = 385.123
+            text = "frío-INST estar-1"
+        intervals [159]
+            xmin = 385.123
+            xmax = 386.516
+            text = ""
+        intervals [160]
+            xmin = 386.516
+            xmax = 387.927
+            text = "quemar-PROG-3"
+        intervals [161]
+            xmin = 387.927
+            xmax = 389.778
+            text = ""
+        intervals [162]
+            xmin = 389.778
+            xmax = 391.559
+            text = "cada uno hablar-1p quichua-ACC"
+        intervals [163]
+            xmin = 391.559
+            xmax = 393.966
+            text = ""
+        intervals [164]
+            xmin = 393.966
+            xmax = 395.409
+            text = "casi ahí-LOC estar-1"
+        intervals [165]
+            xmin = 395.409
+            xmax = 396.896
+            text = ""
+        intervals [166]
+            xmin = 396.896
+            xmax = 398.807
+            text = "tienda allá al frente-LOC"
+        intervals [167]
+            xmin = 398.807
+            xmax = 400.891
+            text = ""
+        intervals [168]
+            xmin = 400.891
+            xmax = 402.46
+            text = "tienda allá tras-LOC"
+        intervals [169]
+            xmin = 402.46
+            xmax = 404.224
+            text = ""
+        intervals [170]
+            xmin = 404.224
+            xmax = 406.462
+            text = "mi hija allá afuera-LOC"
+        intervals [171]
+            xmin = 406.462
+            xmax = 408.118
+            text = ""
+        intervals [172]
+            xmin = 408.118
+            xmax = 410.066
+            text = "mi familia dentro-LOC"
+        intervals [173]
+            xmin = 410.066
+            xmax = 413.11
+            text = ""
+        intervals [174]
+            xmin = 413.11
+            xmax = 415.365
+            text = "mañana=TOP tarde=VAL dormir-FUT-1"
+        intervals [175]
+            xmin = 415.365
+            xmax = 417.237
+            text = ""
+        intervals [176]
+            xmin = 417.237
+            xmax = 419.234
+            text = "ayer=TOP ir-PST-1=VAL Quito-DIR"
+        intervals [177]
+            xmin = 419.234
+            xmax = 424.789
+            text = ""
+        intervals [178]
+            xmin = 424.789
+            xmax = 428.417
+            text = "cocinar-NOM.na antes mano-ACC lavar-NOM.na lavar-PST-1"
+        intervals [179]
+            xmin = 428.417
+            xmax = 432.262
+            text = ""
+        intervals [180]
+            xmin = 432.262
+            xmax = 435.519
+            text = "fiesta después ir-PST-1 casa-DIR"
+        intervals [181]
+            xmin = 435.519
+            xmax = 438.304
+            text = ""
+        intervals [182]
+            xmin = 438.304
+            xmax = 440.709
+            text = "gente=TOP siempre=VAL aquí=AFF venir-3"
+        intervals [183]
+            xmin = 440.709
+            xmax = 443.91
+            text = ""
+        intervals [184]
+            xmin = 443.91
+            xmax = 446.182
+            text = "yo=TOP nunca no deberes-ACC hacer-1=NEG"
+        intervals [185]
+            xmin = 446.182
+            xmax = 448.707
+            text = ""
+        intervals [186]
+            xmin = 448.707
+            xmax = 451.47
+            text = "mucho deberes-ACC=VAL tener-1"
+        intervals [187]
+            xmin = 451.47
+            xmax = 454.002
+            text = ""
+        intervals [188]
+            xmin = 454.002
+            xmax = 455.878
+            text = "poquito-ACC hacer-1=Q.POL//NEG hacer poquito comida haber-3"
+        intervals [189]
+            xmin = 455.878
+            xmax = 478.09
+            text = ""
+        intervals [190]
+            xmin = 478.09
+            xmax = 482.52
+            text = "yo=TOP más despacio=VAL hablar-1"
+        intervals [191]
+            xmin = 482.52
+            xmax = 485.801
+            text = ""
+        intervals [192]
+            xmin = 485.801
+            xmax = 488.5
+            text = "yo=TOP demasiado cansado estar-1"
+        intervals [193]
+            xmin = 488.5
+            xmax = 489.747
+            text = ""
+        intervals [194]
+            xmin = 489.747
+            xmax = 491.935
+            text = "demás cansado=VAL estar-1"
+        intervals [195]
+            xmin = 491.935
+            xmax = 496.112
+            text = ""
+        intervals [196]
+            xmin = 496.112
+            xmax = 496.995
+            text = "así-TOT"
+        intervals [197]
+            xmin = 496.995
+            xmax = 498.986
+            text = ""
+        intervals [198]
+            xmin = 498.986
+            xmax = 501.878
+            text = "mucho haber-PRT mucho-INTRA ser-1p"
+        intervals [199]
+            xmin = 501.878
+            xmax = 503.734
+            text = ""
+        intervals [200]
+            xmin = 503.734
+            xmax = 504.777
+            text = "así=VAL ser-1"
+        intervals [201]
+            xmin = 504.777
+            xmax = 506.563
+            text = ""
+        intervals [202]
+            xmin = 506.563
+            xmax = 508.844
+            text = "alguno gente haber-1p"

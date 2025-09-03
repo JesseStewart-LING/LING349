@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ANNOTATION_DOCUMENT AUTHOR="" DATE="2024-06-26T18:58:12-05:00"
+    FORMAT="3.0" VERSION="3.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/EAFv3.0.xsd">
+    <HEADER MEDIA_FILE="" TIME_UNITS="milliseconds">
+        <MEDIA_DESCRIPTOR
+            MEDIA_URL="file:///C:/Users/Jesse/Dropbox/AILLA/Narrations/001_AC-Mingas.wav"
+            MIME_TYPE="audio/x-wav" RELATIVE_MEDIA_URL="./001_AC-Mingas.wav"/>
+        <PROPERTY NAME="URN">urn:nl-mpi-tools-elan-eaf:c149d2dd-e6f3-4c78-bb4c-4348e36d38fa</PROPERTY>
+        <PROPERTY NAME="lastUsedAnnotationId">84</PROPERTY>
+    </HEADER>
+    <TIME_ORDER>
+        <TIME_SLOT TIME_SLOT_ID="ts1" TIME_VALUE="1820"/>
+        <TIME_SLOT TIME_SLOT_ID="ts2" TIME_VALUE="3750"/>
+        <TIME_SLOT TIME_SLOT_ID="ts3" TIME_VALUE="4740"/>
+        <TIME_SLOT TIME_SLOT_ID="ts4" TIME_VALUE="5930"/>
+        <TIME_SLOT TIME_SLOT_ID="ts5" TIME_VALUE="6580"/>
+        <TIME_SLOT TIME_SLOT_ID="ts6" TIME_VALUE="10160"/>
+        <TIME_SLOT TIME_SLOT_ID="ts7" TIME_VALUE="10660"/>
+        <TIME_SLOT TIME_SLOT_ID="ts8" TIME_VALUE="11830"/>
+        <TIME_SLOT TIME_SLOT_ID="ts9" TIME_VALUE="12100"/>
+        <TIME_SLOT TIME_SLOT_ID="ts10" TIME_VALUE="15380"/>
+        <TIME_SLOT TIME_SLOT_ID="ts11" TIME_VALUE="15570"/>
+        <TIME_SLOT TIME_SLOT_ID="ts12" TIME_VALUE="16660"/>
+        <TIME_SLOT TIME_SLOT_ID="ts13" TIME_VALUE="16870"/>
+        <TIME_SLOT TIME_SLOT_ID="ts14" TIME_VALUE="19610"/>
+        <TIME_SLOT TIME_SLOT_ID="ts15" TIME_VALUE="19740"/>
+        <TIME_SLOT TIME_SLOT_ID="ts16" TIME_VALUE="22430"/>
+        <TIME_SLOT TIME_SLOT_ID="ts17" TIME_VALUE="22920"/>
+        <TIME_SLOT TIME_SLOT_ID="ts18" TIME_VALUE="24470"/>
+        <TIME_SLOT TIME_SLOT_ID="ts19" TIME_VALUE="24770"/>
+        <TIME_SLOT TIME_SLOT_ID="ts20" TIME_VALUE="25720"/>
+        <TIME_SLOT TIME_SLOT_ID="ts21" TIME_VALUE="25880"/>
+        <TIME_SLOT TIME_SLOT_ID="ts22" TIME_VALUE="28480"/>
+        <TIME_SLOT TIME_SLOT_ID="ts23" TIME_VALUE="29040"/>
+        <TIME_SLOT TIME_SLOT_ID="ts24" TIME_VALUE="34840"/>
+        <TIME_SLOT TIME_SLOT_ID="ts25" TIME_VALUE="35290"/>
+        <TIME_SLOT TIME_SLOT_ID="ts26" TIME_VALUE="38818"/>
+        <TIME_SLOT TIME_SLOT_ID="ts27" TIME_VALUE="39110"/>
+        <TIME_SLOT TIME_SLOT_ID="ts28" TIME_VALUE="41790"/>
+        <TIME_SLOT TIME_SLOT_ID="ts29" TIME_VALUE="41980"/>
+        <TIME_SLOT TIME_SLOT_ID="ts30" TIME_VALUE="44850"/>
+        <TIME_SLOT TIME_SLOT_ID="ts31" TIME_VALUE="45470"/>
+        <TIME_SLOT TIME_SLOT_ID="ts32" TIME_VALUE="49260"/>
+        <TIME_SLOT TIME_SLOT_ID="ts33" TIME_VALUE="49860"/>
+        <TIME_SLOT TIME_SLOT_ID="ts34" TIME_VALUE="54250"/>
+        <TIME_SLOT TIME_SLOT_ID="ts35" TIME_VALUE="54360"/>
+        <TIME_SLOT TIME_SLOT_ID="ts36" TIME_VALUE="57660"/>
+        <TIME_SLOT TIME_SLOT_ID="ts37" TIME_VALUE="57840"/>
+        <TIME_SLOT TIME_SLOT_ID="ts38" TIME_VALUE="61610"/>
+        <TIME_SLOT TIME_SLOT_ID="ts39" TIME_VALUE="62030"/>
+        <TIME_SLOT TIME_SLOT_ID="ts40" TIME_VALUE="66840"/>
+        <TIME_SLOT TIME_SLOT_ID="ts41" TIME_VALUE="67220"/>
+        <TIME_SLOT TIME_SLOT_ID="ts42" TIME_VALUE="74470"/>
+        <TIME_SLOT TIME_SLOT_ID="ts43" TIME_VALUE="74890"/>
+        <TIME_SLOT TIME_SLOT_ID="ts44" TIME_VALUE="76890"/>
+        <TIME_SLOT TIME_SLOT_ID="ts45" TIME_VALUE="79160"/>
+        <TIME_SLOT TIME_SLOT_ID="ts46" TIME_VALUE="81690"/>
+        <TIME_SLOT TIME_SLOT_ID="ts47" TIME_VALUE="82050"/>
+        <TIME_SLOT TIME_SLOT_ID="ts48" TIME_VALUE="92310"/>
+        <TIME_SLOT TIME_SLOT_ID="ts49" TIME_VALUE="92860"/>
+        <TIME_SLOT TIME_SLOT_ID="ts50" TIME_VALUE="97760"/>
+        <TIME_SLOT TIME_SLOT_ID="ts51" TIME_VALUE="98190"/>
+        <TIME_SLOT TIME_SLOT_ID="ts52" TIME_VALUE="105260"/>
+        <TIME_SLOT TIME_SLOT_ID="ts53" TIME_VALUE="105360"/>
+        <TIME_SLOT TIME_SLOT_ID="ts54" TIME_VALUE="113280"/>
+        <TIME_SLOT TIME_SLOT_ID="ts55" TIME_VALUE="113630"/>
+        <TIME_SLOT TIME_SLOT_ID="ts56" TIME_VALUE="117430"/>
+    </TIME_ORDER>
+    <TIER ANNOTATOR="Jesse Stewart (Edited by Lucia Gonza)"
+        LINGUISTIC_TYPE_REF="default-lt" PARTICIPANT="Anita Cañarejo" TIER_ID="Anita">
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a1"
+                TIME_SLOT_REF1="ts1" TIME_SLOT_REF2="ts2">
+                <ANNOTATION_VALUE>Chagrawata simbrangapaka</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a2"
+                TIME_SLOT_REF1="ts3" TIME_SLOT_REF2="ts4">
+                <ANNOTATION_VALUE>cabashpa</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a3"
+                TIME_SLOT_REF1="ts5" TIME_SLOT_REF2="ts6">
+                <ANNOTATION_VALUE>laderawakunataka cabashpa planadawataka</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a4"
+                TIME_SLOT_REF1="ts7" TIME_SLOT_REF2="ts8">
+                <ANNOTATION_VALUE>arashpa</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a5"
+                TIME_SLOT_REF1="ts9" TIME_SLOT_REF2="ts10">
+                <ANNOTATION_VALUE>mingaywata azishpaka, borrigowata matashpami</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a6"
+                TIME_SLOT_REF1="ts11" TIME_SLOT_REF2="ts12">
+                <ANNOTATION_VALUE>comidawata</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a7"
+                TIME_SLOT_REF1="ts13" TIME_SLOT_REF2="ts14">
+                <ANNOTATION_VALUE>almuersowata ese pion gentewakunamanka</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a8"
+                TIME_SLOT_REF1="ts15" TIME_SLOT_REF2="ts16">
+                <ANNOTATION_VALUE>mingaywata azishpami cominchik karkanchi.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a9"
+                TIME_SLOT_REF1="ts17" TIME_SLOT_REF2="ts18">
+                <ANNOTATION_VALUE>Di ahimantami ya vuelta</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a10"
+                TIME_SLOT_REF1="ts19" TIME_SLOT_REF2="ts20">
+                <ANNOTATION_VALUE>maduracpica</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a11"
+                TIME_SLOT_REF1="ts21" TIME_SLOT_REF2="ts22">
+                <ANNOTATION_VALUE>trigowataka cortankarkanchi</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a12"
+                TIME_SLOT_REF1="ts23" TIME_SLOT_REF2="ts24">
+                <ANNOTATION_VALUE>piunwan, chichagowan motigowan cibadawatapash cortankarkanchi,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a13"
+                TIME_SLOT_REF1="ts25" TIME_SLOT_REF2="ts26">
+                <ANNOTATION_VALUE>trigowatapish cortanga. Maizwan madurakpipash</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a14"
+                TIME_SLOT_REF1="ts27" TIME_SLOT_REF2="ts28">
+                <ANNOTATION_VALUE>chichagota azishpa motigota azishpami</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a15"
+                TIME_SLOT_REF1="ts29" TIME_SLOT_REF2="ts30">
+                <ANNOTATION_VALUE>mingaywata azishpa granowata recoginkarkanchi.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a16"
+                TIME_SLOT_REF1="ts31" TIME_SLOT_REF2="ts32">
+                <ANNOTATION_VALUE>Di ahimantami ese granowata cozinashpa cominkarkanchi.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a17"
+                TIME_SLOT_REF1="ts33" TIME_SLOT_REF2="ts34">
+                <ANNOTATION_VALUE>piedragopi molishpa.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a18"
+                TIME_SLOT_REF1="ts35" TIME_SLOT_REF2="ts36">
+                <ANNOTATION_VALUE>Ese trigowataka</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a19"
+                TIME_SLOT_REF1="ts37" TIME_SLOT_REF2="ts38">
+                <ANNOTATION_VALUE>coznashpa cominkarkanchi. Lechiwan salwan,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a20"
+                TIME_SLOT_REF1="ts39" TIME_SLOT_REF2="ts40">
+                <ANNOTATION_VALUE>arrozfalawataca tostado tostashpa kallanapi tostashpa</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a21"
+                TIME_SLOT_REF1="ts41" TIME_SLOT_REF2="ts42">
+                <ANNOTATION_VALUE>Di ahimantami mulinkarkanchi piedrapi. Piedrapi molishpami ajichankarkanchi arneropi.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a22"
+                TIME_SLOT_REF1="ts43" TIME_SLOT_REF2="ts44">
+                <ANNOTATION_VALUE>Di ahimantami cozinankarkanchi.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a23"
+                TIME_SLOT_REF1="ts45" TIME_SLOT_REF2="ts46">
+                <ANNOTATION_VALUE>Atras quebradamanta aguagota cargamushpa.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a24"
+                TIME_SLOT_REF1="ts47" TIME_SLOT_REF2="ts48">
+                <ANNOTATION_VALUE>Ese quebradami cojishpaka birrugota cojishpi, ese birrugowanmi coznashpa cominkarkanchi arrozfalagotaka. Y asimi cozechankarkanchi.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a25"
+                TIME_SLOT_REF1="ts49" TIME_SLOT_REF2="ts50">
+                <ANNOTATION_VALUE>Ese granowa madurakpika nosotroska cozechankarkanchi piunwan.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a26"
+                TIME_SLOT_REF1="ts51" TIME_SLOT_REF2="ts52">
+                <ANNOTATION_VALUE>Piuntaka mingayta azishpami cozecharkanchi maizwata. Maizwata cogishka jipaka</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a27"
+                TIME_SLOT_REF1="ts53" TIME_SLOT_REF2="ts54">
+                <ANNOTATION_VALUE>Hojawata cargashpami montonankarkanchi wagrawaman comichingapak. Grande montonta azishpami.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a28"
+                TIME_SLOT_REF1="ts55" TIME_SLOT_REF2="ts56">
+                <ANNOTATION_VALUE>Año enteropami ese hojawataka montonankarkanchi.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER ANNOTATOR="Jesse Stewart" LINGUISTIC_TYPE_REF="ML"
+        PARENT_REF="Anita" PARTICIPANT="Anita Cañarejo" TIER_ID="Segmentación+IPA-AC">
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a29" ANNOTATION_REF="a1">
+                <ANNOTATION_VALUE>ʧagɾa-wa-ta simbɾa-ngapa=ka</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a30" ANNOTATION_REF="a2">
+                <ANNOTATION_VALUE>kaba-ʃpa</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a31" ANNOTATION_REF="a3">
+                <ANNOTATION_VALUE>ladeɾa-wa-kuna-ta=ka kaba-ʃpa planada-wa-ta=ka</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a32" ANNOTATION_REF="a4">
+                <ANNOTATION_VALUE>aɾa-ʃpa</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a33" ANNOTATION_REF="a5">
+                <ANNOTATION_VALUE>mingaiwata aziʃpaka boʐigowata mataʃpami</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a34" ANNOTATION_REF="a6">
+                <ANNOTATION_VALUE>komida-wa-ta</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a35" ANNOTATION_REF="a7">
+                <ANNOTATION_VALUE>almueɾso-wa-ta ese pion xente-wa-kuna-man=ka</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a36" ANNOTATION_REF="a8">
+                <ANNOTATION_VALUE>mingai-wa-ta azi-ʃpa=mi komi-nʧik ka-ɾka-nʧi</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a37" ANNOTATION_REF="a9">
+                <ANNOTATION_VALUE>di ai-manta=mi ja buelta</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a38" ANNOTATION_REF="a10">
+                <ANNOTATION_VALUE>maduɾa-kpi=ka</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a39" ANNOTATION_REF="a11">
+                <ANNOTATION_VALUE>tɾigo-wa-ta=ka koɾta-nka-ɾka-nʧi</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a40" ANNOTATION_REF="a12">
+                <ANNOTATION_VALUE>piun-wan ʧiʧa-go-wan moti-go-wan sibada-wa-ta=paʃ koɾta-nka-ɾka-nʧi	</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a41" ANNOTATION_REF="a13">
+                <ANNOTATION_VALUE>tɾigo-wa-ta=piʃ koɾta-nga mais-wan maduɾa-kpi=paʃ</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a42" ANNOTATION_REF="a14">
+                <ANNOTATION_VALUE>ʧiʧa-gu-ta azi-ʃpa moti-gu-ta azi-ʃpa=mi</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a43" ANNOTATION_REF="a15">
+                <ANNOTATION_VALUE>mingai-wa-ta azi-ʃpa gɾano-wa-ta ʐekogi-nka-ɾka-nʧi</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a44" ANNOTATION_REF="a16">
+                <ANNOTATION_VALUE>di ai-manta=mi ese gɾano-wa-ta kozina-ʃpa komi-nka-ɾka-nʧi</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a45" ANNOTATION_REF="a17">
+                <ANNOTATION_VALUE>piedɾa-gu-pi moli-ʃpa</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a46" ANNOTATION_REF="a18">
+                <ANNOTATION_VALUE>ese tɾigo-wa-ta=ka</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a47" ANNOTATION_REF="a19">
+                <ANNOTATION_VALUE>koznaʃpa kominkaɾkanʧi leʧiwan salwan</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a48" ANNOTATION_REF="a20">
+                <ANNOTATION_VALUE>aʐozfala-wa-ta=ka tostado tosta-ʃpa kaʒana-pi tosta-ʃpa</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a49" ANNOTATION_REF="a21">
+                <ANNOTATION_VALUE>di ai-manta=mi muli-nka-ɾka-nʧi piedɾa-pi piedɾa-pi moli-ʃpa=mi axiʧa-nka-ɾka-nʧi aɾneɾo-pi</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a50" ANNOTATION_REF="a22">
+                <ANNOTATION_VALUE>de ai-manta=mi kozina-nka-ɾka-nʧi</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a51" ANNOTATION_REF="a23">
+                <ANNOTATION_VALUE>atɾas kebɾada-manta awa-gu-ta kaɾga-mu-ʃpa</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a52" ANNOTATION_REF="a24">
+                <ANNOTATION_VALUE>ese kebɾadami koxiʃpaka biʐugota koxiʃpi ese biʐugowanmi koznaʃpa kominkaɾkanʧi aʐozfalagotaka i asimi kozeʧankaɾkanʧi</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a53" ANNOTATION_REF="a25">
+                <ANNOTATION_VALUE>ese gɾano-wa maduɾa-kpi=ka nosotɾos=ka kozeʧa-nka-ɾka-nʧi piun-wan</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a54" ANNOTATION_REF="a26">
+                <ANNOTATION_VALUE>piun-taka mingai-ta azi-ʃpa=mi kozeʧa-ɾka-nʧi mais-wa-ta mais-wa-ta koxi-ʃka xipa=ka</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a55" ANNOTATION_REF="a27">
+                <ANNOTATION_VALUE>oxa-wa-ta kaɾga-ʃpa=mi montona-nka-ɾka-nʧi wagɾa-wa-man komi-ʧi-ngapak gɾande monton-ta azi-ʃpa=mi</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a56" ANNOTATION_REF="a28">
+                <ANNOTATION_VALUE>aɲo enteɾo-pa=mi ese oxa-wa-ta=ka monto-na-nka-ɾka-nʧi</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER ANNOTATOR="Jesse Stewart" LINGUISTIC_TYPE_REF="ML"
+        PARENT_REF="Segmentación+IPA-AC" PARTICIPANT="Anita Cañarejo" TIER_ID="Glosa-AC">
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a57" ANNOTATION_REF="a29">
+                <ANNOTATION_VALUE>chacra-DIM.wa-ACC sembrar-SS.PURP=TOP</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a58" ANNOTATION_REF="a30">
+                <ANNOTATION_VALUE>cavar-SS.CONV</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a59" ANNOTATION_REF="a31">
+                <ANNOTATION_VALUE>ladera-DIM.wa-PL-ACC=TOP cavar-SS.CONV planada//planicie-DIM.wa-ACC=TOP</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a60" ANNOTATION_REF="a32">
+                <ANNOTATION_VALUE>arar-SS.CONV</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a61" ANNOTATION_REF="a33">
+                <ANNOTATION_VALUE>mingai-wa-ta azi-ʃpa=ka boʐigo-wata mata-ʃpa=mi</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a62" ANNOTATION_REF="a34">
+                <ANNOTATION_VALUE>comida-DIM.wa-ACC</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a63" ANNOTATION_REF="a35">
+                <ANNOTATION_VALUE>almuerzo-DIM.wa-ACC ese peón//trabajador//empleada gente-DIM.wa-PL-DIR=TOP</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a64" ANNOTATION_REF="a36">
+                <ANNOTATION_VALUE>minga-DIM.wa-ACC hacer-SS.CONV=VAL comer-1p ser//estar-PST-1p</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a65" ANNOTATION_REF="a37">
+                <ANNOTATION_VALUE>de ahí-ABL=VAL ya en.cambio//otra.vez</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a66" ANNOTATION_REF="a38">
+                <ANNOTATION_VALUE>madurar-DS.CONV=TOP</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a67" ANNOTATION_REF="a39">
+                <ANNOTATION_VALUE>trigo-DIM.wa-ACC=TOP cortar-COND-PST-1p</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a68" ANNOTATION_REF="a40">
+                <ANNOTATION_VALUE>trabajador-INST chicha-DIM.gu-INST mote-DIM.gu-INST cebada-DIM.wa-ACC=CONJ cortar-COND-PST-1p</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a69" ANNOTATION_REF="a41">
+                <ANNOTATION_VALUE>trigo-DIM.wa-ACC=CONJ cortar-3.FUT maíz-INST madurar-DS.CONV=CONJ</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a70" ANNOTATION_REF="a42">
+                <ANNOTATION_VALUE>chicha-DIM.gu-ACC hacer-SS.CONV mote-DIM.gu-ACC hacer-SS.CONV=VAL</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a71" ANNOTATION_REF="a43">
+                <ANNOTATION_VALUE>minga-DIM.wa-ACC hacer-SS.CONV grano-DIM.wa-ACC recoger-COND-PST-1p</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a72" ANNOTATION_REF="a44">
+                <ANNOTATION_VALUE>de ahí-ABL=VAL ese grano-DIM.wa-ACC cocinar-SS.CONV comer-COND-PST-1p</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a73" ANNOTATION_REF="a45">
+                <ANNOTATION_VALUE>piedra-DIM.gu-LOC moler-SS.CONV</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a74" ANNOTATION_REF="a46">
+                <ANNOTATION_VALUE>ese trigo-DIM.wa-ACC=TOP</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a75" ANNOTATION_REF="a47">
+                <ANNOTATION_VALUE>kozna-ʃpa komi-nka-ɾka-nʧi leʧi-wan sal-wan</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a76" ANNOTATION_REF="a48">
+                <ANNOTATION_VALUE>arroz.de.cebada-DIM.wa-ACC=TOP tostado tostar-SS.CONV tiesto-LOC tostar-SS.CONV</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a77" ANNOTATION_REF="a49">
+                <ANNOTATION_VALUE>de ahí-ABL=VAL moler-COND-PST-1p piedra-LOC piedra-LOC moler-SS.CONV=VAL ahechar-COND-PST-1p harnero-LOC</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a78" ANNOTATION_REF="a50">
+                <ANNOTATION_VALUE>de ahí-ABL=VAL cocinar-COND-PST-1p</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a79" ANNOTATION_REF="a51">
+                <ANNOTATION_VALUE>tras quebrada-ABL agua-DIM.gu-ACC cargar-TRANS-SS.CONV</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a80" ANNOTATION_REF="a52">
+                <ANNOTATION_VALUE>ese kebɾada=mi koxi-ʃpa=ka biʐugo-ta koxiʃ-pi ese biʐugo-wanmi kozna-ʃpa komi-nka-ɾka-nʧi aʐozfala-gu-ta=ka i asi=mi kozeʧa-nka-ɾka-nʧi</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a81" ANNOTATION_REF="a53">
+                <ANNOTATION_VALUE>ese grano-DIM.wa madurar-DS.CONV=TOP nosotros=TOP cosechar-COND-PST-1p trabajador-INST</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a82" ANNOTATION_REF="a54">
+                <ANNOTATION_VALUE>trabajador minga-ACC hacer-SS.CONV=VAL cosechar-PST-1p maíz-DIM.wa-ACC maíz-DIM.wa-ACC coger-PERF después=TOP</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a83" ANNOTATION_REF="a55">
+                <ANNOTATION_VALUE>hoja-DIM.wa-ACC cargar-SS.CONV=VAL amontonar-COND-PST-1p vaca-DIM.wa-DIR comer-CAU-SS.PURP grande montón-ACC hacer-SS.CONV=VAL</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a84" ANNOTATION_REF="a56">
+                <ANNOTATION_VALUE>año entero-POSS//BEN=VAL ese hoja-DIM.wa-ACC=TOP amontonar-NOM.na-COND-PST-1p</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <LINGUISTIC_TYPE GRAPHIC_REFERENCES="false"
+        LINGUISTIC_TYPE_ID="default-lt" TIME_ALIGNABLE="true"/>
+    <LINGUISTIC_TYPE CONSTRAINTS="Symbolic_Subdivision"
+        GRAPHIC_REFERENCES="false" LINGUISTIC_TYPE_ID="ML" TIME_ALIGNABLE="false"/>
+    <LINGUISTIC_TYPE GRAPHIC_REFERENCES="false"
+        LINGUISTIC_TYPE_ID="imported-sep" TIME_ALIGNABLE="true"/>
+    <CONSTRAINT
+        DESCRIPTION="Time subdivision of parent annotation's time interval, no time gaps allowed within this interval" STEREOTYPE="Time_Subdivision"/>
+    <CONSTRAINT
+        DESCRIPTION="Symbolic subdivision of a parent annotation. Annotations refering to the same parent are ordered" STEREOTYPE="Symbolic_Subdivision"/>
+    <CONSTRAINT DESCRIPTION="1-1 association with a parent annotation" STEREOTYPE="Symbolic_Association"/>
+    <CONSTRAINT
+        DESCRIPTION="Time alignable annotations within the parent annotation's time interval, gaps are allowed" STEREOTYPE="Included_In"/>
+</ANNOTATION_DOCUMENT>
