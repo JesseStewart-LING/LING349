@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Dr. Jesse Stewart" />
+
+<meta name="date" content="2025-08-07" />
+
+<title>Encoding</title>
+
+<script src="Encoding_files/header-attrs-2.28/header-attrs.js"></script>
+<script src="Encoding_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="Encoding_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="Encoding_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="Encoding_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="Encoding_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="Encoding_files/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="Encoding_files/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="Encoding_files/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="Encoding_files/navigation-1.1/tabsets.js"></script>
+<link href="Encoding_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="Encoding_files/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Encoding</h1>
+<h4 class="author">Dr. Jesse Stewart</h4>
+<h4 class="date">2025-08-07</h4>
+
+</div>
+
+
+<p><strong>Encoding: How Characters Become Bits</strong></p>
+<div id="what-is-character-encoding" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> What is Character
+Encoding?</h1>
+<p>Character encoding is the system by which computers store, interpret,
+and transmit characters (e.g., <code>a</code>, <code>文</code>,
+<code>ຽ</code>).</p>
+<p>Your computer doesn’t understand letters or symbols as we do. It only
+understands <strong>numbers</strong>, and those numbers are ultimately
+represented as <strong>binary</strong> (0s and 1s).</p>
+<p><strong>So:</strong> &gt; Character → Number → Binary</p>
+<hr />
+<div id="characters-are-numbers" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Characters are
+Numbers</h2>
+<p>Characters are mapped to numbers using agreed-upon standards
+(encoding systems). For example:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Character</th>
+<th>Decimal Code</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>65</td>
+</tr>
+<tr class="even">
+<td>a</td>
+<td>97</td>
+</tr>
+<tr class="odd">
+<td>文</td>
+<td>25991</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="numbers-are-binary" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Numbers are
+Binary</h2>
+<p>Once a character is mapped to a number, that number is stored in
+binary. For example:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Character</th>
+<th>Decimal</th>
+<th>Binary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>65</td>
+<td>01000001</td>
+</tr>
+<tr class="even">
+<td>a</td>
+<td>97</td>
+<td>01100001</td>
+</tr>
+</tbody>
+</table>
+<p>This binary information is what’s physically stored on your computer
+(via voltages, magnetic states, etc.).</p>
+</div>
+</div>
+<div id="representing-numbers" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Representing
+numbers</h1>
+<div id="how-english-speaking-humans-represent-numbers"
+class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> How
+(English-speaking) humans represent numbers</h2>
+<p>The decimal system (base 10)<br />
+Digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9<br />
+English: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9<br />
+Representing: <code>423</code> and <code>90,760</code></p>
+<table>
+<colgroup>
+<col width="14%" />
+<col width="17%" />
+<col width="14%" />
+<col width="18%" />
+<col width="10%" />
+<col width="14%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Example</th>
+<th align="left">10^4</th>
+<th align="left">10^3</th>
+<th align="left">10^2</th>
+<th align="left">10^1</th>
+<th align="left">10^0</th>
+<th align="left">Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>423</code></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">4</td>
+<td align="left">2</td>
+<td align="left">3</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">400</td>
+<td align="left">+20</td>
+<td align="left">+3</td>
+<td align="left">423</td>
+</tr>
+<tr class="even">
+<td align="left"><code>90,760</code></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">9</td>
+<td align="left">0</td>
+<td align="left">7</td>
+<td align="left">6</td>
+<td align="left">0</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">90,000</td>
+<td align="left">+0</td>
+<td align="left">+700</td>
+<td align="left">+60</td>
+<td align="left">+0</td>
+<td align="left">90,760</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="how-computers-represent-numbers" class="section level2"
+number="2.2">
+<h2><span class="header-section-number">2.2</span> How computers
+represent numbers</h2>
+<p>The binary system (base 2)<br />
+Digits: 0, 1<br />
+English: 0, 1<br />
+Representing: <code>11111111</code>, <code>10100111</code> and
+<code>00000100</code></p>
+<table>
+<colgroup>
+<col width="11%" />
+<col width="11%" />
+<col width="9%" />
+<col width="12%" />
+<col width="8%" />
+<col width="9%" />
+<col width="11%" />
+<col width="8%" />
+<col width="8%" />
+<col width="7%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Example</th>
+<th align="left">2^7</th>
+<th align="left">2^6</th>
+<th align="left">2^5</th>
+<th align="left">2^4</th>
+<th align="left">2^3</th>
+<th align="left">2^2</th>
+<th align="left">2^1</th>
+<th align="left">2^0</th>
+<th align="left">Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>11111111</code></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">225</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">128</td>
+<td align="left">+64</td>
+<td align="left">+32</td>
+<td align="left">+16</td>
+<td align="left">+8</td>
+<td align="left">+4</td>
+<td align="left">+2</td>
+<td align="left">+1</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"><code>10100111</code></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">128</td>
+<td align="left">+0</td>
+<td align="left">+32</td>
+<td align="left">+0</td>
+<td align="left">+0</td>
+<td align="left">+4</td>
+<td align="left">+2</td>
+<td align="left">+1</td>
+<td align="left">167</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>00000100</code></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">+4</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">4</td>
+</tr>
+</tbody>
+</table>
+<p><a
+href="https://www.rapidtables.com/calc/math/binary-calculator.html">Binary
+calculator</a></p>
+</div>
+<div id="how-humans-represent-computer-numbers" class="section level2"
+number="2.3">
+<h2><span class="header-section-number">2.3</span> How humans represent
+computer numbers</h2>
+<p>The hexadecimal system (base 16)<br />
+Digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F<br />
+English 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15<br />
+Representing: <code>423</code> and <code>13AF</code><br />
+<em>Imagine the French system 1-16, if it didn’t revert back to base
+10.</em></p>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="13%" />
+<col width="14%" />
+<col width="17%" />
+<col width="14%" />
+<col width="14%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Example</th>
+<th align="left">16^4</th>
+<th align="left">16^3</th>
+<th align="left">16^2</th>
+<th align="left">16^1</th>
+<th align="left">16^0</th>
+<th align="left">Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>423</code></td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">4</td>
+<td align="left">2</td>
+<td align="left">3</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">1024</td>
+<td align="left">+32</td>
+<td align="left">+3</td>
+<td align="left">1059</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">(16^2)*4</td>
+<td align="left">(16^1)*2</td>
+<td align="left">(16^0)*3</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"><code>13AF</code></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">0</td>
+<td align="left">4096</td>
+<td align="left">+768</td>
+<td align="left">+160</td>
+<td align="left">+15</td>
+<td align="left">5039</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">(16^3)*1</td>
+<td align="left">(16^2)*3</td>
+<td align="left">(16^1)*10</td>
+<td align="left">(16^0)*15</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">A=10</td>
+<td align="left">F=15</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://www.calculator.net/hex-calculator.html">Hexadecimal
+calculator</a></p>
+</div>
+<div id="hexadecimal-base-16-binary" class="section level2"
+number="2.4">
+<h2><span class="header-section-number">2.4</span> Hexadecimal (Base 16)
+&amp; Binary</h2>
+<p>Computers often use hexadecimal (base 16) as a shorthand for binary.
+Notice that there are 16 digits from the min and max Hex and 4 bit
+binary numbers. <a
+href="https://www.calculator.net/hex-calculator.html">Online Hex
+Calculator</a></p>
+<p>Each hex digit represents 4 bits:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Hex</th>
+<th align="left">Binary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0</td>
+<td align="left">0000</td>
+</tr>
+<tr class="even">
+<td align="left">1</td>
+<td align="left">0001</td>
+</tr>
+<tr class="odd">
+<td align="left">2</td>
+<td align="left">0010</td>
+</tr>
+<tr class="even">
+<td align="left">3</td>
+<td align="left">0011</td>
+</tr>
+<tr class="odd">
+<td align="left">4</td>
+<td align="left">0100</td>
+</tr>
+<tr class="even">
+<td align="left">5</td>
+<td align="left">0101</td>
+</tr>
+<tr class="odd">
+<td align="left">6</td>
+<td align="left">0110</td>
+</tr>
+<tr class="even">
+<td align="left">7</td>
+<td align="left">0111</td>
+</tr>
+<tr class="odd">
+<td align="left">8</td>
+<td align="left">1000</td>
+</tr>
+<tr class="even">
+<td align="left">9</td>
+<td align="left">1001</td>
+</tr>
+<tr class="odd">
+<td align="left">A</td>
+<td align="left">1010</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="left">1011</td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="left">1100</td>
+</tr>
+<tr class="even">
+<td align="left">D</td>
+<td align="left">1101</td>
+</tr>
+<tr class="odd">
+<td align="left">E</td>
+<td align="left">1110</td>
+</tr>
+<tr class="even">
+<td align="left">F</td>
+<td align="left">1111</td>
+</tr>
+</tbody>
+</table>
+<p>A Unicode value like U+00E9 = <code>11101001</code> in binary =
+<code>E9</code> in hex.</p>
+<hr />
+</div>
+</div>
+<div id="why-encoding-matters" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Why Encoding
+Matters</h1>
+<p>Your text editor, terminal, and programming language must all agree
+on how bytes should be interpreted. If they disagree:</p>
+<ul>
+<li><code>é</code> (Latin small letter e with acute) might show up as
+<code>Ã©</code></li>
+<li><code>漢</code> (Chinese Han character) might show up as a series of
+nonsense symbols</li>
+</ul>
+<p>This is why you might see gibberish when you open a file with the
+wrong encoding.</p>
+<p><img src="Encoding_images/encodingerror.jpg" alt="Encoding errors" width="300"/></p>
+<hr />
+</div>
+<div id="bytes-and-bits" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Bytes and Bits</h1>
+<ul>
+<li>A <strong>bit</strong> is a single binary digit: 0 or 1<br />
+</li>
+<li>A <strong>byte</strong> = 8 bits (can represent values from 0 to
+255)<br />
+</li>
+<li>Two bytes = 16 bits (values from 0 to 65,535)</li>
+</ul>
+<p>Modern encoding (like UTF-8) uses <strong>variable-length
+encoding</strong>, where some characters are stored in 1 byte and others
+may need 2, 3, or even 4 bytes.</p>
+<hr />
+</div>
+<div id="summary" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Summary</h1>
+<table>
+<colgroup>
+<col width="16%" />
+<col width="83%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Bit</td>
+<td>A single 0 or 1</td>
+</tr>
+<tr class="even">
+<td>Byte</td>
+<td>8 bits (can represent 0–255)</td>
+</tr>
+<tr class="odd">
+<td>ASCII</td>
+<td>7-bit encoding for English characters</td>
+</tr>
+<tr class="even">
+<td>Unicode</td>
+<td>Universal standard for all writing systems</td>
+</tr>
+<tr class="odd">
+<td>UTF-8</td>
+<td>Variable-length encoding format for Unicode</td>
+</tr>
+<tr class="even">
+<td>Hex</td>
+<td>Base-16 number system used as shorthand for binary values</td>
+</tr>
+</tbody>
+</table>
+<p><img src="Encoding_images/nintendo.jpg" alt="8 vs 16 bit" width="300"/></p>
+<hr />
+</div>
+<div id="encoding-in-r" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Encoding in R</h1>
+<p>In R, you can: - Convert numbers to hex with
+<code>as.hexmode()</code> - View raw binary with
+<code>charToRaw()</code></p>
+<pre class="r"><code>as.hexmode(255)     # returns &quot;ff&quot;
+charToRaw(&quot;a&quot;)      # returns 61 (hex for 97)
+charToRaw(&quot;文&quot;)     # returns e6 96 87 (UTF-8 encoded bytes)</code></pre>
+</div>
+<div id="character-encodings-are-arbitrary" class="section level1"
+number="7">
+<h1><span class="header-section-number">7</span> Character Encodings are
+Arbitrary</h1>
+<p>Different platforms historically used different encodings (MacRoman,
+Windows-1252, etc.).</p>
+<p>This is why text files sometimes break when moved between
+systems.</p>
+<p>Ideally, everyone should use <strong>UTF-8</strong>, and most modern
+systems do.<br />
+<img src="Encoding_images/MacPC.jpg" alt="Different systems" width="300"/></p>
+</div>
+<div id="history-of-encoding" class="section level1" number="8">
+<h1><span class="header-section-number">8</span> History of
+encoding</h1>
+<div id="ebcdic-extended-binary-coded-decimal-interchange-code"
+class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> EBCDIC (Extended
+Binary Coded Decimal Interchange Code)</h2>
+<p>A universally despised encoding made up by IBM for its mainframes in
+the 1960s.<br />
+<img src="Encoding_images/EBCDIC.jpg" alt="EBCDIC" width="300"/></p>
+</div>
+<div id="ascii-american-standard-code-for-information-interchange"
+class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> ASCII (American
+Standard Code for Information Interchange)</h2>
+<p>The standard developed in 1963 that beat out the others (used until
+1991). ASCII only uses 127 of the possible 255 numbers. - 7-bit encoding
+(values from 0 to 127) - Includes only English letters, digits,
+punctuation, and control characters - <strong>Example:</strong>
+<code>'A'</code> = 65 = <code>01000001</code> - Extended ASCII (8-bit)
+adds support for European accented characters (128–255)</p>
+<p><img src="Encoding_images/ASCII.jpg" alt="ASCII" width="300"/></p>
+<p>The ASCII characters from 0 to 31 (0x1F) are control characters that
+caused early teletype terminals to do special things.<br />
+<img src="Encoding_images/teletype.jpg" alt="Old teletype machine" width="300"/><br />
+<em>A teletype machine, also known as a teleprinter or TTY, is an
+electromechanical device used to send and receive typed messages over
+communication channels. It acts as a remote typewriter, transmitting
+coded electrical pulses that represent typed characters, which are then
+decoded and printed at the receiving end.</em></p>
+<p>Some examples:</p>
+<p>00 null (ignore me)<br />
+07 ˆG alarm (ring a bell)<br />
+08 ˆH backspace<br />
+09 ˆI tab<br />
+0A ˆJ line feed (roll the paper up)<br />
+0C ˆL form feed (start a new page)<br />
+0D ˆM carriage return (move the print head left)</p>
+<p>To get an old teletype to start a new line, you had to send it both a
+CR (carriage return, to get the print-head back to the left edge of the
+paper) and a LF (line feed, to get the paper roller to feed the paper up
+one line). Nobody got around to standardizing how to represent the end
+of a line electronically when you weren’t using a teletype.</p>
+<p>most Unix LF Macs CR PCs CR + LF</p>
+<p><img src="Encoding_images/CRLF.jpg" alt="As seen in EditPad Lite" width="300"/></p>
+<p><img src="Encoding_images/LineBreaks.jpg" alt="As seen in EditPad Lite" width="600"/></p>
+<p>If a file you get from someone else’s computer suddenly looks like it
+has no line breaks, this is what’s happening. (R mostly hides this
+problem from you.)<br />
+<img src="Encoding_images/Notepad.jpg" alt="No line break" width="500"/></p>
+<p>ASCII…<br />
+- can’t represent many of the keys on your keyboard (e.g., the arrow
+keys, F1-F12)<br />
+- can’t represent accented characters<br />
+- but is only using half the possible numbers (up to127, not up to
+255).<br />
+- So, again, computer manufacturers (IBM, Apple, etc.) made up their own
+uses for the upper-range numbers.<br />
+– i.e., 128-255 were system-dependent e.g., 134 on a PC might be
+different than on a MAC.</p>
+</div>
+<div id="iso-latin-1" class="section level2" number="8.3">
+<h2><span class="header-section-number">8.3</span> ISO Latin 1</h2>
+<p>The American National Standards Institute (ANSI) developed a new
+character set, approved by the International Standards Organization
+(ISO) in 1985, as ISO-8859-1.</p>
+<p>Characters 0 to 131 are copied straight from ASCII. 132 to 255
+contain accented Roman characters used in most Western European
+languages.<br />
+<img src="Encoding_images/ISOLatin1.jpg" alt="ISO Latin 1" width="200"/></p>
+</div>
+<div id="windows-1252" class="section level2" number="8.4">
+<h2><span class="header-section-number">8.4</span> Windows-1252</h2>
+<p>Microsoft claimed to use the ANSI standard for Windows, but filled in
+the characters from 0x80 to 0x9F with their own inventions, like dashes,
+curly quotation marks, and the trademark symbol.</p>
+<p>Technically, this is Windows code-page 1252, but they usually
+mislabel it “ANSI”. If you’ve ever had quotation marks not show up on a
+web-page, your browser is reading a Windows-1252 encoded page as if it
+were something standard.</p>
+<p>“ANSI” → “ANSI”<br />
+(tm) → ™<br />
+(r) → ®<br />
+– → —<br />
+<img src="Encoding_images/error.jpg" alt="Encoding error found in browser" width="250"/></p>
+</div>
+<div id="encoding-settings-in-browers" class="section level2"
+number="8.5">
+<h2><span class="header-section-number">8.5</span> Encoding settings in
+browers</h2>
+<p>Chrome 55, Opera, Edge have removed the Encoding menu and will do
+auto-encoding detection now.<br />
+<img src="Encoding_images/browsers.jpg" alt="Browsers" width="100"/></p>
+<p>Encoding options in Firefox<br />
+<img src="Encoding_images/Firefox.jpg" alt="Encoding options in Firefox" width="300"/></p>
+<p>Encoding options in Explorer<br />
+<img src="Encoding_images/Explorer.jpg" alt="Encoding options in Firefox" width="300"/></p>
+<p>Nice programmers define the character set<br />
+<img src="Encoding_images/html_encoding.jpg" alt="Encoding options in the html header" width="500"/></p>
+</div>
+<div id="after-iso-8859-1-latin-1" class="section level2" number="8.6">
+<h2><span class="header-section-number">8.6</span> After ISO-8859-1
+(Latin 1)</h2>
+<ul>
+<li>Latin 1 still can’t quite handle all the Roman characters used in
+Europe – like € – let alone Cyrillic, Greek, Hebrew, Cree, and Arabic.
+That’s why there’s ISO-8859-2 through ISO-8859-10 (or more).<br />
+</li>
+<li>One byte gives you only 256 possible characters, so there’s no way
+you’ll get all possible accented Roman characters, like Ř, Ű, č, ę, ů.
+Let alone IPA. Let alone Chinese.<br />
+</li>
+<li>Faking foreign and phonetic symbols with fonts isn’t good
+enough.<br />
+</li>
+<li>So in the late 1980s people began working on a character encoding
+using 2 bytes per characters  65,536 possible characters! (Still not
+enough.)</li>
+</ul>
+</div>
+<div id="unicode" class="section level2" number="8.7">
+<h2><span class="header-section-number">8.7</span> Unicode</h2>
+<ul>
+<li>Unicode is a single character encoding, in the sense of mapping
+numbers onto characters.<br />
+</li>
+<li>But there are different possible ways of representing the numbers,
+so it’s better to see Unicode as a family of encodings.</li>
+<li>A much larger standard aiming to include <strong>every
+character</strong> in every human writing system</li>
+<li>Unicode can be encoded in several ways:
+<ul>
+<li><strong>UTF-8</strong> (most common on the web)<br />
+</li>
+<li>UTF-16<br />
+</li>
+<li>UTF-32</li>
+</ul></li>
+</ul>
+<p><img src="Encoding_images/encodingEditpad.jpg" alt="Changing encoding in EditPad Lite" width="500"/></p>
+<p><a href="https://unicode-table.com/en/#control-character">Browse
+Unicode</a><br />
+IPA examples<br />
+<img src="Encoding_images/IPA_encoding.jpg" alt="IPA examples" width="400"/></p>
+<p>Cree examples<br />
+<img src="Encoding_images/Cree_encoding.jpg" alt="Cree examples" width="400"/></p>
+<p>Arrow examples<br />
+<img src="Encoding_images/arrows_encoding.jpg" alt="Cree examples" width="400"/></p>
+<p>Math examples<br />
+<img src="Encoding_images/math_encoding.jpg" alt="Math examples" width="400"/></p>
+<p>Braille examples<br />
+<img src="Encoding_images/braile_encoding.jpg" alt="Braile examples" width="400"/></p>
+<p>Ethiopic examples<br />
+<img src="Encoding_images/Ethiopic_encoding.jpg" alt="Ethiopic examples" width="400"/></p>
+<p>Phaistos Disc examples<br />
+<img src="Encoding_images/Phaistos_Disc_encoding.jpg" alt="Phaistos Disc examples" width="400"/></p>
+<p>Chinese examples<br />
+<img src="Encoding_images/Chinese_encoding.jpg" alt="Chinese examples" width="400"/></p>
+<p>Unicode naming conventions - examples<br />
+<img src="Encoding_images/Unicode_names.jpg" alt="Chinese examples" width="500"/></p>
+<p><a href="https://youtu.be/BJABji-0wpU">Watch on Youtube</a></p>
+</div>
+<div id="unicode-fonts" class="section level2" number="8.8">
+<h2><span class="header-section-number">8.8</span> Unicode Fonts</h2>
+<p>You used to need the right fonts to be able to see the characters on
+your screen or print them. Most Unicode fonts don’t cover all the
+ranges.</p>
+<p>Some common Unicode fonts:<br />
+- Cambria - Gentium (Latin, IPA, Greek)<br />
+- SIL’s Doulos (IPA, Charis IPA) etc.<br />
+- Lucida Unicode (lots of ranges)<br />
+- Arial Unicode (even more)<br />
+- DejaVu (lot’s too)<br />
+- Linux Libertine <a
+href="http://users.physik.fu-berlin.de/~tburnus/linlibertine/">See
+supported ranges</a></p>
+<p>Nowadays many common fonts cover what we need for IPA, however, some
+are better at spacing and stacking diacritics than others.</p>
+</div>
+</div>
+<div id="using-unicode-in-r" class="section level1" number="9">
+<h1><span class="header-section-number">9</span> Using Unicode in R</h1>
+<p>R uses Unicode internally for all strings. You can get Unicode
+characters into R by:</p>
+<ul>
+<li>typing them in (if your keyboard will let you) or copying and
+pasting from a character map program ( ʃ ).</li>
+<li>using (where NNNN is the hexadecimal Unicode number e.g.,
+<code>\u0283</code> for ʃ )</li>
+</ul>
+<p>You can also read in a file using any of the other encodings (telling
+R which one) and it will automatically be converted into Unicode.</p>
+</div>
+<div id="byte-order-marks" class="section level1" number="10">
+<h1><span class="header-section-number">10</span> Byte-order marks</h1>
+<p>If you have a number represented in two bytes, 20 09– you can
+still:</p>
+<p>put the bytes in the right order: 20 09
+<strong>litte-endian</strong>, as in PCs and recent Macs put the bytes
+in the wrong order: 09 20 <strong>big-endian</strong>, as in most Unix
+computers</p>
+<p>which has caused endless problems with files transferred from one
+type of computer to the other. One attempt to solve this problem: Put
+the “zero-width no-break space” character <code>(0xFEFF)</code> at the
+start of every Unicode file. The opposite order <code>0xFFFE</code> is
+forever reserved as meaningless. Unfortunately, people don’t use the BOM
+consistently.</p>
+<p>When you load a data set into R, often times you will run into an
+encoding error in the name of the first header<br />
+<img src="Encoding_images/byteOrderError.jpg" alt="A bye order error in R" width="300"/></p>
+<p>Fix: Rename the column</p>
+<pre class="r"><code>colnames(DataSetName)[1]=&quot;NewName&quot;</code></pre>
+</div>
+<div id="saving-your-encoding" class="section level1" number="11">
+<h1><span class="header-section-number">11</span> Saving your
+encoding</h1>
+<ul>
+<li><p>Notepad<br />
+<img src="Encoding_images/EncodingNotepad.jpg" alt="Saving with a specific encoding in notepad" width="400"/></p></li>
+<li><p>Editpad Lite<br />
+<img src="Encoding_images/EncodingEditPadLite.jpg" alt="Saving with a specific encoding in EditPad Lite" width="400"/></p></li>
+</ul>
+<p><strong>Different Unicode encodings</strong></p>
+<ul>
+<li>UCS-2 (Universal Character Set 2): Use two bytes for each
+character.<br />
+</li>
+<li>UCS-4: Use four bytes for each character.<br />
+</li>
+<li>UTF-8 (Universal Transmission Format 8):<br />
+</li>
+<li>Use one byte for ASCII characters. 1 = A<br />
+</li>
+<li>Use two bytes for other characters up to 0x07FF, starting with the
+bits 110 – most other major alphabets.<br />
+</li>
+<li>Use three bytes for other characters up to 0xFFFF, starting with the
+bits 1110 – Chinese characters, etc.<br />
+</li>
+<li>Use four bytes for even higher characters.</li>
+</ul>
+<p>The BOM in UTF-8 is EF BB BF, which shows up as ï»¿ in Latin-1
+editors and browsers. UTF-8 is the default encoding for reading and
+writing files in Python 3, XML, R and many other places.<br />
+<a href="https://youtu.be/4g2aC9uSmDQ">Watch on YouTube</a></p>
+<ul>
+<li>Use one byte for ASCII characters 1 = a; 1 = A<br />
+</li>
+<li>Use two bytes for most other major alphabet<br />
+</li>
+<li>Use three bytes for Chinese characters, etc.<br />
+</li>
+<li>The BOM in UTF-8 is EF BB BF, (ï»¿)</li>
+</ul>
+</div>
+<div id="manipulating-encoding-in-r" class="section level1" number="12">
+<h1><span class="header-section-number">12</span> Manipulating encoding
+in R</h1>
+<p>Syntax: <code>as.character("\uNNNN")</code></p>
+<pre class="r"><code>as.character(&quot;\u0041&quot;)
+as.character(&quot;\u41&quot;)
+#[1] &quot;A&quot;
+
+as.character(&quot;\u4b60&quot;)
+#[1] &quot;䭠&quot;</code></pre>
+<p>Syntax: <code>utf8ToInt("symbol")</code></p>
+<pre class="r"><code>utf8ToInt(&quot;A&quot;)
+#[1] 65
+
+utf8ToInt(&quot;䭠&quot;)
+#[1] 19296
+
+utf8ToInt(&quot;ﭶ&quot;)
+#[1] 64374</code></pre>
+<p>Syntax: <code>as.hexmode(NNNN)</code></p>
+<pre class="r"><code>as.hexmode(65)
+#[1] 41
+
+as.hexmode(19296)
+#[1] 4b60
+
+as.hexmode(64374)
+#[1] fb76</code></pre>
+</div>
+<div id="homework" class="section level1" number="13">
+<h1><span class="header-section-number">13</span> HOMEWORK</h1>
+<div id="representing-numbers-1" class="section level2" number="13.1">
+<h2><span class="header-section-number">13.1</span> Representing
+numbers</h2>
+<p>Write out <code>5,207</code> using the decimal system chart.<br />
+Write out <code>010111011</code> using the binary system chart.<br />
+Write out <code>A1F4</code> using the hexadecimal system chart.<br />
+Write out <code>B1D9</code> using the hexadecimal system chart.</p>
+</div>
+<div id="r" class="section level2" number="13.2">
+<h2><span class="header-section-number">13.2</span> R</h2>
+<p>What is the hexcode for these characters?<br />
+<code>၍</code>, <code>ʤ</code>, <code>㊌</code>, <code>Ꮺ</code></p>
+<p>What characters are assigned to the following hexcodes?<br />
+<code>0937</code>, <code>0B94</code>, <code>266B</code>,
+<code>7A69</code></p>
+<p>Convert the following decimal to hex, then given their assigned
+Unicode character.<br />
+<code>1150</code>, <code>1354</code>, <code>2843</code>,
+<code>65</code></p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
