@@ -1,0 +1,487 @@
+﻿###########
+#libraries
+###########
+library(lme4)
+library(stringr)
+library(dplyr)
+
+###########
+#Loading Data
+##########
+
+##From Excel
+library(readxl)
+#CHANGE THE PATH TO YOUR DIRCTORY
+Data <- read_excel("C:/Users/Jesse/Dropbox/Courses/Research Methods - Winter 2021/Dataset/Dataset - Ss version.xlsx")
+View(Data)
+
+##Comma separated values
+library(readr)
+VOTData <- read_csv("C:/Users/Jesse/Dropbox/Courses/Research Methods - Winter 2021/R-basics/VOTDataset.txt")
+View(VOTData)
+
+##Manually
+VOTData = read.csv("C:/Users/Jesse/Dropbox/Courses/Research Methods - Winter 2021/R-basics/VOTDataset.txt", header=T, encoding="UTF-8", sep=",")
+View(VOTData)
+
+###MAC - remove the pound sign before 'dataset'
+#dataset=read.csv("~/Desktop/dataset.txt", header=T, sep="\t", encoding="UTF-8")
+
+###########
+#Writing data to your computer
+###########
+write.csv(VOTData, "C:/Users/Jesse/Dropbox/Courses/Research Methods - Winter 2021/R-basics/NEWdataset.txt")
+
+##MAC - remove the pound sign before 'dataset'
+#write.csv(dataset, "~/Desktop/NEWdataset.txt")
+
+########
+#Basic data manipulation
+########
+#Moving data to a new variable
+dataset=Data
+
+#Changing column names
+colnames(dataset)[1]="Hablante"
+colnames(dataset)[2]="Vocal"
+colnames(dataset)[3]="Sexo"
+colnames(dataset)[3]="Educación"
+
+#Manually editing your data (not recommended)
+x=edit(dataset)
+fix(dataset)
+
+#Quickly setting everything back to English by replacing 'dataset' with the original dataset in 'Data'
+dataset=Data
+
+
+#########
+#Looking at structure
+#########
+summary(dataset)
+str(dataset)
+
+#Looking at struture of an individual column
+summary(dataset$PoS)
+str(dataset$PoS)
+
+#########
+#Changing how data is interpreted
+#########
+
+#as factors (levels); as characters (strings); as numeric (numbers)
+#Note, for linguistic data, 'as.factor()' is used quite often. 
+table(dataset$PoS)
+levels(as.factor(dataset$PoS))
+
+#These two show the same information
+table(dataset$Language_origin)
+summary(as.factor(dataset$Language_origin))
+summary(as.numeric(dataset$Language_origin))
+#The latter returns an error because data is non-numeric
+
+#############
+#Subsetting (very important!!)
+#############
+
+##Noun subset
+nouns=subset(dataset, PoS=="Noun")
+View(nouns)
+
+#Quichua language subset
+Quichua=subset(dataset, Language_origin=="Q")
+View(Quichua)
+
+#Non-Nouns
+non_nouns=subset(dataset, PoS!="Noun")
+View(non_nouns)
+summary(as.factor(non_nouns$PoS))
+
+#Nouns and verbs
+NV=subset(dataset, PoS=="Noun" | PoS=="Verb")
+View(NV)
+
+#Not nouns, not verbs
+NNNV=subset(dataset, PoS!="Noun" & PoS!="Verb")
+View(NNNV)
+summary(as.factor(NNNV$PoS))
+
+#Column subsets
+##Based on column names
+SF1F2=subset(dataset, select=c("Speaker", "F1", "F2))
+View(SF1F2)
+
+##Based on column numbers
+SF1F2_2=subset(dataset, select=c(1, 9, 10)
+View(SF1F2_2)
+
+#Regex subsets
+##Using regular expressions to subset
+Adj=subset(dataset, grepl("Adjective", dataset$PoS))
+View(Adj)
+
+##negative regex ex
+non_adj=subset(dataset, !grepl("Adjective", dataset$PoS))
+View(non_adj)
+
+########
+#Creating and combining dataframes
+########
+#Random data list with numbers between 1-10
+Numbers=c(1,2,3,4,5,6,7,8,9,10)
+#Convering the 'Numbers' variable to a data frame
+Numbers=as.data.frame(Number)
+
+#Random data list with 10 mammals
+Animal=c("cat","dog","moose","rat","marmot","rabbit","hamster","chinchilla","beaver","guinea pig")
+#Convering the 'Animal' variable to a data frame
+Animal=as.data.frame(Animal)
+
+#Random data list with 10 sizes
+Size=c("M","M","L","S","S","S","S","S","M","S")
+#Convering the 'Size' variable to a data frame
+Size=as.data.frame(Size)
+
+#Combine the columns in a single data from using 'cbind' (column bind)
+NAS=cbind(Number, Animal, Size)
+View(NAS)
+
+#Combining subsets into a larger dataset
+Nouns=subset(dataset, PoS=="Noun")
+Verbs=subset(dataset, PoS=="Verb")
+View(Verbs)
+View(Nouns)
+
+NV=rbind(Nouns, Verbs)
+View(NV)
+summary(as.factor(NV))
+
+#########
+#Rename, Remove, Replace data
+#########
+
+#Lets back up the data frame in DS as to not destroy 'dataset'
+DS=dataset
+#Rows
+DS1=DS[-1,]
+#A span of rows
+DS1=DS[-1:-10,]
+#Columns – this removes the 'Vowel' column
+DS1=DS[,-2]
+#A span of columns – this removes Vowels to SES
+DS1=DS[,-2:-5]
+
+#If you just want column 2 – if you're going to view this, it's best to use: View(as.data.frame(DS1))
+DS1=DS[,2]
+
+#If you a span of rows (1 through 10)
+DS1=DS[,1:10]
+
+#Replacing data in cells
+##Changes all instances of 'Noun' to 'Verb'.
+DS$PoS[DS$PoS=="Noun"]="Verb"
+View(DS)
+
+##Changes all instances of 'Noun' & 'Adjective' to 'Verb'.
+DS$PoS[DS$PoS=="Noun" | DS$PoS=="Adjective"]="Verb"
+View(DS)
+
+##########
+#Formatting your data
+##########
+
+##Create the Vowel column
+library(stringr)
+dataset$Vowel=str_extract(dataset$Phrase,'@.')
+dataset$Vowel=gsub("@", "",dataset$Vowel)
+
+##Create the Word Column
+###Change underscore to space
+	dataset$Phrase=gsub("[_]", " ",dataset$Phrase)
+
+###Extract words containing the "@" sign
+	dataset$Word=str_extract(dataset$Phrase, '\\w*@\\w*')
+
+###Add % to the beginning of the word
+	dataset$Word=gsub("^\\b", "%",dataset$Word)
+
+###Add % to the end of the word
+	dataset$Word=gsub("$", "%",dataset$Word)
+
+##Previous Sound
+###adds the previous character before the @ and the two characters that follow
+	dataset$Preceding=str_extract(dataset$Word, '.@..')
+###Takes only the first character
+	dataset$Preceding=str_extract(dataset$Preceding, '^.{1}')
+
+##Following Sound
+###adds the previous character before the @ and the two characters that follow
+	dataset$Post=str_extract(dataset$Word, '.@..')
+###Takes only the last character
+	dataset$Post=str_extract(dataset$Post, '.{1}$')
+
+#IF STATEMENTS
+
+#Creating columns for analyzing effects
+##Vowel height
+dataset$VowelType=ifelse(dataset$Vowel=="a", "Low", ifelse(dataset$Vowel=="e" | dataset$Vowel=="o", "Mid", ifelse(dataset$Vowel=="i" | dataset$Vowel=="u", "High", "Error")))
+
+##Class of sound in the Pre vowel position
+dataset$PrecedingClass=ifelse(grepl("[iueoa]", dataset$Preceding), "Diphthong", ifelse(grepl("[mnɲŋ]", dataset$Preceding), "Nasal", ifelse(grepl("[ptkbdg]", dataset$Preceding), "Stop",ifelse(grepl("[ɸfszʃʒʐxhʧ]", dataset$Preceding), "Fricative", ifelse(grepl("[pjɾlw]", dataset$Preceding), "Sonorant", ifelse(grepl("%", dataset$Preceding), "Initial", "NA"))))))
+
+
+##Class of sound in the Post vowel position
+dataset$PostClass=ifelse(grepl("[iueoa]", dataset$Post), "Diphthong", ifelse(grepl("[mnɲŋ]", dataset$Post), "Nasal", ifelse(grepl("[ptkbdg]", dataset$Post), "Stop",ifelse(grepl("[ɸfszʃʒʐxhʧ]", dataset$Post), "Fricative", ifelse(grepl("[pjɾlw]", dataset$Post), "Sonorant", ifelse(grepl("%", dataset$Post), "Initial", "NA"))))))
+
+#Voicing PRE
+dataset$VoicingPRE=ifelse(grepl("[ptkɸfsʃxhʧ]", dataset$Preceding), "Voiceless", ifelse(grepl("[mnɲŋbdgzʒʐjlɾwaeiou]", dataset$Preceding), "Voiced",ifelse(grepl("[%]", dataset$Preceding), "Initial", "NA")))
+
+#Voicing POST
+dataset$VoicingPOST=ifelse(grepl("[ptkɸfsʃxhʧ]", dataset$Post), "Voiceless",ifelse(grepl("[mnɲŋbdgzʒʐjlɾwaeiou]", dataset$Post), "Voiced",ifelse(grepl("[%]", dataset$Post), "Final", "NA")))
+
+
+
+##Binary variables - repetitive work, but you'll thank yourself when it comes to your statistical analysis
+###Pre_Diphthong
+dataset$Pre_Diphthong=ifelse(dataset$PrecedingClass=="Diphthong", TRUE, FALSE)
+
+###Post_Diphthong
+dataset$Post_Diphthong=ifelse(dataset$PostClass=="Diphthong", TRUE, FALSE)
+
+###Pre_Nasal
+dataset$Pre_Nasal=ifelse(dataset$PrecedingClass=="Nasal", TRUE, FALSE)
+
+###Post_Nasal
+dataset$Post_Nasal=ifelse(dataset$PostClass=="Nasal", TRUE, FALSE)
+
+###Pre_Stop
+dataset$Pre_Stop=ifelse(dataset$PrecedingClass=="Stop", TRUE, FALSE)
+
+###Post_Stop
+dataset$Post_Stop=ifelse(dataset$PostClass=="Stop", TRUE, FALSE)
+
+###Pre_Fricative
+dataset$Pre_Fricative=ifelse(dataset$PrecedingClass=="Fricative", TRUE, FALSE)
+
+###Post_Fricative
+dataset$Post_Fricative=ifelse(dataset$PostClass=="Fricative", TRUE, FALSE)
+
+###Pre_Sonorant
+dataset$Pre_Sonorant=ifelse(dataset$PrecedingClass=="Sonorant", TRUE, FALSE)
+
+###Post_Sonorant
+dataset$Post_Sonorant=ifelse(dataset$PostClass=="Sonorant", TRUE, FALSE)
+
+###Pre_Voiceless
+dataset$Pre_Voiceless=ifelse(dataset$PrecedingClass=="Voiceless", TRUE, FALSE)
+
+###Post_Voiceless
+dataset$Post_Voiceless=ifelse(dataset$PostClass=="Voiceless", TRUE, FALSE)
+
+###Pre_Voiced
+dataset$Pre_Voiced=ifelse(dataset$VoicingPRE=="Voiced", TRUE, FALSE)
+
+###Post_Voiced
+dataset$Post_Voiced=ifelse(dataset$VoicingPOST=="Voiced", TRUE, FALSE)
+
+###Pre_Initial
+dataset$Post_Initial=ifelse(dataset$PostClass=="Initial", TRUE, FALSE)
+
+###Post_Final
+dataset$Post_Final=ifelse(dataset$PostClass=="Final", TRUE, FALSE)
+
+#############
+#
+#-----------
+#PLOTTING
+#-----------
+#
+##############
+
+dataset=subset(dataset, Vowel!="k")
+
+#Load the ggplot2 library
+library(ggplot2)
+
+#Basic barplots of each formant point
+qplot(F1, data=dataset)
+qplot(F2, data=dataset)
+
+#Identifying the individual vowels
+qplot(F1, fill=Vowel, data=dataset)
+qplot(F1, colour=Vowel, data=dataset)
+
+#Creating a density plot
+qplot(F1, color=Vowel, data=dataset, geom="density")
+
+#Creating a density plot - transparent
+qplot(F1, fill=Vowel, data=dataset, geom="density")
+
+#Adding axis labels
+qplot(F1, color=Vowel, xlab="Hz", ylab="Count", data=dataset, geom="density")
+
+#Adding a main title
+qplot(F1, color=Vowel, main="F1 Distribution", xlab="Hz", ylab="Count", data=dataset, geom="density")
+
+#adding in the data
+ggplot(dataset, aes(x=F2, y=F1, fill=Vowel))
+
+#add the data with geom_text
+ggplot(dataset, aes(x=F2, y=F1, fill=Vowel))+geom_text(aes(label=Vowel, color=Vowel))
+
+#add the y limits to filp the data
+ggplot(dataset, aes(x=F2, y=F1,fill=Vowel))+geom_text(aes(label=Vowel, color=Vowel))+ylim(1100,150)
+
+#add the x limits to reverse the data
+ggplot(dataset, aes(x=F2, y=F1,fill=Vowel))+geom_text(aes(label=Vowel, color=Vowel))+ylim(1100,150)+xlim(3100,200)
+
+#Ellipses
+ggplot(dataset, aes(x=F2, y=F1,fill=Vowel))+geom_text(aes(label=Vowel, color=Vowel))+ylim(1100,150)+xlim(3100,200)+stat_ellipse()
+
+#Ellipses Color
+ggplot(dataset, aes(x=F2, y=F1,fill=Vowel))+geom_text(aes(label=Vowel, color=Vowel))+ylim(1100,150)+xlim(3100,200)+stat_ellipse(geom = "polygon")
+
+#Ellipses Color transparent
+ggplot(dataset, aes(x=F2, y=F1,fill=Vowel))+geom_text(aes(label=Vowel, color=Vowel))+ylim(1100,150)+xlim(3100,200)+stat_ellipse(geom = "polygon", alpha=0.3)
+
+#Ellipses color transparent - border
+ggplot(dataset, aes(x=F2, y=F1,fill=Vowel))+geom_text(aes(label=Vowel, color=Vowel))+ylim(1100,150)+xlim(3100,200)+stat_ellipse(geom = "polygon", alpha=0.2)+stat_ellipse()
+
+#50% concentrations - dashed
+ggplot(dataset, aes(x=F2, y=F1,fill=Vowel))+geom_text(aes(label=Vowel, color=Vowel))+ylim(1100,150)+xlim(3100,200)+stat_ellipse(geom = "polygon", alpha=0.2)+stat_ellipse(aes(color=Vowel),size=0.8)+stat_ellipse(linetype = 2, size=0.1, level=0.5)
+
+#average
+ggplot(dataset, aes(x=F2, y=F1,fill=Vowel))+geom_text(aes(label=Vowel, color=Vowel))+ylim(1100,150)+xlim(3100,200)+stat_ellipse(geom = "polygon", alpha=0.2)+stat_ellipse(aes(color=Vowel),size=0.8)+stat_ellipse(linetype = 2, size=0.1, level=0.5)+stat_ellipse(linetype = 1, size=1, level=0.001)
+
+#Labs
+ggplot(dataset, aes(x=F2, y=F1,fill=Vowel))+geom_text(aes(label=Vowel, color=Vowel))+ylim(1100,150)+xlim(3100,200)+stat_ellipse(geom = "polygon", alpha=0.2)+stat_ellipse(aes(color=Vowel),size=0.8)+stat_ellipse(linetype = 2, size=0.1, level=0.5)+stat_ellipse(linetype = 1, size=1, level=0.001)+labs(x="F2 (Hz)", y="F1 (Hz)", title ="Vowel Chart")
+
+#topographic map of concentrations
+ggplot(dataset, aes(x=F2, y=F1,fill=Vowel))+geom_text(aes(label=Vowel, color=Vowel))+ylim(1100,150)+xlim(3100,200)+labs(x="F2 (Hz)", y="F1 (Hz)", title ="Vowel Chart")+geom_density_2d(size = 0.25, colour = "black")
+
+#No vowels
+ggplot(dataset, aes(x=F2, y=F1,fill=Vowel))+ylim(1100,150)+xlim(3100,200)+labs(x="F2 (Hz)", y="F1 (Hz)", title ="Vowel Chart")+geom_density_2d(size = 0.25, colour = "black")
+
+#No vowels colored
+ggplot(dataset, aes(x=F2, y=F1,fill=Vowel))+ylim(1100,150)+xlim(3100,200)+labs(x="F2 (Hz)", y="F1 (Hz)", title ="Vowel Chart")+geom_density_2d(size = 0.25, aes(colour = Vowel))
+
+#Topology I
+ggplot(dataset, aes(x=F2, y=F1,fill=Vowel))+ylim(1100,150)+xlim(3100,200)+labs(x="F2 (Hz)", y="F1 (Hz)", title ="Vowel Chart")+stat_density_2d(aes(fill = ..level..))
+
+#Topology II
+ggplot(dataset, aes(x=F2, y=F1,fill=Vowel))+ylim(1100,150)+xlim(3100,200)+labs(x="F2 (Hz)", y="F1 (Hz)", title ="Vowel Chart")+stat_density_2d(aes(fill = ..level..), bins=15)
+
+#Topology III
+ggplot(dataset, aes(x=F2, y=F1,fill=Vowel))+ylim(1100,150)+xlim(3100,200)+labs(x="F2 (Hz)", y="F1 (Hz)", title ="Vowel Chart")+stat_density_2d(aes(fill = ..level..), bins=30)
+
+#heatmap I
+ggplot(dataset, aes(x=F2, y=F1,fill=Vowel))+ylim(1100,150)+xlim(3100,200)+labs(x="F2 (Hz)", y="F1 (Hz)", title ="Vowel Chart")+stat_density_2d(aes(fill = ..level..), geom = "polygon")
+
+#heatmap II
+ggplot(dataset, aes(x=F2, y=F1,fill=Vowel))+ylim(1100,150)+xlim(3100,200)+labs(x="F2 (Hz)", y="F1 (Hz)", title ="Vowel Chart")+stat_density_2d(aes(fill = ..level..), geom = "polygon", bins=15)
+
+#heatmap III
+ggplot(dataset, aes(x=F2, y=F1,fill=Vowel))+ylim(1100,150)+xlim(3100,200)+labs(x="F2 (Hz)", y="F1 (Hz)", title ="Vowel Chart")+stat_density_2d(aes(fill = ..level..), geom = "polygon", bins=30)
+
+#compound functions list
+#https://ggplot2.tidyverse.org/reference/
+
+#GGPLOT Main page
+#https://ggplot2.tidyverse.org/
+
+#More from GGPLOT
+#https://exts.ggplot2.tidyverse.org/gallery/
+
+#Polygons
+library(concaveman)
+library(ggforce)
+ggplot(dataset, aes(x=F2, y=F1,fill=Vowel))+geom_text(aes(label=Vowel, color=Vowel))+ylim(1100,150)+xlim(3100,200)+geom_mark_hull(concavity = 10,expand=-0.025,radius=0,aes(fill=Vowel))
+ggplot(dataset, aes(x=F2, y=F1,fill=Vowel))+geom_text(aes(label=Vowel, color=Vowel))+ylim(1100,150)+xlim(3100,200)+geom_mark_hull(concavity = 10,expand=-0.025,radius=0,aes(fill=Vowel))+geom_mark_hull(concavity = 10,expand=-0.1,radius=0,aes(fill=Vowel))
+
+#Now time to get really fancy (this probably wouldn't be used for a publication, because it's made to be moved around)
+library(MASS)
+library(plotly)
+
+iDensity=kde2d(dataset$F1, dataset$F2, lims=c(range(dataset$F1),range(dataset$F2)))
+iDensity2=as.data.frame(iDensity)
+iDensity3=iDensity2[,-1:-2]
+iDensity4=data.matrix(iDensity3, rownames.force=NA)
+plot_ly(z =iDensity4) %>% add_surface()
+
+
+############Duration
+############
+#Viewing Duration with a boxplot (Also good for VOT!!)
+qplot(Vowel, Duration, colour=Vowel, main="Vowel Duration", ylab="Milliseconds (ms)", xlab="Vowel", data=dataset, geom="boxplot")
+
+#Notch
+qplot(Vowel, Duration, fill=Vowel, main="Vowel Duration", ylab="Milliseconds (ms)", xlab="Vowel", data=dataset, notch=TRUE, geom="boxplot")
+
+#Fill
+qplot(Vowel, Duration, fill=Vowel, main="Vowel Duration", ylab="Milliseconds (ms)", xlab="Vowel", data=dataset, notch=TRUE, geom="boxplot")
+
+#Jitter
+qplot(Vowel, Duration, fill=Vowel, main="Vowel Duration", ylab="Milliseconds (ms)", xlab="Vowel", data=dataset, notch=TRUE, geom="boxplot")+geom_jitter(shape=16, size=0.1)
+
+#Violin
+qplot(Vowel, Duration, fill=Vowel, main="Vowel Duration", ylab="Milliseconds (ms)", xlab="Vowel", data=dataset, geom="violin")
+
+#Violin + Boxplot
+qplot(Vowel, Duration, fill=Vowel, main="Vowel Duration", ylab="Milliseconds (ms)", xlab="Vowel", data=dataset, geom="violin")+geom_boxplot(width=0.1)
+
+#with jitter
+qplot(Vowel, Duration, fill=Vowel, main="Vowel Duration", ylab="Milliseconds (ms)", xlab="Vowel", data=dataset, geom="violin", alpha=0.2)+geom_boxplot(width=0.1)+geom_jitter(shape=16, size=0.1, alpha=0.2)
+
+
+###########Bar graph
+qplot(PoS, data=dataset)
+
+#Subset of PoS
+PoSSpeech=subset(dataset, PoS=="Adjective" |PoS=="Adverb" | PoS=="Noun" | PoS=="Verb")
+#Check your subsets!
+summary(as.factor(PoSSpeech$PoS))
+
+qplot(PoS, data=PoSSpeech)
+qplot(PoS, fill=PoS, data=PoSSpeech)
+
+qplot(PoS, fill=PoS, xlab="Part of Speech", ylab="Count", main="PoS in Media Lengua", data=PoSSpeech)
+ 
+qplot(Language_origin, data=dataset)
+qplot(Language_origin, fill=Language_origin, data=dataset)
+
+###################
+#Pipe
+###################
+#Pipes (%>%) let you write code in a readable, left-to-right sequence.
+#Instead of nesting functions:
+summary(subset(dataset, PoS=="Noun"))
+
+#Use a pipe:
+dataset %>%
+  filter(PoS == "Noun") %>%
+  summary()
+
+#Selecting columns with pipes
+dataset %>%
+  select(Speaker, F1, F2) %>%
+  View()
+
+#Creating new columns
+dataset %>%
+  mutate(F1_z = scale(F1)) %>%
+  select(Speaker, F1, F1_z) %>%
+  head()
+
+#Grouping and summarising
+dataset %>%
+  group_by(Vowel) %>%
+  summarise(mean_dur = mean(Duration, na.rm = TRUE),
+            sd_dur = sd(Duration, na.rm = TRUE))
+
+#Combining filtering, mutation, and plotting
+dataset %>%
+  filter(Vowel %in% c("a", "e", "i", "o", "u")) %>%
+  mutate(log_dur = log(Duration)) %>%
+  ggplot(aes(x=Vowel, y=log_dur, fill=Vowel)) +
+  geom_violin(alpha=0.5) +
+  geom_boxplot(width=0.1)
