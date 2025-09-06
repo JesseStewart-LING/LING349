@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Dr. Jesse Stewart" />
+
+<meta name="date" content="2025-08-12" />
+
+<title>Dendrogram</title>
+
+<script src="dendrograms_files/header-attrs-2.28/header-attrs.js"></script>
+<script src="dendrograms_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="dendrograms_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="dendrograms_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="dendrograms_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="dendrograms_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="dendrograms_files/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="dendrograms_files/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="dendrograms_files/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="dendrograms_files/navigation-1.1/tabsets.js"></script>
+<link href="dendrograms_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="dendrograms_files/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Dendrogram</h1>
+<h4 class="author">Dr. Jesse Stewart</h4>
+<h4 class="date">2025-08-12</h4>
+
+</div>
+
+
+<div id="introduction" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Introduction</h1>
+<div id="what-is-a-dendrogram" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> What is a
+“Dendrogram”?</h2>
+<p>A dendrogram is a tree-like diagram that shows how a set of items
+group together based on similarity or distance. In computational
+linguistics, we can use it to visualize how words or dialects relate to
+each other. Each branch represents a split: items joined lower down the
+tree are more similar, while those joined higher up are more
+distant.</p>
+<p>When applied to language data, dendrograms give us a way to see
+clustering patterns — for example, which dialects of Kichwa are most
+alike (this project!), or how borrowed words differ from native ones.
+They don’t prove genealogical relationships, but they provide a quick,
+interpretable snapshot of similarity across datasets. <br>
+<img src="dendrograms_images/example.jpg" alt="blank dendrogram" width="250"/><br />
+<br></p>
+</div>
+<div id="the-question" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> The Question</h2>
+<p>How can we measure similarity between words across dialects?</p>
+</div>
+<div id="the-answer-levenshtein-distance" class="section level2"
+number="1.3">
+<h2><span class="header-section-number">1.3</span> The Answer:
+Levenshtein Distance</h2>
+<p>The Levenshtein Distance Algorithm (LDA) is a way to measure how
+different two strings (words, sentences, etc.) are from each other. It
+does this by counting the minimum number of single-character edits
+needed to turn one string into the other. The possible edits are:</p>
+<ul>
+<li>Insertion: adding a character<br />
+</li>
+<li>Deletion: removing a character<br />
+</li>
+<li>Substitution: replacing one character with another</li>
+</ul>
+<p><br> <strong>Example 1: Orthographic Forms (spelling)</strong><br />
+Words for ‘cat’: <br></p>
+<ul>
+<li>English: <em>cat</em><br />
+</li>
+<li>Spanish: <em>gato</em><br />
+</li>
+<li>French: <em>chat</em><br />
+</li>
+<li>Italian: <em>gatto</em><br />
+</li>
+<li>German: <em>katze</em></li>
+</ul>
+<p><br> Pairwise Levenshtein distances (examples):</p>
+<ul>
+<li><em>cat</em> → <em>gato</em> = 2 edits (insert o, substitute c →
+g).<br />
+</li>
+<li><em>cat</em> → <em>chat</em> = 1 edit (insert h after c).<br />
+</li>
+<li><em>cat</em> → <em>katze</em> = 3 edits (substitute c → k, insert z,
+insert e).<br />
+</li>
+<li><em>gato</em> → <em>gatto</em> = 1 edit (insert t).</li>
+</ul>
+<p><br> This already shows some structure — Italian and Spanish are
+closer, French and English look similar because of orthography
+(<em>cat</em>/<em>chat</em>), and German is a bit farther.<br />
+<br> <strong>Example 2: Phonetic Forms (IPA)</strong><br />
+Now, let’s compare the same words transcribed in IPA:</p>
+<ul>
+<li>English: /kæt/<br />
+</li>
+<li>Spanish: /ˈɡato/<br />
+</li>
+<li>French: /ʃa/<br />
+</li>
+<li>Italian: /ˈɡatto/<br />
+</li>
+<li>German: /ˈkatsə/</li>
+</ul>
+<p><br> Pairwise distances (examples): <br></p>
+<ul>
+<li>/kæt/ → /ʃa/ = 3 edits (substitute k → ʃ, substitute æ → a, delete
+t).<br />
+</li>
+<li>/ˈɡato/ → /ˈɡatto/ = 1 edit (insert t).<br />
+</li>
+<li>/ˈɡato/ → /ˈkatsə/ = 3 edits (substitute ɡ → k, substitute o → ə,
+insert s).<br />
+</li>
+<li>/kæt/ → /ˈɡato/ = 4 edits (substitute k → ɡ, substitute æ → a,
+insert t, insert o).<br />
+</li>
+<li>/kæt/ → /ˈkatsə/ = 3 edits (substitute æ → a, insert s, insert
+ə).</li>
+</ul>
+<p><br> Here the picture shifts:</p>
+<ul>
+<li>English and French now look less similar than spelling
+suggested.<br />
+</li>
+<li>Spanish and Italian remain very close.</li>
+</ul>
+<p><br> <strong>Moral of this story</strong><br />
+The takeaway here is that while more data usually improves your results,
+the quality of the data is even more important. Etymological origin
+matters as well. For example, <em>gato</em>, <em>chat</em>,
+<em>gatto</em>, <em>cat</em>, and <em>katze</em> all come from the same
+historical source (<em>cattus</em> in Vulgar Latin). But if you used the
+Latin word <em>felis</em> instead, the algorithm would see it as very
+distant — even though historically it refers to the same animal. <br>
+Equally, the type of data you use must match your research
+question:<br />
+<br></p>
+<ul>
+<li>If you’re looking at pronunciation similarities, you need IPA
+transcriptions.<br />
+</li>
+<li>If you’re looking at orthography, then spelling is the right
+choice.<br />
+</li>
+<li>And if you’re analyzing sentences, alignment becomes critical.
+Consider:</li>
+</ul>
+<p><br></p>
+<ul>
+<li>English: <em>I want to eat pizza</em><br />
+</li>
+<li>French: <em>Je veux manger la pizza</em></li>
+</ul>
+<p><br> To compare properly, you need to align cognates:<br />
+<em>I</em> vs <em>Je</em><br />
+<em>want</em> vs <em>veux</em><br />
+<em>eat</em> vs <em>manger</em><br />
+<em>pizza</em> vs <em>pizza</em><br />
+<br> Here, <em>to</em> in English and <em>la</em> in French do not have
+counterparts. If you leave them in, the algorithm will wrongly compare
+<em>to</em> with <em>manger</em> and <em>la</em> with <em>eat</em>. You
+also need to remove punctuation. We don’t want a comma to count in the
+formula. Also, you want to make sure that if you’re dealing with
+orthography, all capital letters should be made lowercase (<em>c</em> ≠
+<em>C</em>).<br />
+<br></p>
+<div id="data" class="section level3" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Data</h3>
+<p>We’ll be focusing our work on the Quechuan language family, one of
+the most widespread and historically significant language families of
+South America. Quechuan varieties are spoken today by millions of people
+across the Andes, from Colombia in the north down through Ecuador, Peru,
+Bolivia, and into parts of Argentina and Chile. Historically, Quechua
+rose to prominence as the administrative and trade language of the Inca
+Empire, and after the Spanish conquest it continued to serve as a major
+lingua franca throughout the region.<br />
+<br> Over time, geographic isolation, contact with Spanish and other
+Indigenous languages has produced a rich variety of dialects, often
+differing considerably in vocabulary, sound patterns, and grammar.
+Linguists typically divide the family into two major branches, Quechua I
+and Quechua II, with further sub-branches within each. However, not
+everyone agrees with this classification (see <a
+href="https://www.jbe-platform.com/content/journals/10.1075/jhl.22013.flo">Floyd,
+2024</a>) The varieties spoken in Ecuador belong to the Quechua IIB
+branch, which links them historically to neighbouring Peruvian dialects
+but also highlights the unique pathways that Ecuadorian Kichwa has
+taken.<br />
+<br>
+<img src="dendrograms_images/Quechuan.jpg" alt="Quechuan Language family" width="900"/><br />
+<br> Here we zoom in on one subgroup, Quechua IIB, which includes a
+number of dialects/languages spoken in Ecuador and northern Peru. This
+branch is especially important for our purposes, since it contains the
+Ecuadorian Kichwa varieties we’ll be working with. Alongside these,
+we’re also including Cuzco Quechua—often treated as the “standard”
+variety, though in reality it is distinct enough to be considered a
+separate language—and Unified Kichwa, an artificial standard that was
+developed in Ecuador for educational and political purposes.<br />
+<br>
+<img src="dendrograms_images/QBII.jpg" alt="Ecuadorian Kichwa and others" width="150"/><br />
+<br> Our data comes via the FEDEPI (2006), which contains the same
+sentence translated into multiple Ecuadorian dialects. The English
+translation is <code>The men will come in just two days.</code> We’ll be
+excluding nearby Colombia and Peruvian dialects/ languages to focus
+solely on Ecuador, while maintaining Cuzco as a baseline.<br />
+<br>
+<img src="dendrograms_images/data.jpg" alt="Ecuadorian Kichwa and others" width="400"/><br />
+<br> There are a few things to note about this data:</p>
+<ul>
+<li>It’s orthography, not phonetically transcribed. However, aspiration
+(ʰ) and ejectives (’) are added.<br />
+</li>
+<li>This sentence was specifically chosen because each word has a direct
+cognate in each dialect/ language.<br />
+</li>
+<li>The spellings used are based on pronunciation in each region.</li>
+</ul>
+<p><br>
+<img src="dendrograms_images/data2.jpg" alt="Ecuadorian Kichwa and others" width="400"/><br />
+<br></p>
+</div>
+</div>
+<div id="introduction-to-the-distance-matrix" class="section level2"
+number="1.4">
+<h2><span class="header-section-number">1.4</span> Introduction to the
+Distance Matrix</h2>
+<p>Up to this point, we’ve looked at examples of how the Levenshtein
+Distance Algorithm (LDA) works in practice: counting the number of
+insertions, deletions, or substitutions needed to transform one word
+into another. But how do we actually calculate this in a systematic way,
+especially for longer words or whole lists of words?<br />
+That’s where the distance matrix comes in.<br />
+<br> The idea is simple:<br />
+We set up a table with one word across the top and the other word down
+the side.<br />
+Each cell of the table represents the minimum number of edits needed to
+get from the substring on the left to the substring across the
+top.<br />
+<br> By filling in the table step by step, we keep track of the
+‘cheapest’ (shortest) path of edits at every stage. When we reach the
+bottom-right corner, we have the Levenshtein distance between the two
+words. <br> This method is important because it guarantees that we’ve
+found the optimal (least costly) sequence of edits, not just a guess. It
+also makes the algorithm efficient — something that can be scaled up to
+entire wordlists and then into dendrograms.<br />
+<br> In this example, we’re going to place the Imbabura Kichwa word for
+‘men’ (<em>jarigunaga</em>) across the top where each letter has its own
+column. Then we’ll place the Cañar Kichwa word for ‘men’
+(<em>c’aricunaca</em>) vertically (top to bottom) where each letter has
+its own row. Note that each word begins two row/ columns inwards.<br />
+<br>
+<img src="dendrograms_images/LDA1.jpg" alt="Levenshtein Distance Algorithm Metrix - Step 1" width="400"/><br />
+<br>
+<img src="dendrograms_images/LDA2.jpg" alt="Levenshtein Distance Algorithm Metrix - Step 2" width="400"/><br />
+<br>
+<img src="dendrograms_images/LDA3.jpg" alt="Levenshtein Distance Algorithm Metrix - Step 3" width="400"/><br />
+<br>
+<img src="dendrograms_images/LDA4.jpg" alt="Levenshtein Distance Algorithm Metrix - Step 4" width="400"/><br />
+<br>
+<img src="dendrograms_images/LDA5.jpg" alt="Levenshtein Distance Algorithm Metrix - Step 5" width="400"/><br />
+<br>
+<img src="dendrograms_images/LDA6.jpg" alt="Levenshtein Distance Algorithm Metrix - Step 6" width="400"/><br />
+<br>
+<img src="dendrograms_images/LDA7.jpg" alt="Levenshtein Distance Algorithm Metrix - Step 7" width="400"/><br />
+<br>
+<img src="dendrograms_images/LDA8.jpg" alt="Levenshtein Distance Algorithm Metrix - Step 8" width="400"/><br />
+<br>
+<img src="dendrograms_images/LDA9.jpg" alt="Levenshtein Distance Algorithm Metrix - Step 9" width="400"/><br />
+<br>
+<img src="dendrograms_images/LDA10.jpg" alt="Levenshtein Distance Algorithm Metrix - Step 10" width="400"/><br />
+<br>
+<img src="dendrograms_images/LDA11.jpg" alt="Levenshtein Distance Algorithm Metrix - Step 11" width="400"/><br />
+<br>
+<img src="dendrograms_images/LDA12.jpg" alt="Levenshtein Distance Algorithm Metrix - Step 12" width="400"/><br />
+<br> The we would move on to the next words.<br />
+Once complete we would add up the distances from each word as
+follows:<br />
+<br>
+<img src="dendrograms_images/ImbaCan.jpg" alt="Imbabura-Cañar LDA" width="900"/><br />
+<br> Based on this small dataset, Imbabura Kichwa and Cañar Kicwha have
+a Levenshtien Distance of <strong>8</strong>.<br />
+<br><br />
+<strong>Note:</strong> If a word pair has an unequal number of letters/
+segments, a column or row may ‘ground out’. This is fine, just continue
+the count from the column or row that has not grounded out. This is why
+it’s important to fill out the entire matrix.<br />
+In this example, we’ll place the Imbabura Kichwa determiner
+<em>chai</em> along the top, and the Tena Kichwa determiner <em>chi</em>
+along the Y axis. <strong>Note:</strong> to make things more accurate,
+I’m treating <strong><em>ch</em></strong> as a signal unit, since it’s a
+single sound (/ʧ/). I did this with several of the items in the
+Imbabura-Cañar matrices above.<br />
+<br>
+<img src="dendrograms_images/LDA2_1.jpg" alt="Levenshtein Distance Algorithm Metrix - Example 2 Step 1" width="400"/><br />
+<br>
+<img src="dendrograms_images/LDA2_2.jpg" alt="Levenshtein Distance Algorithm Metrix - Example 2 Step 2" width="400"/><br />
+<br>
+<img src="dendrograms_images/LDA2_3.jpg" alt="Levenshtein Distance Algorithm Metrix - Example 2 Step 3" width="400"/><br />
+<br></p>
+</div>
+<div id="dialect-language-matrix" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Dialect/ Language
+Matrix</h2>
+<p>The next step is a matrix containing all the languages/ dialects in
+your data.<br />
+<br>
+<img src="dendrograms_images/LangMatrix.jpg" alt="Language Matrix" width="700"/><br />
+<br> Then we want to enter our distance result from Imbabura and Cañar
+Kichwa (<strong>8</strong>) <br>
+<img src="dendrograms_images/LangMatrix2.jpg" alt="Language Matrix with LD entered" width="700"/><br />
+<br> Next you would go about filling in every language pair, then format
+it into a string that R can read, before plotting. This would be quite
+tedious.<br />
+To make the computer do this for us, we can use the
+<code>stringdistmatrix</code> function from the <code>stringdist</code>
+library.</p>
+<pre class="r"><code>library(stringdist)</code></pre>
+<p>After loading the library, we create a vector where each string under
+analysis is present between quotes and attached to its associated
+language.<br />
+<strong>Note:</strong> I made a few modifications here to make the
+results more accurate.</p>
+<ul>
+<li>ch → ʧ (so that <code>c</code> and <code>h</code> are a single
+segment instead of two)</li>
+<li>ay → ai (<code>y</code> at the end of a vowel sequence is /i/.)</li>
+<li>k’ → K (so that <code>k</code> and <code>'</code> are a single
+segment instead of two)</li>
+<li>p’ → P (so that <code>p</code> and <code>'</code> are a single
+segment instead of two)</li>
+<li>r → ɾ (IPA convention for a tap rather than <code>r</code> which is
+a trill)</li>
+<li>sh → ʃ (so that <code>s</code> and <code>h</code> are a single
+segment instead of two)</li>
+<li>ll is ʒ in Imbabura and Calderon</li>
+<li>ll is ʎ elsewhere</li>
+<li>zh is a bit confusing, but likely a retroflex (<code>ʐ</code>), but
+as long as we have something ‘different’, that’s all the computer cares
+about.</li>
+</ul>
+<p><br> This will likely mean that we’ll end up with a different value
+than for the Imbabura-Cañar analysis we just did.<br />
+<br></p>
+<pre><code>lv_data &lt;- c(
+    imbabura = &quot;ʧai xaɾikunaka iʃkai punʒapiʒami ʃamunga&quot;,
+    calderon = &quot;ʧai xaɾikunaka iʃkai punʒapiʒami ʃamunga&quot;,
+    salasaca = &quot;ʧi Kaɾigunaga iʃki Punʎaʎabimi ʃamunga&quot;,
+    chimborazo = &quot;ʧai Kaɾikunaka iʃki punʎaʎapimi ʃamunga&quot;,
+    canar = &quot;ʧai Kaɾikunaka iʃkai punʐaʎapimi ʃamunga&quot;,
+    loja = &quot;ʧai Kaɾikunaka iʃkai punʐaʎapimi ʃamunga&quot;,
+    tena = &quot;ʧi kaɾiunaga iʃki punʐaʎaimi ʃamunga&quot;,
+    napo = &quot;ʧi kaɾigunaga iʃkai punchaʎaimi ʃamunga&quot;,
+    pastaza = &quot;ʧi kaɾigunaga iʃkai punʐaʎaimi ʃamunga&quot;,
+    unificado = &quot;ʧai kaɾikunaka iʃkai punʎaʎapimi ʃamunka&quot;,
+    quechua = &quot;ʧai qaɾikunaqa iskai Punʧawʎapim xamunqa&quot;
+)</code></pre>
+<p>This code reads:</p>
+<ul>
+<li>This creates an ‘object’ named <code>lv_data</code><br />
+</li>
+<li>‘combine’ (<code>c()</code>) creates a ‘vector’.<br />
+</li>
+<li>This is ‘character’ vector because the data is found between quotes
+<code>("...")</code><br />
+</li>
+<li>This is a ‘named’ character vector because the data has a name
+(e.g., <code>imbabura =</code>)</li>
+</ul>
+<p><br> Next, we’re going to use <code>stringdistmatrix</code>, which
+takes a vector of strings and computes all pairwise string distances
+between them, returning a square distance matrix (rows and columns = the
+input strings). Without this, we would have 55 lines of code like
+this:</p>
+<p><em>stringdist(imbabura, calderon, method=‘lv’)<br />
+stringdist(imbabura, salasaca, method=‘lv’)<br />
+stringdist(imbabura, chimborazo, method=‘lv’)<br />
+stringdist(imbabura, canar, method=‘lv’)<br />
+stringdist(imbabura, loja, method=‘lv’)<br />
+stringdist(imbabura, tena, method=‘lv’)<br />
+stringdist(imbabura, napo, method=‘lv’)<br />
+stringdist(imbabura, pastaza, method=‘lv’)<br />
+stringdist(imbabura, unificado, method=‘lv’)<br />
+stringdist(imbabura, quechua, method=‘lv’)<br />
+<br> stringdist(calderon, salasaca, method=‘lv’)<br />
+stringdist(calderon, chimborazo, method=‘lv’)<br />
+stringdist(calderon, canar, method=‘lv’)<br />
+stringdist(calderon, loja, method=‘lv’)<br />
+stringdist(calderon, tena, method=‘lv’)<br />
+stringdist(calderon, napo, method=‘lv’)<br />
+stringdist(calderon, pastaza, method=‘lv’)<br />
+stringdist(calderon, unificado, method=‘lv’)<br />
+stringdist(calderon, quechua, method=‘lv’)<br />
+stringdist(salasaca, chimborazo, method=‘lv’)<br />
+stringdist(salasaca, canar, method=‘lv’)<br />
+stringdist(salasaca, loja, method=‘lv’)<br />
+stringdist(salasaca, tena, method=‘lv’)<br />
+stringdist(salasaca, napo, method=‘lv’)<br />
+stringdist(salasaca, pastaza, method=‘lv’)<br />
+stringdist(salasaca, unificado, method=‘lv’)<br />
+stringdist(salasaca, quechua, method=‘lv’)<br />
+<br> stringdist(chimborazo,canar, method=‘lv’)<br />
+stringdist(chimborazo,loja, method=‘lv’)<br />
+stringdist(chimborazo,tena, method=‘lv’)<br />
+stringdist(chimborazo,napo, method=‘lv’)<br />
+stringdist(chimborazo,pastaza, method=‘lv’)<br />
+stringdist(chimborazo,unificado, method=‘lv’)<br />
+stringdist(chimborazo,quechua, method=‘lv’)<br />
+<br> stringdist(canar,loja, method=‘lv’)<br />
+stringdist(canar,tena, method=‘lv’)<br />
+stringdist(canar,napo, method=‘lv’)<br />
+stringdist(canar,pastaza, method=‘lv’)<br />
+stringdist(canar,unificado, method=‘lv’)<br />
+stringdist(canar,quechua, method=‘lv’)<br />
+<br> stringdist(loja,tena, method=‘lv’)<br />
+stringdist(loja,napo, method=‘lv’)<br />
+stringdist(loja,pastaza, method=‘lv’)<br />
+stringdist(loja,unificado, method=‘lv’)<br />
+stringdist(loja,quechua, method=‘lv’)<br />
+<br> stringdist(tena,napo, method=‘lv’)<br />
+stringdist(tena,pastaza, method=‘lv’)<br />
+stringdist(tena,unificado, method=‘lv’)<br />
+stringdist(tena,quechua, method=‘lv’)<br />
+<br> stringdist(napo,pastaza, method=‘lv’)<br />
+stringdist(napo,unificado, method=‘lv’)<br />
+stringdist(napo,quechua, method=‘lv’)<br />
+<br> stringdist(pastaza,unificado, method=‘lv’)<br />
+stringdist(pastaza,quechua, method=‘lv’)<br />
+<br> stringdist(unificado,quechua, method=‘lv’)<br />
+</em><br />
+<br> Then we’d have to create a matrix manually with all of these
+results.<br />
+We really don’t want to do this. Luckily, we have
+<code>stringdistmatrix</code>.</p>
+<pre class="r"><code>dm &lt;- stringdistmatrix(lv_data, method = &quot;lv&quot;)</code></pre>
+<p>This reads:</p>
+<ul>
+<li>We use <code>stringdistmatrix</code> to get the Levenshtein distance
+(<code>lv</code>) from the <code>lv_data</code> object and place it in a
+matrix table.</li>
+</ul>
+<p><br> Running <code>dm</code> will produce the result.</p>
+<pre class="r"><code>dm</code></pre>
+<p><br>
+<img src="dendrograms_images/lv1.jpg" alt="Levenshtein Distance matrix - unnamed" width="200"/><br />
+<br> You’ll notice that there are no names. We’ll need these names for
+plotting.<br />
+The first step will be to convert the data to a data matrix.</p>
+<pre class="r"><code>dm_mat &lt;- as.matrix(dm)</code></pre>
+<p><br>
+<img src="dendrograms_images/lv2.jpg" alt="Levenshtein Distance matrix" width="200"/><br />
+<br> To add them, we’re going to take the names of the character strings
+from <code>lv_data</code> and place them as both the rows
+(<code>rownames</code>) and columns (<code>colnames</code>) in the
+<code>dm_mat</code> object.</p>
+<pre class="r"><code>rownames(dm_mat) &lt;- names(lv_data)
+colnames(dm_mat) &lt;- names(lv_data)</code></pre>
+<p><br>
+<img src="dendrograms_images/lv3.jpg" alt="Levenshtein Distance matrix - named" width="600"/><br />
+<br></p>
+</div>
+<div id="the-hierarchical-clustering-methods" class="section level2"
+number="1.6">
+<h2><span class="header-section-number">1.6</span> The Hierarchical
+Clustering Methods</h2>
+<p>There are numerous methods for clustering data into a tree
+structures.<br />
+We’re going to review the <code>complete</code> method, and the end up
+using <code>ward.D2</code> (because it’s may favourite).<br />
+<br> The linkage method controls how the distance between two clusters
+is defined.<br />
+<em>Complete linkage clustering</em> looks at groups of items and asks:
+“What’s the farthest apart two members of these groups are?”</p>
+<ul>
+<li><p>If even the most distant members are still close, then the groups
+can be merged.<br />
+</p></li>
+<li><p>If the farthest pair is very far apart, the groups won’t be
+joined yet.<br />
+So in short:</p></li>
+<li><p>Complete linkage uses the worst-case distance between
+clusters.<br />
+</p></li>
+<li><p>That makes clusters tight and compact, because you only merge
+groups when all members are reasonably close to each other.</p></li>
+</ul>
+<p><br> To begin, we look for the pair with the closest value to zero in
+our matrix.<br />
+<img src="dendrograms_images/lv4.jpg" alt="Matrix - all" width="600"/><br />
+<br> Here, we notice that there are two 0’s.<br />
+<img src="dendrograms_images/lv5.jpg" alt="Step 1" width="600"/><br />
+<br> These pairs are <code>Imababura-Calderon</code> and
+<code>Cañar-Loja</code>.<br />
+When this happens, we select the pair that has the highest number in the
+sum of their row.<br />
+<img src="dendrograms_images/lv6.jpg" alt="equal numbers" width="600"/><br />
+<br> In this case, our first grouping is
+<code>Imababura-Calderon</code><br />
+<img src="dendrograms_images/cluster1.jpg" alt="cluster1" width="150"/><br />
+<br> <code>Imbabura-Calderon</code> are merged into
+<code>group 1</code><br />
+<img src="dendrograms_images/lv7.jpg" alt="Step 2" width="600"/><br />
+<br> We then look for the lowest number pair once again.<br />
+This time, there is only one pair <code>Cañar-Loja</code>, so this is
+our second cluster.<br />
+<img src="dendrograms_images/lv8.jpg" alt="Step 2" width="600"/><br />
+<br>
+<img src="dendrograms_images/cluster2.jpg" alt="cluster2" width="150"/><br />
+<br> <code>Cañar-Loja</code> are merged into group 2.<br />
+<img src="dendrograms_images/lv9.jpg" alt="group 2" width="600"/><br />
+<br> We then look for the lowest number pair once again.<br />
+<img src="dendrograms_images/lv10.jpg" alt="group 3" width="600"/><br />
+<br> In this case, we have <strong>three</strong> numbers that are
+equal. So, we have to add up the rows and select the one that is highest
+for our grouping.<br />
+<img src="dendrograms_images/lv11.jpg" alt="group 3" width="600"/><br />
+<br> <strong>56</strong> is the highest, so our next paring is
+<code>Pastaza-Tena</code>.<br />
+<img src="dendrograms_images/cluster3.jpg" alt="cluster3" width="300"/><br />
+<br> Next, we merge <code>Pastaza-Tena</code> into group 3.<br />
+What language do we take to represent the numbers in group 3? The one
+that is highest. We see that 56 is higher than 49, so we keep the
+numbers from Tena. I’ve also highlighted this below.<br />
+<img src="dendrograms_images/lv12.jpg" alt="group 3 - keeping tena" width="600"/><br />
+<br> Below, <code>Pastaza-Tena</code> are merged, with the numbers from
+<code>Tena</code>.<br />
+<img src="dendrograms_images/lv13.jpg" alt="group 3 - keeping tena" width="600"/><br />
+<br> We then again search for the lowest number.<br />
+<img src="dendrograms_images/lv14.jpg" alt="group 4" width="600"/><br />
+<br> Here we see that <strong>2</strong> is the lowest number between
+<code>Chimborazo</code> and <code>Group 2</code>.<br />
+<code>Group 2</code> consists of <code>Cañar-Loja</code>. There are no
+other equal numbers, so these groups get clustered.<br />
+<img src="dendrograms_images/cluster4.jpg" alt="cluster4" width="500"/><br />
+<br> We then adjust the matrix by merging <code>Group 2</code> and
+<code>Chimborazo</code>. We will keep the numbers from
+<code>Chimborazo</code> as the row sums to 44, while group 2 sums to
+43.<br />
+<img src="dendrograms_images/lv15.jpg" alt="Merging" width="600"/><br />
+<br> The resulting matrix now appears as follows:<br />
+<img src="dendrograms_images/lv16.jpg" alt="Merging G2+Chimborazo" width="600"/><br />
+<br> Once again, we’re back to looking for the lowest number.<br />
+<img src="dendrograms_images/lv17.jpg" alt="cluster 5" width="550"/><br />
+<br> The lowest number is <strong>3</strong> which appears between
+<code>Unificado</code> and <code>Group 2+Chimborazo</code>.<br />
+There are no other 3’s, so we can cluster these groups together.<br />
+<img src="dendrograms_images/cluster5.jpg" alt="cluster5" width="550"/><br />
+<br> We then adjust the matrix by merging <code>group2-Chimborazo</code>
+and <code>unificado</code>. We will keep the numbers from Unificado as
+the row sums to 44, while group 2+Chimborazo sums to 42.<br />
+<img src="dendrograms_images/lv18.jpg" alt="determining highest number from cluster 5" width="550"/><br />
+<br> The resulting matrix now appears as follows:<br />
+<img src="dendrograms_images/lv19.jpg" alt="grouping of cluster 5 in the matrix" width="550"/><br />
+<br> Once again, we’re back to looking for the lowest number.<br />
+<img src="dendrograms_images/lv20.jpg" alt="grouping of cluster 6" width="550"/><br />
+<br> The lowest number is 4 which appears between <code>Napo</code> and
+<code>Group 3</code>. Group 3 consists of
+<code>Pastaza-Tena</code>.<br />
+There are no other 4’s, so we can cluster these groups together.<br />
+<img src="dendrograms_images/cluster6.jpg" alt="cluster6" width="550"/><br />
+<br> We then adjust the matrix by merging <code>Napo</code> and
+<code>Group 3</code>. We will keep the numbers from group 3 as the row
+sums to 42, while Napo sums to 40.<br />
+<img src="dendrograms_images/lv21.jpg" alt="determining the higest number from cluster 6" width="550"/><br />
+<br> The resulting matrix now appears as follows:<br />
+<img src="dendrograms_images/lv22.jpg" alt="grouping of cluster 6 in matrix" width="500"/><br />
+<br> Once again, we’re back to looking for the lowest number.<br />
+<img src="dendrograms_images/lv23.jpg" alt="Lowest number in cluster 7" width="500"/><br />
+<br> The lowest number is <strong>5</strong> which appears between
+<code>Salasaca</code> and <code>Group 3+Napo</code>.<br />
+There are no other 5’s, so we can cluster these groups together.<br />
+<img src="dendrograms_images/cluster7.jpg" alt="cluster7" width="600"/><br />
+<br> We then adjust the matrix by merging <code>Salasaca</code> and
+<code>Group 3-Napo</code>. We will keep the numbers from
+<code>Salasaca</code> as the row sums to 39, while
+<code>Group 3-Napo</code> sums to 38.<br />
+<img src="dendrograms_images/lv24.jpg" alt="determining the higest number from cluster 7" width="500"/><br />
+<br> The resulting matrix now appears as follows:<br />
+<img src="dendrograms_images/lv25.jpg" alt="grouping of cluster 7 in matrix" width="450"/><br />
+<br> Once again, we’re back to looking for the lowest number.<br />
+<img src="dendrograms_images/lv26.jpg" alt="Lowest number in cluster 8" width="450"/><br />
+<br> The lowest number is 7 which appears between <code>Group 1</code>
+with <code>Group2+Chimborazo+Unificado</code>. There are no other 7’s,
+so we can cluster these groups together.<br />
+<img src="dendrograms_images/cluster8.jpg" alt="cluster8" width="500"/><br />
+<br> We then adjust the matrix by merging <code>Group 1</code> with
+<code>Group2+Chimborazo+Unificado</code>. We will keep the numbers from
+<code>Group 1</code> as the row sums to 31, while group
+<code>Group2+Chimborazo+Unificado</code> sums to 27.<br />
+<img src="dendrograms_images/lv27.jpg" alt="Lowest number in cluster 8" width="450"/><br />
+<br> The resulting matrix now appears as follows:<br />
+<img src="dendrograms_images/lv28.jpg" alt="grouping of cluster 8 in matrix" width="400"/><br />
+<br> Once again, we’re back to looking for the lowest number.<br />
+<img src="dendrograms_images/lv29.jpg" alt="Lowest number in cluster 9" width="400"/><br />
+<br> The lowest number is 7 which appears between
+<code>Group 3 + Napo + Salasaca</code> with
+<code>Group 2 + Chimborazo + Unificado + Group 1</code>.<br />
+There are no other 7’s, so we can cluster these groups together.<br />
+<img src="dendrograms_images/cluster9.jpg" alt="cluster9" width="600"/><br />
+<br> We then adjust the matrix by merging
+<code>Group 3 + Napo + Salasaca</code> with
+<code>Group 2 + Chimborazo + Unificado + Group 1</code>. We will keep
+the numbers from <code>Group 3 + Napo + Salasaca</code> as the row sums
+to 20, while <code>Group 2 + Chimborazo + Unificado + Group 1</code>
+sums to 19.
+<img src="dendrograms_images/lv30.jpg" alt="Lowest number in cluster 9" width="450"/><br />
+<br> The resulting matrix now appears as follows:<br />
+<img src="dendrograms_images/lv31.jpg" alt="grouping of cluster 9 in matrix" width="450"/><br />
+<br> Last time, we’re back to looking for the lowest number.<br />
+<img src="dendrograms_images/lv32.jpg" alt="Lowest number in cluster 10" width="450"/><br />
+<br> The lowest, and only, number is, obviously <strong>13</strong>
+which appears between
+<code>Group 3+Napo+Salasaca+Group 2+Chimborazo+Unificado+Group 1</code>
+with <code>Quechua</code>.<br />
+There are, obviously, no other 13’s, so we can cluster these groups
+together.<br />
+<img src="dendrograms_images/cluster10.jpg" alt="cluster10" width="300"/><br />
+<br></p>
+</div>
+<div id="doing-this-with-r" class="section level2" number="1.7">
+<h2><span class="header-section-number">1.7</span> Doing this with
+R</h2>
+<p>This process is obviously laborious. Let’s do this with the
+computer.<br />
+To do this, we’re going to use <code>as.dist</code> (a generic function)
+to reformat the matrix.</p>
+<pre class="r"><code>d=as.dist(dm_mat)</code></pre>
+<ul>
+<li>Here, we just remove the duplicate numbers.</li>
+</ul>
+<p><img src="dendrograms_images/dist.jpg" alt="as.dist function" width="450"/><br />
+<br> After this we, can simply plot the data using R’s built-in
+<code>plot</code> function.</p>
+<pre class="r"><code>plot(hclust(d,&quot;complete&quot;))</code></pre>
+<ul>
+<li><code>plot</code> is the generic plotting function in R (not as good
+as <code>ggplot2</code>, but decent enough)<br />
+</li>
+<li><code>hclust</code> is the function that actually builds a
+hierarchical cluster tree (a dendrogram).<br />
+</li>
+<li><code>d</code> is the dataset we just built.</li>
+<li><code>"complete"</code> is the linkage method. You can also try
+“single”, “average”, “ward.D2” etc.<br />
+<br>
+<img src="dendrograms_images/complete.jpg" alt="the complete dendrogram using the compete linkage method" width="500"/><br />
+<br> You might be asking yourself about height on the Y.<br />
+It’s simply <em>Height = dissimilarity at the time of
+merging.</em><br />
+For example, there’s a large bridge between the
+<code>Imbabura-Calderon</code> and the
+<code>Unificado-Chimborazo-Cañar-Loja</code> groupings. If we go back to
+where this merge took place, we see a value of <strong>7</strong>.<br />
+<img src="dendrograms_images/lv26.jpg" alt="Lowest number in cluster 8" width="450"/><br />
+<br> If we then compare this with the short bridge between
+<code>Unificado</code> and <code>Chimborazo+Cañar+Loja</code>, we notice
+a smaller value of <em>3</em>.
+<img src="dendrograms_images/lv17.jpg" alt="cluster 5" width="550"/><br />
+<br> These numbers correspond to the height differences on the Y.</li>
+</ul>
+<p>Other linking methods, follow different clustering algorithms.</p>
+<p><strong>Single linkage (nearest neighbour)</strong></p>
+<ul>
+<li><p>Distance between clusters = the closest pair of points, one from
+each cluster.<br />
+</p></li>
+<li><p>Tends to make long “chains” of items, because just one close link
+is enough to join groups.<br />
+<br> <strong>Complete linkage (furthest neighbour)</strong></p></li>
+<li><p>Distance between clusters = the farthest pair of points, one from
+each cluster.<br />
+</p></li>
+<li><p>Produces tight, compact clusters (all members must be fairly
+close).<br />
+<br> <strong>Average linkage (UPGMA)</strong></p></li>
+<li><p>Distance between clusters = the average of all pairwise distances
+between points in the two groups.<br />
+</p></li>
+<li><p>Balances between single (too loose) and complete (too
+strict).<br />
+</p></li>
+<li><p>Tends to form moderately compact clusters.<br />
+<br> <strong>Ward’s method (ward.D2)</strong></p></li>
+<li><p>Instead of pairwise distances, it looks at the increase in total
+variance when merging two clusters.<br />
+</p></li>
+<li><p>Always chooses the merge that keeps clusters as homogeneous as
+possible.<br />
+</p></li>
+<li><p>Often produces clusters of similar size and shape, popular in
+many applications.<br />
+<br>
+<img src="dendrograms_images/methods.jpg" alt="Four method types" width="1200"/><br />
+<br> We can compare these geographically, and get some since of
+potential accuracy.<br />
+<br>
+<img src="dendrograms_images/Ecuador.svg" alt="Four method types" width="1000"/><br />
+<br></p></li>
+</ul>
+</div>
+<div id="discussion" class="section level2" number="1.8">
+<h2><span class="header-section-number">1.8</span> Discussion</h2>
+<p>Obviously, clustering by proximity does not tell the whole story.
+Ecuador has two major Kichwa groups: Andean Kichwa and Amazonian Kichwa.
+This broad division is visible in the dendrogram.<br />
+Within the Andean region, there are further subdivisions into Northern,
+Central, and Southern Kichwa. The dendrogram reflects this: Imbabura and
+Calderon cluster together as northern varieties, while Cañar and Loja
+group as southern varieties. Chimborazo is a central dialect, but it is
+often considered closer to the southern group—a relationship also shown
+in the cluster. We also see that the artificially “unified”
+(<em>unificado</em>) Standard appears bias towards central-southern
+Kichwa based on this analysis.<br />
+Turning to the Amazonian varieties, the dendrogram using the
+<code>complete</code> method, places Tena and Pastaza together. This is
+somewhat surprising, since Tena is in Napo Province, and one might
+expect it to cluster with Napo. With only a single sentence for
+comparison, the similarities between Tena and Napo may not have been
+captured. It is also possible that Tena genuinely shares more with
+Pastaza than with Napo. Since I do not work directly with these
+varieties, I cannot say for certain.<br />
+The real outlier with the <code>complete</code> method is Salasaca. This
+variety is generally classified as a central dialect and is expected to
+align more closely with Chimborazo. Salasaca Kichwa has distinct
+phonetic patterns and does not fit neatly into the typical structures of
+other Kichwa dialects. Still, I doubt it is more similar to the
+Amazonian dialects than to the Andean group.<br />
+What this analysis does show is that even with very limited data, we can
+recover a structure that broadly reflects linguistic reality. With
+larger samples of text, the results would likely become even more
+accurate.</p>
+</div>
+<div id="the-entire-code" class="section level2" number="1.9">
+<h2><span class="header-section-number">1.9</span> The entire code</h2>
+<pre class="r"><code>library(stringdist)
+
+lv_data &lt;- c(
+    imbabura = &quot;ʧai xaɾikunaka iʃkai punʒapiʒami ʃamunga&quot;,
+    calderon = &quot;ʧai xaɾikunaka iʃkai punʒapiʒami ʃamunga&quot;,
+    salasaca = &quot;ʧi Kaɾigunaga iʃki Punʎaʎabimi ʃamunga&quot;,
+    chimborazo = &quot;ʧai Kaɾikunaka iʃki punʎaʎapimi ʃamunga&quot;,
+    canar = &quot;ʧai Kaɾikunaka iʃkai punʐaʎapimi ʃamunga&quot;,
+    loja = &quot;ʧai Kaɾikunaka iʃkai punʐaʎapimi ʃamunga&quot;,
+    tena = &quot;ʧi kaɾiunaga iʃki punʐaʎaimi ʃamunga&quot;,
+    napo = &quot;ʧi kaɾigunaga iʃkai punchaʎaimi ʃamunga&quot;,
+    pastaza = &quot;ʧi kaɾigunaga iʃkai punʐaʎaimi ʃamunga&quot;,
+    unificado = &quot;ʧai kaɾikunaka iʃkai punʎaʎapimi ʃamunka&quot;,
+    quechua = &quot;ʧai qaɾikunaqa iskai Punchawllapim xamunqa&quot;
+)
+
+dm &lt;- stringdistmatrix(lv_data, method = &quot;lv&quot;)
+
+dm_mat &lt;- as.matrix(dm)
+rownames(dm_mat) &lt;- names(lv_data)
+colnames(dm_mat) &lt;- names(lv_data)
+
+View(dm_mat)
+
+d=as.dist(dm_mat)
+
+plot(hclust(d,&quot;complete&quot;))
+plot(hclust(d,&quot;ward.D2&quot;))
+plot(hclust(d,&quot;average&quot;))
+plot(hclust(d,&quot;single&quot;))</code></pre>
+</div>
+</div>
+<div id="homework" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> HOMEWORK</h1>
+<p><strong>Translatons → Distances → Clusters (Romance)</strong><br />
+Download this Excel file <a href="Romance.xlsx">Romance</a><br />
+<br> <strong>Part A — Build the dataset (58 varieties)</strong><br />
+1. Tokenise &amp; label the eight slots (Plus language name):<br />
+<br></p>
+<table>
+<colgroup>
+<col width="13%" />
+<col width="8%" />
+<col width="13%" />
+<col width="12%" />
+<col width="6%" />
+<col width="14%" />
+<col width="13%" />
+<col width="6%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Language</th>
+<th align="left">She</th>
+<th align="left">always</th>
+<th align="left">close</th>
+<th align="left">the</th>
+<th align="left">window</th>
+<th align="left">before</th>
+<th align="left">of</th>
+<th align="left">dining</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Latin</td>
+<td align="left">ea</td>
+<td align="left">semper</td>
+<td align="left">claudit</td>
+<td align="left">XX</td>
+<td align="left">fenestram</td>
+<td align="left">antequam</td>
+<td align="left">XX</td>
+<td align="left">cenat</td>
+</tr>
+<tr class="even">
+<td align="left">French</td>
+<td align="left">ella</td>
+<td align="left">toujours</td>
+<td align="left">ferme</td>
+<td align="left">la</td>
+<td align="left">fenêtre</td>
+<td align="left">avant</td>
+<td align="left">de</td>
+<td align="left">dîner</td>
+</tr>
+</tbody>
+</table>
+<p><br> 2. Enter cognates per variety. If a slot has no word, write XX
+(exactly those two letters).</p>
+<ul>
+<li>For example, in the Latin phrase there are no articles or
+prepositions.<br />
+</li>
+<li><code>Text to Columns</code> in Excel will help out a bit processing
+the data.<br />
+</li>
+<li>Don’t “fix” or exclude lexical choices if there’s a translation
+present (e.g., keep French <em>toujours</em> even if it’s not the direct
+cognate from Latin (<em>semper</em>).
+<ul>
+<li><strong>Nerd note:</strong> French used to have * <em>sempres</em>,
+but it’s now obsolete and has been replaced by the contraction of
+<em>tous les jours</em> ‘all the days’ (<em>toujours</em>). Also,
+sometimes there are different word orders e.g., ‘always’ comes before
+‘close’. When this happens, just move the word to the correct
+column.</li>
+</ul></li>
+</ul>
+<p><br> 3. Normalize the data (so distances aren’t inflated by noise):
+lowercase, trim, keep diacritics, standardize apostrophes. You can do
+all of this in editPad lite.<br />
+<br> 4. Deliverable A: a table with 58 rows × 9 columns (Language name +
+8 word slots).<br />
+<br> <strong>Part B — Manual Levenshtein (French ↔︎
+Spanish)</strong><br />
+For each word, show the full matrices for the French tokens vs the
+Spanish tokens (8 matrices total).</p>
+<ul>
+<li>Rows = characters of the first word (plus an initial ∅ row).<br />
+</li>
+<li>Columns = characters of the second word (plus an initial ∅
+column).<br />
+</li>
+<li>Fill by min(insert, delete, substitute), with substitute cost
+0/1.<br />
+</li>
+<li>The bottom-right cell is the distance.<br />
+</li>
+<li>Deliverable B: the 8 completed matrices (no step-by-step ‘narration’
+needed, but matrices must be correct). (Yes, this is tedious; that’s the
+point—you’ll trust the algorithm more after doing it once.)<br />
+</li>
+<li>Your result should look something like this, but obviously for
+French and Spanish and with 8 matrices.</li>
+</ul>
+<p><img src="dendrograms_images/ImbaCan.jpg" alt="Martices" width="450"/><br />
+<br> <strong>Part C — Compute distances &amp; cluster the full set in
+R</strong><br />
+Use the exact tokens you entered (including XX) to keep alignment
+comparable.<br />
+Here’s an example:</p>
+<pre class="r"><code>lv_data &lt;- c(
+   Latin = &quot;ea semper claudit XX fenestram antequam XX cenat&quot;,
+    French = &quot;elle toujours ferme la fenêtre avant de dîner&quot;
+)</code></pre>
+<p>A few things to note:<br />
+1. The last entry does <strong>not</strong> end with a comma
+(<code>,</code>).<br />
+2. If a language name has a space, use an underscore (<code>_</code>)
+instead e.g., <code>Media Lengua</code> →
+<code>Media_Lengua</code><br />
+3. If a language name has an extended ASCII character (HEX
+<code>80</code> and beyond), you’ll need to change it to standard (HEX
+<code>0</code>-<code>7F</code>) character.<br />
+4. If you copy directly from Excel into EditPad Lite, you’ll end up with
+tabs rather than spaces. I don’t know if this will be processed the same
+(feel free to find out for me), so I would recommend replacing tabs
+(<code>\t</code>) with spaces (<code></code>).<br />
+5. Make sure there’s no space after the open quote (<code>"</code>), or
+a space before the closing quote (<code>"</code>).<br />
+6. There will likely be other errors as you attempt to load the entire
+dataset into R. You’ll need to figure out what’s causing the error and
+fix it.<br />
+<br> Discuss the results (no more than a paragraph or two)!</p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
