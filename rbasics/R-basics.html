@@ -324,6 +324,30 @@ the dialog: - Choose the correct separator (e.g., Comma or Tab) - Select
 <strong>Import</strong></p>
 <p><strong>Generated Code Example:</strong></p>
 <pre class="r"><code>mydata &lt;- read.csv(&quot;path/to/your/file.csv&quot;, header = TRUE)</code></pre>
+<p><br> <strong>Delimiter types:</strong></p>
+<pre class="r"><code>#CSV
+Animal,Size,Type
+cat,S,mammal
+dog,M,mammal
+snake,M,reptile
+elephant,L,mammal
+whale,XL,mammal
+shark,L,fish
+moquito,S,insect
+crocodial,L,reptile
+pike,M,fish
+
+#tab (used by Excel)
+Animal  Size    Type
+cat S   mammal
+dog M   mammal
+snake   M   reptile
+elephant    L   mammal
+whale   XL  mammal
+shark   L   fish
+moquito S   insect
+crocodial   L   reptile
+pike    M   fish</code></pre>
 <hr />
 </div>
 <div id="from-text-readr" class="section level3" number="3.3">
