@@ -578,8 +578,8 @@ View(nouns)</code></pre>
 <div id="subsetting-by-negation" class="section level4" number="5.5.2">
 <h4><span class="header-section-number">5.5.2</span> Subsetting by
 negation</h4>
-<p>Negation is important when you want to exclude a certain
-category:</p>
+<p>Negation (<code>!</code>) is important when you want to exclude a
+certain category:</p>
 <pre class="r"><code>non_nouns &lt;- subset(dataset, PoS != &quot;Noun&quot;)
 View(non_nouns)</code></pre>
 <p><img src="screenshots/nonnouns.jpg" alt="subset of non-nouns" width="500"/></p>
@@ -588,8 +588,8 @@ View(non_nouns)</code></pre>
 number="5.5.3">
 <h4><span class="header-section-number">5.5.3</span> Subsetting by two
 or more levels</h4>
-<p>You can use the logical OR operator (|) to include multiple
-levels:</p>
+<p>You can use the logical OR operator (<code>|</code>) to include
+multiple levels:</p>
 <pre class="r"><code>NV &lt;- subset(dataset, PoS == &quot;Noun&quot; | PoS == &quot;Verb&quot;)
 View(NV)</code></pre>
 <p><img src="screenshots/nounsVerbs.jpg" alt="subset of nouns and verbs" width="450"/></p>
@@ -624,11 +624,12 @@ View(SF1F2_2)</code></pre>
 number="5.5.6">
 <h4><span class="header-section-number">5.5.6</span> Subsetting with
 regular expressions</h4>
-<p>You can subset using grepl() to match text patterns:</p>
+<p>You can subset using <code>grepl()</code> to match text patterns:</p>
 <pre class="r"><code>Adj &lt;- subset(dataset, grepl(&quot;([Aa][Dd][Jj]|[Aa]djective)&quot;, dataset$PoS))
 View(Adj)</code></pre>
 <p><img src="screenshots/adj.jpg" alt="subset of adjectives using regex" width="450"/></p>
-<p>To exclude a pattern:</p>
+<p>To exclude a pattern we just add the negotiator (<code>!</code>)
+before <code>!grepl</code>:</p>
 <pre class="r"><code>non_adj &lt;- subset(dataset, !grepl(&quot;([Aa][Dd][Jj]|[Aa]djective)&quot;, dataset$PoS))
 View(non_adj)</code></pre>
 <p><img src="screenshots/nonadj.jpg" alt="subset anything but adjectives using regex" width="450"/></p>
@@ -675,7 +676,7 @@ with cbind()</h4>
 <p>We can now combine the <code>Number</code>, <code>Animal</code>, and
 <code>Size</code> data frames into a single table:</p>
 <pre class="r"><code>NAS &lt;- cbind(Number, Animal, Size)
-View(NAS)SF1F2_2 &lt;- subset(dataset, select = c(1, 9, 10))</code></pre>
+View(NAS)</code></pre>
 <p><img src="screenshots/NAS.jpg" alt="Combining the `Number`, `Animal`, and `Size` datasets" width="150"/></p>
 </div>
 <div id="combining-row-subsets-with-rbind" class="section level4"
@@ -797,6 +798,17 @@ dataset$Post = str_extract(dataset$Post, &quot;.{1}$&quot;)</code></pre>
 prepare it for analysis.<br />
 <a href="https://www.youtube.com/watch?v=wQOsFurgcv4">Watch on
 YouTube</a></p>
+<pre class="r"><code>dataset$Low = ifelse(dataset$Vowel == &quot;a&quot;, &quot;Low&quot;,&quot;Non-Low&quot;)</code></pre>
+<ul>
+<li>If we want to know whether a vowel is low or not, we can use an
+<code>if statement</code>. In r, the most compact version of this is an
+<code>ifelse</code> statement. This code reads:
+<ul>
+<li>If the <code>Vowel</code> column in <code>dataset</code> contains
+<code>a</code>, then print <code>Low</code> in the new <code>Low</code>
+column, if not, print <code>Non-Low</code>.</li>
+</ul></li>
+</ul>
 <div id="nested-if-statements-vowel-height-classification"
 class="section level4" number="5.9.1">
 <h4><span class="header-section-number">5.9.1</span> Nested IF
