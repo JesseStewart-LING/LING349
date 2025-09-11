@@ -265,7 +265,8 @@ version.xlsx</a><br />
 <a
 href="datasets/combined_output_cleaned.txt">combined_output_cleaned.txt</a><br />
 <a href="datasets/VOTDataset.txt">VOTDataset.txt</a><br />
-<br></p>
+<a href="datasets/NEWdataset.txt">NEWdataset.txt</a></p>
+<p><br></p>
 <p>These skills are fundamental for students working with linguistic
 corpora, especially for processing output from annotation tools such as
 ELAN and Praat.</p>
@@ -335,7 +336,7 @@ whale,XL,mammal
 shark,L,fish
 moquito,S,insect
 crocodial,L,reptile
-pike,M,fish
+pike,M,fishlibr
 
 #tab (used by Excel)
 Animal  Size    Type
@@ -895,42 +896,74 @@ same logic multiple times.</p>
 <p>Here’s a basic example for counting word frequencies This for loop
 goes through each row in <code>NEWdataset</code> and creates a table of
 word counts.</p>
-<pre class="r"><code># Create an empty list to store word counts
-word_list &lt;- list()
-
-# Loop through each row of the dataset
-for (i in 1:nrow(NEWdataset)) {                     # &#39;i&#39; is a holder. It will go from 1 to the last row in NEWdataset
-  
-  word &lt;- NEWdataset$Word[i]                        # This grabs the &#39;Word&#39; value in row &#39;i&#39; and puts it into a new object called &#39;word&#39;
-  
-  if (is.na(word) || word == &quot;&quot;) next               # If the word is missing (NA) or just an empty string, skip to the next row
-  
-  if (word %in% names(word_list)) {                 # If the word already exists in our list of words...
-    word_list[[word]] &lt;- word_list[[word]] + 1      # ...add 1 to its existing count - double bracks return the vowel itself
-  } else {                                          # If the word is NOT already in the list...
-    word_list[[word]] &lt;- 1                          # ...add it to the list and give it a starting count of 1
+<pre class="r"><code>word_list &lt;- list()</code></pre>
+<ul>
+<li>First, before the look, we create an empty list to store the word
+counts.<br />
+</li>
+<li>Next we run the actual loop…</li>
+</ul>
+<pre class="r"><code>for (i in 1:nrow(NEWdataset)) {
+  word &lt;- NEWdataset$Word[i]
+  if (is.na(word) || word == &quot;&quot;) next
+  if (word %in% names(word_list)) {     
+    word_list[[word]] &lt;- word_list[[word]] + 1
+  } else {
+    word_list[[word]] &lt;- 1
   }
-}
-
-# Convert the list to a dataframe
-word_count_df &lt;- data.frame(                        
-  Word = names(word_list),                          # Turn the word names into a column
-  count = unlist(word_list),                        # Turn the counts into a numeric column
-  row.names = NULL                                  # Don&#39;t use the word as row names (optional but cleaner)
-)
-
-# Sort the dataframe by frequency
-word_count_df &lt;- word_count_df[order(-word_count_df$count), ]  # Reorder the dataframe so highest counts come first
-
-# Show top 50 words
-word_count_50 &lt;- head(word_count_df, 50)            # Keep only the top 50 most frequent words</code></pre>
+}</code></pre>
+<ul>
+<li>In the first line, <code>i</code> is a holder. It will go from
+<code>1</code> to the last row in NEWdataset (<code>nrow</code>).<br />
+</li>
+<li>The second line grabs the current item in <code>Word</code> in
+<code>i</code> putting it into an object called ‘word’</li>
+<li>The third line says “If there is NA or no word, skip to the next
+row”<br />
+</li>
+<li>The fourth row says, “If the word already exists in
+<code>word_list</code> (our list of words)…”<br />
+</li>
+<li>The fifth line says, “…add 1 to its existing count” - double
+brackets return the vowel itself<br />
+</li>
+<li>The six line says, “If the word is NOT already in the list…”</li>
+<li>The seventh line says, “…add it to the list and give it a starting
+count of 1” <br></li>
+</ul>
+<p>After the loop, we transpose the data into columns rather than
+rows.</p>
+<pre class="r"><code>word_count_df &lt;- stack(word_list)
+names(word_count_df) &lt;- c(&quot;count&quot;, &quot;Word&quot;)</code></pre>
+<ul>
+<li>the stack function transposes rows to columns.<br />
+</li>
+<li><code>names</code> modifies the column names of
+<code>word_count_df</code> adding in <code>count</code> and
+<code>Word</code>.</li>
+</ul>
+<p>How we’re going to sort the dataframe by frequency (highest to
+lowest)</p>
+<pre class="r"><code>library(dplyr)
+word_count_df &lt;- word_count_df %&gt;%
+  arrange(desc(count))</code></pre>
+<ul>
+<li>We have a “pipe” here (<code>%&gt;%</code>). This essentially means
+“AND THEN”.<br />
+</li>
+<li>Put <code>word_count_df</code> into <code>word_count_df</code>
+(replacing it), AND THEN<br />
+</li>
+<li>use the <code>arrange</code> function to order the
+<code>count</code> column in descending order (<code>desc</code>).</li>
+</ul>
 <p><img src="screenshots/ForLoop.jpg" alt="Counting words in NEWDataset" width="200"/></p>
 <p>Use loops carefully — for most data manipulation tasks in R,
 vectorised functions (like <code>apply</code>, <code>lapply</code>, or
 <code>ifelse</code>) are often more efficient. Personally, I am not a
 fan of for loops in R as I find them hard to work with, however, I use
-them all the time in JavaScript.<br />
-I would recommend using pipes:</p>
+them all the time in JavaScript and Praat.<br />
+<br> I would recommend using pipes:</p>
 </div>
 <div id="pipes" class="section level3" number="5.11">
 <h3><span class="header-section-number">5.11</span> Pipes %&gt;%</h3>
@@ -944,22 +977,66 @@ when performing several data manipulation steps. However, they are
 sometimes hard to build and may require breaking them down into smaller
 segments before stacking.</p>
 <pre class="r"><code>library(dplyr)
-
-word_list &lt;- NEWdataset %&gt;% #Put NEWdataset in word_list AND THEN (%&gt;% = AND THEN)...
-  filter(!is.na(Word), Word != &quot;&quot;) %&gt;% #filter out NAs (is.na) and blanks (&quot;&quot;), AND THEN...
+word_list &lt;- NEWdataset %&gt;%
+  filter(!is.na(Word), Word != &quot;&quot;) %&gt;%
   count(Word, sort = TRUE) #Count each word, and sort it from highest to lowest</code></pre>
+<ul>
+<li>Put <code>NEWdataset</code> in <code>word_list</code> AND THEN…</li>
+<li><code>filter</code> out NAs (<code>is.na</code>) and blanks
+(<code>""</code>), AND THEN…</li>
+<li><code>count</code> repeats of each unique word, and
+<code>sort</code> them (sort’s default is descending).<br />
+</li>
+<li>Notice how much easier this is than a traditional
+<code>for loop</code>.</li>
+</ul>
 <p><img src="screenshots/ForLoop2.jpg" alt="Counting words in NEWDataset" width="200"/></p>
-<p>Or a more complex example that basically does the same thing, but
-with top 50 and a few other options added</p>
+<p>The following is a more complex example that basically does the same
+thing, but with top 50 and a few other options added</p>
 <pre class="r"><code>library(dplyr)
 
 word_count_50 &lt;- NEWdataset %&gt;%
-  filter(!is.na(Word)) %&gt;%          # Step 1: Remove rows with NA in the &#39;Word&#39; column
-  filter(Word != &quot;&quot;) %&gt;%            # Step 2: Remove empty Word strings
-  group_by(Word) %&gt;%                # Step 3: Group by Word type
-  summarise(count = n(), .groups = &quot;drop&quot;) %&gt;%  # Step 4: Count occurrences
+  filter(!is.na(Word)) %&gt;%
+  filter(Word != &quot;&quot;) %&gt;%
+  group_by(Word) %&gt;%
+  summarise(count = n(), .groups = &quot;drop&quot;) %&gt;%
   arrange(desc(count)) %&gt;%              # Step 5: Sort in descending order
   slice_head(n = 50)                    # Step 6: Keep top 50 words only</code></pre>
+<ul>
+<li>Place <code>NEWdataset</code> into the new object
+<code>word_count_50</code> AND THEN…<br />
+</li>
+<li>Step 1: With <code>filter</code> (similar to subset!), remove rows
+with NA (<code>is.na</code> negated with <code>!</code>) in the
+<code>Word</code> column AND THEN…<br />
+</li>
+<li>Step 2: With <code>filter</code>, remove empty <code>Word</code>
+strings AND THEN…<br />
+</li>
+<li>Step 3: Group by Word type (groups together unique items in the
+<code>Word</code> column) AND THEN…<br />
+</li>
+<li>Step 4: Count occurrences using <code>summarise</code> and
+<code>count</code>.
+<ul>
+<li><code>summarise</code> tells R to “collapse the grouped data down
+into one row per group.<br />
+</li>
+<li><code>count = n()</code>: <code>n()</code> is a special
+<code>dplyr</code> function that simply counts the number of rows in
+each group. Here it creates a new column called <code>count</code> that
+stores that number. AND THEN<br />
+</li>
+</ul></li>
+<li>Step 5: We use the <code>arrange</code> function to order the
+<code>count</code> column in descending order (<code>desc</code>). AND
+THEN<br />
+</li>
+<li>Step 6: Get the top 50 most frequent words using
+<code>slice_head</code> and indicating the number of items you want to
+keep; in this case the number (<code>n</code>) equals (<code>=</code>)
+<code>50</code>.</li>
+</ul>
 <p><img src="screenshots/Pipe.jpg" alt="Counting words using `pipes`" width="200"/></p>
 </div>
 <div id="regex" class="section level3" number="5.12">
