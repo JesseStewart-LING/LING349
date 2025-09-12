@@ -725,7 +725,7 @@ View(DS1)</code></pre>
 Column(s)</h4>
 <p>View only column 1</p>
 <pre class="r"><code>DS1 = DS[, 1]
-View(as.data.frame(DS1))</code></pre>
+View(DS1)</code></pre>
 <p><img src="screenshots/speaker.jpg" alt="View only column 1" width="100"/></p>
 <p>View columns 1 through 10</p>
 <pre class="r"><code>DS1 = DS[, 1:10]
@@ -762,7 +762,7 @@ View(dataset)</code></pre>
 <p><img src="screenshots/vowelcol.jpg" alt="Creating the `Vowel` column" width="600"/></p>
 <p>Create the <code>Phrase</code> column Change underscore to space.</p>
 <pre class="r"><code>#Replace &quot;_&quot; with &quot; &quot;
-dataset$Phrase = gsub(&quot;[_]&quot;, &quot; &quot;, dataset$Phrase)
+dataset$Phrase = gsub(&quot;_&quot;, &quot; &quot;, dataset$Phrase)
 View(dataset)</code></pre>
 <p><img src="screenshots/phrase.jpg" alt="Creating the `Phrase` column" width="600"/></p>
 <p>Extract words containing the <code>@</code> sign</p>
@@ -772,7 +772,7 @@ View(dataset)</code></pre>
 <p><img src="screenshots/word.jpg" alt="Creating the `Word` column" width="600"/></p>
 <p>Add <code>%</code> to the beginning and end of the word</p>
 <pre class="r"><code>#Replace a word boundary at the beginning of a line with `%`
-dataset$Word = gsub(&quot;^\\b&quot;, &quot;%&quot;, dataset$Word)
+dataset$Word = gsub(&quot;^&quot;, &quot;%&quot;, dataset$Word)
 #Replace the end of the line (word in this case) with %
 dataset$Word = gsub(&quot;$&quot;, &quot;%&quot;, dataset$Word)
 View(dataset)</code></pre>
@@ -782,7 +782,7 @@ and two after</p>
 <pre class="r"><code>#grab the character before the `@` sign, then two characters after the `@` sign.
 dataset$Preceding = str_extract(dataset$Word, &quot;.@..&quot;)
 #Grab whatever is in the first position.
-dataset$Preceding = str_extract(dataset$Preceding, &quot;^.{1}&quot;)</code></pre>
+dataset$Preceding = str_extract(dataset$Preceding, &quot;^.&quot;)</code></pre>
 <p><img src="screenshots/preceding.jpg" alt="Creating the `Preceding` column" width="500"/></p>
 <p>Extract following sound Adds one character before the <code>@</code>
 and two after</p>
@@ -815,10 +815,33 @@ class="section level4" number="5.9.1">
 Statements (Vowel Height Classification)</h4>
 <p><a href="https://www.youtube.com/watch?v=PcOG-Aw3Uzs">Watch on
 YouTube</a></p>
+<pre class="r"><code>dataset$Height = ifelse(dataset$Vowel == &quot;a&quot;, &quot;Low&quot;,ifelse(dataset$Vowel == &quot;e&quot;, &quot;Mid&quot;, ifelse(dataset$Vowel == &quot;o&quot;, &quot;Mid&quot;, ifelse(dataset$Vowel == &quot;i&quot;, &quot;High&quot;, ifelse(dataset$Vowel == &quot;u&quot;, &quot;High&quot;, &quot;ERROR&quot;)))))</code></pre>
+<ul>
+<li>This code says, “If the <code>vowel</code> column contains
+<code>a</code>, print <code>Low</code> in the <code>Height</code>
+column. If it doesn’t, does it contain <code>e</code>? If so, print
+<code>Mid</code> in the <code>Height</code> column. If not, does it
+contain <code>o</code>? If so, print, <code>o</code> in the
+<code>Height</code> column, If not, does it contain <code>i</code>? If
+so, print <code>High</code> in the <code>Height</code> column. If not,
+does it contain <code>u</code>? If so, print <code>High</code> in the
+<code>Height</code> column. If not, print <code>ERROR</code>.<br />
+<br></li>
+</ul>
+<p>A more compact way of doing this involves combining like elements
+with the same response.</p>
 <pre class="r"><code>#If the vowel is `a` mark it as `Low`, if it&#39;s `e` or `o`, mark it as `Mid`, if it&#39;s `i` or `u`, mark it as `high`, if it&#39;s anything else mark it as `Error`.
 dataset$VowelType = ifelse(dataset$Vowel == &quot;a&quot;, &quot;Low&quot;,
                      ifelse(dataset$Vowel %in% c(&quot;e&quot;, &quot;o&quot;), &quot;Mid&quot;,
                      ifelse(dataset$Vowel %in% c(&quot;i&quot;, &quot;u&quot;), &quot;High&quot;, &quot;Error&quot;)))</code></pre>
+<ul>
+<li>This is still a nested <code>if statement</code>, however, we
+combine <code>e</code> and <code>o</code> into a string with
+<code>c()</code> and if either appear in the <code>Vowel</code> column,
+<code>Mid</code> is printed.</li>
+<li><code>%in%</code> is a special operator in R. It checks “is this
+element found <strong>in</strong> the following set of values?</li>
+</ul>
 <p><img src="screenshots/VowelType.jpg" alt="Vowel height column" width="50"/></p>
 </div>
 <div id="class-of-sound-in-pre-vowel-position" class="section level4"
