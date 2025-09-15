@@ -1,0 +1,2582 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Dr. Jesse Stewart" />
+
+<meta name="date" content="2025-09-06" />
+
+<title>Text to Speech</title>
+
+<script src="tts_files/header-attrs-2.28/header-attrs.js"></script>
+<script src="tts_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="tts_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="tts_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="tts_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="tts_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="tts_files/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="tts_files/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="tts_files/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="tts_files/navigation-1.1/tabsets.js"></script>
+<link href="tts_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="tts_files/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Text to Speech</h1>
+<h4 class="author">Dr. Jesse Stewart</h4>
+<h4 class="date">2025-09-06</h4>
+
+</div>
+
+
+<div id="introduction-to-text-to-speech-tts" class="section level1"
+number="1">
+<h1><span class="header-section-number">1</span> Introduction to
+Text-to-Speech (TTS)</h1>
+<p>Text-to-speech (TTS) is the process of converting written language
+into spoken output. Modern systems (Siri, Google Translate, Alexa,
+ChatGPT etc.) can produce fluent speech that sounds almost human. Under
+the hood, though, there’s a lot going on:</p>
+<ul>
+<li><strong>Front end:</strong> The text has to be normalized (e.g.,
+abbreviations spelled out etc.), converted into a sequence of sounds
+(orthography to phonemic transcription), and marked for prosody
+(intonation, stress, pauses).<br />
+</li>
+<li><strong>Back end:</strong> The sound sequence has to be turned into
+an acoustic signal. Early systems did this by cutting and stitching
+together snippets of recorded speech; modern systems use neural models
+like Tacotron or VITS that predict spectrograms and generate waveforms
+with vocoders.<br />
+<br> <strong>Data needs:</strong> A real system is trained on hours of
+speech (5–20+), aligned at the segment level (every phone or syllable
+has precise time boundaries). Without that, the system can’t learn
+natural durations or coarticulation. I have 20+ hours of speech, but it
+is not transcribed at the segment level. If anyone wants to do a TTS for
+Media Lengua, that will likely also work for Kichwa, for their masters
+thesis, this is a great project!! This would likely involve 2 field
+trips - one to collect data, and one to present the system to the
+community. If this interests you, let me know!<br />
+<br></li>
+</ul>
+<div id="what-we-will-do-in-this-course" class="section level2"
+number="1.1">
+<h2><span class="header-section-number">1.1</span> What We Will Do in
+This Course</h2>
+<p>We don’t have the time to build a full TTS system. Instead, we’ll
+build a toy version that highlights the core ideas:<br />
+<strong>Collect data:</strong> we’ll take a short set of utterances from
+one speaker of Media Lengua.<br />
+<strong>Segment speech manually:</strong> each student will mark up
+~200–300 tokens at the segmental level.<br />
+<strong>Front end:</strong> we’ll use a simple set of rules to convert
+text to IPA.<br />
+<strong>Back end:</strong> we’ll concatenate the recorded segments to
+“speak” new words and sentences.<br />
+<strong>Prosody:</strong> we’ll experiment with simple manipulations
+(stretching a vowel, raising pitch), but we likely won’t integrate this
+into the system.<br />
+<br> The results will sound robotic and choppy—but that’s the point.
+You’ll hear why coarticulation, prosody, and data coverage are so
+important.</p>
+</div>
+<div id="what-should-really-be-done" class="section level2"
+number="1.2">
+<h2><span class="header-section-number">1.2</span> What Should Really Be
+Done</h2>
+<p>In a research or industry setting, a proper TTS system would
+require:<br />
+<strong>Large, high-quality corpus:</strong> 5–20 hours of clean speech
+from one speaker (or much more for multi-speaker systems).<br />
+<strong>Automatic forced alignment:</strong> software like the Montreal
+Forced Aligner to produce phone-level timings automatically.<br />
+<strong>Neural acoustic models:</strong> architectures such as Tacotron,
+FastSpeech, or VITS that learn to map phones to spectrograms.<br />
+<strong>Neural vocoders:</strong> models like HiFi-GAN or WaveNet that
+generate natural-sounding waveforms. <strong>Evaluation:</strong> formal
+intelligibility and naturalness tests with human listeners. <br> This is
+far beyond what we can do in a 2-week-long module, but by working
+through our small-scale project you’ll see exactly where the bottlenecks
+are, and why modern systems require large datasets, specialized models,
+and serious computing.</p>
+</div>
+<div id="example-systems" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Example systems</h2>
+<a href="https://www.google.com/search?q=google+translate">Google
+translate</a><br />
+MS Word<br />
+<a href="https://chatgpt.com/">ChatGPT</a><br />
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>
+Basic TTS Example
+</title>
+</head>
+<body>
+Window’s default Text to Speech <br>
+<textarea id="text" rows="4" cols="50">Hello, this is a basic text to speech example.</textarea>
+<p><button onclick="speak()">Speak</button></p>
+<script>
+    function speak() {
+      const text = document.getElementById("text").value;
+      const utterance = new SpeechSynthesisUtterance(text);
+      speechSynthesis.speak(utterance);
+    }
+  </script>
+</body>
+</html>
+</div>
+</div>
+<div id="data-use-disclaimer" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Data Use
+Disclaimer</h1>
+<p>All language data provided for this module (and for any course
+activities) is <strong><em>confidential</em></strong> and shared
+strictly for instructional purposes.</p>
+<ul>
+<li>You may <strong>not</strong> upload, share, or distribute any of the
+audio files, transcripts, or annotations to any online platform or
+external service (e.g. GitHub, Google Drive, Dropbox, social media,
+etc.).<br />
+</li>
+<li>The only permitted online location for these materials is Canvas, as
+uploaded by the instructor.<br />
+</li>
+<li>You may store and work with the files locally on your personal
+device during the term.<br />
+</li>
+<li>You are required to delete all copies of the data:
+<ul>
+<li>immediately if you withdraw from the course, and<br />
+</li>
+<li>at the end of the course upon completion of your final
+assignment.</li>
+</ul></li>
+</ul>
+<p><br> Failure to follow these guidelines is a violation of course
+policy and of the ethical standards under which the data was
+collected.</p>
+</div>
+<div id="processing-sound-files" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Processing sound
+files</h1>
+<div id="module-part-1-locating-extracting-syllablessegments"
+class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Module Part 1:
+Locating &amp; Extracting Syllables/Segments</h2>
+<ul>
+<li>Work with the syllable-segment matrix
+<ul>
+<li>Open the <a
+href="https://docs.google.com/spreadsheets/d/1-BFXcRBfPow_NweilYx0uEKbdlAe2IfWb3hxJI20YTs/edit?usp=sharing">spreadsheet</a></li>
+<li>You’ll see a matrix of possible onsets, codas and syllable
+combinations.</li>
+<li>You will be assigned a specific set of data.</li>
+</ul></li>
+</ul>
+<p><img src="tts_images/matrices.jpg" alt="onset and segment matrices" width="900"/><br />
+<br></p>
+<div id="task-1-dictionary-search" class="section level3"
+number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Task 1 — Dictionary
+search</h3>
+<ul>
+<li>Open the Media Lengua dictionary (Headwords and IPA transcriptions
+only).</li>
+</ul>
+<p><img src="tts_images/dict.jpg" alt="dictionary sample" width="300"/><br />
+<br></p>
+<ul>
+<li>For each assigned onset/ coda / syllable:
+<ul>
+<li>Copy the dictionary into EditPad Lite or whatever RegEx equipped
+text editor you are using.<br />
+</li>
+<li>Search the dictionary to see if they appear in any word (ideally,
+you’d locate these in the IPA column).<br />
+</li>
+<li>Important notes:
+<ul>
+<li>Codas appear at the end of syllables or words. Word-internally, this
+may be difficult to identify.
+<ul>
+<li>In a word like <code>acomodana /akomodana/</code> how do we know if
+the <code>m</code> is the coda of <code>/ko-m/</code> or the onset of
+<code>/m-o/</code>? Answer: it depends on what follows. If it’s a vowel,
+it’s the onset, if it’s a consonant, it’s likely a coda. Therefore, in
+<code>acomodana /akomodana/ [a.ko.mo̝.ˈda.na]</code> it’s an onset, while
+in <code>acompañana /akompaɲan/ [a.kom.ˈpa.ɲa]</code>, <code>/p/</code>
+follows <code>/m/</code> placing <code>/p/</code> as the onset of
+<code>/pa/</code> and <code>/m/</code> as the coda of
+<code>/kom/</code>.<br />
+</li>
+<li>Also, pay special attention to vowel sequences. If you’re looking
+for <code>/mi/</code>, don’t extract the token from
+<code>agradesimiento  /a.ɡɾa.de.si.ˈmien.to/</code> as this is actually
+an <code>/mie/</code> sequence. Instead, look for
+<code>camisa  /ka.ˈmi.sa/</code> where no vowel follows
+<code>i</code>.</li>
+<li>This holds true for clusters; don’t extract <code>g</code> from
+<code>gɾ</code>.<br />
+</li>
+<li>Consider regEx like <code>m[aieuo][^aieuo]</code> for open syllables
+with only one vowel; <code>m[aieuo][aieuo]</code> for open syllables
+with two vowels, and <code>m([^aieuo]|\\s|$)</code> for codas.</li>
+</ul></li>
+<li>If you can avoid extracting syllables with codas, do this. For
+example, if you have the choice between <code>acomodana</code> and
+<code>acompañan</code> for the <code>mo</code> sequence, choose the open
+syllable in <code>acomodana</code>.<br />
+</li>
+<li>If you’re assigned a stop consonant, make sure to conclude a closure
+phase. If you can only find it in word initial position, include about
+85 ms of silence (second image below. Coda stops are especially
+difficult as they’re often unreleased. For the sake of this tts engine,
+you can just add slience as is seen in the final image below.</li>
+</ul></li>
+</ul></li>
+</ul>
+<p><img src="tts_images/stops.jpg" alt="stops" width="900"/><br />
+<br></p>
+<ul>
+<li>For taps, you want about 10 to 25 ms of silence, followed by the
+vowel. For the coda tap, you simply want to find one example, and save
+the 10 to 25 ms of silence.</li>
+</ul>
+<p><img src="tts_images/tap.jpg" alt="tap + Vowel" width="900"/><br />
+<br></p>
+<ul>
+<li><p>If possible avoid syllables and vowels in penultimate position.
+We don’t want every token to be stressed! If we were going to continue
+to build an actual tts engine using this methodology, we’d modify every
+token to include correlates of stress (vowel duration, amplification,
+pitch), and the save those with <code>_stress</code>. These would be
+loaded when the segment is found in a stressed position.</p></li>
+<li><p>If the onset/segment exists: change the font to
+<code>green</code>.<br />
+</p></li>
+<li><p>If it does not exist: change the font to <code>red</code>.</p>
+<ul>
+<li>These steps ensure we don’t waste time hunting for unattested
+syllables.</li>
+</ul></li>
+</ul>
+<p><img src="tts_images/m.jpg" alt="attested and unattested m" width="500"/><br />
+<br></p>
+<ul>
+<li>Open the recordings
+<ul>
+<li>You will receive three Praat textGrid files with corresponding
+audio. These will be uploaded on Canvas.<br />
+</li>
+<li>There should be three folders, each with a <code>.wav</code> file
+and a corresponding <code>.textGrid</code> file.</li>
+</ul></li>
+</ul>
+<p><img src="tts_images/files.jpg" alt="wav and textGrid example" width="800"/><br />
+<br></p>
+<ul>
+<li>As you can see in the image, the <code>.wav</code> files are huge.
+Make sure you have space to accommodate them on your hard drive. If not,
+consider purchasing a USB flash drive.
+<ul>
+<li>Open the <code>.wav</code> file and its corresponding
+<code>.textGrid</code> in Praat.<br />
+</li>
+<li>Select both files in the Objects Window and click
+<code>View &amp; Edit</code>.<br />
+</li>
+<li>Scroll to the beginning of the file and select the first empty
+annotation. It will change to pink.
+<ul>
+<li>You’ll want to do this for each search as Praat does not do
+backwards searches.<br />
+</li>
+</ul></li>
+<li>Press <code>ctrl+F</code> (or <code>cmd+F</code> on Mac), to bring
+up the search window.<br />
+</li>
+<li>Search for your segment and syllable pairs.</li>
+</ul></li>
+</ul>
+<p><img src="tts_images/praat.jpg" alt="wav and textGrid example" width="800"/><br />
+<br></p>
+<ul>
+<li>Once you locate the token, carefully select it. Try your best to
+avoid any of the material from the neighbouring segments. This is
+impossible to do due to co-articulation effects, but we can try and
+minimize the amount of carry over.</li>
+</ul>
+<p><img src="tts_images/m2.jpg" alt="m from manta" width="700"/><br />
+<br></p>
+<ul>
+<li>Next we want to extract the token. To do so, click on
+<code>Sound</code> → <code>Extract selected sound (time from 0)</code>.
+This will place token in the Praat Objects Window.</li>
+</ul>
+<p><img src="tts_images/m3.jpg" alt="m from manta" width="500"/><br />
+<br></p>
+<ul>
+<li>At this point, we could modify the token for pitch, duration etc.,
+but we’re just going to save it. To do so, select the file, click
+<code>Save</code> → <code>Save as WAV file...</code></li>
+</ul>
+<p><img src="tts_images/objects1.jpg" alt="m from manta" width="400"/><br />
+<br></p>
+<ul>
+<li>Then use the naming convention in the second matrix
+(<code>mOn.wav</code>).</li>
+</ul>
+<p><img src="tts_images/matrix2.jpg" alt="naming convention matrix" width="600"/><br />
+<br></p>
+<ul>
+<li>And save the file.</li>
+</ul>
+<p><img src="tts_images/save.jpg" alt="save the file" width="500"/><br />
+<br></p>
+<ul>
+<li>In the spreadsheet, change the color to green.</li>
+<li>If you couldn’t find the file in the data, change it to red. We
+might end up ‘creating’ this sound sequence if we have time.</li>
+</ul>
+<p><img src="tts_images/matrix3.jpg" alt="change file to green" width="600"/><br />
+<br> Now we’re going to repeat the process with coda
+<code>-m</code>.<br />
+- Return to the beginning of the sound file and search a word with coda
+<code>-m</code> or search for <code>m</code> until you find it in coda
+position.<br />
+- Here, I found coda <code>-m</code> in the word <code>siempre</code>.
+This is nice as it follows a stop consonant, so I can get the
+fade.<br />
+- We then select the target portion<br />
+- <code>Sound</code> →
+<code>Extract selected sound (time from 0)</code><br />
+- Select file in the objects window, <code>Save</code> →
+<code>Save as WAV file...</code><br />
+- Use the naming convention (<code>mCo.wav</code>) in the second matrix,
+then mark it with green.</p>
+<p><img src="tts_images/codam.jpg" alt="coda m" width="900"/><br />
+<br></p>
+<p>Here’s one more example with a vowel.<br />
+- Return to the beginning of the sound file and search a word containing
+<code>mi</code> or search for <code>mi</code> until you find an example.
+Verify that it’s an onset + vowel and ideally without a coda.<br />
+- Here, I found <code>mi</code> in the word <code>comida</code>. This is
+nice as it follows a stop consonant, so I can get the fade. It was also
+common at the end of words, but we don’t want too much fade
+either.<br />
+- We then select the target portion<br />
+- <code>Sound</code> →
+<code>Extract selected sound (time from 0)</code><br />
+- Select file in the objects window, <code>Save</code> →
+<code>Save as WAV file...</code><br />
+- Use the naming convention (<code>mi.wav</code>) in the second matrix,
+then mark it with green.</p>
+<p><img src="tts_images/mi.jpg" alt="mi cluster" width="900"/><br />
+<br></p>
+<p>Now finish your assigned data.<br />
+A few additional things to note:</p>
+<ul>
+<li>I finished up <code>m</code> and there were a number of gaps:<br />
+<img src="tts_images/gaps.jpg" alt="mi cluster" width="400"/><br />
+<br></li>
+<li>The tokens in red font weren’t identified in the dictionary, so
+we’ll pretend they’re just natural gaps in the language (in reality,
+there’s only 3000+ words in the dictionary, so it’s probably gaps in the
+dictionary, not necessarily the language (though syllable gaps are found
+in all languages)).<br />
+</li>
+<li>Those highlighted in red appeared in the dictionary, but they
+weren’t in the small sample of sound files we have. Therefore, we know
+that they’re not natural gaps in the language. We’re going to manually
+create these sound files from the individual onset consonant segment and
+the individual missing vowel. We could attempt to unite vowels together
+e.g., <code>mu</code> with <code>o</code>, but I feel like the
+<code>m</code> to <code>oe</code> transition will appear more
+natural.<br />
+</li>
+<li>To create the missing syllables, we’ll open the onset consonant, in
+this case, <code>m</code>, and the <code>uo</code></li>
+</ul>
+<p><img src="tts_images/read.jpg" alt="read a file into Praat" width="400"/><br />
+<br></p>
+<ul>
+<li>Next select both files and use the <code>concatenate</code> function
+under <code>combine</code>.<br />
+</li>
+<li>The <code>View &amp; Edit</code> the new file.</li>
+</ul>
+<p><img src="tts_images/mea.jpg" alt="creation mea" width="500"/><br />
+<br></p>
+<ul>
+<li>Many times, there’s a noticeable striation where the files are
+connected, and I would try and edit this down by matching amplitudes of
+the wave form, but <code>mea</code> actually doesn’t look too bad, and
+it sounds relatively natural, so we’ll keep it as-is. The image below is
+from <code>meu</code>.<br />
+<img src="tts_images/meu.jpg" alt="creating meu" width="500"/><br />
+<br><br />
+</li>
+<li>To edit this down, we can zoom in on the striation, the select from
+the zero crossing of a “good” wave to the zero crossing elsewhere
+(typically on the far size of the “bad” wave). Then <code>ctrl+x</code>
+to cut out the bad part. This is more trial and error than anything
+else.<br />
+<img src="tts_images/meu2.jpg" alt="editing" width="500"/><br />
+<br><br />
+</li>
+<li>If you compare the zoomed out portion on the right, you’ll notice
+that the striation has faded, quite a bit. You could continue to edit
+this until it’s gone, but you want to be careful not to chop out too
+much.<br />
+</li>
+<li>Then we want to save the file.</li>
+</ul>
+<p><img src="tts_images/mea2.jpg" alt="saving mea" width="500"/><br />
+<br></p>
+<ul>
+<li>I then repeat the process with <code>mei</code>, <code>meu</code>,
+<code>mea</code>, <code>mao</code>, and <code>mau</code>. If I were
+feeling generous, I’d do <code>miu</code>, <code>mua</code>,
+<code>muo</code>, <code>moa</code>, <code>moe</code>, and
+<code>moi</code> as well, in case these aren’t actually gaps in the
+language.<br />
+</li>
+<li>After each creation, I’d like you to mark highlight these in green
+(not just change the text color). This way we know that they are created
+sound files not extracted from the actual data.</li>
+</ul>
+<p><img src="tts_images/matrix4.jpg" alt="showing the edits have been complete" width="300"/><br />
+<br></p>
+<ul>
+<li>As a side note, I already merged <code>a+e</code> and
+<code>a+o</code> as these were not found in the sound files.<br />
+</li>
+<li>Also, it’s also worth noting that these created sound files are not
+great. A lot more work would be needed to make them sound more natural.
+One of the biggest issues is amplification where the nucleus is quieter
+than the onset. There’s also issues with co-articulation transitions in
+the formants. Additionally, there’s issues with the pitch transitions
+and durations. These are are ‘fixable’, but we’re not looking for
+quality in this system; simply functionality.<br />
+<br></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="homework-part-1" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> HOMEWORK PART 1</h1>
+<ul>
+<li>Complete your assigned token cuts.<br />
+</li>
+<li>Send them to me in a zip file.<br />
+<br></li>
+</ul>
+</div>
+<div id="text-to-ipa" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Text to IPA</h1>
+<p>We are going to place our text into an object. Our test sentence will
+be:<br />
+<code>Vospa oracionta aquipica escribipangui.</code>, which translates
+to “Write your sentence here.”</p>
+<pre class="r"><code>ML=c(&quot;Vospa oracionta aquipica escribipangui.&quot;)</code></pre>
+<p>Placing our text phrase in an object called <code>ML</code> in
+orthography as a string using <code>c()</code>.</p>
+<p>We’re then going to convert the string to a data frame</p>
+<pre class="r"><code>#Converting to data frame
+tts=as.data.frame(ML)</code></pre>
+<p>Then we’ll name first column to skirt UTF-8 Header error (this really
+only an issue if you load the data from an external source, which we’re
+not doing here).</p>
+<pre class="r"><code>colnames(tts)[1]=&quot;Word&quot;</code></pre>
+<p><img src="tts_images/tts.jpg" alt="text data" width="250"/><br />
+<br></p>
+<p>Now, we’ll transfer our text to another column for conversion to IPA.
+This way, we can still compare the text with the IPA.</p>
+<pre class="r"><code>tts$IPA=tts$Word</code></pre>
+<p><img src="tts_images/tts2.jpg" alt="text data + text data for conversion" width="500"/><br />
+<br></p>
+<p>The following is a long string of regEx that converts the text to
+IPA. Follow the comments therein for details. <br></p>
+<ul>
+<li>The order is important here. For example if I change
+<code>&lt;r&gt;</code> to a tap (<code>ɾ</code>), when I go to convert
+<code>&lt;rr&gt;</code> to the voiced retroflex fricative
+(<code>ʐ</code>), double r’s (<code>&lt;rr&gt;</code>) will have already
+been converted to <code>ɾɾ</code>. We could convert <code>rr</code> to
+<code>ʐ</code> first, but word-initial <code>&lt;r&gt;</code>’s in Media
+Lengua also appear as the retroflex fricative <code>ʐ</code>. My fix for
+this is to convert initial <code>&lt;r&gt;</code> and double
+<code>rr</code> to a place holder (<code>@</code>): <code>r</code> to
+<code>@</code> (note the space), then <code>(^r|rr)</code> to
+<code>@</code>. Then I convert all other <code>&lt;r&gt;</code> to a tap
+(<code>ɾ</code>) and the convert all <code>@</code> to <code>ʐ</code>
+(note the space), and the remaining <code>@</code> to
+<code>ʐ</code>.</li>
+</ul>
+<pre class="r"><code>#Punctuation removal + whitespace tidying
+tts$IPA &lt;- gsub(&quot;\\p{P}+&quot;, &quot;&quot;, tts$IPA, perl = TRUE)   # removes .,;:!?… incl. ¿ ¡
+tts$IPA &lt;- gsub(&quot;\\s+&quot;, &quot; &quot;, trimws(tts$IPA))          # collapse/trim spaces
+
+#IPA conversion using regular expressions
+
+#Converts upper case to lower case.
+tts$IPA=gsub(&quot;([[:upper:]])&quot;, perl = TRUE, &quot;\\L\\1&quot;, tts$IPA)
+
+# Here&#39;s a list of known exceptions e.g., &quot;Jesse&quot; doesn&#39;t follow ML&#39;s phonotactic structure or phonological rules.
+tts$IPA=gsub(&quot;manda&quot;, &quot;manta&quot;,tts$IPA)
+tts$IPA=gsub(&quot;(Jesse|jesse)&quot;, &quot;ʒesi&quot;,tts$IPA)
+tts$IPA=gsub(&quot;(todo forma, de|de todo forma)&quot;, &quot;detodofoɾma&quot;,tts$IPA)
+tts$IPA=gsub(&quot;(antes de|Antes de)&quot;, &quot;antesde&quot;,tts$IPA)
+tts$IPA=gsub(&quot;(ante ayer|Ante ayer)&quot;, &quot;anteayer&quot;,tts$IPA)
+tts$IPA=gsub(&quot;asellata&quot;, &quot;asiʒata&quot;,tts$IPA)
+tts$IPA=gsub(&quot;(gendi|gende)&quot;, &quot;genti&quot;,tts$IPA)
+
+#text conversion to IPA begins here
+#Include the following if you&#39;re working with Imbabura Kichwa (ML does not follow these rules).  
+#tts$IPA=gsub(&quot;nk&quot;, &quot;ng&quot;,tts$IPA) #Kichwa only
+#tts$IPA=gsub(&quot;nt&quot;, &quot;nd&quot;,tts$IPA) #Kichwa only
+#tts$IPA=gsub(&quot;np&quot;, &quot;nb&quot;,tts$IPA) #Kichwa only
+
+tts$IPA=gsub(&quot;ñ&quot;, &quot;ɲ&quot;,tts$IPA)
+tts$IPA=gsub(&quot;ngue&quot;, &quot;ngi&quot;,tts$IPA)
+tts$IPA=gsub(&quot;hua&quot;, &quot;wa&quot;,tts$IPA)
+tts$IPA=gsub(&quot;ng&quot;, &quot;ŋg&quot;,tts$IPA)
+tts$IPA=gsub(&quot;nk&quot;, &quot;ŋk&quot;,tts$IPA)
+tts$IPA=gsub(&quot;ch&quot;, &quot;ʧ&quot;,tts$IPA)
+tts$IPA=gsub(&quot;sh&quot;, &quot;ʃ&quot;,tts$IPA)
+tts$IPA=gsub(&quot;ll&quot;, &quot;ʒ&quot;,tts$IPA)
+tts$IPA=gsub(&quot;(rr|^r)&quot;, &quot;@&quot;,tts$IPA)
+tts$IPA=gsub(&quot;( r)&quot;, &quot; @&quot;,tts$IPA)
+tts$IPA=gsub(&quot;r&quot;, &quot;ɾ&quot;,tts$IPA)
+tts$IPA=gsub(&quot;ɾt&quot;, &quot;ɾʃt&quot;,tts$IPA)
+tts$IPA=gsub(&quot;(ɾ )&quot;, &quot;ɾʂ &quot;,tts$IPA)
+tts$IPA=gsub(&quot;(ɾ$)&quot;, &quot;ɾʂ&quot;,tts$IPA)
+tts$IPA=gsub(&quot; @&quot;, &quot; ʐ&quot;,tts$IPA)
+tts$IPA=gsub(&quot;@&quot;, &quot;ʐ&quot;,tts$IPA)
+tts$IPA=gsub(&quot;cona&quot;, &quot;kuna&quot;,tts$IPA)
+tts$IPA=gsub(&quot;ce&quot;, &quot;se&quot;,tts$IPA)
+tts$IPA=gsub(&quot;ci&quot;, &quot;si&quot;,tts$IPA)
+tts$IPA=gsub(&quot;ca&quot;, &quot;ka&quot;,tts$IPA)
+tts$IPA=gsub(&quot;co&quot;, &quot;ko&quot;,tts$IPA)
+tts$IPA=gsub(&quot;cc&quot;, &quot;ks&quot;,tts$IPA)
+tts$IPA=gsub(&quot;cu&quot;, &quot;ku&quot;,tts$IPA)
+tts$IPA=gsub(&quot;cpi&quot;, &quot;kpi&quot;,tts$IPA)
+tts$IPA=gsub(&quot;c$&quot;, &quot;k&quot;,tts$IPA)
+tts$IPA=gsub(&quot;cʒ&quot;, &quot;kʒ&quot;,tts$IPA)
+tts$IPA=gsub(&quot;cl&quot;, &quot;kl&quot;,tts$IPA)
+tts$IPA=gsub(&quot;ct&quot;, &quot;kt&quot;,tts$IPA)
+tts$IPA=gsub(&quot;cʧ&quot;, &quot;kʧ&quot;,tts$IPA)
+tts$IPA=gsub(&quot;cʧ&quot;, &quot;kʧ&quot;,tts$IPA)
+tts$IPA=gsub(&quot;cs&quot;, &quot;ks&quot;,tts$IPA)
+tts$IPA=gsub(&quot;cr&quot;, &quot;kɾ&quot;,tts$IPA)
+tts$IPA=gsub(&quot;cɾ&quot;, &quot;kɾ&quot;,tts$IPA)
+tts$IPA=gsub(&quot;qu&quot;, &quot;k&quot;,tts$IPA)
+tts$IPA=gsub(&quot;x&quot;, &quot;ks&quot;,tts$IPA)
+tts$IPA=gsub(&quot;hu&quot;, &quot;xu&quot;,tts$IPA)
+tts$IPA=gsub(&quot;gui&quot;, &quot;gi&quot;,tts$IPA)
+tts$IPA=gsub(&quot;j&quot;, &quot;x&quot;,tts$IPA)
+tts$IPA=gsub(&quot;-y-&quot;, &quot; i &quot;,tts$IPA)
+tts$IPA=gsub(&quot; y &quot;, &quot; i &quot;,tts$IPA)
+tts$IPA=gsub(&quot;y &quot;, &quot;i &quot;,tts$IPA)
+tts$IPA=gsub(&quot;y$&quot;, &quot;i&quot;,tts$IPA)
+tts$IPA=gsub(&quot;my&quot;, &quot;mi&quot;,tts$IPA)
+tts$IPA=gsub(&quot;me &quot;, &quot;mi &quot;,tts$IPA)
+tts$IPA=gsub(&quot;chon &quot;, &quot;ʧun &quot;,tts$IPA)
+
+#There are some people who write &lt;sh&gt; as &lt;s&gt;. This can be fixed with the follow regEx, but it causes errors in words like &quot;vospa&quot; (2-POSS), which is actually /spa/, not /ʃpa/, so we&#39;ll ignore issue for now and count /ʃ/ written as &lt;s&gt; for now as a typo.  
+#tts$IPA=gsub(&quot;spaca&quot;, &quot;ʃpaka&quot;,tts$IPA)
+#tts$IPA=gsub(&quot;spa$&quot;, &quot;ʃpa&quot;,tts$IPA)
+#tts$IPA=gsub(&quot;spa &quot;, &quot;ʃpa &quot;,tts$IPA)
+#tts$IPA=gsub(&quot;spata&quot;, &quot;ʃpata&quot;,tts$IPA)
+#tts$IPA=gsub(&quot;spami&quot;, &quot;ʃpami&quot;,tts$IPA)
+#tts$IPA=gsub(&quot;spame&quot;, &quot;ʃpami&quot;,tts$IPA)
+
+#Back to the conversion script
+tts$IPA=gsub(&quot;ny&quot;, &quot;ni&quot;,tts$IPA)
+tts$IPA=gsub(&quot;mary&quot;, &quot;maɾi&quot;,tts$IPA)
+tts$IPA=gsub(&quot;chy&quot;, &quot;ʧi&quot;,tts$IPA)
+tts$IPA=gsub(&quot;py&quot;, &quot;pi&quot;,tts$IPA)
+tts$IPA=gsub(&quot;y&quot;, &quot;j&quot;,tts$IPA)
+tts$IPA=gsub(&quot;nguy&quot;, &quot;ngi&quot;,tts$IPA)
+tts$IPA=gsub(&quot;gry&quot;, &quot;gɾi&quot;,tts$IPA)
+tts$IPA=gsub(&quot;shy&quot;, &quot;ʃi&quot;,tts$IPA)
+tts$IPA=gsub(&quot;chary&quot;, &quot;ʧaɾi&quot;,tts$IPA)
+tts$IPA=gsub(&quot;siky&quot;, &quot;siki&quot;,tts$IPA)
+tts$IPA=gsub(&quot;niky&quot;, &quot;niki&quot;,tts$IPA)
+tts$IPA=gsub(&quot;kuty&quot;, &quot;kuti&quot;,tts$IPA)
+tts$IPA=gsub(&quot;^v&quot;, &quot;b&quot;,tts$IPA)
+tts$IPA=gsub(&quot; v&quot;, &quot; b&quot;,tts$IPA)
+tts$IPA=gsub(&quot;v&quot;, &quot;β&quot;,tts$IPA)
+tts$IPA=gsub(&quot;^z&quot;, &quot;s&quot;,tts$IPA)
+tts$IPA=gsub(&quot; z&quot;, &quot; s&quot;,tts$IPA)
+tts$IPA=gsub(&quot;ts&quot;, &quot;z&quot;,tts$IPA)
+tts$IPA=gsub(&quot;tz&quot;, &quot;z&quot;,tts$IPA)
+tts$IPA=gsub(&quot;aj&quot;, &quot;ai&quot;,tts$IPA)
+tts$IPA=gsub(&quot;aw&quot;, &quot;au&quot;,tts$IPA)
+tts$IPA=gsub(&quot;aia&quot;, &quot;aja&quot;,tts$IPA)
+tts$IPA=gsub(&quot;ajai&quot;, &quot;aiai&quot;,tts$IPA)
+tts$IPA=gsub(&quot;aua&quot;, &quot;awa&quot;,tts$IPA)
+tts$IPA=gsub(&quot;auo&quot;, &quot;awo&quot;,tts$IPA)
+tts$IPA=gsub(&quot;aue&quot;, &quot;awe&quot;,tts$IPA)
+tts$IPA=gsub(&quot;aiu&quot;, &quot;aju&quot;,tts$IPA)
+tts$IPA=gsub(&quot;aui&quot;, &quot;awi&quot;,tts$IPA)
+tts$IPA=gsub(&quot;aie&quot;, &quot;aje&quot;,tts$IPA)
+tts$IPA=gsub(&quot;gua&quot;, &quot;wa&quot;,tts$IPA)
+tts$IPA=gsub(&quot;gue&quot;, &quot;ge&quot;,tts$IPA)
+tts$IPA=gsub(&quot;gui&quot;, &quot;gi&quot;,tts$IPA)
+tts$IPA=gsub(&quot;í&quot;, &quot;i&quot;,tts$IPA)
+tts$IPA=gsub(&quot;é&quot;, &quot;e&quot;,tts$IPA)
+tts$IPA=gsub(&quot;á&quot;, &quot;a&quot;,tts$IPA)
+tts$IPA=gsub(&quot;ó&quot;, &quot;o&quot;,tts$IPA)
+tts$IPA=gsub(&quot;ú&quot;, &quot;u&quot;,tts$IPA)
+#tts$IPA=gsub(&quot;o&quot;, &quot;u&quot;,tts$IPA) #Kichwa only
+#tts$IPA=gsub(&quot;e&quot;, &quot;i&quot;,tts$IPA) #Kichwa only
+tts$IPA=gsub(&quot;g&quot;, &quot;ɡ&quot;,tts$IPA)
+tts$IPA=gsub(&quot;f&quot;, &quot;ɸ&quot;,tts$IPA)
+tts$IPA=gsub(&quot;h&quot;, &quot;&quot;,tts$IPA)</code></pre>
+<p><img src="tts_images/tts3.jpg" alt="converted to IPA" width="500"/><br />
+<br></p>
+<p>After converting the text to broad IPA, we’re going to convert the
+transcription to syllables so we can later identify the associated wave
+file with each segment/ syllable. To begin, we pass the IPA
+transcription to a new column called <code>Syllable</code>.</p>
+</div>
+<div id="ipa-to-syllables" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> IPA to Syllables</h1>
+<pre class="r"><code>tts$Syllable=tts$IPA</code></pre>
+<p><img src="tts_images/tts4.jpg" alt="syllabification 1" width="700"/><br />
+<br></p>
+<p>Now the syllabification process begins.<br />
+Here, we convert spaces to ‘%’, vowels to ‘V’, onset clusters to $$ and
+single consonants to ‘C’, and onset-coda clusters to CC (this happens
+automatically in the 3rd step).</p>
+<pre class="r"><code>tts$Syllable=gsub(&quot; &quot;, &quot;%&quot;,tts$Syllable)
+tts$Syllable=gsub(&quot;(pl|pɾ|bl|bɾ|tɾ|dɾ|kl|kɾ|ɡl|ɡɾ|ɸl|ɸɾ|ʃn)&quot;, &quot;$$&quot;,tts$Syllable)
+tts$Syllable=gsub(&quot;[^aeoiu%$]&quot;, &quot;C&quot;,tts$Syllable)
+tts$Syllable=gsub(&quot;[aeoiu]&quot;, &quot;V&quot;,tts$Syllable)</code></pre>
+<p>This is a three step process.</p>
+<ul>
+<li>It begins by converting spaces (<code></code>) to a place holder
+(I’m using <code>%</code>)<br />
+</li>
+<li>Next we convert all non vowels (<code>[^aeoiu]</code>) and
+<code>%</code> to <code>C</code>.<br />
+</li>
+<li>Then we convert all vowels (<code>[^aeoiu]</code>) to V.<br />
+</li>
+<li><code>s</code> is a special case. I’ll discuss it below.</li>
+</ul>
+<p><img src="tts_images/tts5.jpg" alt="syllabification 2" width="700"/><br />
+<br></p>
+<p>Now we have to understand Media Lengua’s syllable structure.<br />
+Media Lengua is a (C)(C)V(V)(C)(C) language.</p>
+<ul>
+<li>It contains an obligatory nucleus:
+<ul>
+<li><em>y</em> [ˈi] /<strong>i</strong>/ ‘and’<br />
+</li>
+<li><em>ese</em> [<strong>ˈe̝̝</strong>.se̝] /e.se/ ‘this’</li>
+</ul></li>
+<li>Vowel sequencies are also permitted (we will treat diphthongs &amp;
+hiatus as the some for the purpose of this module, though there are
+phonetic and phonological differences):
+<ul>
+<li><em>ahi</em> [ˈa.i] /<strong>a.i</strong>/</li>
+<li><em>oi-na</em> [o̝.ˈi.na] /<strong>o.i</strong>.na/ ‘hear’<br />
+</li>
+</ul></li>
+<li>Onsets and codas are both permitted:
+<ul>
+<li>Onsets
+<ul>
+<li><em>cada</em> [ˈka.da] /<strong>ka</strong>.<strong>da</strong>/
+‘each’<br />
+</li>
+</ul></li>
+<li>Codas
+<ul>
+<li><em>antes</em> [ˈ<strong>an</strong>.te̝<strong>s</strong>] /an.tes/
+‘before’<br />
+</li>
+</ul></li>
+</ul></li>
+<li>Both onsets and codas are permitted:
+<ul>
+<li><em>bencena</em> [ben.ˈse.na] /<strong>ben</strong>.se.na/ ‘give up,
+resign, defeat’.<br />
+</li>
+</ul></li>
+<li>Both onset and coda clusters are also permitted:
+<ul>
+<li>Onset cluster
+<ul>
+<li><em>flaco</em> [ˈɸla.ko̝] /<strong>ɸla</strong>.ko/ ’skinny;<br />
+</li>
+</ul></li>
+<li>Coda cluster
+<ul>
+<li><em>sexto</em> [’seks.to̝] /se<strong>ks</strong>.to/ ‘sixth’<br />
+</li>
+</ul></li>
+<li>Onset and Coda cluster
+<ul>
+<li><em>flor</em> [ˈɸl.o̝ɾʂ] /ˈ<strong>ɸl</strong>.oɾ/ ‘flower’<br />
+</li>
+</ul></li>
+</ul></li>
+<li>Sequences of 4 consonants can appear with coda + onset clusters
+<ul>
+<li><em>extranjero</em> [e̝ks.tɾan.ˈxe̝.ɾo̝]
+/e<strong>ks.tɾ</strong>an.ˈxe.ɾo/ ‘foreigner’</li>
+</ul></li>
+</ul>
+<p><strong>Special cases:</strong></p>
+<p>In <code>VCC</code> sequencies, the vowel stands alone
+(<code>V.CC</code>)</p>
+<ul>
+<li><em>letra</em> [ˈle.tɾa] /le.<strong>tɾ</strong>a/ ‘letter’
+(CV.<strong>CC</strong>V)<br />
+<br><br />
+One exception to this is <code>s</code>. In these cases, <code>s</code>
+functions as the coda.<br />
+</li>
+<li>In <em>escuela</em> <code>s</code> appears in coda position and
+<code>k</code> as onset.
+<ul>
+<li><em>escuela</em> [e̝s.ˈkwe̝.la] /es.kue.la/ ‘school’.</li>
+</ul></li>
+</ul>
+<p>Understanding this, we can now insert syllable breaks into the
+syllable sequences.</p>
+<pre class="r"><code>#1
+tts$Syllable=gsub(&quot;VCC&quot;, &quot;VC.C&quot;,tts$Syllable)
+#2
+tts$Syllable=gsub(&quot;VC&quot;, &quot;V.C&quot;,tts$Syllable)
+#3
+tts$Syllable=gsub(&quot;V\\.C\\.C&quot;, &quot;VC.C&quot;,tts$Syllable)
+#4
+tts$Syllable=gsub(&quot;\\$\\$&quot;, &quot;.CC&quot;,tts$Syllable)
+#5
+tts$Syllable=gsub(&quot;C\\.C\\.CC&quot;, &quot;CC.CC&quot;,tts$Syllable)
+#6
+tts$Syllable=gsub(&quot;V\\.C\\.CC&quot;, &quot;VC.CC&quot;,tts$Syllable)
+#7
+tts$Syllable=gsub(&quot;C\\.C%&quot;, &quot;CC%&quot;,tts$Syllable)
+#8
+tts$Syllable=gsub(&quot;C\\.C$&quot;, &quot;CC&quot;,tts$Syllable)</code></pre>
+<ol style="list-style-type: decimal">
+<li>Any vowel followed by two consonants is forced into
+<code>VC.C</code>.<br />
+</li>
+</ol>
+<ul>
+<li>Example: <code>VCCV</code> → <code>VC.CV</code>.</li>
+<li>Rationale: Onset clusters have already been converted to
+<code>$$</code>. Media Lengua generally doesn’t allow two
+<em>arbitrary</em> consonants (non clusters) at the onset; so break them
+up into a coda + onset.</li>
+<li>Note: <code>sk</code> clusters break the sonority hierarchy “rule”
+on a micro-scale as fricatives are more sonorous than stops. Recall that
+more sonorous segments should be closer to the vowel nucleus and less
+sonorous segments should be further away. Therefore, we get /es.kwe.la/
+rather than */e.skwe.la/. Also note that /ks/ functions more like an
+affricate, allowing it to form a coda.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>By default, break before any consonant that follows a vowel.<br />
+</li>
+</ol>
+<ul>
+<li>Example: <code>VCV</code> → <code>V.CV</code><br />
+</li>
+<li>This is a “maximal onset” approximation: start new syllables at
+consonants.</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>If the previous rule produced a <code>V.C.C</code> (two dots
+splitting a coda cluster), collapse it back to <code>VC.C</code>.<br />
+</li>
+</ol>
+<ul>
+<li>Example: <code>V.C.CV</code> → <code>VC.CV</code>.<br />
+</li>
+<li>Prevents over-splitting.</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>Handle special clusters we marked with <code>$$</code> (like
+<code>pl</code>, <code>pɾ</code>, <code>bl</code>, <code>bɾ</code>,
+<code>tɾ</code>, <code>dɾ</code>, <code>kl</code>, <code>kɾ</code>,
+<code>gl</code>, <code>gɾ</code>, <code>ɸl</code>, <code>ɸɾ</code>,
+<code>ʃn</code>).<br />
+</li>
+</ol>
+<ul>
+<li>Replace $$ with <code>.CC.</code> We can now mark them as valid
+two-consonant onsets since we’ve taken care of onset-coda cluster
+sequencies</li>
+</ul>
+<ol start="5" style="list-style-type: decimal">
+<li>If a sequence <code>C.C.CC</code> is created, collapse it to
+<code>CC.CC</code>.<br />
+</li>
+</ol>
+<ul>
+<li>Example: <code>VC.C.CCV</code> → <code>VCC.CCV</code> as in
+<em>extrangero</em> /e<strong>ks.tɾ</strong>aŋ.ɡe.ɾo/ ‘foreigner’<br />
+</li>
+<li>This is about handling four-consonant spans cleanly.</li>
+</ul>
+<ol start="6" style="list-style-type: decimal">
+<li>Similar fix as in 8, but for the three-consonant spans.<br />
+</li>
+</ol>
+<ul>
+<li>Ensures something like <code>V.C.CCV</code> becomes
+<code>VC.CCV</code> as in **escribina* /es.kɾi.bi.na/ ‘write’</li>
+</ul>
+<ol start="7" style="list-style-type: decimal">
+<li>Word-final clusters: <code>C.C%</code> → <code>CC%</code><br />
+</li>
+</ol>
+<ul>
+<li>Don’t split consonant clusters at the end of a word.<br />
+</li>
+<li>Example <em>flor</em> [ˈɸl.o<strong>ɾʂ</strong>/ ‘flower’ instead of
+[ˈɸl.o<strong>ɾ</strong>.ʂ/</li>
+</ul>
+<ol start="8" style="list-style-type: decimal">
+<li>Utterance-final version of line 10.<br />
+</li>
+</ol>
+<ul>
+<li>So if the word ends the string, a final <code>C.C</code> is
+collapsed to <code>CC</code>.</li>
+</ul>
+<p><br> I tested the syllable structure with the following words:<br />
+<code>Vospa oracionta aquipica escribipangui Tuyu mamaca nalichu ese cotsata pero este extranjeroca si todo bienmi atsirca. extrangero etrangero escuela pensamiento centimetro coznana, flor, ans</code><br />
+<br><br />
+This resulted in the following structure:<br />
+<code>CVC.CV%V.CV.CVVC.CV%V.CV.CV.CV%VC.CCV.CV.CVC.CV%CV.CV%CV.CV.CV%CV.CV.CV%V.CV%CV.CV.CV%CV.CV%VC.CV%VCC.CCVC.CV.CV.CV%CV%CV.CV%CVVC.CV%V.CVC.CV%VCC.CCVC.CV.CV%V.CCVC.CV.CV%VC.CVV.CV%CVC.CV.CVVC.CV%CVC.CV.CV.CCV%CVC.CV.CV%.CCVCC%VCC</code><br />
+<br> We now have to clean this up.</p>
+<pre class="r"><code>tts$Syllable=gsub(&quot;%\\.&quot;, &quot;&quot;,tts$Syllable)
+tts$Syllable=gsub(&quot;^\\.&quot;, &quot;&quot;,tts$Syllable)
+tts$Syllable=gsub(&quot;\\.$&quot;, &quot;&quot;,tts$Syllable)
+tts$Syllable=gsub(&quot;%&quot;, &quot; &quot;,tts$Syllable)</code></pre>
+<ul>
+<li>We want to get rid of any syllable breaks caused by initial clusters
+(<code>.CC</code>) (this appears in <code>flor</code> in this data). The
+first line does this when a word with an initial cluster appears after a
+space, and the second line does the same in utterance-initial
+position.<br />
+</li>
+<li>We want to remove any syllable breaks at the end of words.
+(<code>C.%</code>) (none appeared in the test data)<br />
+</li>
+<li>We want to revert <code>%</code> back to space
+(<code></code>).<br />
+<br>
+<code>CVC.CV V.CV.CVVC.CV V.CV.CV.CV VC.CCV.CV.CVC.CV CV.CV CV.CV.CV CV.CV.CV V.CV CV.CV.CV CV.CV VC.CV VCC.CCVC.CV.CV.CV CV CV.CV CVVC.CV V.CVC.CV VCC.CCVC.CV.CV V.CCVC.CV.CV VC.CVV.CV CVC.CV.CVVC.CV CVC.CV.CV.CCV CVC.CV.CV CCVCC VCC</code>
+<br> At this point, we want to insert our new syllable breaks back in
+the transcription.<br />
+To do so, we’re going to create a new column called
+<code>breaks</code>.<br />
+</li>
+</ul>
+<pre class="r"><code>tts$breaks=tts$IPA</code></pre>
+<p><img src="tts_images/tts6.jpg" alt="breaks" width="700"/><br />
+<br> We’re now going to use the <code>strsplit</code> function, which is
+an r-basic function. It basically means “split the string at every
+character”.</p>
+<pre class="r"><code>cvs = strsplit(tts$Syllable, &quot;&quot;)[[1]]</code></pre>
+<p><img src="tts_images/cvs.jpg" alt="string to characters" width="700"/><br />
+<br></p>
+<p>We then count the number of syllable breaks (periods) in the
+<code>cvs</code> object. We’ll use this in our
+<code>for loop</code>.</p>
+<pre class="r"><code>num_dots &lt;- sum(cvs == &quot;.&quot;)</code></pre>
+<p><code>45</code> <br> Next, we set up a <code>for loop</code> to place
+the syllable breaks in the IPA transcription.</p>
+<pre class="r"><code>for (i in 1:num_dots){
+    segments = strsplit(tts$breaks, &quot;&quot;)[[1]]
+    cvs = strsplit(tts$Syllable, &quot;&quot;)[[1]]
+    current_dot &lt;- which(cvs == &quot;.&quot;)[i]
+    current_dot = current_dot - 1
+    insert &lt;- append(segments, &quot;.&quot;, after = current_dot)
+    insert_str &lt;- paste0(insert, collapse = &quot;&quot;)
+    tts$breaks &lt;- insert_str
+}</code></pre>
+<ul>
+<li><code>i</code> is the place holder.<br />
+</li>
+<li><code>1:num_dots</code> increases the place holder on each loop
+beginning with 1 and going to 45 (our value in num_dots) - we create a
+new object called <code>segment</code> where we add in the
+<code>breaks</code> column (our IPA transcription) split into
+characters. We’re going doing this on the first row [[1]]. If we had
+multiple rows, we’d have to add in an additional <code>for loop</code>
+and I don’t want to put you through that.<br />
+</li>
+<li>We then do the same for <code>Syllable</code>. We did this
+previously in <code>cvs</code>, but I’m placing it again in the
+loop.<br />
+</li>
+<li><code>current_dot</code> contains the position of each syllable
+break in <code>cvs</code> and changes to the next position on each
+iteration (<code>i</code>).</li>
+<li>We then subtract the position by 1 as we’re going to append the
+period <strong>after</strong> the segment that concludes the
+syllable.<br />
+</li>
+<li>We then use <code>append</code> to put the period. This gets added
+to the object named <code>insert</code>.<br />
+</li>
+<li>This then gets collapsed back into a string.</li>
+<li>This string then gets placed back into <code>breaks</code> to it can
+be iterated through once again in the loop.</li>
+</ul>
+<p><img src="tts_images/loop.jpg" alt="loop broken down" width="900"/><br />
+<br></p>
+<p><strong>NOW</strong>, everything we did would be great if we
+collected a token for each possible syllable combination. We’ve
+currently attempted to collect viable tokens by searching through
+<code>927</code> possible combinations. These include:</p>
+<ul>
+<li>Standalone vowels (-V-:<code>a, i, u, o, e</code>)</li>
+<li>Single onsets (C-: <code>m-, p- ɸ-, ʃ-</code> etc.)</li>
+<li>Open syllables with a single onset, (CV:
+<code>ma-, pi-, ɸo-, ʃu-</code> etc.)</li>
+<li>Open syllables with onset clusters (CCV:
+<code>tɾ-, pɾi-, ɸlo-, ʃna-</code> etc.)</li>
+<li>Single codas (-C: <code>-m, -n, -l, -s</code> etc.)</li>
+<li>Coda clusters (-CC: <code>-ɾʂ</code>)</li>
+<li>I’ve also added two types of <code>pauses</code> a short pause
+between words (which really doesn’t exist in natural speech); and a
+utterance or ‘comma’ pause, which can exist in natural speech.</li>
+</ul>
+<p>If we had attempted to collect every possible syllable combination
+e.g., roughly the 972 open syllable tokens with every potential coda
+(e.g., <code>sion, tɾam, plas</code> etc.), we would have had to sift
+through over <code>16,000 +</code> syllable combinations. Obviously not
+all of these combinations exist in the language (in fact a majority do
+not), but the number (and thus workload) would still be high!</p>
+<p>Because we didn’t do this, we need to structure our syllables based
+on the token pattern we collected.<br />
+Do do this, we just need to isolate codas, which is actually
+straightforward.</p>
+<pre class="r"><code>tts$Syl_tts=tts$Syllable
+tts$Syl_tts=gsub(&quot;VC&quot;, &quot;V.C.&quot;,tts$Syl_tts)
+tts$Syl_tts=gsub(&quot;V.C.C&quot;, &quot;V.CC.&quot;,tts$Syl_tts)</code></pre>
+<p>Here, wherever we have a coda, indicated by a syllable break followed
+by an onset, we just add a period before the coda isolating it.</p>
+<ul>
+<li>Single coda: <code>VC.C</code> → <code>V.C..C</code>
+<ul>
+<li><em>bospa</em> /bospa/ CVC.CV → CV..C.CV ‘you-POSS’<br />
+</li>
+</ul></li>
+<li>Coda cluster: <code>V.C.C</code> → <code>V.CC.</code>
+<ul>
+<li><em>este</em> /este/ VC.CV → V.C..CV ‘this’</li>
+<li><em>extrangero</em> /ekstɾanxeɾo/ VCC.CCVC.CV.CV.CV →
+V.CC..CCV.C..CV.CV.CV ‘foreigner’<br />
+</li>
+<li><em>flor</em> /ɸloɾʂ/ CCVCC → CCV.CC. ‘flower’</li>
+</ul></li>
+</ul>
+<p><img src="tts_images/syltts-1.jpg" alt="fitting syllable structure for the tts" width="900"/><br />
+<br></p>
+<p>As you can see in the previous image, we now have double syllable
+breaks that need to be changed to single breaks. And we potentially
+syllable breaks at the end of the utterance or at the end of a word. We
+need to clean these up by converting double breaks (<code>..</code>) to
+single breaks (<code>.</code>) and removing breaks at the end of words
+(<code>.</code> → <code></code>) and the utterance (<code>.$</code> →
+<code>∅</code>).</p>
+<pre class="r"><code>tts$Syl_tts=gsub(&quot;\\.\\.&quot;, &quot;.&quot;,tts$Syl_tts)
+tts$Syl_tts=gsub(&quot;\\.$&quot;, &quot;&quot;,tts$Syl_tts)
+tts$Syl_tts=gsub(&quot;\\. &quot;, &quot; &quot;,tts$Syl_tts)</code></pre>
+<ul>
+<li><code>..</code> → <code>.</code> as in V.C..C → V.C.C
+<ul>
+<li><em>bospa</em> /bospa/ CVC.CV → CV.C..CV → CV.C.CV ‘you-POSS’<br />
+</li>
+</ul></li>
+<li><code>.</code> → <code></code> as in V.CC.<code></code> →
+V.CC<code></code>
+<ul>
+<li><em>flor<code></code></em> /ɸloɾʂ/ CCVCC<code></code> →
+CCV.CC.<code></code> → CCV.CC<code></code><br />
+</li>
+<li><em>flor$</em> /ɸloɾʂ/ CCVCC$ → CCV.CC.$ → CCV.CC$</li>
+</ul></li>
+</ul>
+<p><img src="tts_images/syltts.jpg" alt="fitting syllable structure for the tts" width="900"/><br />
+<br></p>
+<p>Now we can create a new column with the IPA transcription to insert
+the syllable breaks that aling with our tts tokens.</p>
+<pre class="r"><code>tts$breaks_tts=tts$IPA</code></pre>
+<p>In both <code>breaks_tts</code> and <code>Syl_tts</code>, I’m going
+to substitute spaces (<code></code>) for <code>P</code> which will
+insert a pause between each word. I have this set to 80 ms, just so we
+can more readily identify word boundaries. In natural speech, an actual
+pause between each word does not happen!</p>
+<pre class="r"><code>tts$Syl_tts=gsub(&quot; &quot;, &quot;P&quot;,tts$Syl_tts)
+tts$breaks_tts=gsub(&quot; &quot;, &quot;P&quot;,tts$breaks_tts)</code></pre>
+<ul>
+<li>The first line substitutes a space (<code></code>) with
+<code>P</code> in the <code>Syl_tts</code> column.<br />
+</li>
+<li>The second line substitutes a space (<code></code>) with
+<code>P</code> in the <code>breaks_tts</code> column.</li>
+</ul>
+<p>Next, we just repeat the previous code as we prep for the
+<code>for loop</code>.</p>
+<pre class="r"><code>cvs_tts = strsplit(tts$Syl_tts, &quot;&quot;)[[1]]
+num_dots_tts &lt;- sum(cvs_tts == &quot;.&quot;)</code></pre>
+<ul>
+<li><code>cvs_tts</code> splits the string into individual
+characters.<br />
+</li>
+<li><code>num_dots_tts</code> counts the number of syllable breaks
+(periods).</li>
+</ul>
+<p><img src="tts_images/syltts2.jpg" alt="string to characters and counting dots" width="900"/><br />
+<br></p>
+<p>This is the exact same <code>for loop</code> previously described,
+but with the new column names replacing the old.</p>
+<pre class="r"><code>for (i in 1:num_dots_tts){
+    segments1 = strsplit(tts$breaks_tts, &quot;&quot;)[[1]]
+    cvs_tss = strsplit(tts$Syl_tts, &quot;&quot;)[[1]]
+    current_dot &lt;- which(cvs_tts == &quot;.&quot;)[i]
+    current_dot = current_dot - 1
+    insert &lt;- append(segments1, &quot;.&quot;, after = current_dot)
+    insert_str &lt;- paste0(insert, collapse = &quot;&quot;)
+    tts$breaks_tts &lt;- insert_str
+}</code></pre>
+<p><img src="tts_images/syltts2.jpg" alt="inserting tts dots into IPA" width="900"/><br />
+<br></p>
+<p>Now we’re going to codify the transcription</p>
+<pre class="r"><code>#1
+tts$breaks_tts=gsub(&quot;\\.(.)\\.&quot;, &quot;.C\\1.&quot;, tts$breaks_tts)
+#2
+tts$breaks_tts=gsub(&quot;\\.([^aeiou])P&quot;, &quot;.C\\1P&quot;, tts$breaks_tts)
+#3
+tts$breaks_tts=gsub(&quot;\\.([^aeiou][^aeiou])\\.&quot;, &quot;.C\\1.&quot;, tts$breaks_tts)
+#4
+tts$breaks_tts=gsub(&quot;\\.([^aeiou][^aeiou])P&quot;, &quot;.C\\1P&quot;, tts$breaks_tts)
+#5
+tts$breaks_tts=gsub(&quot;\\.([^aeiou][^aeiou])$&quot;, &quot;.C\\1&quot;, tts$breaks_tts)
+#6
+tts$breaks_tts=gsub(&quot;CC&quot;, &quot;C&quot;, tts$breaks_tts)
+#7
+tts$breaks_tts=gsub(&quot;P&quot;, &quot;.P.&quot;, tts$breaks_tts)</code></pre>
+<ul>
+<li>The first line adds a capital C (making it capital is important)
+after a syllable break that follows anything followed by another
+syllable break. Putting “anything” (<code>.</code>) in parentheses keeps
+whatever it is and allows us to insert back in using <code>\\1</code> in
+the replacement function. This marks all codas with a <code>C</code>.
+Capital <code>C</code> is not an IPA character, so it won’t get in the
+way. Lower case <code>c</code> is an IPA character.
+<ul>
+<li>Example: <em>bospa</em> /bo.s.pa/ → /bo.Cs.pa/ ‘you-POSS’<br />
+</li>
+</ul></li>
+<li>The second line adds a <code>C</code> when the word ends in a
+non-vowel (consonant) followed by a Pause
+(<code>\\.[^aeiou]P</code>)<br />
+</li>
+<li>The third line is the same, but with word-internal coda
+clusters.<br />
+</li>
+<li>The fourth line is the same, but with coda clusters before a
+pause.<br />
+</li>
+<li>The fifth line is the same, but with coda clusters at the end of an
+utterance.<br />
+</li>
+<li>The sixth changes <code>CC</code> to <code>C</code>. Double
+<code>CC</code>’s were created in the process.<br />
+</li>
+<li>The seventh line makes P it’s own syllable, by placing periods
+before and after it. This will be used to call the <code>pause</code>
+wave file later on.
+<ul>
+<li>Note that we can use <code>P</code> as a meta character since it’s
+not IPA. Make sure it’s capitalized though as lower case <code>p</code>
+is an IPA character.<br />
+<br></li>
+</ul></li>
+</ul>
+</div>
+<div id="linking-sound-tokens" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> Linking sound
+tokens</h1>
+<p>Our string is now parsed up in accordance with our wave files.<br />
+Next, we tell r where our files are located on our harddrive.</p>
+<pre class="r"><code>units_dir = &quot;C:/Courses/CompLING/tts/tokens&quot;  </code></pre>
+<p>-Here, we put our directory name in the object called
+<code>units_dir</code>.</p>
+<p>Now, We now have to tell R what the IPA and sound file equivalences
+are. Basically, we need to link up the segmented transcriptions, based
+on the periods, to the sound files. To do this, we need to write a large
+object that says “IPA symbol X = wave file X”. We’re going to build this
+in Excel since that’s were we have our original “potential syllables”
+are located. Copy your data into two rows. The first row will be every
+token you cut in IPA. Like so:</p>
+<p><img src="tts_images/link1.jpg" alt="linking ipa to wav 1" width="800"/><br />
+<br></p>
+<p>Then we place the file names of each token from the second matrix in
+the spreadsheet.</p>
+<p><img src="tts_images/link2.jpg" alt="linking ipa to wav 2" width="800"/><br />
+<br></p>
+<p>Next, in column <code>C</code>, we entire the following code:</p>
+<pre class="excel"><code>=A1&amp;&quot; = file.path(units_dir,&quot;&quot;&quot;&amp;B1&amp;&quot;&quot;&quot;),&quot;</code></pre>
+<p>This code reads: - Copy the contents of cell <code>A1</code> (the IPA
+symbol) and (<code>&amp;</code>) the text
+<code>= file.path(units_dir,"</code> (this will be r code assigning the
+name of the wave file to the object (the IPA symbol) once we copy it
+over). - The final quote needs to be escaped as it’s a meta character in
+Excel. To escape a meta character (and to make things more complicated,
+we use another quote; so <code>""</code>. We then have our closed quote,
+so <code>"""</code> 🙄.<br />
+- And (<code>&amp;</code>) then we copy in the contents of B1 (the name
+of the associated wave file).<br />
+- Then we add the following text after B1 <code>",</code> - The first
+and last quotes encapsulate the text. The second quote removes the meta
+character function of the third quote, which is now text, so
+<code>"""</code>🙄, followed by a comma, resulting in <code>"),</code>.
+This will be r code to close the name of the wave file and the comma is
+used to start the next line.<br />
+- We then pull this code to the bottom of the data (or double click the
+box in the bottom right corner of the cell)</p>
+<p><img src="tts_images/link3.jpg" alt="linking ipa to wav 3" width="300"/><br />
+<br></p>
+<p>We could remove the text in red, but in the off chance that these
+represent actual syllables, which were not picked up in the dictionary,
+we’ll keep them. Better unused lines of code that might be useable in
+the future, rather than missing lines of code that we have to replace
+later. Some may disagree, but I’m more about practicality than
+efficiency of the code (this might be heresy to some programmers).</p>
+<p>We then copy this string of code into our text editor (make sure it’s
+set for UTF-8), then paste it in.</p>
+<p><img src="tts_images/link4.jpg" alt="linking ipa to wav 4" width="300"/><br />
+<br></p>
+<p>Then, at the top, we’ll define our object name, and encapsulate the
+code in <code>c()</code>.</p>
+<p><img src="tts_images/link5.jpg" alt="linking ipa to wav 5" width="300"/><br />
+<br></p>
+<p>Finally, at the bottom of the code, we’re going to add two more
+strings.<br />
+One for pauses between words and one for utterance final or ‘comma’
+pauses.</p>
+<pre class="r"><code>P = file.path(units_dir,&quot;pause.wav&quot;),
+D = file.path(units_dir,&quot;dot.wav&quot;)
+)</code></pre>
+<p><strong>NOTE:</strong> The final string does not end in a comma as
+there is no continuation. A final parenthesis (<code>)</code>), is also
+needed to close off the string.</p>
+<details>
+<summary>
+Click here to reveal the r code:
+</summary>
+<pre class="r"><code>convert &lt;- c(
+i = file.path(units_dir,&quot;i.wav&quot;), 
+u = file.path(units_dir,&quot;u.wav&quot;), 
+e = file.path(units_dir,&quot;e.wav&quot;), 
+o = file.path(units_dir,&quot;o.wav&quot;), 
+a = file.path(units_dir,&quot;a.wav&quot;), 
+ia = file.path(units_dir,&quot;ia.wav&quot;), 
+ie = file.path(units_dir,&quot;ie.wav&quot;), 
+io = file.path(units_dir,&quot;io.wav&quot;), 
+iu = file.path(units_dir,&quot;iu.wav&quot;), 
+ua = file.path(units_dir,&quot;ua.wav&quot;), 
+ui = file.path(units_dir,&quot;ui.wav&quot;), 
+uo = file.path(units_dir,&quot;uo.wav&quot;), 
+ea = file.path(units_dir,&quot;ea.wav&quot;), 
+ei = file.path(units_dir,&quot;ei.wav&quot;), 
+eo = file.path(units_dir,&quot;eo.wav&quot;), 
+eu = file.path(units_dir,&quot;eu.wav&quot;), 
+oa = file.path(units_dir,&quot;oa.wav&quot;), 
+oe = file.path(units_dir,&quot;oe.wav&quot;), 
+oi = file.path(units_dir,&quot;oi.wav&quot;), 
+ae = file.path(units_dir,&quot;ae.wav&quot;), 
+ai = file.path(units_dir,&quot;ai.wav&quot;), 
+ao = file.path(units_dir,&quot;ao.wav&quot;), 
+au = file.path(units_dir,&quot;au.wav&quot;), 
+mi = file.path(units_dir,&quot;mi.wav&quot;), 
+mu = file.path(units_dir,&quot;mu.wav&quot;), 
+me = file.path(units_dir,&quot;me.wav&quot;), 
+mo = file.path(units_dir,&quot;mo.wav&quot;), 
+ma = file.path(units_dir,&quot;ma.wav&quot;), 
+mia = file.path(units_dir,&quot;mia.wav&quot;), 
+mie = file.path(units_dir,&quot;mie.wav&quot;), 
+mio = file.path(units_dir,&quot;mio.wav&quot;), 
+miu = file.path(units_dir,&quot;miu.wav&quot;), 
+mua = file.path(units_dir,&quot;mua.wav&quot;), 
+mui = file.path(units_dir,&quot;mui.wav&quot;), 
+muo = file.path(units_dir,&quot;muo.wav&quot;), 
+mea = file.path(units_dir,&quot;mea.wav&quot;), 
+mei = file.path(units_dir,&quot;mei.wav&quot;), 
+meo = file.path(units_dir,&quot;meo.wav&quot;), 
+meu = file.path(units_dir,&quot;meu.wav&quot;), 
+moa = file.path(units_dir,&quot;moa.wav&quot;), 
+moe = file.path(units_dir,&quot;moe.wav&quot;), 
+moi = file.path(units_dir,&quot;moi.wav&quot;), 
+mae = file.path(units_dir,&quot;mae.wav&quot;), 
+mai = file.path(units_dir,&quot;mai.wav&quot;), 
+mao = file.path(units_dir,&quot;mao.wav&quot;), 
+mau = file.path(units_dir,&quot;mau.wav&quot;), 
+pi = file.path(units_dir,&quot;pi.wav&quot;), 
+pu = file.path(units_dir,&quot;pu.wav&quot;), 
+pe = file.path(units_dir,&quot;pe.wav&quot;), 
+po = file.path(units_dir,&quot;po.wav&quot;), 
+pa = file.path(units_dir,&quot;pa.wav&quot;), 
+pia = file.path(units_dir,&quot;pia.wav&quot;), 
+pie = file.path(units_dir,&quot;pie.wav&quot;), 
+pio = file.path(units_dir,&quot;pio.wav&quot;), 
+piu = file.path(units_dir,&quot;piu.wav&quot;), 
+pua = file.path(units_dir,&quot;pua.wav&quot;), 
+pui = file.path(units_dir,&quot;pui.wav&quot;), 
+puo = file.path(units_dir,&quot;puo.wav&quot;), 
+pea = file.path(units_dir,&quot;pea.wav&quot;), 
+pei = file.path(units_dir,&quot;pei.wav&quot;), 
+peo = file.path(units_dir,&quot;peo.wav&quot;), 
+peu = file.path(units_dir,&quot;peu.wav&quot;), 
+poa = file.path(units_dir,&quot;poa.wav&quot;), 
+poe = file.path(units_dir,&quot;poe.wav&quot;), 
+poi = file.path(units_dir,&quot;poi.wav&quot;), 
+pae = file.path(units_dir,&quot;pae.wav&quot;), 
+pai = file.path(units_dir,&quot;pai.wav&quot;), 
+pao = file.path(units_dir,&quot;pao.wav&quot;), 
+pau = file.path(units_dir,&quot;pau.wav&quot;), 
+bi = file.path(units_dir,&quot;bi.wav&quot;), 
+bu = file.path(units_dir,&quot;bu.wav&quot;), 
+be = file.path(units_dir,&quot;be.wav&quot;), 
+bo = file.path(units_dir,&quot;bo.wav&quot;), 
+ba = file.path(units_dir,&quot;ba.wav&quot;), 
+bia = file.path(units_dir,&quot;bia.wav&quot;), 
+bie = file.path(units_dir,&quot;bie.wav&quot;), 
+bio = file.path(units_dir,&quot;bio.wav&quot;), 
+biu = file.path(units_dir,&quot;biu.wav&quot;), 
+bua = file.path(units_dir,&quot;bua.wav&quot;), 
+bui = file.path(units_dir,&quot;bui.wav&quot;), 
+buo = file.path(units_dir,&quot;buo.wav&quot;), 
+bea = file.path(units_dir,&quot;bea.wav&quot;), 
+bei = file.path(units_dir,&quot;bei.wav&quot;), 
+beo = file.path(units_dir,&quot;beo.wav&quot;), 
+beu = file.path(units_dir,&quot;beu.wav&quot;), 
+boa = file.path(units_dir,&quot;boa.wav&quot;), 
+boe = file.path(units_dir,&quot;boe.wav&quot;), 
+boi = file.path(units_dir,&quot;boi.wav&quot;), 
+bae = file.path(units_dir,&quot;bae.wav&quot;), 
+bai = file.path(units_dir,&quot;bai.wav&quot;), 
+bao = file.path(units_dir,&quot;bao.wav&quot;), 
+bau = file.path(units_dir,&quot;bau.wav&quot;), 
+wi = file.path(units_dir,&quot;wi.wav&quot;), 
+wu = file.path(units_dir,&quot;wu.wav&quot;), 
+we = file.path(units_dir,&quot;we.wav&quot;), 
+wo = file.path(units_dir,&quot;wo.wav&quot;), 
+wa = file.path(units_dir,&quot;wa.wav&quot;), 
+wia = file.path(units_dir,&quot;wia.wav&quot;), 
+wie = file.path(units_dir,&quot;wie.wav&quot;), 
+wio = file.path(units_dir,&quot;wio.wav&quot;), 
+wiu = file.path(units_dir,&quot;wiu.wav&quot;), 
+wua = file.path(units_dir,&quot;wua.wav&quot;), 
+wui = file.path(units_dir,&quot;wui.wav&quot;), 
+wuo = file.path(units_dir,&quot;wuo.wav&quot;), 
+wea = file.path(units_dir,&quot;wea.wav&quot;), 
+wei = file.path(units_dir,&quot;wei.wav&quot;), 
+weo = file.path(units_dir,&quot;weo.wav&quot;), 
+weu = file.path(units_dir,&quot;weu.wav&quot;), 
+woa = file.path(units_dir,&quot;woa.wav&quot;), 
+woe = file.path(units_dir,&quot;woe.wav&quot;), 
+woi = file.path(units_dir,&quot;woi.wav&quot;), 
+wae = file.path(units_dir,&quot;wae.wav&quot;), 
+wai = file.path(units_dir,&quot;wai.wav&quot;), 
+wao = file.path(units_dir,&quot;wao.wav&quot;), 
+wau = file.path(units_dir,&quot;wau.wav&quot;), 
+ni = file.path(units_dir,&quot;ni.wav&quot;), 
+nu = file.path(units_dir,&quot;nu.wav&quot;), 
+ne = file.path(units_dir,&quot;ne.wav&quot;), 
+no = file.path(units_dir,&quot;no.wav&quot;), 
+na = file.path(units_dir,&quot;na.wav&quot;), 
+nia = file.path(units_dir,&quot;nia.wav&quot;), 
+nie = file.path(units_dir,&quot;nie.wav&quot;), 
+nio = file.path(units_dir,&quot;nio.wav&quot;), 
+niu = file.path(units_dir,&quot;niu.wav&quot;), 
+nua = file.path(units_dir,&quot;nua.wav&quot;), 
+nui = file.path(units_dir,&quot;nui.wav&quot;), 
+nuo = file.path(units_dir,&quot;nuo.wav&quot;), 
+nea = file.path(units_dir,&quot;nea.wav&quot;), 
+nei = file.path(units_dir,&quot;nei.wav&quot;), 
+neo = file.path(units_dir,&quot;neo.wav&quot;), 
+neu = file.path(units_dir,&quot;neu.wav&quot;), 
+noa = file.path(units_dir,&quot;noa.wav&quot;), 
+noe = file.path(units_dir,&quot;noe.wav&quot;), 
+noi = file.path(units_dir,&quot;noi.wav&quot;), 
+nae = file.path(units_dir,&quot;nae.wav&quot;), 
+nai = file.path(units_dir,&quot;nai.wav&quot;), 
+nao = file.path(units_dir,&quot;nao.wav&quot;), 
+nau = file.path(units_dir,&quot;nau.wav&quot;), 
+ti = file.path(units_dir,&quot;ti.wav&quot;), 
+tu = file.path(units_dir,&quot;tu.wav&quot;), 
+te = file.path(units_dir,&quot;te.wav&quot;), 
+to = file.path(units_dir,&quot;to.wav&quot;), 
+ta = file.path(units_dir,&quot;ta.wav&quot;), 
+tia = file.path(units_dir,&quot;tia.wav&quot;), 
+tie = file.path(units_dir,&quot;tie.wav&quot;), 
+tio = file.path(units_dir,&quot;tio.wav&quot;), 
+tiu = file.path(units_dir,&quot;tiu.wav&quot;), 
+tua = file.path(units_dir,&quot;tua.wav&quot;), 
+tui = file.path(units_dir,&quot;tui.wav&quot;), 
+tuo = file.path(units_dir,&quot;tuo.wav&quot;), 
+tea = file.path(units_dir,&quot;tea.wav&quot;), 
+tei = file.path(units_dir,&quot;tei.wav&quot;), 
+teo = file.path(units_dir,&quot;teo.wav&quot;), 
+teu = file.path(units_dir,&quot;teu.wav&quot;), 
+toa = file.path(units_dir,&quot;toa.wav&quot;), 
+toe = file.path(units_dir,&quot;toe.wav&quot;), 
+toi = file.path(units_dir,&quot;toi.wav&quot;), 
+tae = file.path(units_dir,&quot;tae.wav&quot;), 
+tai = file.path(units_dir,&quot;tai.wav&quot;), 
+tao = file.path(units_dir,&quot;tao.wav&quot;), 
+tau = file.path(units_dir,&quot;tau.wav&quot;), 
+di = file.path(units_dir,&quot;di.wav&quot;), 
+du = file.path(units_dir,&quot;du.wav&quot;), 
+de = file.path(units_dir,&quot;de.wav&quot;), 
+do = file.path(units_dir,&quot;do.wav&quot;), 
+da = file.path(units_dir,&quot;da.wav&quot;), 
+dia = file.path(units_dir,&quot;dia.wav&quot;), 
+die = file.path(units_dir,&quot;die.wav&quot;), 
+dio = file.path(units_dir,&quot;dio.wav&quot;), 
+diu = file.path(units_dir,&quot;diu.wav&quot;), 
+dua = file.path(units_dir,&quot;dua.wav&quot;), 
+dui = file.path(units_dir,&quot;dui.wav&quot;), 
+duo = file.path(units_dir,&quot;duo.wav&quot;), 
+dea = file.path(units_dir,&quot;dea.wav&quot;), 
+dei = file.path(units_dir,&quot;dei.wav&quot;), 
+deo = file.path(units_dir,&quot;deo.wav&quot;), 
+deu = file.path(units_dir,&quot;deu.wav&quot;), 
+doa = file.path(units_dir,&quot;doa.wav&quot;), 
+doe = file.path(units_dir,&quot;doe.wav&quot;), 
+doi = file.path(units_dir,&quot;doi.wav&quot;), 
+dae = file.path(units_dir,&quot;dae.wav&quot;), 
+dai = file.path(units_dir,&quot;dai.wav&quot;), 
+dao = file.path(units_dir,&quot;dao.wav&quot;), 
+dau = file.path(units_dir,&quot;dau.wav&quot;), 
+li = file.path(units_dir,&quot;li.wav&quot;), 
+lu = file.path(units_dir,&quot;lu.wav&quot;), 
+le = file.path(units_dir,&quot;le.wav&quot;), 
+lo = file.path(units_dir,&quot;lo.wav&quot;), 
+la = file.path(units_dir,&quot;la.wav&quot;), 
+lia = file.path(units_dir,&quot;lia.wav&quot;), 
+lie = file.path(units_dir,&quot;lie.wav&quot;), 
+lio = file.path(units_dir,&quot;lio.wav&quot;), 
+liu = file.path(units_dir,&quot;liu.wav&quot;), 
+lua = file.path(units_dir,&quot;lua.wav&quot;), 
+lui = file.path(units_dir,&quot;lui.wav&quot;), 
+luo = file.path(units_dir,&quot;luo.wav&quot;), 
+lea = file.path(units_dir,&quot;lea.wav&quot;), 
+lei = file.path(units_dir,&quot;lei.wav&quot;), 
+leo = file.path(units_dir,&quot;leo.wav&quot;), 
+leu = file.path(units_dir,&quot;leu.wav&quot;), 
+loa = file.path(units_dir,&quot;loa.wav&quot;), 
+loe = file.path(units_dir,&quot;loe.wav&quot;), 
+loi = file.path(units_dir,&quot;loi.wav&quot;), 
+lae = file.path(units_dir,&quot;lae.wav&quot;), 
+lai = file.path(units_dir,&quot;lai.wav&quot;), 
+lao = file.path(units_dir,&quot;lao.wav&quot;), 
+lau = file.path(units_dir,&quot;lau.wav&quot;), 
+si = file.path(units_dir,&quot;si.wav&quot;), 
+su = file.path(units_dir,&quot;su.wav&quot;), 
+se = file.path(units_dir,&quot;se.wav&quot;), 
+so = file.path(units_dir,&quot;so.wav&quot;), 
+sa = file.path(units_dir,&quot;sa.wav&quot;), 
+sia = file.path(units_dir,&quot;sia.wav&quot;), 
+sie = file.path(units_dir,&quot;sie.wav&quot;), 
+sio = file.path(units_dir,&quot;sio.wav&quot;), 
+siu = file.path(units_dir,&quot;siu.wav&quot;), 
+sua = file.path(units_dir,&quot;sua.wav&quot;), 
+sui = file.path(units_dir,&quot;sui.wav&quot;), 
+suo = file.path(units_dir,&quot;suo.wav&quot;), 
+sea = file.path(units_dir,&quot;sea.wav&quot;), 
+sei = file.path(units_dir,&quot;sei.wav&quot;), 
+seo = file.path(units_dir,&quot;seo.wav&quot;), 
+seu = file.path(units_dir,&quot;seu.wav&quot;), 
+soa = file.path(units_dir,&quot;soa.wav&quot;), 
+soe = file.path(units_dir,&quot;soe.wav&quot;), 
+soi = file.path(units_dir,&quot;soi.wav&quot;), 
+sae = file.path(units_dir,&quot;sae.wav&quot;), 
+sai = file.path(units_dir,&quot;sai.wav&quot;), 
+sao = file.path(units_dir,&quot;sao.wav&quot;), 
+sau = file.path(units_dir,&quot;sau.wav&quot;), 
+zi = file.path(units_dir,&quot;zi.wav&quot;), 
+zu = file.path(units_dir,&quot;zu.wav&quot;), 
+ze = file.path(units_dir,&quot;ze.wav&quot;), 
+zo = file.path(units_dir,&quot;zo.wav&quot;), 
+za = file.path(units_dir,&quot;za.wav&quot;), 
+zia = file.path(units_dir,&quot;zia.wav&quot;), 
+zie = file.path(units_dir,&quot;zie.wav&quot;), 
+zio = file.path(units_dir,&quot;zio.wav&quot;), 
+ziu = file.path(units_dir,&quot;ziu.wav&quot;), 
+zua = file.path(units_dir,&quot;zua.wav&quot;), 
+zui = file.path(units_dir,&quot;zui.wav&quot;), 
+zuo = file.path(units_dir,&quot;zuo.wav&quot;), 
+zea = file.path(units_dir,&quot;zea.wav&quot;), 
+zei = file.path(units_dir,&quot;zei.wav&quot;), 
+zeo = file.path(units_dir,&quot;zeo.wav&quot;), 
+zeu = file.path(units_dir,&quot;zeu.wav&quot;), 
+zoa = file.path(units_dir,&quot;zoa.wav&quot;), 
+zoe = file.path(units_dir,&quot;zoe.wav&quot;), 
+zoi = file.path(units_dir,&quot;zoi.wav&quot;), 
+zae = file.path(units_dir,&quot;zae.wav&quot;), 
+zai = file.path(units_dir,&quot;zai.wav&quot;), 
+zao = file.path(units_dir,&quot;zao.wav&quot;), 
+zau = file.path(units_dir,&quot;zau.wav&quot;), 
+ɾi = file.path(units_dir,&quot;ri.wav&quot;), 
+ɾu = file.path(units_dir,&quot;ru.wav&quot;), 
+ɾe = file.path(units_dir,&quot;re.wav&quot;), 
+ɾo = file.path(units_dir,&quot;ro.wav&quot;), 
+ɾa = file.path(units_dir,&quot;ra.wav&quot;), 
+ɾia = file.path(units_dir,&quot;ria.wav&quot;), 
+ɾie = file.path(units_dir,&quot;rie.wav&quot;), 
+ɾio = file.path(units_dir,&quot;rio.wav&quot;), 
+ɾiu = file.path(units_dir,&quot;riu.wav&quot;), 
+ɾua = file.path(units_dir,&quot;rua.wav&quot;), 
+ɾui = file.path(units_dir,&quot;rui.wav&quot;), 
+ɾuo = file.path(units_dir,&quot;ruo.wav&quot;), 
+ɾea = file.path(units_dir,&quot;rea.wav&quot;), 
+ɾei = file.path(units_dir,&quot;rei.wav&quot;), 
+ɾeo = file.path(units_dir,&quot;reo.wav&quot;), 
+ɾeu = file.path(units_dir,&quot;reu.wav&quot;), 
+ɾoa = file.path(units_dir,&quot;roa.wav&quot;), 
+ɾoe = file.path(units_dir,&quot;roe.wav&quot;), 
+ɾoi = file.path(units_dir,&quot;roi.wav&quot;), 
+ɾae = file.path(units_dir,&quot;rae.wav&quot;), 
+ɾai = file.path(units_dir,&quot;rai.wav&quot;), 
+ɾao = file.path(units_dir,&quot;rao.wav&quot;), 
+ɾau = file.path(units_dir,&quot;rau.wav&quot;), 
+ʃi = file.path(units_dir,&quot;shi.wav&quot;), 
+ʃu = file.path(units_dir,&quot;shu.wav&quot;), 
+ʃe = file.path(units_dir,&quot;she.wav&quot;), 
+ʃo = file.path(units_dir,&quot;sho.wav&quot;), 
+ʃa = file.path(units_dir,&quot;sha.wav&quot;), 
+ʃia = file.path(units_dir,&quot;shia.wav&quot;), 
+ʃie = file.path(units_dir,&quot;shie.wav&quot;), 
+ʃio = file.path(units_dir,&quot;shio.wav&quot;), 
+ʃiu = file.path(units_dir,&quot;shiu.wav&quot;), 
+ʃua = file.path(units_dir,&quot;shua.wav&quot;), 
+ʃui = file.path(units_dir,&quot;shui.wav&quot;), 
+ʃuo = file.path(units_dir,&quot;shuo.wav&quot;), 
+ʃea = file.path(units_dir,&quot;shea.wav&quot;), 
+ʃei = file.path(units_dir,&quot;shei.wav&quot;), 
+ʃeo = file.path(units_dir,&quot;sheo.wav&quot;), 
+ʃeu = file.path(units_dir,&quot;sheu.wav&quot;), 
+ʃoa = file.path(units_dir,&quot;shoa.wav&quot;), 
+ʃoe = file.path(units_dir,&quot;shoe.wav&quot;), 
+ʃoi = file.path(units_dir,&quot;shoi.wav&quot;), 
+ʃae = file.path(units_dir,&quot;shae.wav&quot;), 
+ʃai = file.path(units_dir,&quot;shai.wav&quot;), 
+ʃao = file.path(units_dir,&quot;shao.wav&quot;), 
+ʃau = file.path(units_dir,&quot;shau.wav&quot;), 
+ʒi = file.path(units_dir,&quot;lli.wav&quot;), 
+ʒu = file.path(units_dir,&quot;llu.wav&quot;), 
+ʒe = file.path(units_dir,&quot;lle.wav&quot;), 
+ʒo = file.path(units_dir,&quot;llo.wav&quot;), 
+ʒa = file.path(units_dir,&quot;lla.wav&quot;), 
+ʒia = file.path(units_dir,&quot;llia.wav&quot;), 
+ʒie = file.path(units_dir,&quot;llie.wav&quot;), 
+ʒio = file.path(units_dir,&quot;llio.wav&quot;), 
+ʒiu = file.path(units_dir,&quot;lliu.wav&quot;), 
+ʒua = file.path(units_dir,&quot;llua.wav&quot;), 
+ʒui = file.path(units_dir,&quot;llui.wav&quot;), 
+ʒuo = file.path(units_dir,&quot;lluo.wav&quot;), 
+ʒea = file.path(units_dir,&quot;llea.wav&quot;), 
+ʒei = file.path(units_dir,&quot;llei.wav&quot;), 
+ʒeo = file.path(units_dir,&quot;lleo.wav&quot;), 
+ʒeu = file.path(units_dir,&quot;lleu.wav&quot;), 
+ʒoa = file.path(units_dir,&quot;lloa.wav&quot;), 
+ʒoe = file.path(units_dir,&quot;lloe.wav&quot;), 
+ʒoi = file.path(units_dir,&quot;lloi.wav&quot;), 
+ʒae = file.path(units_dir,&quot;llae.wav&quot;), 
+ʒai = file.path(units_dir,&quot;llai.wav&quot;), 
+ʒao = file.path(units_dir,&quot;llao.wav&quot;), 
+ʒau = file.path(units_dir,&quot;llau.wav&quot;), 
+ʐi = file.path(units_dir,&quot;rri.wav&quot;), 
+ʐu = file.path(units_dir,&quot;rru.wav&quot;), 
+ʐe = file.path(units_dir,&quot;rre.wav&quot;), 
+ʐo = file.path(units_dir,&quot;rro.wav&quot;), 
+ʐa = file.path(units_dir,&quot;rra.wav&quot;), 
+ʐia = file.path(units_dir,&quot;rria.wav&quot;), 
+ʐie = file.path(units_dir,&quot;rrie.wav&quot;), 
+ʐio = file.path(units_dir,&quot;rrio.wav&quot;), 
+ʐiu = file.path(units_dir,&quot;rriu.wav&quot;), 
+ʐua = file.path(units_dir,&quot;rrua.wav&quot;), 
+ʐui = file.path(units_dir,&quot;rrui.wav&quot;), 
+ʐuo = file.path(units_dir,&quot;rruo.wav&quot;), 
+ʐea = file.path(units_dir,&quot;rrea.wav&quot;), 
+ʐei = file.path(units_dir,&quot;rrei.wav&quot;), 
+ʐeo = file.path(units_dir,&quot;rreo.wav&quot;), 
+ʐeu = file.path(units_dir,&quot;rreu.wav&quot;), 
+ʐoa = file.path(units_dir,&quot;rroa.wav&quot;), 
+ʐoe = file.path(units_dir,&quot;rroe.wav&quot;), 
+ʐoi = file.path(units_dir,&quot;rroi.wav&quot;), 
+ʐae = file.path(units_dir,&quot;rrae.wav&quot;), 
+ʐai = file.path(units_dir,&quot;rrai.wav&quot;), 
+ʐao = file.path(units_dir,&quot;rrao.wav&quot;), 
+ʐau = file.path(units_dir,&quot;rrau.wav&quot;), 
+ɲi = file.path(units_dir,&quot;nhi.wav&quot;), 
+ɲu = file.path(units_dir,&quot;nhu.wav&quot;), 
+ɲe = file.path(units_dir,&quot;nhe.wav&quot;), 
+ɲo = file.path(units_dir,&quot;nho.wav&quot;), 
+ɲa = file.path(units_dir,&quot;nha.wav&quot;), 
+ɲia = file.path(units_dir,&quot;nhia.wav&quot;), 
+ɲie = file.path(units_dir,&quot;nhie.wav&quot;), 
+ɲio = file.path(units_dir,&quot;nhio.wav&quot;), 
+ɲiu = file.path(units_dir,&quot;nhiu.wav&quot;), 
+ɲua = file.path(units_dir,&quot;nhua.wav&quot;), 
+ɲui = file.path(units_dir,&quot;nhui.wav&quot;), 
+ɲuo = file.path(units_dir,&quot;nhuo.wav&quot;), 
+ɲea = file.path(units_dir,&quot;nhea.wav&quot;), 
+ɲei = file.path(units_dir,&quot;nhei.wav&quot;), 
+ɲeo = file.path(units_dir,&quot;nheo.wav&quot;), 
+ɲeu = file.path(units_dir,&quot;nheu.wav&quot;), 
+ɲoa = file.path(units_dir,&quot;nhoa.wav&quot;), 
+ɲoe = file.path(units_dir,&quot;nhoe.wav&quot;), 
+ɲoi = file.path(units_dir,&quot;nhoi.wav&quot;), 
+ɲae = file.path(units_dir,&quot;nhae.wav&quot;), 
+ɲai = file.path(units_dir,&quot;nhai.wav&quot;), 
+ɲao = file.path(units_dir,&quot;nhao.wav&quot;), 
+ɲau = file.path(units_dir,&quot;nhau.wav&quot;), 
+ji = file.path(units_dir,&quot;ji.wav&quot;), 
+ju = file.path(units_dir,&quot;ju.wav&quot;), 
+je = file.path(units_dir,&quot;je.wav&quot;), 
+jo = file.path(units_dir,&quot;jo.wav&quot;), 
+ja = file.path(units_dir,&quot;ja.wav&quot;), 
+jia = file.path(units_dir,&quot;jia.wav&quot;), 
+jie = file.path(units_dir,&quot;jie.wav&quot;), 
+jio = file.path(units_dir,&quot;jio.wav&quot;), 
+jiu = file.path(units_dir,&quot;jiu.wav&quot;), 
+jua = file.path(units_dir,&quot;jua.wav&quot;), 
+jui = file.path(units_dir,&quot;jui.wav&quot;), 
+juo = file.path(units_dir,&quot;juo.wav&quot;), 
+jea = file.path(units_dir,&quot;jea.wav&quot;), 
+jei = file.path(units_dir,&quot;jei.wav&quot;), 
+jeo = file.path(units_dir,&quot;jeo.wav&quot;), 
+jeu = file.path(units_dir,&quot;jeu.wav&quot;), 
+joa = file.path(units_dir,&quot;joa.wav&quot;), 
+joe = file.path(units_dir,&quot;joe.wav&quot;), 
+joi = file.path(units_dir,&quot;joi.wav&quot;), 
+jae = file.path(units_dir,&quot;jae.wav&quot;), 
+jai = file.path(units_dir,&quot;jai.wav&quot;), 
+jao = file.path(units_dir,&quot;jao.wav&quot;), 
+jau = file.path(units_dir,&quot;jau.wav&quot;), 
+ki = file.path(units_dir,&quot;ki.wav&quot;), 
+ku = file.path(units_dir,&quot;ku.wav&quot;), 
+ke = file.path(units_dir,&quot;ke.wav&quot;), 
+ko = file.path(units_dir,&quot;ko.wav&quot;), 
+ka = file.path(units_dir,&quot;ka.wav&quot;), 
+kia = file.path(units_dir,&quot;kia.wav&quot;), 
+kie = file.path(units_dir,&quot;kie.wav&quot;), 
+kio = file.path(units_dir,&quot;kio.wav&quot;), 
+kiu = file.path(units_dir,&quot;kiu.wav&quot;), 
+kua = file.path(units_dir,&quot;kua.wav&quot;), 
+kui = file.path(units_dir,&quot;kui.wav&quot;), 
+kue = file.path(units_dir,&quot;kue.wav&quot;), 
+kuo = file.path(units_dir,&quot;kuo.wav&quot;), 
+kea = file.path(units_dir,&quot;kea.wav&quot;), 
+kei = file.path(units_dir,&quot;kei.wav&quot;), 
+keo = file.path(units_dir,&quot;keo.wav&quot;), 
+keu = file.path(units_dir,&quot;keu.wav&quot;), 
+koa = file.path(units_dir,&quot;koa.wav&quot;), 
+koe = file.path(units_dir,&quot;koe.wav&quot;), 
+koi = file.path(units_dir,&quot;koi.wav&quot;), 
+kae = file.path(units_dir,&quot;kae.wav&quot;), 
+kai = file.path(units_dir,&quot;kai.wav&quot;), 
+kao = file.path(units_dir,&quot;kao.wav&quot;), 
+kau = file.path(units_dir,&quot;kau.wav&quot;), 
+ɡi = file.path(units_dir,&quot;gi.wav&quot;), 
+ɡu = file.path(units_dir,&quot;gu.wav&quot;), 
+ɡe = file.path(units_dir,&quot;ge.wav&quot;), 
+ɡo = file.path(units_dir,&quot;go.wav&quot;), 
+ɡa = file.path(units_dir,&quot;ga.wav&quot;), 
+ɡia = file.path(units_dir,&quot;gia.wav&quot;), 
+ɡie = file.path(units_dir,&quot;gie.wav&quot;), 
+ɡio = file.path(units_dir,&quot;gio.wav&quot;), 
+ɡiu = file.path(units_dir,&quot;giu.wav&quot;), 
+ɡua = file.path(units_dir,&quot;gua.wav&quot;), 
+ɡui = file.path(units_dir,&quot;gui.wav&quot;), 
+ɡuo = file.path(units_dir,&quot;guo.wav&quot;), 
+ɡea = file.path(units_dir,&quot;gea.wav&quot;), 
+ɡei = file.path(units_dir,&quot;gei.wav&quot;), 
+ɡeo = file.path(units_dir,&quot;geo.wav&quot;), 
+ɡeu = file.path(units_dir,&quot;geu.wav&quot;), 
+ɡoa = file.path(units_dir,&quot;goa.wav&quot;), 
+ɡoe = file.path(units_dir,&quot;goe.wav&quot;), 
+ɡoi = file.path(units_dir,&quot;goi.wav&quot;), 
+ɡae = file.path(units_dir,&quot;gae.wav&quot;), 
+ɡai = file.path(units_dir,&quot;gai.wav&quot;), 
+ɡao = file.path(units_dir,&quot;gao.wav&quot;), 
+ɡau = file.path(units_dir,&quot;gau.wav&quot;), 
+xi = file.path(units_dir,&quot;xi.wav&quot;), 
+xu = file.path(units_dir,&quot;xu.wav&quot;), 
+xe = file.path(units_dir,&quot;xe.wav&quot;), 
+xo = file.path(units_dir,&quot;xo.wav&quot;), 
+xa = file.path(units_dir,&quot;xa.wav&quot;), 
+xia = file.path(units_dir,&quot;xia.wav&quot;), 
+xie = file.path(units_dir,&quot;xie.wav&quot;), 
+xio = file.path(units_dir,&quot;xio.wav&quot;), 
+xiu = file.path(units_dir,&quot;xiu.wav&quot;), 
+xua = file.path(units_dir,&quot;xua.wav&quot;), 
+xui = file.path(units_dir,&quot;xui.wav&quot;), 
+xuo = file.path(units_dir,&quot;xuo.wav&quot;), 
+xea = file.path(units_dir,&quot;xea.wav&quot;), 
+xei = file.path(units_dir,&quot;xei.wav&quot;), 
+xeo = file.path(units_dir,&quot;xeo.wav&quot;), 
+xeu = file.path(units_dir,&quot;xeu.wav&quot;), 
+xoa = file.path(units_dir,&quot;xoa.wav&quot;), 
+xoe = file.path(units_dir,&quot;xoe.wav&quot;), 
+xoi = file.path(units_dir,&quot;xoi.wav&quot;), 
+xae = file.path(units_dir,&quot;xae.wav&quot;), 
+xai = file.path(units_dir,&quot;xai.wav&quot;), 
+xao = file.path(units_dir,&quot;xao.wav&quot;), 
+xau = file.path(units_dir,&quot;xau.wav&quot;), 
+ɸi = file.path(units_dir,&quot;fi.wav&quot;), 
+ɸu = file.path(units_dir,&quot;fu.wav&quot;), 
+ɸe = file.path(units_dir,&quot;fe.wav&quot;), 
+ɸo = file.path(units_dir,&quot;fo.wav&quot;), 
+ɸa = file.path(units_dir,&quot;fa.wav&quot;), 
+ɸia = file.path(units_dir,&quot;fia.wav&quot;), 
+ɸie = file.path(units_dir,&quot;fie.wav&quot;), 
+ɸio = file.path(units_dir,&quot;fio.wav&quot;), 
+ɸiu = file.path(units_dir,&quot;fiu.wav&quot;), 
+ɸua = file.path(units_dir,&quot;fua.wav&quot;), 
+ɸui = file.path(units_dir,&quot;fui.wav&quot;), 
+ɸuo = file.path(units_dir,&quot;fuo.wav&quot;), 
+ɸea = file.path(units_dir,&quot;fea.wav&quot;), 
+ɸei = file.path(units_dir,&quot;fei.wav&quot;), 
+ɸeo = file.path(units_dir,&quot;feo.wav&quot;), 
+ɸeu = file.path(units_dir,&quot;feu.wav&quot;), 
+ɸoa = file.path(units_dir,&quot;foa.wav&quot;), 
+ɸoe = file.path(units_dir,&quot;foe.wav&quot;), 
+ɸoi = file.path(units_dir,&quot;foi.wav&quot;), 
+ɸae = file.path(units_dir,&quot;fae.wav&quot;), 
+ɸai = file.path(units_dir,&quot;fai.wav&quot;), 
+ɸao = file.path(units_dir,&quot;fao.wav&quot;), 
+ɸau = file.path(units_dir,&quot;fau.wav&quot;), 
+pli = file.path(units_dir,&quot;pli.wav&quot;), 
+plu = file.path(units_dir,&quot;plu.wav&quot;), 
+ple = file.path(units_dir,&quot;ple.wav&quot;), 
+plo = file.path(units_dir,&quot;plo.wav&quot;), 
+pla = file.path(units_dir,&quot;pla.wav&quot;), 
+plia = file.path(units_dir,&quot;plia.wav&quot;), 
+plie = file.path(units_dir,&quot;plie.wav&quot;), 
+plio = file.path(units_dir,&quot;plio.wav&quot;), 
+pliu = file.path(units_dir,&quot;pliu.wav&quot;), 
+plua = file.path(units_dir,&quot;plua.wav&quot;), 
+plui = file.path(units_dir,&quot;plui.wav&quot;), 
+pluo = file.path(units_dir,&quot;pluo.wav&quot;), 
+plea = file.path(units_dir,&quot;plea.wav&quot;), 
+plei = file.path(units_dir,&quot;plei.wav&quot;), 
+pleo = file.path(units_dir,&quot;pleo.wav&quot;), 
+pleu = file.path(units_dir,&quot;pleu.wav&quot;), 
+ploa = file.path(units_dir,&quot;ploa.wav&quot;), 
+ploe = file.path(units_dir,&quot;ploe.wav&quot;), 
+ploi = file.path(units_dir,&quot;ploi.wav&quot;), 
+plae = file.path(units_dir,&quot;plae.wav&quot;), 
+plai = file.path(units_dir,&quot;plai.wav&quot;), 
+plao = file.path(units_dir,&quot;plao.wav&quot;), 
+plau = file.path(units_dir,&quot;plau.wav&quot;), 
+pɾi = file.path(units_dir,&quot;pri.wav&quot;), 
+pɾu = file.path(units_dir,&quot;pru.wav&quot;), 
+pɾe = file.path(units_dir,&quot;pre.wav&quot;), 
+pɾo = file.path(units_dir,&quot;pro.wav&quot;), 
+pɾa = file.path(units_dir,&quot;pra.wav&quot;), 
+pɾia = file.path(units_dir,&quot;pria.wav&quot;), 
+pɾie = file.path(units_dir,&quot;prie.wav&quot;), 
+pɾio = file.path(units_dir,&quot;prio.wav&quot;), 
+pɾiu = file.path(units_dir,&quot;priu.wav&quot;), 
+pɾua = file.path(units_dir,&quot;prua.wav&quot;), 
+pɾui = file.path(units_dir,&quot;prui.wav&quot;), 
+pɾuo = file.path(units_dir,&quot;pruo.wav&quot;), 
+pɾea = file.path(units_dir,&quot;prea.wav&quot;), 
+pɾei = file.path(units_dir,&quot;prei.wav&quot;), 
+pɾeo = file.path(units_dir,&quot;preo.wav&quot;), 
+pɾeu = file.path(units_dir,&quot;preu.wav&quot;), 
+pɾoa = file.path(units_dir,&quot;proa.wav&quot;), 
+pɾoe = file.path(units_dir,&quot;proe.wav&quot;), 
+pɾoi = file.path(units_dir,&quot;proi.wav&quot;), 
+pɾae = file.path(units_dir,&quot;prae.wav&quot;), 
+pɾai = file.path(units_dir,&quot;prai.wav&quot;), 
+pɾao = file.path(units_dir,&quot;prao.wav&quot;), 
+pɾau = file.path(units_dir,&quot;prau.wav&quot;), 
+bli = file.path(units_dir,&quot;bli.wav&quot;), 
+blu = file.path(units_dir,&quot;blu.wav&quot;), 
+ble = file.path(units_dir,&quot;ble.wav&quot;), 
+blo = file.path(units_dir,&quot;blo.wav&quot;), 
+bla = file.path(units_dir,&quot;bla.wav&quot;), 
+blia = file.path(units_dir,&quot;blia.wav&quot;), 
+blie = file.path(units_dir,&quot;blie.wav&quot;), 
+blio = file.path(units_dir,&quot;blio.wav&quot;), 
+bliu = file.path(units_dir,&quot;bliu.wav&quot;), 
+blua = file.path(units_dir,&quot;blua.wav&quot;), 
+blui = file.path(units_dir,&quot;blui.wav&quot;), 
+bluo = file.path(units_dir,&quot;bluo.wav&quot;), 
+blea = file.path(units_dir,&quot;blea.wav&quot;), 
+blei = file.path(units_dir,&quot;blei.wav&quot;), 
+bleo = file.path(units_dir,&quot;bleo.wav&quot;), 
+bleu = file.path(units_dir,&quot;bleu.wav&quot;), 
+bloa = file.path(units_dir,&quot;bloa.wav&quot;), 
+bloe = file.path(units_dir,&quot;bloe.wav&quot;), 
+bloi = file.path(units_dir,&quot;bloi.wav&quot;), 
+blae = file.path(units_dir,&quot;blae.wav&quot;), 
+blai = file.path(units_dir,&quot;blai.wav&quot;), 
+blao = file.path(units_dir,&quot;blao.wav&quot;), 
+blau = file.path(units_dir,&quot;blau.wav&quot;), 
+bɾi = file.path(units_dir,&quot;bri.wav&quot;), 
+bɾu = file.path(units_dir,&quot;bru.wav&quot;), 
+bɾe = file.path(units_dir,&quot;bre.wav&quot;), 
+bɾo = file.path(units_dir,&quot;bro.wav&quot;), 
+bɾa = file.path(units_dir,&quot;bra.wav&quot;), 
+bɾia = file.path(units_dir,&quot;bria.wav&quot;), 
+bɾie = file.path(units_dir,&quot;brie.wav&quot;), 
+bɾio = file.path(units_dir,&quot;brio.wav&quot;), 
+bɾiu = file.path(units_dir,&quot;briu.wav&quot;), 
+bɾua = file.path(units_dir,&quot;brua.wav&quot;), 
+bɾui = file.path(units_dir,&quot;brui.wav&quot;), 
+bɾuo = file.path(units_dir,&quot;bruo.wav&quot;), 
+bɾea = file.path(units_dir,&quot;brea.wav&quot;), 
+bɾei = file.path(units_dir,&quot;brei.wav&quot;), 
+bɾeo = file.path(units_dir,&quot;breo.wav&quot;), 
+bɾeu = file.path(units_dir,&quot;breu.wav&quot;), 
+bɾoa = file.path(units_dir,&quot;broa.wav&quot;), 
+bɾoe = file.path(units_dir,&quot;broe.wav&quot;), 
+bɾoi = file.path(units_dir,&quot;broi.wav&quot;), 
+bɾae = file.path(units_dir,&quot;brae.wav&quot;), 
+bɾai = file.path(units_dir,&quot;brai.wav&quot;), 
+bɾao = file.path(units_dir,&quot;brao.wav&quot;), 
+bɾau = file.path(units_dir,&quot;brau.wav&quot;), 
+tɾi = file.path(units_dir,&quot;tri.wav&quot;), 
+tɾu = file.path(units_dir,&quot;tru.wav&quot;), 
+tɾe = file.path(units_dir,&quot;tre.wav&quot;), 
+tɾo = file.path(units_dir,&quot;tro.wav&quot;), 
+tɾa = file.path(units_dir,&quot;tra.wav&quot;), 
+tɾia = file.path(units_dir,&quot;tria.wav&quot;), 
+tɾie = file.path(units_dir,&quot;trie.wav&quot;), 
+tɾio = file.path(units_dir,&quot;trio.wav&quot;), 
+tɾiu = file.path(units_dir,&quot;triu.wav&quot;), 
+tɾua = file.path(units_dir,&quot;trua.wav&quot;), 
+tɾui = file.path(units_dir,&quot;trui.wav&quot;), 
+tɾuo = file.path(units_dir,&quot;truo.wav&quot;), 
+tɾea = file.path(units_dir,&quot;trea.wav&quot;), 
+tɾei = file.path(units_dir,&quot;trei.wav&quot;), 
+tɾeo = file.path(units_dir,&quot;treo.wav&quot;), 
+tɾeu = file.path(units_dir,&quot;treu.wav&quot;), 
+tɾoa = file.path(units_dir,&quot;troa.wav&quot;), 
+tɾoe = file.path(units_dir,&quot;troe.wav&quot;), 
+tɾoi = file.path(units_dir,&quot;troi.wav&quot;), 
+tɾae = file.path(units_dir,&quot;trae.wav&quot;), 
+tɾai = file.path(units_dir,&quot;trai.wav&quot;), 
+tɾao = file.path(units_dir,&quot;trao.wav&quot;), 
+tɾau = file.path(units_dir,&quot;trau.wav&quot;), 
+dɾi = file.path(units_dir,&quot;dri.wav&quot;), 
+dɾu = file.path(units_dir,&quot;dru.wav&quot;), 
+dɾe = file.path(units_dir,&quot;dre.wav&quot;), 
+dɾo = file.path(units_dir,&quot;dro.wav&quot;), 
+dɾa = file.path(units_dir,&quot;dra.wav&quot;), 
+dɾia = file.path(units_dir,&quot;dria.wav&quot;), 
+dɾie = file.path(units_dir,&quot;drie.wav&quot;), 
+dɾio = file.path(units_dir,&quot;drio.wav&quot;), 
+dɾiu = file.path(units_dir,&quot;driu.wav&quot;), 
+dɾua = file.path(units_dir,&quot;drua.wav&quot;), 
+dɾui = file.path(units_dir,&quot;drui.wav&quot;), 
+dɾuo = file.path(units_dir,&quot;druo.wav&quot;), 
+dɾea = file.path(units_dir,&quot;drea.wav&quot;), 
+dɾei = file.path(units_dir,&quot;drei.wav&quot;), 
+dɾeo = file.path(units_dir,&quot;dreo.wav&quot;), 
+dɾeu = file.path(units_dir,&quot;dreu.wav&quot;), 
+dɾoa = file.path(units_dir,&quot;droa.wav&quot;), 
+dɾoe = file.path(units_dir,&quot;droe.wav&quot;), 
+dɾoi = file.path(units_dir,&quot;droi.wav&quot;), 
+dɾae = file.path(units_dir,&quot;drae.wav&quot;), 
+dɾai = file.path(units_dir,&quot;drai.wav&quot;), 
+dɾao = file.path(units_dir,&quot;drao.wav&quot;), 
+dɾau = file.path(units_dir,&quot;drau.wav&quot;), 
+kli = file.path(units_dir,&quot;kli.wav&quot;), 
+klu = file.path(units_dir,&quot;klu.wav&quot;), 
+kle = file.path(units_dir,&quot;kle.wav&quot;), 
+klo = file.path(units_dir,&quot;klo.wav&quot;), 
+kla = file.path(units_dir,&quot;kla.wav&quot;), 
+klia = file.path(units_dir,&quot;klia.wav&quot;), 
+klie = file.path(units_dir,&quot;klie.wav&quot;), 
+klio = file.path(units_dir,&quot;klio.wav&quot;), 
+kliu = file.path(units_dir,&quot;kliu.wav&quot;), 
+klua = file.path(units_dir,&quot;klua.wav&quot;), 
+klui = file.path(units_dir,&quot;klui.wav&quot;), 
+kluo = file.path(units_dir,&quot;kluo.wav&quot;), 
+klea = file.path(units_dir,&quot;klea.wav&quot;), 
+klei = file.path(units_dir,&quot;klei.wav&quot;), 
+kleo = file.path(units_dir,&quot;kleo.wav&quot;), 
+kleu = file.path(units_dir,&quot;kleu.wav&quot;), 
+kloa = file.path(units_dir,&quot;kloa.wav&quot;), 
+kloe = file.path(units_dir,&quot;kloe.wav&quot;), 
+kloi = file.path(units_dir,&quot;kloi.wav&quot;), 
+klae = file.path(units_dir,&quot;klae.wav&quot;), 
+klai = file.path(units_dir,&quot;klai.wav&quot;), 
+klao = file.path(units_dir,&quot;klao.wav&quot;), 
+klau = file.path(units_dir,&quot;klau.wav&quot;), 
+kɾi = file.path(units_dir,&quot;kri.wav&quot;), 
+kɾu = file.path(units_dir,&quot;kru.wav&quot;), 
+kɾe = file.path(units_dir,&quot;kre.wav&quot;), 
+kɾo = file.path(units_dir,&quot;kro.wav&quot;), 
+kɾa = file.path(units_dir,&quot;kra.wav&quot;), 
+kɾia = file.path(units_dir,&quot;kria.wav&quot;), 
+kɾie = file.path(units_dir,&quot;krie.wav&quot;), 
+kɾio = file.path(units_dir,&quot;krio.wav&quot;), 
+kɾiu = file.path(units_dir,&quot;kriu.wav&quot;), 
+kɾua = file.path(units_dir,&quot;krua.wav&quot;), 
+kɾui = file.path(units_dir,&quot;krui.wav&quot;), 
+kɾuo = file.path(units_dir,&quot;kruo.wav&quot;), 
+kɾea = file.path(units_dir,&quot;krea.wav&quot;), 
+kɾei = file.path(units_dir,&quot;krei.wav&quot;), 
+kɾeo = file.path(units_dir,&quot;kreo.wav&quot;), 
+kɾeu = file.path(units_dir,&quot;kreu.wav&quot;), 
+kɾoa = file.path(units_dir,&quot;kroa.wav&quot;), 
+kɾoe = file.path(units_dir,&quot;kroe.wav&quot;), 
+kɾoi = file.path(units_dir,&quot;kroi.wav&quot;), 
+kɾae = file.path(units_dir,&quot;krae.wav&quot;), 
+kɾai = file.path(units_dir,&quot;krai.wav&quot;), 
+kɾao = file.path(units_dir,&quot;krao.wav&quot;), 
+kɾau = file.path(units_dir,&quot;krau.wav&quot;), 
+ɡli = file.path(units_dir,&quot;gli.wav&quot;), 
+ɡlu = file.path(units_dir,&quot;glu.wav&quot;), 
+ɡle = file.path(units_dir,&quot;gle.wav&quot;), 
+ɡlo = file.path(units_dir,&quot;glo.wav&quot;), 
+ɡla = file.path(units_dir,&quot;gla.wav&quot;), 
+ɡlia = file.path(units_dir,&quot;glia.wav&quot;), 
+ɡlie = file.path(units_dir,&quot;glie.wav&quot;), 
+ɡlio = file.path(units_dir,&quot;glio.wav&quot;), 
+ɡliu = file.path(units_dir,&quot;gliu.wav&quot;), 
+ɡlua = file.path(units_dir,&quot;glua.wav&quot;), 
+ɡlui = file.path(units_dir,&quot;glui.wav&quot;), 
+ɡluo = file.path(units_dir,&quot;gluo.wav&quot;), 
+ɡlea = file.path(units_dir,&quot;glea.wav&quot;), 
+ɡlei = file.path(units_dir,&quot;glei.wav&quot;), 
+ɡleo = file.path(units_dir,&quot;gleo.wav&quot;), 
+ɡleu = file.path(units_dir,&quot;gleu.wav&quot;), 
+ɡloa = file.path(units_dir,&quot;gloa.wav&quot;), 
+ɡloe = file.path(units_dir,&quot;gloe.wav&quot;), 
+ɡloi = file.path(units_dir,&quot;gloi.wav&quot;), 
+ɡlae = file.path(units_dir,&quot;glae.wav&quot;), 
+ɡlai = file.path(units_dir,&quot;glai.wav&quot;), 
+ɡlao = file.path(units_dir,&quot;glao.wav&quot;), 
+ɡlau = file.path(units_dir,&quot;glau.wav&quot;), 
+ɡɾi = file.path(units_dir,&quot;gri.wav&quot;), 
+ɡɾu = file.path(units_dir,&quot;gru.wav&quot;), 
+ɡɾe = file.path(units_dir,&quot;gre.wav&quot;), 
+ɡɾo = file.path(units_dir,&quot;gro.wav&quot;), 
+ɡɾa = file.path(units_dir,&quot;gra.wav&quot;), 
+ɡɾia = file.path(units_dir,&quot;gria.wav&quot;), 
+ɡɾie = file.path(units_dir,&quot;grie.wav&quot;), 
+ɡɾio = file.path(units_dir,&quot;grio.wav&quot;), 
+ɡɾiu = file.path(units_dir,&quot;griu.wav&quot;), 
+ɡɾua = file.path(units_dir,&quot;grua.wav&quot;), 
+ɡɾui = file.path(units_dir,&quot;grui.wav&quot;), 
+ɡɾuo = file.path(units_dir,&quot;gruo.wav&quot;), 
+ɡɾea = file.path(units_dir,&quot;grea.wav&quot;), 
+ɡɾei = file.path(units_dir,&quot;grei.wav&quot;), 
+ɡɾeo = file.path(units_dir,&quot;greo.wav&quot;), 
+ɡɾeu = file.path(units_dir,&quot;greu.wav&quot;), 
+ɡɾoa = file.path(units_dir,&quot;groa.wav&quot;), 
+ɡɾoe = file.path(units_dir,&quot;groe.wav&quot;), 
+ɡɾoi = file.path(units_dir,&quot;groi.wav&quot;), 
+ɡɾae = file.path(units_dir,&quot;grae.wav&quot;), 
+ɡɾai = file.path(units_dir,&quot;grai.wav&quot;), 
+ɡɾao = file.path(units_dir,&quot;grao.wav&quot;), 
+ɡɾau = file.path(units_dir,&quot;grau.wav&quot;), 
+ɸli = file.path(units_dir,&quot;fli.wav&quot;), 
+ɸlu = file.path(units_dir,&quot;flu.wav&quot;), 
+ɸle = file.path(units_dir,&quot;fle.wav&quot;), 
+ɸlo = file.path(units_dir,&quot;flo.wav&quot;), 
+ɸla = file.path(units_dir,&quot;fla.wav&quot;), 
+ɸlia = file.path(units_dir,&quot;flia.wav&quot;), 
+ɸlie = file.path(units_dir,&quot;flie.wav&quot;), 
+ɸlio = file.path(units_dir,&quot;flio.wav&quot;), 
+ɸliu = file.path(units_dir,&quot;fliu.wav&quot;), 
+ɸlua = file.path(units_dir,&quot;flua.wav&quot;), 
+ɸlui = file.path(units_dir,&quot;flui.wav&quot;), 
+ɸluo = file.path(units_dir,&quot;fluo.wav&quot;), 
+ɸlea = file.path(units_dir,&quot;flea.wav&quot;), 
+ɸlei = file.path(units_dir,&quot;flei.wav&quot;), 
+ɸleo = file.path(units_dir,&quot;fleo.wav&quot;), 
+ɸleu = file.path(units_dir,&quot;fleu.wav&quot;), 
+ɸloa = file.path(units_dir,&quot;floa.wav&quot;), 
+ɸloe = file.path(units_dir,&quot;floe.wav&quot;), 
+ɸloi = file.path(units_dir,&quot;floi.wav&quot;), 
+ɸlae = file.path(units_dir,&quot;flae.wav&quot;), 
+ɸlai = file.path(units_dir,&quot;flai.wav&quot;), 
+ɸlao = file.path(units_dir,&quot;flao.wav&quot;), 
+ɸlau = file.path(units_dir,&quot;flau.wav&quot;), 
+ɸɾi = file.path(units_dir,&quot;fri.wav&quot;), 
+ɸɾu = file.path(units_dir,&quot;fru.wav&quot;), 
+ɸɾe = file.path(units_dir,&quot;fre.wav&quot;), 
+ɸɾo = file.path(units_dir,&quot;fro.wav&quot;), 
+ɸɾa = file.path(units_dir,&quot;fra.wav&quot;), 
+ɸɾia = file.path(units_dir,&quot;fria.wav&quot;), 
+ɸɾie = file.path(units_dir,&quot;frie.wav&quot;), 
+ɸɾio = file.path(units_dir,&quot;frio.wav&quot;), 
+ɸɾiu = file.path(units_dir,&quot;friu.wav&quot;), 
+ɸɾua = file.path(units_dir,&quot;frua.wav&quot;), 
+ɸɾui = file.path(units_dir,&quot;frui.wav&quot;), 
+ɸɾuo = file.path(units_dir,&quot;fruo.wav&quot;), 
+ɸɾea = file.path(units_dir,&quot;frea.wav&quot;), 
+ɸɾei = file.path(units_dir,&quot;frei.wav&quot;), 
+ɸɾeo = file.path(units_dir,&quot;freo.wav&quot;), 
+ɸɾeu = file.path(units_dir,&quot;freu.wav&quot;), 
+ɸɾoa = file.path(units_dir,&quot;froa.wav&quot;), 
+ɸɾoe = file.path(units_dir,&quot;froe.wav&quot;), 
+ɸɾoi = file.path(units_dir,&quot;froi.wav&quot;), 
+ɸɾae = file.path(units_dir,&quot;frae.wav&quot;), 
+ɸɾai = file.path(units_dir,&quot;frai.wav&quot;), 
+ɸɾao = file.path(units_dir,&quot;frao.wav&quot;), 
+ɸɾau = file.path(units_dir,&quot;frau.wav&quot;), 
+ʃni = file.path(units_dir,&quot;shni.wav&quot;), 
+ʃnu = file.path(units_dir,&quot;shnu.wav&quot;), 
+ʃne = file.path(units_dir,&quot;shne.wav&quot;), 
+ʃno = file.path(units_dir,&quot;shno.wav&quot;), 
+ʃna = file.path(units_dir,&quot;shna.wav&quot;), 
+ʃnia = file.path(units_dir,&quot;shnia.wav&quot;), 
+ʃnie = file.path(units_dir,&quot;shnie.wav&quot;), 
+ʃnio = file.path(units_dir,&quot;shnio.wav&quot;), 
+ʃniu = file.path(units_dir,&quot;shniu.wav&quot;), 
+ʃnua = file.path(units_dir,&quot;shnua.wav&quot;), 
+ʃnui = file.path(units_dir,&quot;shnui.wav&quot;), 
+ʃnuo = file.path(units_dir,&quot;shnuo.wav&quot;), 
+ʃnea = file.path(units_dir,&quot;shnea.wav&quot;), 
+ʃnei = file.path(units_dir,&quot;shnei.wav&quot;), 
+ʃneo = file.path(units_dir,&quot;shneo.wav&quot;), 
+ʃneu = file.path(units_dir,&quot;shneu.wav&quot;), 
+ʃnoa = file.path(units_dir,&quot;shnoa.wav&quot;), 
+ʃnoe = file.path(units_dir,&quot;shnoe.wav&quot;), 
+ʃnoi = file.path(units_dir,&quot;shnoi.wav&quot;), 
+ʃnae = file.path(units_dir,&quot;shnae.wav&quot;), 
+ʃnai = file.path(units_dir,&quot;shnai.wav&quot;), 
+ʃnao = file.path(units_dir,&quot;shnao.wav&quot;), 
+ʃnau = file.path(units_dir,&quot;shnau.wav&quot;), 
+ʧi = file.path(units_dir,&quot;chi.wav&quot;), 
+ʧu = file.path(units_dir,&quot;chu.wav&quot;), 
+ʧe = file.path(units_dir,&quot;che.wav&quot;), 
+ʧo = file.path(units_dir,&quot;cho.wav&quot;), 
+ʧa = file.path(units_dir,&quot;cha.wav&quot;), 
+ʧia = file.path(units_dir,&quot;chia.wav&quot;), 
+ʧie = file.path(units_dir,&quot;chie.wav&quot;), 
+ʧio = file.path(units_dir,&quot;chio.wav&quot;), 
+ʧiu = file.path(units_dir,&quot;chiu.wav&quot;), 
+ʧua = file.path(units_dir,&quot;chua.wav&quot;), 
+ʧui = file.path(units_dir,&quot;chui.wav&quot;), 
+ʧuo = file.path(units_dir,&quot;chuo.wav&quot;), 
+ʧea = file.path(units_dir,&quot;chea.wav&quot;), 
+ʧei = file.path(units_dir,&quot;chei.wav&quot;), 
+ʧeo = file.path(units_dir,&quot;cheo.wav&quot;), 
+ʧeu = file.path(units_dir,&quot;cheu.wav&quot;), 
+ʧoa = file.path(units_dir,&quot;choa.wav&quot;), 
+ʧoe = file.path(units_dir,&quot;choe.wav&quot;), 
+ʧoi = file.path(units_dir,&quot;choi.wav&quot;), 
+ʧae = file.path(units_dir,&quot;chae.wav&quot;), 
+ʧai = file.path(units_dir,&quot;chai.wav&quot;), 
+ʧao = file.path(units_dir,&quot;chao.wav&quot;), 
+ʧau = file.path(units_dir,&quot;chau.wav&quot;), 
+ski = file.path(units_dir,&quot;ski.wav&quot;), 
+sku = file.path(units_dir,&quot;sku.wav&quot;), 
+ske = file.path(units_dir,&quot;ske.wav&quot;), 
+sko = file.path(units_dir,&quot;sko.wav&quot;), 
+ska = file.path(units_dir,&quot;ska.wav&quot;), 
+skia = file.path(units_dir,&quot;skia.wav&quot;), 
+skie = file.path(units_dir,&quot;skie.wav&quot;), 
+skio = file.path(units_dir,&quot;skio.wav&quot;), 
+skiu = file.path(units_dir,&quot;skiu.wav&quot;), 
+skua = file.path(units_dir,&quot;skua.wav&quot;), 
+skui = file.path(units_dir,&quot;skui.wav&quot;), 
+skuo = file.path(units_dir,&quot;skuo.wav&quot;), 
+skea = file.path(units_dir,&quot;skea.wav&quot;), 
+skei = file.path(units_dir,&quot;skei.wav&quot;), 
+skeo = file.path(units_dir,&quot;skeo.wav&quot;), 
+skeu = file.path(units_dir,&quot;skeu.wav&quot;), 
+skoa = file.path(units_dir,&quot;skoa.wav&quot;), 
+skoe = file.path(units_dir,&quot;skoe.wav&quot;), 
+skoi = file.path(units_dir,&quot;skoi.wav&quot;), 
+skae = file.path(units_dir,&quot;skae.wav&quot;), 
+skai = file.path(units_dir,&quot;skai.wav&quot;), 
+skao = file.path(units_dir,&quot;skao.wav&quot;), 
+skau = file.path(units_dir,&quot;skau.wav&quot;), 
+ksi = file.path(units_dir,&quot;ksi.wav&quot;), 
+ksu = file.path(units_dir,&quot;ksu.wav&quot;), 
+kse = file.path(units_dir,&quot;kse.wav&quot;), 
+kso = file.path(units_dir,&quot;kso.wav&quot;), 
+ksa = file.path(units_dir,&quot;ksa.wav&quot;), 
+ksia = file.path(units_dir,&quot;ksia.wav&quot;), 
+ksie = file.path(units_dir,&quot;ksie.wav&quot;), 
+ksio = file.path(units_dir,&quot;ksio.wav&quot;), 
+ksiu = file.path(units_dir,&quot;ksiu.wav&quot;), 
+ksua = file.path(units_dir,&quot;ksua.wav&quot;), 
+ksui = file.path(units_dir,&quot;ksui.wav&quot;), 
+ksuo = file.path(units_dir,&quot;ksuo.wav&quot;), 
+ksea = file.path(units_dir,&quot;ksea.wav&quot;), 
+ksei = file.path(units_dir,&quot;ksei.wav&quot;), 
+kseo = file.path(units_dir,&quot;kseo.wav&quot;), 
+kseu = file.path(units_dir,&quot;kseu.wav&quot;), 
+ksoa = file.path(units_dir,&quot;ksoa.wav&quot;), 
+ksoe = file.path(units_dir,&quot;ksoe.wav&quot;), 
+ksoi = file.path(units_dir,&quot;ksoi.wav&quot;), 
+ksae = file.path(units_dir,&quot;ksae.wav&quot;), 
+ksai = file.path(units_dir,&quot;ksai.wav&quot;), 
+ksao = file.path(units_dir,&quot;ksao.wav&quot;), 
+ksau = file.path(units_dir,&quot;ksau.wav&quot;), 
+m = file.path(units_dir,&quot;mOn.wav&quot;), 
+p = file.path(units_dir,&quot;pOn.wav&quot;), 
+b = file.path(units_dir,&quot;bOn.wav&quot;), 
+w = file.path(units_dir,&quot;wOn.wav&quot;), 
+n = file.path(units_dir,&quot;nOn.wav&quot;), 
+t = file.path(units_dir,&quot;tOn.wav&quot;), 
+d = file.path(units_dir,&quot;dOn.wav&quot;), 
+l = file.path(units_dir,&quot;lOn.wav&quot;), 
+s = file.path(units_dir,&quot;sOn.wav&quot;), 
+z = file.path(units_dir,&quot;zOn.wav&quot;), 
+ɾ = file.path(units_dir,&quot;rOn.wav&quot;), 
+ʃ = file.path(units_dir,&quot;shOn.wav&quot;), 
+ʒ = file.path(units_dir,&quot;llOn.wav&quot;), 
+ʐ = file.path(units_dir,&quot;rrOn.wav&quot;), 
+ɲ = file.path(units_dir,&quot;nhOn.wav&quot;), 
+j = file.path(units_dir,&quot;jOn.wav&quot;), 
+k = file.path(units_dir,&quot;kOn.wav&quot;), 
+ɡ = file.path(units_dir,&quot;gOn.wav&quot;), 
+x = file.path(units_dir,&quot;xOn.wav&quot;), 
+ɸ = file.path(units_dir,&quot;fOn.wav&quot;), 
+pl = file.path(units_dir,&quot;plOn.wav&quot;), 
+pɾ = file.path(units_dir,&quot;prOn.wav&quot;), 
+bl = file.path(units_dir,&quot;blOn.wav&quot;), 
+bɾ = file.path(units_dir,&quot;brOn.wav&quot;), 
+tɾ = file.path(units_dir,&quot;trOn.wav&quot;), 
+dɾ = file.path(units_dir,&quot;drOn.wav&quot;), 
+kl = file.path(units_dir,&quot;klOn.wav&quot;), 
+kɾ = file.path(units_dir,&quot;krOn.wav&quot;), 
+ɡl = file.path(units_dir,&quot;glOn.wav&quot;), 
+ɡɾ = file.path(units_dir,&quot;grOn.wav&quot;), 
+ɸl = file.path(units_dir,&quot;flOn.wav&quot;), 
+ɸɾ = file.path(units_dir,&quot;frOn.wav&quot;), 
+ʃn = file.path(units_dir,&quot;shnOn.wav&quot;), 
+ʧ = file.path(units_dir,&quot;chOn.wav&quot;), 
+sk = file.path(units_dir,&quot;skOn.wav&quot;), 
+ks = file.path(units_dir,&quot;ksOn.wav&quot;), 
+Cm = file.path(units_dir,&quot;mCo.wav&quot;), 
+Cb = file.path(units_dir,&quot;bCo.wav&quot;), 
+Cn = file.path(units_dir,&quot;nCo.wav&quot;), 
+Cd = file.path(units_dir,&quot;dCo.wav&quot;), 
+Cl = file.path(units_dir,&quot;lCo.wav&quot;), 
+Cs = file.path(units_dir,&quot;sCo.wav&quot;), 
+Cz = file.path(units_dir,&quot;zCo.wav&quot;), 
+Cɾ = file.path(units_dir,&quot;rCo.wav&quot;), 
+Cʃ = file.path(units_dir,&quot;shCo.wav&quot;), 
+Cʒ = file.path(units_dir,&quot;llCo.wav&quot;), 
+Cʐ = file.path(units_dir,&quot;rrCo.wav&quot;), 
+Ck = file.path(units_dir,&quot;kCo.wav&quot;), 
+Cɡ = file.path(units_dir,&quot;gCo.wav&quot;), 
+Cx = file.path(units_dir,&quot;xCo.wav&quot;), 
+Cʧ = file.path(units_dir,&quot;chCo.wav&quot;), 
+Cks = file.path(units_dir,&quot;ksCo.wav&quot;), 
+Cɾʂ = file.path(units_dir,&quot;rshCo.wav&quot;), 
+Cŋ = file.path(units_dir,&quot;ng.wav&quot;),
+ue = file.path(units_dir,&quot;ue.wav&quot;),
+mue = file.path(units_dir,&quot;mue.wav&quot;),
+pue = file.path(units_dir,&quot;pue.wav&quot;),
+bue = file.path(units_dir,&quot;bue.wav&quot;),
+wue = file.path(units_dir,&quot;wue.wav&quot;),
+nue = file.path(units_dir,&quot;nue.wav&quot;),
+tue = file.path(units_dir,&quot;tue.wav&quot;),
+due = file.path(units_dir,&quot;due.wav&quot;),
+lue = file.path(units_dir,&quot;lue.wav&quot;),
+sue = file.path(units_dir,&quot;sue.wav&quot;),
+zue = file.path(units_dir,&quot;zue.wav&quot;),
+ɾue = file.path(units_dir,&quot;rue.wav&quot;),
+ʃue = file.path(units_dir,&quot;shue.wav&quot;),
+ʒue = file.path(units_dir,&quot;llue.wav&quot;),
+ʐue = file.path(units_dir,&quot;rrue.wav&quot;),
+ɲue = file.path(units_dir,&quot;nhue.wav&quot;),
+jue = file.path(units_dir,&quot;jue.wav&quot;),
+kue = file.path(units_dir,&quot;kue.wav&quot;),
+ɡue = file.path(units_dir,&quot;gue.wav&quot;),
+xue = file.path(units_dir,&quot;xue.wav&quot;),
+ɸue = file.path(units_dir,&quot;fue.wav&quot;),
+plue = file.path(units_dir,&quot;plue.wav&quot;),
+pɾue = file.path(units_dir,&quot;prue.wav&quot;),
+blue = file.path(units_dir,&quot;blue.wav&quot;),
+bɾue = file.path(units_dir,&quot;brue.wav&quot;),
+#tɾue = file.path(units_dir,&quot;true.wav&quot;), #tɾue = file.path(units_dir,&quot;true.wav&quot;), # R reads this as TRUE, so we&#39;d have to figure out another tactic in the IPA conversion, which I&#39;m not going to do. Just don&#39;t try and process the word &#39;trueno&#39; (thunder)  
+dɾue = file.path(units_dir,&quot;drue.wav&quot;),
+klue = file.path(units_dir,&quot;klue.wav&quot;),
+kɾue = file.path(units_dir,&quot;krue.wav&quot;),
+ɡlue = file.path(units_dir,&quot;glue.wav&quot;),
+ɡɾue = file.path(units_dir,&quot;grue.wav&quot;),
+ɸlue = file.path(units_dir,&quot;flue.wav&quot;),
+ɸɾue = file.path(units_dir,&quot;frue.wav&quot;),
+ʃnue = file.path(units_dir,&quot;shnue.wav&quot;),
+ʧue = file.path(units_dir,&quot;chue.wav&quot;),
+skue = file.path(units_dir,&quot;skue.wav&quot;),
+ksue = file.path(units_dir,&quot;ksue.wav&quot;),
+P = file.path(units_dir,&quot;pause.wav&quot;),
+D = file.path(units_dir,&quot;dot.wav&quot;)
+)</code></pre>
+</details>
+<p>At this stage, we now convert the IPA string for the tts generator to
+characters.</p>
+<pre class="r"><code>to_labels = strsplit(gsub(&quot;\\.&quot;, &quot; &quot;, tts$breaks_tts), &quot;\\s+&quot;)[[1]]</code></pre>
+<ul>
+<li>This code splits the IPA string into characters.</li>
+<li>It begins by converting periods (<code>.</code>) to spaces
+(<code></code>).</li>
+<li>It then splits the data by a space (\s+)</li>
+</ul>
+<p><img src="tts_images/tolabels.jpg" alt="to labels" width="800"/><br />
+<br></p>
+<p>Now we ‘index’ our <code>convert</code> vector with
+<code>to_labels</code>.<br />
+If <code>to_labels</code> is <code>c("i","o","a")</code>, then
+<code>wav_files</code> will be the file paths for <code>i.wav</code>,
+<code>o.wav</code>, and <code>a.wav</code>.<br />
+<br> If this doesn’t make sense, think of <code>convert</code> as a
+dictionary.<br />
+- On the left side are the <em>words</em> (the IPA labels like “i”, “o”,
+“a”).<br />
+- On the right side are the <em>definitions</em> (the file paths like
+“…/i.wav”, “…/o.wav”, “…/a.wav”).<br />
+<br> We then write:</p>
+<pre class="r"><code>wav_files &lt;- convert[to_labels]</code></pre>
+<p>Here, you’re saying: “Go into my dictionary and pull out the entries
+whose names match what’s in <code>to_labels</code>.”<br />
+So if:<br />
+<code>to_labels &lt;- c("i","o","a")</code>… then R will look up “i”,
+“o”, and “a” inside the <code>convert</code> dictionary, and return
+their matching file paths:
+<code>"…/i.wav" "…/o.wav" "…/a.wav"</code></p>
+<ul>
+<li>convert is not a function.<br />
+</li>
+<li>It’s just a lookup table (dictionary).<br />
+</li>
+<li><code>to_labels</code> is your list of “keys”, and R gives you back
+the “values.”</li>
+</ul>
+<p><img src="tts_images/wav_files.jpg" alt="wav_files" width="300"/><br />
+<br><br />
+If a file name is missing, we can have r throw us a warning:</p>
+<pre class="r"><code>if (any(is.na(wav_files))) {
+  warning(&quot;Missing audio for: &quot;, paste(to_labels[is.na(wav_files)], collapse = &quot;, &quot;))
+}</code></pre>
+<ul>
+<li>This reads, <code>if</code> there are <code>any</code> NAs
+(<code>is.na</code>) in the <code>wav_files</code> object, then…<br />
+</li>
+<li>throw the following warning “Missing audio for”<br />
+</li>
+<li>and then <code>paste</code> the name of the NA file in
+<code>wave_files</code>.<br />
+</li>
+<li>Separate each one by a comma <code>,</code>.<br />
+<br></li>
+</ul>
+</div>
+<div id="loading-and-stitching-sound-files" class="section level1"
+number="8">
+<h1><span class="header-section-number">8</span> Loading and stitching
+sound files</h1>
+<p>Now we’re going to load three libraries that deal with sound.</p>
+<pre class="r"><code>library(tuneR)
+library(audio)
+library(seewave)</code></pre>
+<p>The <code>tuneR</code> package is what allows R to work directly with
+audio files, especially <code>.wav</code> files. It lets us read sounds
+into R, manipulate them, and write them back out again. For example,
+when we load a recorded syllable or segment, <code>readWave()</code>
+turns the file into a special Wave object that stores all the details of
+the sound—its samples, sampling rate, number of channels (mono or
+stereo), and bit depth. This makes it possible to cut, join, or
+otherwise modify the recordings within R.<br />
+<br> By contrast, the <code>audio</code> package is focused on playback.
+Once we’ve created or edited a sound in R, the audio package provides
+the connection to our computer’s sound system so that we can hear it
+immediately. Together, the two packages complement each other:
+<code>tuneR</code> handles sound files and data, while
+<code>audio</code> makes it possible to listen to what we’ve
+built.<br />
+<br> The <code>seewave</code> package is designed for analysing and
+visualising sounds. While <code>tuneR</code> gives us the raw ability to
+load and save audio, seewave adds specialised tools for looking inside
+the signal. With functions like <code>oscillo()</code> for viewing the
+waveform, <code>spec()</code> for plotting a frequency spectrum, and
+<code>spectro()</code> for creating spectrograms, it allows us to see
+how sounds vary across time and frequency. These visualisations are
+especially useful in linguistics and phonetics, since they let us
+connect what we hear with measurable patterns in the acoustic signal. In
+short, seewave is the package that helps us see sound, not just hear it.
+<br></p>
+<p><code>tuneR</code> is a required library for the tts generator<br />
+It Reads <code>.wav</code> into R (<code>readWave()</code>), writes them
+out (<code>writeWave()</code>), and creates/modifies Wave objects.<br />
+We will use it to read in our segment and syllable tokens.</p>
+<pre class="r"><code>ai=readWave(&quot;C:\\Users\\mikey\\Dropbox\\Courses\\Computational Linguistics - LING 349 Fall\\Week 9 &amp; 10 - TTS\\tokens\\ai.wav&quot;)</code></pre>
+<p><img src="tts_images/ai.jpg" alt="ai info" width="300"/><br />
+<br></p>
+<p><code>seewave</code> is not essential to the tts generator, but it’s
+nice to have<br />
+It plots waveforms (<code>oscillo()</code>), spectra
+(<code>spec()</code>), and spectrograms (<code>spectro()</code>).</p>
+<pre class="r"><code>oscillo(ai)
+spec(ai)
+spectro(ai, flim = c(0, 5))</code></pre>
+<p><img src="tts_images/seewave.jpg" alt="results from oscillo, spec, spectro on ai" width="900"/><br />
+<br></p>
+<p><code>audio</code> is needed to playback inside R.<br />
+Functions like <code>audioSample()</code> and <code>play()</code> let
+you listen to sounds without saving them and opening them
+externally.<br />
+<br></p>
+<pre class="r"><code>play(ai)</code></pre>
+<p><img src="tts_images/play.jpg" alt="play file" width="150"/><br />
+<br></p>
+<p>We’re going to use the data in our <code>wave_files</code> object,
+and read in each of the associated sound tokens in order.<br />
+We can do this using the lapply function.</p>
+<pre class="r"><code>wavs &lt;- lapply(wav_files, readWave)</code></pre>
+<ul>
+<li><code>lapply</code> loops over a list (<code>wav_files</code>) and
+applys a function (<code>readWave</code>) to each element.</li>
+</ul>
+<p><img src="tts_images/wavs.jpg" alt="wave files associated with munani" width="250"/><br />
+<br> Now we just need to stitch them together</p>
+<pre class="r"><code>sound  &lt;- do.call(c, lapply(wavs, function(w) w@left))</code></pre>
+<ul>
+<li><code>do.call(c, list_of_vectors)</code> is a trick that says: “take
+this list of vectors (the wave forms in their numeric format) and feed
+them all into <code>c()</code> as separate arguments. (the numbers of
+wave form 1, the numbers of wave form 2, the numbers of wave form 3
+etc.”<br />
+</li>
+<li><code>wavs</code> is a list of Wave objects we just made.<br />
+</li>
+<li><code>lapply(..., function(w) w@left)</code> means:
+<ul>
+<li>Take each element of wavs (call it w).<br />
+</li>
+<li>Extract the <span class="citation">@left</span> slot (the left
+channel’s numeric samples).</li>
+</ul></li>
+<li>The result is a list of numeric vectors, one per audio file.<br />
+<br> Now we simply play the concatenate file!<br />
+</li>
+</ul>
+<pre><code>play(sound)</code></pre>
+<p>Then you can create as a <code>.wav</code> file if you’d like.</p>
+<pre class="r"><code>out = Wave(left = sound,
+            samp.rate = 44100, bit = 16)</code></pre>
+<p>And then save it to your HD.</p>
+<pre class="r"><code>writeWave(out, &quot;C:/Courses/CompLING/TTS/out.wav&quot;)</code></pre>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
