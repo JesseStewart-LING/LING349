@@ -1278,41 +1278,91 @@ the frequency density of vowels over the formant space</p>
 <p><img src="graphs/ggplot11.png" alt="Topographic density plot" width="300"/></p>
 <p>Topographic map with no text labels Only contour lines shown — for
 identifying distributions in the data that is not influenced by the
-vowels themselves</p>
+vowels themselves (15 bins)</p>
 <pre class="r"><code>ggplot(dataset, aes(x=F2, y=F1,fill=Vowel)) + 
-  ylim(1100,150)+xlim(3100,200) + 
-  labs(x=&quot;F2 (Hz)&quot;, y=&quot;F1 (Hz)&quot;, title =&quot;Vowel Chart&quot;) + 
-  stat_density_2d(aes(fill = ..level..), bins=15)</code></pre>
+    ylim(1100,150)+xlim(3100,200) + 
+    labs(x=&quot;F2 (Hz)&quot;, y=&quot;F1 (Hz)&quot;, title =&quot;Vowel Chart&quot;) + 
+    stat_density_2d(bins=15)</code></pre>
 <p><img src="graphs/ggplot12.png" alt="adding labels" width="300"/><br />
 <br></p>
 <p>Topographic map with no text labels Only contour lines shown — for
 identifying distributions in the data that is not influenced by the
-vowels themselves</p>
+vowels themselves (30 bins)</p>
 <pre class="r"><code>ggplot(dataset, aes(x=F2, y=F1,fill=Vowel)) + 
   ylim(1100,150)+xlim(3100,200) + 
   labs(x=&quot;F2 (Hz)&quot;, y=&quot;F1 (Hz)&quot;, title =&quot;Vowel Chart&quot;) + 
-  stat_density_2d(aes(fill = ..level..), bins=30)</code></pre>
+  stat_density_2d(bins=30)</code></pre>
 <p><img src="graphs/ggplot13.png" alt="adding labels" width="300"/></p>
 <p>Topology I — filled heatmap of vowel density Aesthetic shading
-indicates how many vowels appear in each region</p>
-<pre class="r"><code>ggplot(dataset, aes(x=F2, y=F1,fill=Vowel)) + 
-  ylim(1100,150)+xlim(3100,200) + 
-  labs(x=&quot;F2 (Hz)&quot;, y=&quot;F1 (Hz)&quot;, title =&quot;Vowel Chart&quot;) + 
-  stat_density_2d(aes(fill = ..level..), geom = &quot;polygon&quot;)</code></pre>
+indicates how many clusters appear in each region</p>
+<pre class="r"><code>ggplot(dataset, aes(F2, F1)) +
+    stat_density_2d(
+        aes(fill = after_stat(density)),
+        geom = &quot;raster&quot;, contour = FALSE, na.rm = TRUE) +
+    scale_fill_viridis_c(name = &quot;Density&quot;) +
+    scale_x_reverse() +
+    scale_y_reverse() +
+    coord_cartesian(xlim = c(3100, 200), ylim = c(1100, 150), expand = FALSE) +
+    labs(x = &quot;F2 (Hz)&quot;, y = &quot;F1 (Hz)&quot;, title = &quot;Vowel Chart&quot;)</code></pre>
+<ul>
+<li>The plot begins with <code>ggplot</code>, using dataset with
+aesthetics (<code>aes</code>) where <code>x</code> = F2 and
+<code>y</code> = F1. - Then we add a Add a 2-D kernel density estimate
+with <code>stat_density_2d</code>.
+<ul>
+<li><code>fill = after_stat(density)</code> colours cells by estimated
+density.<br />
+</li>
+<li><code>geom = "raster"</code> draws a heatmap (pixel grid).<br />
+</li>
+<li><code>contour = FALSE</code> removes contour lines, leaving just the
+heatmap.<br />
+</li>
+<li><code>na.rm = TRUE</code> ignores missing values quietly.<br />
+</li>
+</ul></li>
+<li><code>scale_fill_viridis_c(name = "Density")</code> adds the
+yellow.<br />
+</li>
+<li><code>scale_x_reverse() +</code> and
+<code>scale_y_reverse() +</code> reverses the axes.<br />
+</li>
+<li><code>coord_cartesian</code> adds the ranges (3100 Hz to 200 hz on
+the x; and 1100 Hz and 150 Hz on the y)<br />
+</li>
+<li><code>labs</code> adds in the chart labels</li>
+</ul>
 <p><img src="graphs/ggplot14.png" alt="heatmap" width="300"/></p>
-<p>Topology II — same as above but with more defined 15 bin resolution
-Creates slightly sharper or chunkier zones of colour</p>
-<pre class="r"><code>ggplot(dataset, aes(x=F2, y=F1,fill=Vowel)) + 
-  ylim(1100,150)+xlim(3100,200) + 
-  labs(x=&quot;F2 (Hz)&quot;, y=&quot;F1 (Hz)&quot;, title =&quot;Vowel Chart&quot;) + 
-  stat_density_2d(aes(fill = ..level..), geom = &quot;polygon&quot;, bins=15)</code></pre>
+<p>Topology II — same as above but with more defined resolution Creates
+slightly sharper or chunkier zones of colour</p>
+<pre class="r"><code>ggplot(dataset, aes(F2, F1)) +
+    stat_density_2d(
+        aes(fill = after_stat(density)),
+        geom = &quot;raster&quot;, contour = FALSE, na.rm = TRUE,
+        n = 10) +
+    scale_fill_viridis_c(name = &quot;Density&quot;) +
+    scale_x_reverse() +
+    scale_y_reverse() +
+    coord_cartesian(xlim = c(3100, 200), ylim = c(1100, 150), expand = FALSE) +
+    labs(x = &quot;F2 (Hz)&quot;, y = &quot;F1 (Hz)&quot;, title = &quot;Vowel Chart&quot;)</code></pre>
+<ul>
+<li>This is done by adding <code>n</code> to
+<code>stat_density_2d</code> lower numbers result in a chunkier plot,
+and higher numbers result in a smoother or shaper plot.</li>
+</ul>
 <p><img src="graphs/ggplot15.png" alt="heatmap with bins at 15" width="300"/></p>
 <p>Topology III — higher bin resolution (30) More finely detailed
 density map</p>
-<pre class="r"><code>ggplot(dataset, aes(x=F2, y=F1,fill=Vowel)) + 
-  ylim(1100,150)+xlim(3100,200) + 
-  labs(x=&quot;F2 (Hz)&quot;, y=&quot;F1 (Hz)&quot;, title =&quot;Vowel Chart&quot;) + 
-  stat_density_2d(aes(fill = ..level..), geom = &quot;polygon&quot;, bins=30)</code></pre>
+<pre class="r"><code>ggplot(dataset, aes(F2, F1)) +
+    stat_density_2d(
+        aes(fill = after_stat(density)),
+        geom = &quot;raster&quot;, contour = FALSE, na.rm = TRUE,
+        n = 500) +
+    scale_fill_viridis_c(name = &quot;Density&quot;) +
+    scale_x_reverse() +
+    scale_y_reverse() +
+    coord_cartesian(xlim = c(3100, 200), ylim = c(1100, 150), expand = FALSE) +
+    labs(x = &quot;F2 (Hz)&quot;, y = &quot;F1 (Hz)&quot;, title = &quot;Vowel Chart&quot;)</code></pre>
 <p><img src="graphs/ggplot16.png" alt="heatmap with bins at 30" width="300"/></p>
 </div>
 <div id="polygons" class="section level3" number="6.4">
