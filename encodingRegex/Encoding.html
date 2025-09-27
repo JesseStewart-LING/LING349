@@ -772,11 +772,9 @@ wrong encoding.</p>
 </li>
 <li>Two bytes = 16 bits (values from 0 to 65,535)</li>
 </ul>
-<p><img src="Encoding_images/bvsb.jpg" alt="UTF=8 example" width="400"/></p>
 <p>Modern encoding (like UTF-8) uses <strong>variable-length
 encoding</strong>, where some characters are stored in 1 byte and others
 may need 2, 3, or even 4 bytes.</p>
-<p><img src="Encoding_images/utfExamp.jpg" alt="UTF=8 example" width="600"/></p>
 <hr />
 </div>
 <div id="summary" class="section level1" number="5">
@@ -1010,24 +1008,15 @@ IPA examples<br />
 <p>You used to need the right fonts to be able to see the characters on
 your screen or print them. Most Unicode fonts don’t cover all the
 ranges.</p>
-<p>Some common Unicode fonts:</p>
-<ul>
-<li>Cambria<br />
-</li>
-<li>Gentium (Latin, IPA, Greek)<br />
-</li>
-<li>SIL’s Doulos (IPA, Charis IPA) etc.<br />
-</li>
-<li>Lucida Unicode (lots of ranges)<br />
-</li>
-<li>Arial Unicode (even more)<br />
-</li>
-<li>DejaVu (lot’s too)<br />
-</li>
-<li>Linux Libertine <a
+<p>Some common Unicode fonts:<br />
+- Cambria - Gentium (Latin, IPA, Greek)<br />
+- SIL’s Doulos (IPA, Charis IPA) etc.<br />
+- Lucida Unicode (lots of ranges)<br />
+- Arial Unicode (even more)<br />
+- DejaVu (lot’s too)<br />
+- Linux Libertine <a
 href="http://users.physik.fu-berlin.de/~tburnus/linlibertine/">See
-supported ranges</a></li>
-</ul>
+supported ranges</a></p>
 <p>Nowadays many common fonts cover what we need for IPA, however, some
 are better at spacing and stacking diacritics than others.</p>
 </div>
@@ -1045,72 +1034,25 @@ pasting from a character map program ( ʃ ).</li>
 <p>You can also read in a file using any of the other encodings (telling
 R which one) and it will automatically be converted into Unicode.</p>
 </div>
-<div id="byte-order-mark" class="section level1" number="10">
-<h1><span class="header-section-number">10</span> Byte-order mark</h1>
-<p>A Byte Order Mark (BOM) is the Unicode character U+FEFF placed at the
-very start of a text file. Its original job was to tell readers the byte
-order (endianness) for UTF-16 or UTF-32 encodings—i.e., whether
-multi-byte code units are little-endian or big-endian.</p>
-<ul>
-<li><p>UTF-16BE starts with bytes <code>FE FF</code><br />
-</p></li>
-<li><p>UTF-16LE starts with <code>FF FE</code><br />
-</p></li>
-<li><p>UTF-32BE starts with <code>00 00 FE FF</code><br />
-</p></li>
-<li><p>UTF-32LE starts with <code>FF FE 00 00</code><br />
-<br></p></li>
-<li><p>For UTF-8, byte order isn’t a thing, but some tools still stick a
-marker at the front:</p>
-<ul>
-<li>UTF-8’s BOM bytes are EF BB BF</li>
-</ul></li>
-</ul>
+<div id="byte-order-marks" class="section level1" number="10">
+<h1><span class="header-section-number">10</span> Byte-order marks</h1>
 <p>If you have a number represented in two bytes, 20 09– you can
 still:</p>
-<ul>
-<li>put the bytes in the right order: 20 09
-<strong>litte-endian</strong>, as in PCs and recent Macs</li>
-<li>put the bytes in the wrong order: 09 20 <strong>big-endian</strong>,
-as in most Unix computers</li>
-</ul>
-<p>This has caused endless problems with files transferred from one type
-of computer to the other. One attempt to solve this problem: Put the
-“zero-width no-break space” character <code>(0xFEFF)</code> at the start
-of every Unicode file. The opposite order <code>0xFFFE</code> is forever
-reserved as meaningless. Unfortunately, people don’t use the BOM
+<p>put the bytes in the right order: 20 09
+<strong>litte-endian</strong>, as in PCs and recent Macs put the bytes
+in the wrong order: 09 20 <strong>big-endian</strong>, as in most Unix
+computers</p>
+<p>which has caused endless problems with files transferred from one
+type of computer to the other. One attempt to solve this problem: Put
+the “zero-width no-break space” character <code>(0xFEFF)</code> at the
+start of every Unicode file. The opposite order <code>0xFFFE</code> is
+forever reserved as meaningless. Unfortunately, people don’t use the BOM
 consistently.</p>
 <p>When you load a data set into R, often times you will run into an
 encoding error in the name of the first header<br />
 <img src="Encoding_images/byteOrderError.jpg" alt="A bye order error in R" width="300"/></p>
 <p>Fix: Rename the column</p>
 <pre class="r"><code>colnames(DataSetName)[1]=&quot;NewName&quot;</code></pre>
-<p>What happens if it’s set wrong?</p>
-<p>If the BOM says “interpret me as X” but the file is really in Y, the
-software will decode the byte stream incorrectly:</p>
-<ul>
-<li>Problem: UTF-8 file but BOM says UTF-16
-<ul>
-<li>Result: Reader groups bytes in pairs, misaligns everything, and
-produces nonsense characters or errors.<br />
-</li>
-</ul></li>
-<li>Problem: UTF-16LE file but BOM says UTF-16BE
-<ul>
-<li>Result: Every two-byte sequence gets swapped.<br />
-</li>
-<li>Example: 61 00 (UTF-16LE “a”) → misread as 00 61 (UTF-16BE “Latin
-small letter a with circumflex” U+0061 becomes U+6100).<br />
-</li>
-</ul></li>
-<li>Problem: Wrong BOM in practice
-<ul>
-<li>Result: Instead of “䭠” (UTF-8: E4 AD A0), the reader might treat
-the bytes as ISO-8859-1 or Windows-1252 and show “Σ¡á”. (See
-Video!)<br />
-<br> The data hasn’t changed — only the interpretation did.</li>
-</ul></li>
-</ul>
 </div>
 <div id="saving-your-encoding" class="section level1" number="11">
 <h1><span class="header-section-number">11</span> Saving your
