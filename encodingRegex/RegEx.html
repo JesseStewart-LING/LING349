@@ -1327,6 +1327,7 @@ transcription</strong>.<br />
 We’ll work with Latin American Spanish (seseo, yeísmo).</p>
 <p>We will attempt to trascribe the following words:
 <code>queso, guitarra, güiro, agua, jefe, cerveza, hablar, rey, arroyo</code></p>
+<pre class="r"><code>x &lt;-c(&quot;queso&quot;, &quot;guitarra&quot;, &quot;güiro&quot;, &quot;agua&quot;, &quot;jefe&quot;, &quot;cerveza&quot;, &quot;hablar&quot;, &quot;rey&quot;, &quot;arroyo&quot;, &quot;yepez&quot;, &quot;y&quot;)</code></pre>
 <p>Key teaching points:</p>
 <ul>
 <li><strong>Order matters</strong> — more specific patterns must be
@@ -1368,7 +1369,8 @@ to_ipa &lt;- function(orth) {
 
   # 6) ñ, y (consonantal), h
   x &lt;- gsub(&quot;ñ&quot;, &quot;ɲ&quot;, x, perl = TRUE)
-  x &lt;- gsub(&quot;(?:(?&lt;=\\b)|(?&lt;=[aeiouáéíóú]))y(?=[aeiouáéíóú])&quot;, &quot;ʎ&quot;, x, perl = TRUE)
+  x &lt;- gsub(&quot;(?&lt;=[aeiouáéíóú])y(?=[aeiouáéíóú])&quot;, &quot;ʎ&quot;, x, perl = TRUE) #?&lt;= positive look behind, ?= positive look ahead
+
   x &lt;- gsub(&quot;^y(?=[aeiouáéíóú])&quot;, &quot;ʎ&quot;, x, perl = TRUE)
   x &lt;- gsub(&quot;y\\b&quot;, &quot;i&quot;, x, perl = TRUE)
   x &lt;- gsub(&quot;^y$&quot;, &quot;i&quot;, x, perl = TRUE)
