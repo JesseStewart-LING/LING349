@@ -1332,8 +1332,9 @@ We’ll work with Latin American Spanish (seseo, yeísmo).</p>
 <em>casa</em>, ‘house’; <em>guerra</em>, ‘war’; <em>guapo</em>,
 ‘hansome’; <em>cerveza</em>, ‘beer’; <em>hablar</em>, ‘speak’;
 <em>rey</em>, ‘king’; <em>arroyo</em>, ‘a dry stream’; <em>Yépez</em>,
-‘a common last name’; <em>y</em>, ‘and’</p>
-<pre class="r"><code>x &lt;-c(&quot;queso&quot;, &quot;guitarra&quot;, &quot;güiro&quot;, &quot;agua&quot;, &quot;jefe&quot;,&quot;niño&quot;,&quot;lluvia&quot;, &quot;casa&quot;,&quot;guerra&quot;,&quot;guapo&quot;, &quot;cerveza&quot;, &quot;hablar&quot;, &quot;rey&quot;, &quot;arroyo&quot;, &quot;Yépez&quot;, &quot;y&quot;)</code></pre>
+‘a common last name’; <em>y</em>, ‘and’; <em>abierto</em> ‘open’,
+<em>ambos</em> ‘both’</p>
+<pre class="r"><code>x &lt;-c(&quot;queso&quot;, &quot;guitarra&quot;, &quot;güiro&quot;, &quot;agua&quot;, &quot;jefe&quot;,&quot;niño&quot;,&quot;lluvia&quot;, &quot;casa&quot;,&quot;guerra&quot;,&quot;guapo&quot;, &quot;cerveza&quot;, &quot;hablar&quot;, &quot;rey&quot;, &quot;arroyo&quot;, &quot;Yépez&quot;, &quot;y&quot;,&quot;abierto&quot;, &quot;ambos&quot;)</code></pre>
 <p>Key teaching points:</p>
 <ul>
 <li><strong>Order matters</strong> — more specific patterns must be
@@ -1377,8 +1378,9 @@ to_ipa &lt;- function(orth) {
   # 6) ñ, y (consonantal), h
   x &lt;- gsub(&quot;ñ&quot;, &quot;ɲ&quot;, x, perl = TRUE)
   x &lt;- gsub(&quot;(?&lt;=[aeiouáéíóú])y(?=[aeiouáéíóú])&quot;, &quot;ʎ&quot;, x, perl = TRUE) #?&lt;= positive look behind, ?= positive look ahead
-    x &lt;- gsub(&quot;(?&lt;=[aeiouáéíóú])b(?=[aeiouáéíóú])&quot;, &quot;β&quot;, x, perl = TRUE) #?&lt;= positive look behind, ?= positive look ahead
-
+    x &lt;- gsub(&quot;(?&lt;=[a-záéíóú])b(?=[a-záéíóú])&quot;, &quot;β&quot;, x, perl = TRUE) #?&lt;= positive look behind, ?= positive look ahead
+    x &lt;- gsub(&quot;(?&lt;=[mn])β&quot;, &quot;b&quot;, x, perl = TRUE) #?&lt;= positive look behind, ?= positive look ahead
+    
   x &lt;- gsub(&quot;^y(?=[aeiouáéíóú])&quot;, &quot;ʎ&quot;, x, perl = TRUE)
   x &lt;- gsub(&quot;y\\b&quot;, &quot;i&quot;, x, perl = TRUE)
   x &lt;- gsub(&quot;h&quot;, &quot;&quot;, x, perl = TRUE)
@@ -1392,11 +1394,11 @@ to_ipa &lt;- function(orth) {
 }
 
 # Example data
-words &lt;- c(&quot;queso&quot;, &quot;guitarra&quot;, &quot;güiro&quot;, &quot;agua&quot;, &quot;jefe&quot;,&quot;niño&quot;,&quot;lluvia&quot;, &quot;casa&quot;,&quot;guerra&quot;,&quot;guapo&quot;, &quot;cerveza&quot;, &quot;hablar&quot;, &quot;rey&quot;, &quot;arroyo&quot;, &quot;Yépez&quot;, &quot;y&quot;)
+words &lt;- c(&quot;queso&quot;, &quot;guitarra&quot;, &quot;güiro&quot;, &quot;agua&quot;, &quot;jefe&quot;,&quot;niño&quot;,&quot;lluvia&quot;, &quot;casa&quot;,&quot;guerra&quot;,&quot;guapo&quot;, &quot;cerveza&quot;, &quot;hablar&quot;, &quot;rey&quot;, &quot;arroyo&quot;, &quot;Yépez&quot;, &quot;y&quot;, &quot;abierto&quot;, &quot;ambos&quot;)
 to_ipa(words)</code></pre>
 <pre><code>##  [1] &quot;keso&quot;    &quot;gitara&quot;  &quot;gwiɾo&quot;   &quot;awa&quot;     &quot;xefe&quot;    &quot;niɲo&quot;    &quot;ʎuβia&quot;  
-##  [8] &quot;kasa&quot;    &quot;gera&quot;    &quot;wapo&quot;    &quot;seɾbesa&quot; &quot;ablaɾ&quot;   &quot;rei&quot;     &quot;aroʎo&quot;  
-## [15] &quot;ʎépes&quot;   &quot;i&quot;</code></pre>
+##  [8] &quot;kasa&quot;    &quot;gera&quot;    &quot;wapo&quot;    &quot;seɾβesa&quot; &quot;aβlaɾ&quot;   &quot;rei&quot;     &quot;aroʎo&quot;  
+## [15] &quot;ʎépes&quot;   &quot;i&quot;       &quot;aβieɾto&quot; &quot;ambos&quot;</code></pre>
 </div>
 </div>
 </div>
