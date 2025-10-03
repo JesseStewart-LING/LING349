@@ -1244,7 +1244,7 @@ world</h1>
 <img src="RegEx_images/elan.jpg" alt="ELAN icon" width="75"/></p>
 <p>Download the following files:<br />
 <a href="RegEx_files/ASLSample.eaf">EAF file</a><br />
-<a href="RegEx_files/ASLSample.mp4">Video</a></p>
+<a href="RegEx_files/---.---">Video</a></p>
 <p>The following was used, in part, during the publication of this
 paper:<br />
 <img src="RegEx_images/SL_paper.jpg" alt="A Quantitative analysis of Sign lengthening in ASL" width="500"/><br />
@@ -1325,9 +1325,15 @@ one or more hyphens, and optionally followed by spaces.</p>
 convert Spanish orthography into <strong>broad IPA
 transcription</strong>.<br />
 We’ll work with Latin American Spanish (seseo, yeísmo).</p>
-<p>We will attempt to trascribe the following words:
-<code>queso, guitarra, güiro, agua, jefe, cerveza, hablar, rey, arroyo</code></p>
-<pre class="r"><code>x &lt;-c(&quot;queso&quot;, &quot;guitarra&quot;, &quot;güiro&quot;, &quot;agua&quot;, &quot;jefe&quot;, &quot;cerveza&quot;, &quot;hablar&quot;, &quot;rey&quot;, &quot;arroyo&quot;, &quot;Yépez&quot;, &quot;y&quot;)</code></pre>
+<p>We will attempt to transcribe the following words:<br />
+<br> <em>queso</em>, ‘cheese’; <em>guitarra</em>, ‘guitar’;
+<em>güiro</em>, ‘type of instrument’; <em>agua</em>, ‘water’;
+<em>jefe</em>, ‘boss’; <em>niño</em>, ‘child’; <em>lluvia</em>, ‘rain’;
+<em>casa</em>, ‘house’; <em>guerra</em>, ‘war’; <em>guapo</em>,
+‘hansome’; <em>cerveza</em>, ‘beer’; <em>hablar</em>, ‘speak’;
+<em>rey</em>, ‘king’; <em>arroyo</em>, ‘a dry stream’; <em>Yépez</em>,
+‘a common last name’; <em>y</em>, ‘and’</p>
+<pre class="r"><code>x &lt;-c(&quot;queso&quot;, &quot;guitarra&quot;, &quot;güiro&quot;, &quot;agua&quot;, &quot;jefe&quot;,&quot;niño&quot;,&quot;lluvia&quot;, &quot;casa&quot;,&quot;guerra&quot;,&quot;guapo&quot;, &quot;cerveza&quot;, &quot;hablar&quot;, &quot;rey&quot;, &quot;arroyo&quot;, &quot;Yépez&quot;, &quot;y&quot;)</code></pre>
 <p>Key teaching points:</p>
 <ul>
 <li><strong>Order matters</strong> — more specific patterns must be
@@ -1340,13 +1346,14 @@ vs. /ɾ/) require positional rules.</li>
 <pre class="r"><code># Function: Convert orthographic Spanish to broad IPA
 to_ipa &lt;- function(orth) {
   x &lt;- tolower(orth) # Converts all text to lowercase - very important!
-  #Note: `perl = TRUE` tells R to use the PCRE engine. This enables more advanced RegEx features like:
+
+#Note: `perl = TRUE` tells R to use the PCRE (Perl Compatible Regular Expressions) engine. This enables more advanced RegEx features like positive look ahead (?=) and positive look behind (?&lt;=).  
 
   # --- ORDER MATTERS: handle longer/more specific patterns first ---
 
   # 1) Affricates and digraphs
   x &lt;- gsub(&quot;ch&quot;, &quot;tʃ&quot;, x, perl = TRUE)    # ch → tʃ
-  x &lt;- gsub(&quot;ll&quot;, &quot;ʎ&quot;, x, perl = TRUE)     # yeísmo: ll → ʝ
+  x &lt;- gsub(&quot;ll&quot;, &quot;ʎ&quot;, x, perl = TRUE)     # yeísmo: ll → ʝ; zheísmo: ll → ʒ 
 
   # 2) &#39;qu&#39; and &#39;c&#39; alternations (keep vowels)
   x &lt;- gsub(&quot;qu(?=[ieíé])&quot;, &quot;k&quot;, x, perl = TRUE)     # que/qui → ke/ki → k + vowel
@@ -1357,27 +1364,26 @@ to_ipa &lt;- function(orth) {
   x &lt;- gsub(&quot;gü&quot;,  &quot;gw&quot;, x, perl = TRUE)             # güe/güi → gwe/gwi
   x &lt;- gsub(&quot;gue&quot;, &quot;ge&quot;, x, perl = TRUE)             # silent u
   x &lt;- gsub(&quot;gui&quot;, &quot;gi&quot;, x, perl = TRUE)             # silent u
-  #x &lt;- gsub(&quot;g(?=[ieíé])&quot;, &quot;x&quot;, x, perl = TRUE)      # ge/gi → x
+  
   x &lt;- gsub(&quot;j&quot;, &quot;x&quot;, x, perl = TRUE)                # j → x
 
-  # 4) Cluster simplification (didactic example)
+  # 4) Cluster simplification
   x &lt;- gsub(&quot;gua&quot;, &quot;wa&quot;, x, perl = TRUE)             # agua → awa
 
   # 5) z and b/v neutralization
   x &lt;- gsub(&quot;z&quot;,  &quot;s&quot;, x, perl = TRUE)               # seseo: z → s
-  x &lt;- gsub(&quot;[bv]&quot;, &quot;b&quot;, x, perl = TRUE)             # b and v merge
+  x &lt;- gsub(&quot;[bv]&quot;, &quot;b&quot;, x, perl = TRUE)             # b and v merge (b isn&#39;t necessary but deal)
 
   # 6) ñ, y (consonantal), h
   x &lt;- gsub(&quot;ñ&quot;, &quot;ɲ&quot;, x, perl = TRUE)
   x &lt;- gsub(&quot;(?&lt;=[aeiouáéíóú])y(?=[aeiouáéíóú])&quot;, &quot;ʎ&quot;, x, perl = TRUE) #?&lt;= positive look behind, ?= positive look ahead
+    x &lt;- gsub(&quot;(?&lt;=[aeiouáéíóú])b(?=[aeiouáéíóú])&quot;, &quot;β&quot;, x, perl = TRUE) #?&lt;= positive look behind, ?= positive look ahead
 
   x &lt;- gsub(&quot;^y(?=[aeiouáéíóú])&quot;, &quot;ʎ&quot;, x, perl = TRUE)
   x &lt;- gsub(&quot;y\\b&quot;, &quot;i&quot;, x, perl = TRUE)
-  x &lt;- gsub(&quot;^y$&quot;, &quot;i&quot;, x, perl = TRUE)
   x &lt;- gsub(&quot;h&quot;, &quot;&quot;, x, perl = TRUE)
 
   # 8) Rhotics — do last
-  x &lt;- gsub(&quot;(?&lt;=[nls])r&quot;, &quot;r&quot;, x, perl = TRUE)       # after n/l/s
   x &lt;- gsub(&quot;r&quot;, &quot;ɾ&quot;, x, perl = TRUE)                 # elsewhere → tap
   x &lt;- gsub(&quot;ɾɾ&quot;, &quot;r&quot;, x, perl = TRUE)                # trill
   x &lt;- gsub(&quot;^ɾ&quot;, &quot;r&quot;, x, perl = TRUE)                # word-initial
@@ -1386,10 +1392,11 @@ to_ipa &lt;- function(orth) {
 }
 
 # Example data
-words &lt;- c(&quot;queso&quot;,&quot;guitarra&quot;,&quot;güiro&quot;,&quot;agua&quot;,&quot;jefe&quot;,&quot;cerveza&quot;,&quot;hablar&quot;,&quot;rey&quot;,&quot;arroyo&quot;)
+words &lt;- c(&quot;queso&quot;, &quot;guitarra&quot;, &quot;güiro&quot;, &quot;agua&quot;, &quot;jefe&quot;,&quot;niño&quot;,&quot;lluvia&quot;, &quot;casa&quot;,&quot;guerra&quot;,&quot;guapo&quot;, &quot;cerveza&quot;, &quot;hablar&quot;, &quot;rey&quot;, &quot;arroyo&quot;, &quot;Yépez&quot;, &quot;y&quot;)
 to_ipa(words)</code></pre>
-<pre><code>## [1] &quot;keso&quot;    &quot;gitara&quot;  &quot;gwiɾo&quot;   &quot;awa&quot;     &quot;xefe&quot;    &quot;seɾbesa&quot; &quot;ablaɾ&quot;  
-## [8] &quot;rei&quot;     &quot;aroʎo&quot;</code></pre>
+<pre><code>##  [1] &quot;keso&quot;    &quot;gitara&quot;  &quot;gwiɾo&quot;   &quot;awa&quot;     &quot;xefe&quot;    &quot;niɲo&quot;    &quot;ʎuβia&quot;  
+##  [8] &quot;kasa&quot;    &quot;gera&quot;    &quot;wapo&quot;    &quot;seɾbesa&quot; &quot;ablaɾ&quot;   &quot;rei&quot;     &quot;aroʎo&quot;  
+## [15] &quot;ʎépes&quot;   &quot;i&quot;</code></pre>
 </div>
 </div>
 </div>
