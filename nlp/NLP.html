@@ -620,9 +620,16 @@ effectively for analysis. Think of it as taking messy, inconsistent, or
 incomplete data and reshaping it into a tidy, structured format that’s
 ready for statistical modelling, visualization, machine learning
 etc.</p>
+<div id="our-goal" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Our goal</h2>
+<p>Get the TextGrids into a computer-readable format for statistical
+analysis. <br>
+<img src="NLP_images/goal.jpg" alt="Data after processing it through the loop" width="600"/><br />
+<br></p>
+</div>
 <div id="extracting-annotations-from-praat-textgrids"
-class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Extracting
+class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Extracting
 annotations from Praat TextGrids</h2>
 <ol style="list-style-type: decimal">
 <li>We first load minimal dependencies, point R at the folder of
@@ -751,8 +758,8 @@ View(results)</code></pre>
 of the data wrangling.</p>
 </div>
 <div id="strategy-for-the-large-for-loop" class="section level2"
-number="3.2">
-<h2><span class="header-section-number">3.2</span> Strategy for the
+number="3.3">
+<h2><span class="header-section-number">3.3</span> Strategy for the
 large For-Loop</h2>
 <p>We’ll go over the workflow in <strong>small chunks</strong>, explain
 each step, and only then wrap it in a single <code>for (...)</code>
@@ -760,8 +767,8 @@ loop. This makes it clear <em>what</em> each line does and <em>why</em>
 we need it. Finally, we’ll include the entire loop so you can run it
 end-to-end.</p>
 <div id="read-a-single-textgrid-one-file-no-loop-yet"
-class="section level3" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> Read a single
+class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Read a single
 TextGrid (one file, no loop yet)</h3>
 <p>Goal: load raw lines, normalize whitespace, and keep only the lines
 we care about.<br />
@@ -1230,8 +1237,8 @@ the file name.<br />
 </ul>
 </div>
 </div>
-<div id="the-for-loop" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> The
+<div id="the-for-loop" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> The
 <code>for loop</code></h2>
 <p>Until now, we’ve only been manipulating a single file, but the
 process we’ve created needs to be applied to all the files (81 in the
@@ -1416,8 +1423,8 @@ using <code>bind_rows</code>.</p>
 <img src="NLP_images/dataPostLoop.jpg" alt="Data after processing it through the loop" width="600"/><br />
 <br></p>
 </div>
-<div id="clean-up" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Clean up</h2>
+<div id="clean-up" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Clean up</h2>
 <p>Now we have a dataset that the computer can read. However, it still
 needs a bit of clean up and more information should be added in case we
 want to use this for multiple projects.<br />
@@ -1552,13 +1559,13 @@ with this language for 16+ years.<br />
 <br></p>
 </div>
 <div id="adding-new-columns-and-translating-old-ones"
-class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> Adding new columns
+class="section level2" number="3.6">
+<h2><span class="header-section-number">3.6</span> Adding new columns
 and translating old ones</h2>
 <p>First we’ll transfer the data frame to a new object.</p>
 <pre class="r"><code>dataset2 &lt;- clean3</code></pre>
-<div id="adding-new-columns" class="section level3" number="3.5.1">
-<h3><span class="header-section-number">3.5.1</span> Adding new
+<div id="adding-new-columns" class="section level3" number="3.6.1">
+<h3><span class="header-section-number">3.6.1</span> Adding new
 columns</h3>
 <p><br> We’re now going to add additional columns that do not require
 loops. This process is relatively straightforward.</p>
@@ -1593,8 +1600,8 @@ non-white spaces with capital <code>S</code> which negates white spaces.
 We want one or more hits (<code>+</code>).</li>
 </ul>
 </div>
-<div id="renaming-columns" class="section level3" number="3.5.2">
-<h3><span class="header-section-number">3.5.2</span> Renaming
+<div id="renaming-columns" class="section level3" number="3.6.2">
+<h3><span class="header-section-number">3.6.2</span> Renaming
 columns</h3>
 <pre><code>Yes, I want to actually make something easier on us. We&#39;re going to translate the column names to English and keep them consistently lowercase. The syntax for each `rename` is the same.  
 ```r
