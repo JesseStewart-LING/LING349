@@ -268,7 +268,7 @@ designed for major world languages like English and Spanish. While these
 resources are powerful for well-documented languages, they are often
 severely lacking for under-documented and under-studied languages, where
 no large annotated corpora or pre-trained models exist. As a result,
-researchers working with these languages often need to design customised
+researchers working with these languages often need to design customized
 tools and workflows from the ground up.</p>
 <p>In <strong>computational linguistics</strong>, NLP provides the
 toolkit for testing linguistic theories on large datasets, uncovering
@@ -312,7 +312,7 @@ recordings.<br />
 for orthographic transcription, phonetic transcription, morpheme
 segmentation, glossing, translation, etc.</li>
 <li><strong>Time alignment</strong> – Link each annotation to a precise
-point or segment in the media file for exact synchronisation between
+point or segment in the media file for exact synchronization between
 recording and annotations.</li>
 <li><strong>Custom tier types</strong> – Define tier hierarchies (e.g.,
 words → morphemes → glosses) that fit your project’s needs.</li>
@@ -329,16 +329,28 @@ ELAN</h2>
 <p>ELAN is widely used in <strong>language documentation</strong>,
 <strong>phonetics/phonology</strong>, <strong>morphosyntax</strong>, and
 <strong>multimodal communication studies</strong> because it allows you
-to: - Create structured, multi-tier annotations of speech data. - Work
-with <strong>under-documented</strong> and <strong>under-studied
-languages</strong> that lack pre-existing computational tools. -
-Integrate audio/video with transcription, translation, and linguistic
-analysis.</p>
-<p>In our workflow, ELAN is the starting point: 1. Annotate speech
-recordings (segmentation, morphemes, glosses, translations). 2. Export
-the annotations (e.g., to <strong>Praat TextGrid</strong>) for acoustic
-or computational processing. 3. Prepare the exported data for
-<strong>NLP analysis</strong> in R.</p>
+to:</p>
+<ul>
+<li>Create structured, multi-tier annotations of speech data.<br />
+</li>
+<li>Work with <strong>under-documented</strong> and
+<strong>under-studied languages</strong> that lack pre-existing
+computational tools.<br />
+</li>
+<li>Integrate audio/video with transcription, translation, and
+linguistic analysis.</li>
+</ul>
+<p>In our workflow, ELAN is the starting point:</p>
+<ol style="list-style-type: decimal">
+<li>Annotate speech recordings (segmentation, morphemes, glosses,
+translations).<br />
+</li>
+<li>Export the annotations (e.g., to <strong>Praat TextGrid</strong>)
+for acoustic or computational processing.<br />
+</li>
+<li>Prepare the exported data for <strong>NLP analysis</strong> in
+R.</li>
+</ol>
 </div>
 <div id="workflow" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Workflow</h2>
@@ -363,45 +375,66 @@ and Traditions from Pijal: Told in Media Lengua</em> <a
 href="https://www.amazon.com/Cuentos-Tradiciones-Pijal-Relatos-Traditions/dp/0615906338">Available
 on Amazon</a> <br><br>
 <img src="NLP_images/stories.jpg" alt="A sample from Cuentos y Tradiciones de Pijal: Relatados en Media Lengua" width="600"/></p>
-<p><strong><em>“Narration”</em></strong> files contain three
-tiers:<br />
-- Media Lengua tier with the speaker’s name - Segmentation tier
-(morpheme divisions and IPA transcriptions)<br />
-- Interlinear glosses<br />
-<br> <code>2010--43-01-ElicitationsLong--LG.eaf</code> is a sample of
+<p><strong><em>“Narration”</em></strong> files contain three tiers:</p>
+<ul>
+<li>Media Lengua tier with the speaker’s name<br />
+</li>
+<li>Segmentation tier (morpheme divisions and IPA transcriptions)<br />
+</li>
+<li>Interlinear glosses</li>
+</ul>
+<p><br> <code>2010--43-01-ElicitationsLong--LG.eaf</code> is a sample of
 elicitations gathered between 2009-2010 that have been used for a number
 of publications. They contain a lot more data than the “Narration”
 files.
 <img src="NLP_images/elicitations.jpg" alt="A sample of the elicited data" width="600"/><br />
 <br> <strong><em>“Elicitation”</em></strong> files contain 7 to 8
-tiers:<br />
-- Media Lengua tier with the speaker’s name<br />
-- Kichwa (Quichua) tier with a Kichwa translation of the Media Lengua
+tiers:</p>
+<ul>
+<li>Media Lengua tier with the speaker’s name<br />
+</li>
+<li>Kichwa (Quichua) tier with a Kichwa translation of the Media Lengua
 utterances<br />
-- A (Rural) Spanish translation of the Media Lengua utterances<br />
-- A Standard Spanish translation of the Media Lengua utterances<br />
-- The elicited sentence<br />
-- Segmentation tier (morpheme divisions and IPA transcriptions)<br />
-- Interlinear glosses<br />
-- An English translation of the Media Lengua utterances (optional)<br />
-<br> <strong>Note:</strong> that if you right click on the tier names,
+</li>
+<li>A (Rural) Spanish translation of the Media Lengua utterances<br />
+</li>
+<li>A Standard Spanish translation of the Media Lengua utterances<br />
+</li>
+<li>The elicited sentence<br />
+</li>
+<li>Segmentation tier (morpheme divisions and IPA transcriptions)<br />
+</li>
+<li>Interlinear glosses<br />
+</li>
+<li>An English translation of the Media Lengua utterances
+(optional)<br />
+<br></li>
+</ul>
+<p><strong>Note:</strong> that if you right click on the tier names,
 then click <code>Sort Tiers</code>, you will see the hierarchies/
-dependencies used in this file.<br />
-<img src="NLP_images/hierarchies.jpg" alt="ELAN Hierarchies" width="400"/><br />
+dependencies used in this file.</p>
+<p><img src="NLP_images/hierarchies.jpg" alt="ELAN Hierarchies" width="400"/><br />
 <br></p>
 <p><code>2016--Zoom02--LG-MT.eaf</code> is a sample of the
 conversational data. This is the most common data type in the Media
 lengua collection.<br />
 <img src="NLP_images/conversations.jpg" alt="Sample of the conversational data" width="600"/><br />
 <br> <strong><em>“Conversation”</em></strong> files contain 6 tiers per
-speaker:<br />
-- Media Lengua tier with the speaker’s name<br />
-- Kichwa (Quichua) tier with a Kichwa translation of the Media Lengua
+speaker:</p>
+<ul>
+<li>Media Lengua tier with the speaker’s name<br />
+</li>
+<li>Kichwa (Quichua) tier with a Kichwa translation of the Media Lengua
 utterances<br />
-- A (Rural) Spanish translation of the Media Lengua utterances<br />
-- A Standard Spanish translation of the Media Lengua utterances<br />
-- Segmentation tier (morpheme divisions and IPA transcriptions)<br />
-- Interlinear glosses</p>
+</li>
+<li>A (Rural) Spanish translation of the Media Lengua utterances<br />
+</li>
+<li>A Standard Spanish translation of the Media Lengua utterances<br />
+</li>
+<li>Segmentation tier (morpheme divisions and IPA transcriptions)<br />
+</li>
+<li>Interlinear glosses</li>
+</ul>
 </div>
 <div id="creating-domains" class="section level3" number="2.3.3">
 <h3><span class="header-section-number">2.3.3</span> Creating
@@ -414,10 +447,12 @@ set.</p>
 <li>Click <strong>Search → Search Multiple EAF…</strong><br />
 <img src="NLP_images/elan2.jpg" alt="Search Multiple EAF..." width="250"/><br />
 </li>
-<li>Click <strong>Define Search Domain → New Domain…</strong></li>
+<li>Click <strong>Define Search Domain → New Domain…</strong><br />
+</li>
 <li>Select your <code>.eaf</code> files → click
-<strong>&gt;&gt;</strong> to add them → click <strong>OK</strong>.
-<img src="NLP_images/elan3.jpg" alt="New Domain" width="500"/></li>
+<strong>&gt;&gt;</strong> to add them → click <strong>OK</strong>.<br />
+<img src="NLP_images/elan3.jpg" alt="New Domain" width="500"/><br />
+</li>
 <li>When prompted, name the domain <strong>CompLING</strong>.<br />
 <img src="NLP_images/elan4.jpg" alt="Adding new domain" width="250"/><br />
 </li>
@@ -565,11 +600,15 @@ annotation interval.<br />
 <li><strong>text</strong> – The annotation text itself (e.g.,
 transcription, morpheme, or gloss).</li>
 </ul>
-<p>We will extract these values so that we can:<br />
-1. Keep track of the structure and timing of each annotation.<br />
-2. Align different tiers for analysis.<br />
-3. Convert the data into a tabular format suitable for NLP processing in
-R.</p>
+<p>We will extract these values so that we can:</p>
+<ol style="list-style-type: decimal">
+<li>Keep track of the structure and timing of each annotation.<br />
+</li>
+<li>Align different tiers for analysis.<br />
+</li>
+<li>Convert the data into a tabular format suitable for NLP processing
+in R.</li>
+</ol>
 </div>
 </div>
 </div>
@@ -580,7 +619,7 @@ wrangling</h1>
 cleaning, transforming, and organising raw data so that it can be used
 effectively for analysis. Think of it as taking messy, inconsistent, or
 incomplete data and reshaping it into a tidy, structured format that’s
-ready for statistical modelling, visualisation, machine learning
+ready for statistical modelling, visualization, machine learning
 etc.</p>
 <div id="extracting-annotations-from-praat-textgrids"
 class="section level2" number="3.1">
@@ -596,14 +635,14 @@ recover, for every tier, the <strong>tier name</strong> and the
 </li>
 </ol>
 <pre class="r"><code>library(stringr)  # regex helpers (str_match, etc.)
-library(dplyr)    # data manipulation (group_by, summarise, mutate)</code></pre>
+library(dplyr)    # data manipulation (group_by, summarize, mutate)</code></pre>
 <p><code>stringr</code> - An R package that makes working with strings
 (text) and regular expressions easier, more consistent, and more
 readable.<br />
 <code>dplyr</code> - An R package for fast, intuitive data manipulation
 using a consistent set of ‘verbs’ like <code>filter()</code>,
 <code>select()</code>, <code>mutate()</code>, <code>group_by()</code>,
-and <code>summarise()</code>.<br />
+and <code>summarize()</code>.<br />
 <br></p>
 <table>
 <colgroup>
@@ -647,9 +686,9 @@ and <code>summarise()</code>.<br />
 <td><code>split(df, df$gender)</code> (returns list of data.frames)</td>
 </tr>
 <tr class="odd">
-<td><code>summarise()</code></td>
+<td><code>summarize()</code></td>
 <td>Collapse each group into summary statistics</td>
-<td><code>summarise(df, avg_age = mean(age))</code></td>
+<td><code>summarize(df, avg_age = mean(age))</code></td>
 <td><code>data.frame(avg_age = mean(df$age))</code> or with
 <code>tapply(df$age, df$gender, mean)</code> for groups</td>
 </tr>
@@ -761,11 +800,11 @@ spaces from the beginning of each line.</p>
 <pre class="r"><code>textgrid_mani$X1 &lt;- gsub(&quot;^\\s+&quot;, &quot;&quot;, textgrid_mani$X1, perl = TRUE)</code></pre>
 <p>When we loaded the textGrid, the column name defaulted to
 <code>X1</code>. The regEx code says, at the beginning of each line
-(<code>^</code>), followed by and number (<code>+</code>) of white
-spaces (<code>\\s</code>). We then want to replace this with nothing
-(<code>""</code>) in the <code>X1</code> column. <code>perl</code>
-supports more advanced constructs like ‘look ahead’. I keep
-<code>=TRUE</code> as the default.<br />
+(<code>^</code>), followed by one or any number (<code>+</code>) of
+white spaces (<code>\\s</code>). We then want to replace this with
+nothing (<code>""</code>) in the <code>X1</code> column.
+<code>perl</code> supports more advanced constructs like ‘look ahead’. I
+keep <code>=TRUE</code> as the default.<br />
 <img src="NLP_images/textgrid_mani2.jpg" alt="The loaded textGrid with leading white spaces removed" width="200"/><br />
 <br></p>
 <pre class="r"><code>mani1 &lt;- filter(textgrid_test, grepl(&quot;^(name|intervals[^:]|text).*&quot;, X1))
@@ -784,9 +823,9 @@ or nothing (<code>.*</code>).</li>
 <p><img src="NLP_images/mani1.jpg" alt="The textGrid with no leading spaces" width="200"/><br />
 <br></p>
 <p>We’re now going to join interval lines with their text.<br />
-Goal: ensure intervals [n] and the following text = live on the same
-line. That way each line of text will have a number associated with
-it.</p>
+Goal: ensure <code>intervals [n]</code> and the following
+<code>text =</code> live on the same line. That way each line of text
+will have a number associated with it.</p>
 <pre class="r"><code>mani2 &lt;- paste(mani1$X1, collapse = &quot;\n&quot;)</code></pre>
 <ul>
 <li><code>paste()</code> joins elements of a vector (<code>mani1</code>
@@ -1061,7 +1100,7 @@ will be transferred to a new column in the <code>mani10</code> object
 called <code>Names</code></p>
 <pre class="r"><code>mani10$Names &lt;- all3$Names[ match(mani10$count, all3$count) ]</code></pre>
 <ul>
-<li>This transfers the name of the original tiers (now generalised) to
+<li>This transfers the name of the original tiers (now generalized) to
 each one of the strings based on whether its an utterance, translation,
 gloss, elicitation, or IPA segmentation. The result should look
 like:</li>
@@ -1677,7 +1716,9 @@ tradition! This is NLP at its finest.<br />
 <br> <strong><em>Note:</em></strong> <em>The results you are about to
 see have not yet been documented, so your eyes are the first to feast
 upon this!</em><br />
-<br> ## Background</p>
+<br></p>
+<div id="background" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Background</h2>
 <p>When we look at languages, one of the first things we notice is that
 some words are extremely common, while most words are rare. English has
 <code>the</code>, <code>of</code>, and <code>and</code> at the top of
@@ -1705,14 +1746,15 @@ quirk—it pops up in city sizes, internet traffic, even the popularity of
 baby names. Human behaviour tends to follow these heavy-tailed patterns.
 So, when you’re counting morphemes, you’re not just doing dry
 linguistics—you’re tapping into a fundamental law of how complex systems
-organise themselves.</p>
+organize themselves.</p>
 <p><a href="https://www.youtube.com/watch?v=fCn8zs912OE">Great V-Sauce
 Video on Zipf’s Law</a><br />
 <br></p>
 <p>We are going to attempt to see if Media Lengua bound morphemes follow
 this law and later on, we’ll try it with words as well.</p>
-<div id="code" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Code</h2>
+</div>
+<div id="code" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Code</h2>
 <p>To begin, we’re going to only select relevant columns.</p>
 <pre class="r"><code>ml_data_2 &lt;- ml_data %&gt;% 
     ungroup() %&gt;%
@@ -2088,7 +2130,7 @@ below:<br />
 <p>Next, we’re now going to count each morpheme.</p>
 <pre class="r"><code>suffix_summary &lt;- ToRows3 %&gt;%
   group_by(morphemes) %&gt;%
-  summarise(count = n(), .groups = &quot;drop&quot;)
+  summarize(count = n(), .groups = &quot;drop&quot;)
 View(suffix_summary)</code></pre>
 <ul>
 <li>First we transfer <code>ToRows3</code> to a new object named
@@ -2097,7 +2139,7 @@ View(suffix_summary)</code></pre>
 <li>Then we group the morphemes together using
 <code>group_by</code><br />
 </li>
-<li><code>summarise(count = n())</code> counts how many rows belong to
+<li><code>summarize(count = n())</code> counts how many rows belong to
 each morpheme.<br />
 </li>
 <li>`<code>.groups = "drop"</code>removes the grouping after summarising
@@ -2136,8 +2178,8 @@ View(morpheme_counts)</code></pre>
 <img src="NLP_images/morphcountID.jpg" alt="adding a rank column" width="150"/><br />
 <br></p>
 </div>
-<div id="graphing-morpheme-counts" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Graphing morpheme
+<div id="graphing-morpheme-counts" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Graphing morpheme
 counts</h2>
 <p>First we’re going to do a subset containing just the top 50
 morphemes.</p>
@@ -2156,7 +2198,7 @@ the top-50 counts.<br />
 <br></li>
 </ul>
 <p>To graph the data, we’re going to use <code>ggplot2</code>, the most
-popular library in <code>R</code> for creating visualisations.
+popular library in <code>R</code> for creating visualizations.
 <code>ggplot2</code> follows a “grammar of graphics” approach: instead
 of just making a plot in one step, you build it layer by layer. You
 start with your data and tell <code>ggplot2</code> how to map variables
@@ -2356,7 +2398,7 @@ counts. Put this in an object called <code>lexical_summary</code><br />
 class="section level1" number="6">
 <h1><span class="header-section-number">6</span> Analysis 2: Morpheme
 position and Frequency</h1>
-<div id="background" class="section level2" number="6.1">
+<div id="background-1" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> Background</h2>
 <p>Why do we care about this?<br />
 <strong>1. Morphological Typology &amp; Word Structure</strong><br />
@@ -2630,7 +2672,7 @@ Position 1, this suggests that it has some flexibility in placement: it
 often appears root-adjacent but can also occur in other slots. This
 points to a probabilistic or preferential ordering rather than a
 categorical rule.<br />
-- If the probability is low, the morpheme is more typically realised in
+- If the probability is low, the morpheme is more typically realized in
 other positions within a morphological chain, such as in outer
 inflectional slots, in the clitic domain, or at clause edges (e.g.,
 evidentials). This reflects that its distribution is structurally
