@@ -813,7 +813,7 @@ nothing (<code>""</code>) in the <code>X1</code> column.
 keep <code>=TRUE</code> as the default.<br />
 <img src="NLP_images/textgrid_mani2.jpg" alt="The loaded textGrid with leading white spaces removed" width="200"/><br />
 <br></p>
-<pre class="r"><code>mani1 &lt;- filter(textgrid_test, grepl(&quot;^(name|intervals[^:]|text).*&quot;, X1))
+<pre class="r"><code>mani1 &lt;- filter(textgrid_mani, grepl(&quot;^(name|intervals[^:]|text).*&quot;, X1))
 # I&#39;m using &#39;mani&#39; to mean &#39;manipulation&#39;. This will be the first of 11</code></pre>
 <ul>
 <li><code>filter</code> comes from dplyr. It’s similar to
@@ -874,21 +874,14 @@ is created based on a <em>newline</em> (<code>\\n</code>).<br />
 <code>text</code> string now, so this will essentially keep
 <code>interval</code> and <code>text</code> in the same row, which was
 our goal.</p>
-<pre class="r"><code>mani4 &lt;- data.frame(X1 = strsplit(mani3, &quot;\n&quot;, fixed = TRUE)[[1]],
-  stringsAsFactors = FALSE)</code></pre>
+<pre class="r"><code>mani4 &lt;- data.frame(X1 = strsplit(mani3, &quot;\n&quot;)[[1]])</code></pre>
 <ul>
 <li><code>strsplit</code> = “string split”, splits the string
 <code>mani3</code> wherever there is a newline character
 (<code>\n</code>)<br />
 </li>
 <li><code>[[1]]</code> = The result is a list, where the first element
-([[1]]) contains a vector of all lines.<br />
-</li>
-<li><code>fixed = TRUE</code> = This tells R to treat “” literally, not
-as a regular expression.<br />
-</li>
-<li><code>stringsAsFactors = FALSE</code> = prevents automatic
-conversion of text into factors.</li>
+([[1]]) contains a vector of all lines.</li>
 </ul>
 <p><img src="NLP_images/mani4.jpg" alt="interval and text on same line" width="200"/><br />
 <br></p>
@@ -896,8 +889,7 @@ conversion of text into factors.</li>
 <pre class="r"><code>mani5 &lt;- mani4 %&gt;% 
   filter(!grepl(&#39;&quot;&quot;&#39;, X1))</code></pre>
 <p>Run <code>nrow(mani4)</code> and then <code>nrow(mani5)</code> to see
-how many rows were removed.<br />
-<br></p>
+how many rows were removed.</p>
 <p>Time to remove the meta data from the textGrid. We’ll do this in a
 two steps.</p>
 <pre class="r"><code>mani6 &lt;- mani5 %&gt;%
@@ -919,15 +911,15 @@ space, the literal word <code>text</code>, a space and an equals sign
 <p>Based on the data in <code>mani7</code>, we’re going to create a new
 data frame that will contain the column names from the tier names in the
 Praat textGrid.</p>
-<pre class="r"><code>tier_names &lt;- mani7$X1[grepl(&quot;^name.*&quot;, mani7$X1)]
-tier_names2 &lt;- as.data.frame(tier_names)</code></pre>
+<pre class="r"><code>tier_names &lt;- mani7$X1[grepl(&quot;^name.*&quot;, mani7$X1)]</code></pre>
 <p>To do this, we’re going to create a new object called
 <code>tier_names</code>, and add in data from mani7’s <code>X1</code>
 column. We want the data that starts (<code>^</code>) the word
 <code>name</code> followed by any other text.<br />
 <br>
-<img src="NLP_images/tier_names.jpg" alt="tier names as a string" width="500"/><br />
-<br> Then we convert this to a data frame.<br />
+<img src="NLP_images/tier_names.jpg" alt="tier names as a string" width="500"/></p>
+<pre class="r"><code>tier_names2 &lt;- as.data.frame(tier_names)</code></pre>
+<p>Then we convert this to a data frame.<br />
 <br>
 <img src="NLP_images/tier_names2.jpg" alt="tier names as a data frame" width="150"/><br />
 <br></p>
