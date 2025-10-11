@@ -780,24 +780,18 @@ one_file &lt;- files[1]</code></pre>
 (<code>[2]</code> would pick the second file etc.)</li>
 </ul>
 <p>Now to load the file:</p>
-<pre class="r"><code>textgrid_mani &lt;- read_lines(one_file, locale = locale(encoding = &quot;UTF-8&quot;)) |&gt; tibble(X1 = _)</code></pre>
+<pre class="r"><code>textgrid_mani &lt;- data.frame(X1 = read_lines(one_file, locale = locale(encoding = &quot;UTF-8&quot;)))</code></pre>
 <ul>
-<li><code>read_lines</code> = rom the readr package reads a text file
-line by line.<br />
+<li><code>data.frame</code> = puts the loaded data into a data
+frame.</li>
+<li><code>read_lines</code> = from the <code>readr</code> package reads
+a text file line by line.<br />
 </li>
 <li><code>one_file</code> = This is the file you are loading (e.g., a
 TextGrid or transcript).<br />
 </li>
 <li><code>locale</code> = ensures that the file is interpreted using
-UTF-8 encoding<br />
-</li>
-<li><code>|&gt;</code> = a pipe operator (can be interpreted as
-<strong><em>and then…</em></strong>)</li>
-<li><code>tibble</code> Converts the character vector into a tibble (a
-modern version of a data frame).</li>
-<li><code>X1 = _</code> names the column <code>X1</code> and fills it
-with the data coming through the “pipe” and <code>_</code> is shorthand
-for “use what came before”).</li>
+UTF-8 encoding</li>
 </ul>
 <p><img src="NLP_images/textgrid_mani.jpg" alt="The loaded textGird" width="200"/><br />
 <br></p>
@@ -1149,69 +1143,87 @@ split (the column names in this case).</li>
 </ul>
 <p><img src="NLP_images/split_data.jpg" alt="splitting data by column" width="600"/><br />
 <br></p>
-<p>Now in the final (major) step, we’re going to move</p>
+<p>Now in the final (major) step, we’re going to reshape the data
+set:</p>
 <pre class="r"><code>reshaped &lt;- mani12 %&gt;%
-    select(Names, X1, Number) %&gt;%
-    group_by(Number, Names) %&gt;%
-    mutate(row = row_number()) %&gt;%
-    pivot_wider(
-      names_from = Names,
-      values_from = X1
-    ) %&gt;%
-    select(-row)</code></pre>
+    select(Names, X1, Number)</code></pre>
 <ul>
-<li>Select the relevant columns
-(<code>reshaped &lt;- mani12 %&gt;% select(Names, X1, Number)</code>)
+<li>With <code>select</code>, we select the relevant columns
+(<code>Names</code>, <code>X1</code>, <code>Number</code>)<br />
+<img src="NLP_images/reshaped_1.jpg" alt="reshape 1 - selecting columns" width="800"/></li>
+</ul>
+<pre class="r"><code>reshaped &lt;- reshaped %&gt;%
+    group_by(Number, Names)</code></pre>
 <ul>
-<li>Start by referencing <code>mani12</code> as our data frame and that
-we will place the modified data into <code>reshaped</code><br />
-</li>
-<li>We’ll only keep the three columns you care about:
-<code>Names</code>, <code>X1</code>, and <code>Number</code>.<br />
+<li>With <code>group_by</code> we group the data by <code>Number</code>
+and <code>Names</code>
+<ul>
+<li>This means, all <code>1</code>’s in <code>Number</code> are a group,
+all <code>2</code>’s in <code>Number</code> are a group, all
+<code>Quichua</code> in <code>Names</code> is a group;
+<code>MediaLengua</code> in <code>Names</code> is a group etc…<br />
 </li>
 </ul></li>
-<li>Group the data (<code>group_by(Number, Names)</code>)
+<li>When we group by both <code>Number</code> and <code>Names</code> it
+counts all the times the unique row names appear with a unique number.
 <ul>
-<li>We’ll group the data by both Number and Names (all e.g., 1’s are a
-grouped; <code>Quichua</code> is a group; <code>MediaLengua</code> is a
-group etc.)<br />
-</li>
-<li>Grouping makes later operations (like mutate(row_number())) happen
-within each group.<br />
-</li>
+<li>For example, in the <code>Narrations</code> file all the unique row
+names (<code>Segmentación+IPA</code>, <code>Glosa</code>, and
+<code>MediaLengua</code>) appear with the number <code>10</code>
+once.</li>
+<li>In the <code>Converstations</code> file, all the unique row names
+(<code>MediaLengua</code>, <code>Segmentación+IPA</code>,
+<code>Español</code>,
+<code>Quichua</code>,<code>Español Estándar</code>, <code>Glosa</code>)
+appear with the number <code>10</code> twice!
+<ul>
+<li>How is this possible? There are two speakers; in the original Praat
+TextGrid, speaker 1 is assigned an <code>Intervals [10]</code> and
+speaker 2 is assigned an <code>Intervals 10</code>. The first set of
+unique row names corresponds with the 10 from the first speaker and the
+second set of unique row names corresponds to the second speaker. Based
+on this, we could actually assign the correct name to each speaker, but
+we’re not going to do this for task.</li>
 </ul></li>
-<li>Add a row index within groups
-<code>mutate(row = row_number())</code>
-<ul>
-<li>This means for each <code>Number</code> and <code>Names</code>
-group, you assign a row number (1, 2, 3, …).<br />
-</li>
-<li>This ensures that if there are multiple rows per group, each row
-gets a unique index.<br />
-</li>
-</ul></li>
-<li>Pivot from long → wide format
-(<code>pivot_wider(names_from = Names,values_from = X1))</code>)
-<ul>
-<li>Here, we transform the data so that the distinct values of
-<code>Names</code> become new columns.<br />
-</li>
-<li>The cell values for those new columns come from
-<code>X1</code>.</li>
-<li>Example: if <code>Names = "A"</code> and <code>Names = "B"</code>,
-you’ll end up with columns <code>A</code> and <code>B</code>.<br />
-</li>
-</ul></li>
-<li>Drop the helper row column (<code>select(-row)</code>)
-<ul>
-<li>This is just a clean up step since the row column was just a helper
-to avoid overwriting values during pivoting, you remove it
-afterwards.<br />
-<br>
-<img src="NLP_images/reshaped.jpg" alt="reshaped data set" width="700"/><br />
-<br></li>
+<li>Grouping makes later operations (like
+<code>mutate(row_number())</code>) happen within each group.</li>
 </ul></li>
 </ul>
+<p><img src="NLP_images/reshaped_2.jpg" alt="reshape 2 - grouping Names and Number" width="800"/></p>
+<pre class="r"><code>reshaped &lt;- reshaped %&gt;%
+    mutate(row = row_number())</code></pre>
+<ul>
+<li>With <code>mutate</code>, we add a row index within groups
+<ul>
+<li>This means for each <code>Number</code> and <code>Names</code>
+grouping, you assign a row number (1, 2, 3, …).<br />
+</li>
+<li>This ensures that if there are multiple rows per group, each row
+gets a unique index.</li>
+</ul></li>
+</ul>
+<p><img src="NLP_images/reshaped_3.jpg" alt="reshape 3 - add grouped row numbers" width="800"/></p>
+<pre class="r"><code>reshaped &lt;- reshaped %&gt;%
+    pivot_wider(
+      names_from = Names,
+      values_from = X1) %&gt;%
+    ungroup()</code></pre>
+<ul>
+<li><code>pivot_wider</code> pivots from a long format to a wide format
+<ul>
+<li><code>names_from</code> are the unique column names from the
+<code>Names</code> column.<br />
+</li>
+<li><code>values_from</code> fills cells with values from the
+<code>X1</code> column<br />
+</li>
+<li><code>ungroup()</code> releases the <code>Names</code> and
+<code>Number</code> grouping</li>
+</ul></li>
+</ul>
+<p><br>
+<img src="NLP_images/reshaped_4.jpg" alt="reshape 4 - pivoted data" width="1000"/><br />
+<br></p>
 <p>To conclude this chuck there are three minor additions. The first
 involves placing the consultant’s name and the second involves adding in
 the file name. We will replace <code>[1]</code> with <code>[i]</code>
@@ -1290,8 +1302,7 @@ line.<br />
 <p>The next minor modification we need to make is in our initial
 <code>mani</code> file, so that on each loop, it’s grabbing data from
 the next textgrid.</p>
-<pre class="r"><code>  textgrid_mani &lt;- read_lines(i, locale = locale(encoding = &quot;UTF-8&quot;)) |&gt;
-    tibble(X1 = _)</code></pre>
+<pre class="r"><code>textgrid_mani &lt;- data.frame(X1 = read_lines(i, locale = locale(encoding = &quot;UTF-8&quot;)))</code></pre>
 <ul>
 <li>Here, we simply replace <code>1</code> with <code>i</code> so that
 instead of only grabbing the first textGrid, it grabs the next one in
@@ -1316,11 +1327,29 @@ like this:<br />
 </ul>
 <p><strong>The entire code placed in the
 <code>for loop</code></strong></p>
-<pre class="r"><code>for (i in files) {
+<pre class="r"><code>#Libraries
+library(readr)
+library(tibble)
+library(tidyr)
+library(ggplot2)
+library(forcats)
+library(stringr)
+library(dplyr)
+
+#Location of files
+folder &lt;- &quot;C:\\Users\\mikey\\Dropbox\\Courses\\Computational Linguistics - LING 349 Fall\\EAF Files\\&quot;
+
+#Import file names
+files &lt;- list.files(folder, pattern = &quot;\\.textgrid$&quot;, full.names = TRUE, ignore.case = TRUE)
+
+#Create a holder list
+results &lt;- list()
+
+#The loop
+for (i in files) {
   cat(&quot;Processing:&quot;, basename(i), &quot;\n&quot;)
 
-  textgrid_mani &lt;- read_lines(i, locale = locale(encoding = &quot;UTF-8&quot;)) |&gt;
-    tibble(X1 = _)
+  textgrid_mani &lt;- data.frame(X1 = read_lines(i, locale = locale(encoding = &quot;UTF-8&quot;)))
 
   textgrid_mani$X1 &lt;- gsub(&quot;^\\s+&quot;, &quot;&quot;, textgrid_mani$X1, perl = TRUE)
 
@@ -1400,19 +1429,20 @@ reshaped &lt;- mani12 %&gt;%
     pivot_wider(
       names_from = Names,
       values_from = X1
-    ) %&gt;%
-    select(-row)
+      ) %&gt;%
+    ungroup()
 
   reshaped$Name &lt;- rep(consultant3)
   reshaped$Filename &lt;- rep(basename(i))
   
 results &lt;- append(results, list(reshaped))
 }</code></pre>
+<p><br></p>
 <p>Now we’re going to bind the rows converting the list to a data frame
 using <code>bind_rows</code>.</p>
 <pre class="r"><code>dataset &lt;- bind_rows(results)</code></pre>
 <p><br>
-<img src="NLP_images/dataPostLoop.jpg" alt="Data after processing it through the loop" width="600"/><br />
+<img src="NLP_images/dataPostLoop.jpg" alt="Data after processing it through the loop" width="1000"/><br />
 <br></p>
 </div>
 <div id="clean-up" class="section level2" number="3.5">
