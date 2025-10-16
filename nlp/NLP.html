@@ -268,7 +268,7 @@ designed for major world languages like English and Spanish. While these
 resources are powerful for well-documented languages, they are often
 severely lacking for under-documented and under-studied languages, where
 no large annotated corpora or pre-trained models exist. As a result,
-researchers working with these languages often need to design customized
+researchers working with these languages often need to design customised
 tools and workflows from the ground up.</p>
 <p>In <strong>computational linguistics</strong>, NLP provides the
 toolkit for testing linguistic theories on large datasets, uncovering
@@ -312,7 +312,7 @@ recordings.<br />
 for orthographic transcription, phonetic transcription, morpheme
 segmentation, glossing, translation, etc.</li>
 <li><strong>Time alignment</strong> – Link each annotation to a precise
-point or segment in the media file for exact synchronization between
+point or segment in the media file for exact synchronisation between
 recording and annotations.</li>
 <li><strong>Custom tier types</strong> – Define tier hierarchies (e.g.,
 words → morphemes → glosses) that fit your project’s needs.</li>
@@ -329,28 +329,16 @@ ELAN</h2>
 <p>ELAN is widely used in <strong>language documentation</strong>,
 <strong>phonetics/phonology</strong>, <strong>morphosyntax</strong>, and
 <strong>multimodal communication studies</strong> because it allows you
-to:</p>
-<ul>
-<li>Create structured, multi-tier annotations of speech data.<br />
-</li>
-<li>Work with <strong>under-documented</strong> and
-<strong>under-studied languages</strong> that lack pre-existing
-computational tools.<br />
-</li>
-<li>Integrate audio/video with transcription, translation, and
-linguistic analysis.</li>
-</ul>
-<p>In our workflow, ELAN is the starting point:</p>
-<ol style="list-style-type: decimal">
-<li>Annotate speech recordings (segmentation, morphemes, glosses,
-translations).<br />
-</li>
-<li>Export the annotations (e.g., to <strong>Praat TextGrid</strong>)
-for acoustic or computational processing.<br />
-</li>
-<li>Prepare the exported data for <strong>NLP analysis</strong> in
-R.</li>
-</ol>
+to: - Create structured, multi-tier annotations of speech data. - Work
+with <strong>under-documented</strong> and <strong>under-studied
+languages</strong> that lack pre-existing computational tools. -
+Integrate audio/video with transcription, translation, and linguistic
+analysis.</p>
+<p>In our workflow, ELAN is the starting point: 1. Annotate speech
+recordings (segmentation, morphemes, glosses, translations). 2. Export
+the annotations (e.g., to <strong>Praat TextGrid</strong>) for acoustic
+or computational processing. 3. Prepare the exported data for
+<strong>NLP analysis</strong> in R.</p>
 </div>
 <div id="workflow" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Workflow</h2>
@@ -358,9 +346,10 @@ R.</li>
 <h3><span class="header-section-number">2.3.1</span> Files</h3>
 <ol style="list-style-type: decimal">
 <li>Download the following files:<br />
-<a href="NLP_textgrids_SS/001_AC-Mingas.eaf">001_AC-Mingas.eaf</a><br />
 <a
-href="NLP_textgrids_SS/2010--43-01-ElicitationsLong--LG.eaf">2010–43-01-ElicitationsLong–LG.eaf</a><br />
+href="NLP_textgrids_SS/001_AC-Mingas.eaf/">001_AC-Mingas.eaf</a><br />
+<a
+href="NLP_textgrids_SS/2010--43-01-ElicitationsLong--LG.eaf/">2010–43-01-ElicitationsLong–LG.eaf</a><br />
 <a
 href="NLP_textgrids_SS/2016--Zoom02--LG-MT.eaf">2016–Zoom02–LG-MT.eaf</a></li>
 </ol>
@@ -374,66 +363,45 @@ and Traditions from Pijal: Told in Media Lengua</em> <a
 href="https://www.amazon.com/Cuentos-Tradiciones-Pijal-Relatos-Traditions/dp/0615906338">Available
 on Amazon</a> <br><br>
 <img src="NLP_images/stories.jpg" alt="A sample from Cuentos y Tradiciones de Pijal: Relatados en Media Lengua" width="600"/></p>
-<p><strong><em>“Narration”</em></strong> files contain three tiers:</p>
-<ul>
-<li>Media Lengua tier with the speaker’s name<br />
-</li>
-<li>Segmentation tier (morpheme divisions and IPA transcriptions)<br />
-</li>
-<li>Interlinear glosses</li>
-</ul>
-<p><br> <code>2010--43-01-ElicitationsLong--LG.eaf</code> is a sample of
+<p><strong><em>“Narration”</em></strong> files contain three
+tiers:<br />
+- Media Lengua tier with the speaker’s name - Segmentation tier
+(morpheme divisions and IPA transcriptions)<br />
+- Interlinear glosses<br />
+<br> <code>2010--43-01-ElicitationsLong--LG.eaf</code> is a sample of
 elicitations gathered between 2009-2010 that have been used for a number
 of publications. They contain a lot more data than the “Narration”
 files.
 <img src="NLP_images/elicitations.jpg" alt="A sample of the elicited data" width="600"/><br />
 <br> <strong><em>“Elicitation”</em></strong> files contain 7 to 8
-tiers:</p>
-<ul>
-<li>Media Lengua tier with the speaker’s name<br />
-</li>
-<li>Kichwa (Quichua) tier with a Kichwa translation of the Media Lengua
+tiers:<br />
+- Media Lengua tier with the speaker’s name<br />
+- Kichwa (Quichua) tier with a Kichwa translation of the Media Lengua
 utterances<br />
-</li>
-<li>A (Rural) Spanish translation of the Media Lengua utterances<br />
-</li>
-<li>A Standard Spanish translation of the Media Lengua utterances<br />
-</li>
-<li>The elicited sentence<br />
-</li>
-<li>Segmentation tier (morpheme divisions and IPA transcriptions)<br />
-</li>
-<li>Interlinear glosses<br />
-</li>
-<li>An English translation of the Media Lengua utterances
-(optional)<br />
-<br></li>
-</ul>
-<p><strong>Note:</strong> that if you right click on the tier names,
+- A (Rural) Spanish translation of the Media Lengua utterances<br />
+- A Standard Spanish translation of the Media Lengua utterances<br />
+- The elicited sentence<br />
+- Segmentation tier (morpheme divisions and IPA transcriptions)<br />
+- Interlinear glosses<br />
+- An English translation of the Media Lengua utterances (optional)<br />
+<br> <strong>Note:</strong> that if you right click on the tier names,
 then click <code>Sort Tiers</code>, you will see the hierarchies/
-dependencies used in this file.</p>
-<p><img src="NLP_images/hierarchies.jpg" alt="ELAN Hierarchies" width="400"/><br />
+dependencies used in this file.<br />
+<img src="NLP_images/hierarchies.jpg" alt="ELAN Hierarchies" width="400"/><br />
 <br></p>
 <p><code>2016--Zoom02--LG-MT.eaf</code> is a sample of the
 conversational data. This is the most common data type in the Media
 lengua collection.<br />
 <img src="NLP_images/conversations.jpg" alt="Sample of the conversational data" width="600"/><br />
 <br> <strong><em>“Conversation”</em></strong> files contain 6 tiers per
-speaker:</p>
-<ul>
-<li>Media Lengua tier with the speaker’s name<br />
-</li>
-<li>Kichwa (Quichua) tier with a Kichwa translation of the Media Lengua
+speaker:<br />
+- Media Lengua tier with the speaker’s name<br />
+- Kichwa (Quichua) tier with a Kichwa translation of the Media Lengua
 utterances<br />
-</li>
-<li>A (Rural) Spanish translation of the Media Lengua utterances<br />
-</li>
-<li>A Standard Spanish translation of the Media Lengua utterances<br />
-</li>
-<li>Segmentation tier (morpheme divisions and IPA transcriptions)<br />
-</li>
-<li>Interlinear glosses</li>
-</ul>
+- A (Rural) Spanish translation of the Media Lengua utterances<br />
+- A Standard Spanish translation of the Media Lengua utterances<br />
+- Segmentation tier (morpheme divisions and IPA transcriptions)<br />
+- Interlinear glosses</p>
 </div>
 <div id="creating-domains" class="section level3" number="2.3.3">
 <h3><span class="header-section-number">2.3.3</span> Creating
@@ -446,12 +414,10 @@ set.</p>
 <li>Click <strong>Search → Search Multiple EAF…</strong><br />
 <img src="NLP_images/elan2.jpg" alt="Search Multiple EAF..." width="250"/><br />
 </li>
-<li>Click <strong>Define Search Domain → New Domain…</strong><br />
-</li>
+<li>Click <strong>Define Search Domain → New Domain…</strong></li>
 <li>Select your <code>.eaf</code> files → click
-<strong>&gt;&gt;</strong> to add them → click <strong>OK</strong>.<br />
-<img src="NLP_images/elan3.jpg" alt="New Domain" width="500"/><br />
-</li>
+<strong>&gt;&gt;</strong> to add them → click <strong>OK</strong>.
+<img src="NLP_images/elan3.jpg" alt="New Domain" width="500"/></li>
 <li>When prompted, name the domain <strong>CompLING</strong>.<br />
 <img src="NLP_images/elan4.jpg" alt="Adding new domain" width="250"/><br />
 </li>
@@ -599,15 +565,11 @@ annotation interval.<br />
 <li><strong>text</strong> – The annotation text itself (e.g.,
 transcription, morpheme, or gloss).</li>
 </ul>
-<p>We will extract these values so that we can:</p>
-<ol style="list-style-type: decimal">
-<li>Keep track of the structure and timing of each annotation.<br />
-</li>
-<li>Align different tiers for analysis.<br />
-</li>
-<li>Convert the data into a tabular format suitable for NLP processing
-in R.</li>
-</ol>
+<p>We will extract these values so that we can:<br />
+1. Keep track of the structure and timing of each annotation.<br />
+2. Align different tiers for analysis.<br />
+3. Convert the data into a tabular format suitable for NLP processing in
+R.</p>
 </div>
 </div>
 </div>
@@ -618,18 +580,11 @@ wrangling</h1>
 cleaning, transforming, and organising raw data so that it can be used
 effectively for analysis. Think of it as taking messy, inconsistent, or
 incomplete data and reshaping it into a tidy, structured format that’s
-ready for statistical modelling, visualization, machine learning
+ready for statistical modelling, visualisation, machine learning
 etc.</p>
-<div id="our-goal" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Our goal</h2>
-<p>Get the TextGrids into a computer-readable format for statistical
-analysis. <br>
-<img src="NLP_images/goal.jpg" alt="Data after processing it through the loop" width="1000"/><br />
-<br></p>
-</div>
 <div id="extracting-annotations-from-praat-textgrids"
-class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Extracting
+class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Extracting
 annotations from Praat TextGrids</h2>
 <ol style="list-style-type: decimal">
 <li>We first load minimal dependencies, point R at the folder of
@@ -641,14 +596,14 @@ recover, for every tier, the <strong>tier name</strong> and the
 </li>
 </ol>
 <pre class="r"><code>library(stringr)  # regex helpers (str_match, etc.)
-library(dplyr)    # data manipulation (group_by, summarize, mutate)</code></pre>
+library(dplyr)    # data manipulation (group_by, summarise, mutate)</code></pre>
 <p><code>stringr</code> - An R package that makes working with strings
 (text) and regular expressions easier, more consistent, and more
 readable.<br />
 <code>dplyr</code> - An R package for fast, intuitive data manipulation
 using a consistent set of ‘verbs’ like <code>filter()</code>,
 <code>select()</code>, <code>mutate()</code>, <code>group_by()</code>,
-and <code>summarize()</code>.<br />
+and <code>summarise()</code>.<br />
 <br></p>
 <table>
 <colgroup>
@@ -692,9 +647,9 @@ and <code>summarize()</code>.<br />
 <td><code>split(df, df$gender)</code> (returns list of data.frames)</td>
 </tr>
 <tr class="odd">
-<td><code>summarize()</code></td>
+<td><code>summarise()</code></td>
 <td>Collapse each group into summary statistics</td>
-<td><code>summarize(df, avg_age = mean(age))</code></td>
+<td><code>summarise(df, avg_age = mean(age))</code></td>
 <td><code>data.frame(avg_age = mean(df$age))</code> or with
 <code>tapply(df$age, df$gender, mean)</code> for groups</td>
 </tr>
@@ -758,8 +713,8 @@ View(results)</code></pre>
 of the data wrangling.</p>
 </div>
 <div id="strategy-for-the-large-for-loop" class="section level2"
-number="3.3">
-<h2><span class="header-section-number">3.3</span> Strategy for the
+number="3.2">
+<h2><span class="header-section-number">3.2</span> Strategy for the
 large For-Loop</h2>
 <p>We’ll go over the workflow in <strong>small chunks</strong>, explain
 each step, and only then wrap it in a single <code>for (...)</code>
@@ -767,8 +722,8 @@ loop. This makes it clear <em>what</em> each line does and <em>why</em>
 we need it. Finally, we’ll include the entire loop so you can run it
 end-to-end.</p>
 <div id="read-a-single-textgrid-one-file-no-loop-yet"
-class="section level3" number="3.3.1">
-<h3><span class="header-section-number">3.3.1</span> Read a single
+class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Read a single
 TextGrid (one file, no loop yet)</h3>
 <p>Goal: load raw lines, normalize whitespace, and keep only the lines
 we care about.<br />
@@ -780,18 +735,24 @@ one_file &lt;- files[1]</code></pre>
 (<code>[2]</code> would pick the second file etc.)</li>
 </ul>
 <p>Now to load the file:</p>
-<pre class="r"><code>textgrid_mani &lt;- data.frame(X1 = read_lines(one_file, locale = locale(encoding = &quot;UTF-8&quot;)))</code></pre>
+<pre class="r"><code>textgrid_mani &lt;- read_lines(one_file, locale = locale(encoding = &quot;UTF-8&quot;)) |&gt; tibble(X1 = _)</code></pre>
 <ul>
-<li><code>data.frame</code> = puts the loaded data into a data
-frame.</li>
-<li><code>read_lines</code> = from the <code>readr</code> package reads
-a text file line by line.<br />
+<li><code>read_lines</code> = rom the readr package reads a text file
+line by line.<br />
 </li>
 <li><code>one_file</code> = This is the file you are loading (e.g., a
 TextGrid or transcript).<br />
 </li>
 <li><code>locale</code> = ensures that the file is interpreted using
-UTF-8 encoding</li>
+UTF-8 encoding<br />
+</li>
+<li><code>|&gt;</code> = a pipe operator (can be interpreted as
+<strong><em>and then…</em></strong>)</li>
+<li><code>tibble</code> Converts the character vector into a tibble (a
+modern version of a data frame).</li>
+<li><code>X1 = _</code> names the column <code>X1</code> and fills it
+with the data coming through the “pipe” and <code>_</code> is shorthand
+for “use what came before”).</li>
 </ul>
 <p><img src="NLP_images/textgrid_mani.jpg" alt="The loaded textGird" width="200"/><br />
 <br></p>
@@ -800,14 +761,14 @@ spaces from the beginning of each line.</p>
 <pre class="r"><code>textgrid_mani$X1 &lt;- gsub(&quot;^\\s+&quot;, &quot;&quot;, textgrid_mani$X1, perl = TRUE)</code></pre>
 <p>When we loaded the textGrid, the column name defaulted to
 <code>X1</code>. The regEx code says, at the beginning of each line
-(<code>^</code>), followed by one or any number (<code>+</code>) of
-white spaces (<code>\\s</code>). We then want to replace this with
-nothing (<code>""</code>) in the <code>X1</code> column.
-<code>perl</code> supports more advanced constructs like ‘look ahead’. I
-keep <code>=TRUE</code> as the default.<br />
+(<code>^</code>), followed by and number (<code>+</code>) of white
+spaces (<code>\\s</code>). We then want to replace this with nothing
+(<code>""</code>) in the <code>X1</code> column. <code>perl</code>
+supports more advanced constructs like ‘look ahead’. I keep
+<code>=TRUE</code> as the default.<br />
 <img src="NLP_images/textgrid_mani2.jpg" alt="The loaded textGrid with leading white spaces removed" width="200"/><br />
 <br></p>
-<pre class="r"><code>mani1 &lt;- filter(textgrid_mani, grepl(&quot;^(name|intervals[^:]|text).*&quot;, X1))
+<pre class="r"><code>mani1 &lt;- filter(textgrid_test, grepl(&quot;^(name|intervals[^:]|text).*&quot;, X1))
 # I&#39;m using &#39;mani&#39; to mean &#39;manipulation&#39;. This will be the first of 11</code></pre>
 <ul>
 <li><code>filter</code> comes from dplyr. It’s similar to
@@ -823,9 +784,9 @@ or nothing (<code>.*</code>).</li>
 <p><img src="NLP_images/mani1.jpg" alt="The textGrid with no leading spaces" width="200"/><br />
 <br></p>
 <p>We’re now going to join interval lines with their text.<br />
-Goal: ensure <code>intervals [n]</code> and the following
-<code>text =</code> live on the same line. That way each line of text
-will have a number associated with it.</p>
+Goal: ensure intervals [n] and the following text = live on the same
+line. That way each line of text will have a number associated with
+it.</p>
 <pre class="r"><code>mani2 &lt;- paste(mani1$X1, collapse = &quot;\n&quot;)</code></pre>
 <ul>
 <li><code>paste()</code> joins elements of a vector (<code>mani1</code>
@@ -843,8 +804,8 @@ clean up the formatting of the textgrid content.</p>
 <ul>
 <li>This relatively complex regular expression reads: find group one
 (first set of parentheses) where we look for the literal word
-<code>intervals</code> followed by zero or more (<code>*</code>) white
-spaces (<code>\\s</code>), followed by a literal open bracket
+<strong>intervals</strong> followed by zero or more (<code>*</code>)
+white spaces (<code>\\s</code>), followed by a literal open bracket
 (<code>[</code>), then numbers <code>0-9</code> one or more times
 (<code>+</code>) followed by zero or more (<code>*</code>) white spaces
 (<code>\\s</code>), a newline (<code>\\n</code>), then again zero or
@@ -868,14 +829,21 @@ is created based on a <em>newline</em> (<code>\\n</code>).<br />
 <code>text</code> string now, so this will essentially keep
 <code>interval</code> and <code>text</code> in the same row, which was
 our goal.</p>
-<pre class="r"><code>mani4 &lt;- data.frame(X1 = strsplit(mani3, &quot;\n&quot;)[[1]])</code></pre>
+<pre class="r"><code>mani4 &lt;- data.frame(X1 = strsplit(mani3, &quot;\n&quot;, fixed = TRUE)[[1]],
+  stringsAsFactors = FALSE)</code></pre>
 <ul>
 <li><code>strsplit</code> = “string split”, splits the string
 <code>mani3</code> wherever there is a newline character
 (<code>\n</code>)<br />
 </li>
 <li><code>[[1]]</code> = The result is a list, where the first element
-([[1]]) contains a vector of all lines.</li>
+([[1]]) contains a vector of all lines.<br />
+</li>
+<li><code>fixed = TRUE</code> = This tells R to treat “” literally, not
+as a regular expression.<br />
+</li>
+<li><code>stringsAsFactors = FALSE</code> = prevents automatic
+conversion of text into factors.</li>
 </ul>
 <p><img src="NLP_images/mani4.jpg" alt="interval and text on same line" width="200"/><br />
 <br></p>
@@ -883,7 +851,8 @@ our goal.</p>
 <pre class="r"><code>mani5 &lt;- mani4 %&gt;% 
   filter(!grepl(&#39;&quot;&quot;&#39;, X1))</code></pre>
 <p>Run <code>nrow(mani4)</code> and then <code>nrow(mani5)</code> to see
-how many rows were removed.</p>
+how many rows were removed.<br />
+<br></p>
 <p>Time to remove the meta data from the textGrid. We’ll do this in a
 two steps.</p>
 <pre class="r"><code>mani6 &lt;- mani5 %&gt;%
@@ -905,15 +874,15 @@ space, the literal word <code>text</code>, a space and an equals sign
 <p>Based on the data in <code>mani7</code>, we’re going to create a new
 data frame that will contain the column names from the tier names in the
 Praat textGrid.</p>
-<pre class="r"><code>tier_names &lt;- mani7$X1[grepl(&quot;^name.*&quot;, mani7$X1)]</code></pre>
+<pre class="r"><code>tier_names &lt;- mani7$X1[grepl(&quot;^name.*&quot;, mani7$X1)]
+tier_names2 &lt;- as.data.frame(tier_names)</code></pre>
 <p>To do this, we’re going to create a new object called
 <code>tier_names</code>, and add in data from mani7’s <code>X1</code>
 column. We want the data that starts (<code>^</code>) the word
 <code>name</code> followed by any other text.<br />
 <br>
-<img src="NLP_images/tier_names.jpg" alt="tier names as a string" width="500"/></p>
-<pre class="r"><code>tier_names2 &lt;- as.data.frame(tier_names)</code></pre>
-<p>Then we convert this to a data frame.<br />
+<img src="NLP_images/tier_names.jpg" alt="tier names as a string" width="500"/><br />
+<br> Then we convert this to a data frame.<br />
 <br>
 <img src="NLP_images/tier_names2.jpg" alt="tier names as a data frame" width="150"/><br />
 <br></p>
@@ -1092,7 +1061,7 @@ will be transferred to a new column in the <code>mani10</code> object
 called <code>Names</code></p>
 <pre class="r"><code>mani10$Names &lt;- all3$Names[ match(mani10$count, all3$count) ]</code></pre>
 <ul>
-<li>This transfers the name of the original tiers (now generalized) to
+<li>This transfers the name of the original tiers (now generalised) to
 each one of the strings based on whether its an utterance, translation,
 gloss, elicitation, or IPA segmentation. The result should look
 like:</li>
@@ -1143,87 +1112,69 @@ split (the column names in this case).</li>
 </ul>
 <p><img src="NLP_images/split_data.jpg" alt="splitting data by column" width="600"/><br />
 <br></p>
-<p>Now in the final (major) step, we’re going to reshape the data
-set:</p>
+<p>Now in the final (major) step, we’re going to move</p>
 <pre class="r"><code>reshaped &lt;- mani12 %&gt;%
-    select(Names, X1, Number)</code></pre>
-<ul>
-<li>With <code>select</code>, we select the relevant columns
-(<code>Names</code>, <code>X1</code>, <code>Number</code>)<br />
-<img src="NLP_images/reshaped_1.jpg" alt="reshape 1 - selecting columns" width="800"/></li>
-</ul>
-<pre class="r"><code>reshaped &lt;- reshaped %&gt;%
-    group_by(Number, Names)</code></pre>
-<ul>
-<li>With <code>group_by</code> we group the data by <code>Number</code>
-and <code>Names</code>
-<ul>
-<li>This means, all <code>1</code>’s in <code>Number</code> are a group,
-all <code>2</code>’s in <code>Number</code> are a group, all
-<code>Quichua</code> in <code>Names</code> is a group;
-<code>MediaLengua</code> in <code>Names</code> is a group etc…<br />
-</li>
-</ul></li>
-<li>When we group by both <code>Number</code> and <code>Names</code> it
-counts all the times the unique row names appear with a unique number.
-<ul>
-<li>For example, in the <code>Narrations</code> file all the unique row
-names (<code>Segmentación+IPA</code>, <code>Glosa</code>, and
-<code>MediaLengua</code>) appear with the number <code>10</code>
-once.</li>
-<li>In the <code>Converstations</code> file, all the unique row names
-(<code>MediaLengua</code>, <code>Segmentación+IPA</code>,
-<code>Español</code>,
-<code>Quichua</code>,<code>Español Estándar</code>, <code>Glosa</code>)
-appear with the number <code>10</code> twice!
-<ul>
-<li>How is this possible? There are two speakers; in the original Praat
-TextGrid, speaker 1 is assigned an <code>Intervals [10]</code> and
-speaker 2 is assigned an <code>Intervals 10</code>. The first set of
-unique row names corresponds with the 10 from the first speaker and the
-second set of unique row names corresponds to the second speaker. Based
-on this, we could actually assign the correct name to each speaker, but
-we’re not going to do this for task.</li>
-</ul></li>
-<li>Grouping makes later operations (like
-<code>mutate(row_number())</code>) happen within each group.</li>
-</ul></li>
-</ul>
-<p><img src="NLP_images/reshaped_2.jpg" alt="reshape 2 - grouping Names and Number" width="800"/></p>
-<pre class="r"><code>reshaped &lt;- reshaped %&gt;%
-    mutate(row = row_number())</code></pre>
-<ul>
-<li>With <code>mutate</code>, we add a row index within groups
-<ul>
-<li>This means for each <code>Number</code> and <code>Names</code>
-grouping, you assign a row number (1, 2, 3, …).<br />
-</li>
-<li>This ensures that if there are multiple rows per group, each row
-gets a unique index.</li>
-</ul></li>
-</ul>
-<p><img src="NLP_images/reshaped_3.jpg" alt="reshape 3 - add grouped row numbers" width="800"/></p>
-<pre class="r"><code>reshaped &lt;- reshaped %&gt;%
+    select(Names, X1, Number) %&gt;%
+    group_by(Number, Names) %&gt;%
+    mutate(row = row_number()) %&gt;%
     pivot_wider(
       names_from = Names,
-      values_from = X1) %&gt;%
-    ungroup()</code></pre>
+      values_from = X1
+    ) %&gt;%
+    select(-row)</code></pre>
 <ul>
-<li><code>pivot_wider</code> pivots from a long format to a wide format
+<li>Select the relevant columns
+(<code>reshaped &lt;- mani12 %&gt;% select(Names, X1, Number)</code>)
 <ul>
-<li><code>names_from</code> are the unique column names from the
-<code>Names</code> column.<br />
+<li>Start by referencing <code>mani12</code> as our data frame and that
+we will place the modified data into <code>reshaped</code><br />
 </li>
-<li><code>values_from</code> fills cells with values from the
-<code>X1</code> column<br />
+<li>We’ll only keep the three columns you care about:
+<code>Names</code>, <code>X1</code>, and <code>Number</code>.<br />
 </li>
-<li><code>ungroup()</code> releases the <code>Names</code> and
-<code>Number</code> grouping</li>
+</ul></li>
+<li>Group the data (<code>group_by(Number, Names)</code>)
+<ul>
+<li>We’ll group the data by both Number and Names (all e.g., 1’s are a
+grouped; <code>Quichua</code> is a group; <code>MediaLengua</code> is a
+group etc.)<br />
+</li>
+<li>Grouping makes later operations (like mutate(row_number())) happen
+within each group.<br />
+</li>
+</ul></li>
+<li>Add a row index within groups
+<code>mutate(row = row_number())</code>
+<ul>
+<li>This means for each <code>Number</code> and <code>Names</code>
+group, you assign a row number (1, 2, 3, …).<br />
+</li>
+<li>This ensures that if there are multiple rows per group, each row
+gets a unique index.<br />
+</li>
+</ul></li>
+<li>Pivot from long → wide format
+(<code>pivot_wider(names_from = Names,values_from = X1))</code>)
+<ul>
+<li>Here, we transform the data so that the distinct values of
+<code>Names</code> become new columns.<br />
+</li>
+<li>The cell values for those new columns come from
+<code>X1</code>.</li>
+<li>Example: if <code>Names = "A"</code> and <code>Names = "B"</code>,
+you’ll end up with columns <code>A</code> and <code>B</code>.<br />
+</li>
+</ul></li>
+<li>Drop the helper row column (<code>select(-row)</code>)
+<ul>
+<li>This is just a clean up step since the row column was just a helper
+to avoid overwriting values during pivoting, you remove it
+afterwards.<br />
+<br>
+<img src="NLP_images/reshaped.jpg" alt="reshaped data set" width="700"/><br />
+<br></li>
 </ul></li>
 </ul>
-<p><br>
-<img src="NLP_images/reshaped_4.jpg" alt="reshape 4 - pivoted data" width="1000"/><br />
-<br></p>
 <p>To conclude this chuck there are three minor additions. The first
 involves placing the consultant’s name and the second involves adding in
 the file name. We will replace <code>[1]</code> with <code>[i]</code>
@@ -1241,8 +1192,8 @@ the file name.<br />
 </ul>
 </div>
 </div>
-<div id="the-for-loop" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> The
+<div id="the-for-loop" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> The
 <code>for loop</code></h2>
 <p>Until now, we’ve only been manipulating a single file, but the
 process we’ve created needs to be applied to all the files (81 in the
@@ -1302,7 +1253,8 @@ line.<br />
 <p>The next minor modification we need to make is in our initial
 <code>mani</code> file, so that on each loop, it’s grabbing data from
 the next textgrid.</p>
-<pre class="r"><code>textgrid_mani &lt;- data.frame(X1 = read_lines(i, locale = locale(encoding = &quot;UTF-8&quot;)))</code></pre>
+<pre class="r"><code>  textgrid_mani &lt;- read_lines(i, locale = locale(encoding = &quot;UTF-8&quot;)) |&gt;
+    tibble(X1 = _)</code></pre>
 <ul>
 <li>Here, we simply replace <code>1</code> with <code>i</code> so that
 instead of only grabbing the first textGrid, it grabs the next one in
@@ -1327,29 +1279,11 @@ like this:<br />
 </ul>
 <p><strong>The entire code placed in the
 <code>for loop</code></strong></p>
-<pre class="r"><code>#Libraries
-library(readr)
-library(tibble)
-library(tidyr)
-library(ggplot2)
-library(forcats)
-library(stringr)
-library(dplyr)
-
-#Location of files
-folder &lt;- &quot;C:\\Courses\\Computational Linguistics - LING 349 Fall\\EAF Files\\&quot;
-
-#Import file names
-files &lt;- list.files(folder, pattern = &quot;\\.textgrid$&quot;, full.names = TRUE, ignore.case = TRUE)
-
-#Create a holder list
-results &lt;- list()
-
-#The loop
-for (i in files) {
+<pre class="r"><code>for (i in files) {
   cat(&quot;Processing:&quot;, basename(i), &quot;\n&quot;)
 
-  textgrid_mani &lt;- data.frame(X1 = read_lines(i, locale = locale(encoding = &quot;UTF-8&quot;)))
+  textgrid_mani &lt;- read_lines(i, locale = locale(encoding = &quot;UTF-8&quot;)) |&gt;
+    tibble(X1 = _)
 
   textgrid_mani$X1 &lt;- gsub(&quot;^\\s+&quot;, &quot;&quot;, textgrid_mani$X1, perl = TRUE)
 
@@ -1429,24 +1363,23 @@ reshaped &lt;- mani12 %&gt;%
     pivot_wider(
       names_from = Names,
       values_from = X1
-      ) %&gt;%
-    ungroup()
+    ) %&gt;%
+    select(-row)
 
   reshaped$Name &lt;- rep(consultant3)
   reshaped$Filename &lt;- rep(basename(i))
   
 results &lt;- append(results, list(reshaped))
 }</code></pre>
-<p><br></p>
 <p>Now we’re going to bind the rows converting the list to a data frame
 using <code>bind_rows</code>.</p>
 <pre class="r"><code>dataset &lt;- bind_rows(results)</code></pre>
 <p><br>
-<img src="NLP_images/dataPostLoop.jpg" alt="Data after processing it through the loop" width="1000"/><br />
+<img src="NLP_images/dataPostLoop.jpg" alt="Data after processing it through the loop" width="600"/><br />
 <br></p>
 </div>
-<div id="clean-up" class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> Clean up</h2>
+<div id="clean-up" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Clean up</h2>
 <p>Now we have a dataset that the computer can read. However, it still
 needs a bit of clean up and more information should be added in case we
 want to use this for multiple projects.<br />
@@ -1581,13 +1514,13 @@ with this language for 16+ years.<br />
 <br></p>
 </div>
 <div id="adding-new-columns-and-translating-old-ones"
-class="section level2" number="3.6">
-<h2><span class="header-section-number">3.6</span> Adding new columns
+class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Adding new columns
 and translating old ones</h2>
 <p>First we’ll transfer the data frame to a new object.</p>
 <pre class="r"><code>dataset2 &lt;- clean3</code></pre>
-<div id="adding-new-columns" class="section level3" number="3.6.1">
-<h3><span class="header-section-number">3.6.1</span> Adding new
+<div id="adding-new-columns" class="section level3" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Adding new
 columns</h3>
 <p><br> We’re now going to add additional columns that do not require
 loops. This process is relatively straightforward.</p>
@@ -1622,8 +1555,8 @@ non-white spaces with capital <code>S</code> which negates white spaces.
 We want one or more hits (<code>+</code>).</li>
 </ul>
 </div>
-<div id="renaming-columns" class="section level3" number="3.6.2">
-<h3><span class="header-section-number">3.6.2</span> Renaming
+<div id="renaming-columns" class="section level3" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Renaming
 columns</h3>
 <pre><code>Yes, I want to actually make something easier on us. We&#39;re going to translate the column names to English and keep them consistently lowercase. The syntax for each `rename` is the same.  
 ```r
@@ -1744,9 +1677,7 @@ tradition! This is NLP at its finest.<br />
 <br> <strong><em>Note:</em></strong> <em>The results you are about to
 see have not yet been documented, so your eyes are the first to feast
 upon this!</em><br />
-<br></p>
-<div id="background" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Background</h2>
+<br> ## Background</p>
 <p>When we look at languages, one of the first things we notice is that
 some words are extremely common, while most words are rare. English has
 <code>the</code>, <code>of</code>, and <code>and</code> at the top of
@@ -1774,15 +1705,14 @@ quirk—it pops up in city sizes, internet traffic, even the popularity of
 baby names. Human behaviour tends to follow these heavy-tailed patterns.
 So, when you’re counting morphemes, you’re not just doing dry
 linguistics—you’re tapping into a fundamental law of how complex systems
-organize themselves.</p>
+organise themselves.</p>
 <p><a href="https://www.youtube.com/watch?v=fCn8zs912OE">Great V-Sauce
 Video on Zipf’s Law</a><br />
 <br></p>
 <p>We are going to attempt to see if Media Lengua bound morphemes follow
 this law and later on, we’ll try it with words as well.</p>
-</div>
-<div id="code" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Code</h2>
+<div id="code" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Code</h2>
 <p>To begin, we’re going to only select relevant columns.</p>
 <pre class="r"><code>ml_data_2 &lt;- ml_data %&gt;% 
     ungroup() %&gt;%
@@ -2158,7 +2088,7 @@ below:<br />
 <p>Next, we’re now going to count each morpheme.</p>
 <pre class="r"><code>suffix_summary &lt;- ToRows3 %&gt;%
   group_by(morphemes) %&gt;%
-  summarize(count = n(), .groups = &quot;drop&quot;)
+  summarise(count = n(), .groups = &quot;drop&quot;)
 View(suffix_summary)</code></pre>
 <ul>
 <li>First we transfer <code>ToRows3</code> to a new object named
@@ -2167,7 +2097,7 @@ View(suffix_summary)</code></pre>
 <li>Then we group the morphemes together using
 <code>group_by</code><br />
 </li>
-<li><code>summarize(count = n())</code> counts how many rows belong to
+<li><code>summarise(count = n())</code> counts how many rows belong to
 each morpheme.<br />
 </li>
 <li>`<code>.groups = "drop"</code>removes the grouping after summarising
@@ -2206,8 +2136,8 @@ View(morpheme_counts)</code></pre>
 <img src="NLP_images/morphcountID.jpg" alt="adding a rank column" width="150"/><br />
 <br></p>
 </div>
-<div id="graphing-morpheme-counts" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Graphing morpheme
+<div id="graphing-morpheme-counts" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Graphing morpheme
 counts</h2>
 <p>First we’re going to do a subset containing just the top 50
 morphemes.</p>
@@ -2226,7 +2156,7 @@ the top-50 counts.<br />
 <br></li>
 </ul>
 <p>To graph the data, we’re going to use <code>ggplot2</code>, the most
-popular library in <code>R</code> for creating visualizations.
+popular library in <code>R</code> for creating visualisations.
 <code>ggplot2</code> follows a “grammar of graphics” approach: instead
 of just making a plot in one step, you build it layer by layer. You
 start with your data and tell <code>ggplot2</code> how to map variables
@@ -2426,7 +2356,7 @@ counts. Put this in an object called <code>lexical_summary</code><br />
 class="section level1" number="6">
 <h1><span class="header-section-number">6</span> Analysis 2: Morpheme
 position and Frequency</h1>
-<div id="background-1" class="section level2" number="6.1">
+<div id="background" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> Background</h2>
 <p>Why do we care about this?<br />
 <strong>1. Morphological Typology &amp; Word Structure</strong><br />
@@ -2700,7 +2630,7 @@ Position 1, this suggests that it has some flexibility in placement: it
 often appears root-adjacent but can also occur in other slots. This
 points to a probabilistic or preferential ordering rather than a
 categorical rule.<br />
-- If the probability is low, the morpheme is more typically realized in
+- If the probability is low, the morpheme is more typically realised in
 other positions within a morphological chain, such as in outer
 inflectional slots, in the clitic domain, or at clause edges (e.g.,
 evidentials). This reflects that its distribution is structurally
