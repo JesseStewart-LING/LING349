@@ -2122,7 +2122,7 @@ View(ToRows2)</code></pre>
 <ul>
 <li>A <strong>lot</strong> of changes have been made here!<br />
 </li>
-<li>The number of data points remains at 46,864 as no removals took
+<li>The number of data points remains at 98,932 as no removals took
 place.<br />
 </li>
 <li>The code here has been explained previously
@@ -2137,12 +2137,20 @@ pattern and the replace it with the clean version.</li>
 <br></li>
 </ul></li>
 </ul>
+<p>Re-run the if statements to capture changes made above.</p>
+<pre class="r"><code>ToRows2$type &lt;- 
+  ifelse(str_detect(ToRows2$morphemes, &quot;-&quot;), &quot;bound_morpheme&quot;,
+  ifelse(str_detect(ToRows2$morphemes, &quot;=&quot;), &quot;bound_clitic&quot;, &quot;headword&quot;))
+View(ToRows2)</code></pre>
 <p>Now, since we’re just interested in the bound morphology in this
 analysis, we’re going to make a subset that only contains bound
 morphemes and bound clitics.</p>
 <pre class="r"><code>ToRows3=ToRows2[grepl(&quot;^[-=]&quot;, ToRows2$morphemes), ]
 View(ToRows3)</code></pre>
 <ul>
+<li>After removing the headwords, we’re left with 43,001
+morphemes.<br />
+</li>
 <li>This reads, make a new object called <code>ToRows3</code>, where
 items from <code>ToRows2</code>’s <code>morphemes</code> column only
 contain a dash (<code>-</code>) or equals sign (<code>=</code>) at the
