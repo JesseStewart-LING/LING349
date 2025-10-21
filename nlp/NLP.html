@@ -2619,6 +2619,8 @@ the <code>out</code> vector at row <code>i</code> if
 <p><br>
 <img src="NLP_images/MO2.jpg" alt="sequence counts added" width="500"/><br />
 <br></p>
+<p>At this point, we’ll remove headwords.</p>
+<pre class="r"><code>MO=MO[grepl(&quot;^[-=]&quot;, MO$morphemes), ]</code></pre>
 <p>Now we’re going to count morphemes in each position/ slot.</p>
 <pre class="r"><code>slots &lt;- MO %&gt;%
   count(slot, morphemes, sort = TRUE, name = &quot;count&quot;)
@@ -2639,24 +2641,13 @@ instead of the default “n”.<br />
 <img src="NLP_images/slots.jpg" alt="shows counts of each morphemes" width="200"/><br />
 <br></li>
 </ul>
-<p>At this point we can remove headwords from the dataset using
-<code>subset</code>.</p>
-<pre class="r"><code>slots2 &lt;- subset(slots, type==&quot;bound_clitic&quot; | type==&quot;bound_morpheme&quot;)</code></pre>
-<ul>
-<li>Here, we’re subsetting based on the <code>slots</code> dataset and
-if the <code>type</code> column contains either (<code>|</code>)
-<code>bound_clitic</code> or <code>bound_morpheme</code>.<br />
-<br>
-<img src="NLP_images/subset.jpg" alt="subset without headwords" width="300"/><br />
-<br></li>
-</ul>
 <p>Next we group by slot so we can compute frequencies - we’ll want to
 calculate the proportion of each morpheme within each slot.</p>
-<pre class="r"><code>slots3 &lt;- slots2 %&gt;%
+<pre class="r"><code>slots2 &lt;- slots %&gt;%
   group_by(slot) %&gt;%
   mutate(freq = count / sum(count))
-print(slots3)   # shows it&#39;s grouped, this step isn&#39;t needed
-View(slots3)</code></pre>
+print(slots2)   # shows it&#39;s grouped, this step isn&#39;t needed
+View(slots2)</code></pre>
 <ul>
 <li>Most of this code has been described before.<br />
 </li>
@@ -2679,7 +2670,7 @@ grouped with <code>group_by</code>.<br />
 <p>Now, because we’re going to create a number of graphs, so we can’t
 have a ton of morphemes plotted, so we’re going to plot the top-10 from
 each slot.</p>
-<pre class="r"><code>freq_10 &lt;- slots3 %&gt;%
+<pre class="r"><code>freq_10 &lt;- slots2 %&gt;%
   group_by(slot) %&gt;%
   slice_head(n = 10)</code></pre>
 <ul>
@@ -2760,16 +2751,16 @@ evidentials). This reflects that its distribution is structurally
 constrained away from root adjacency.<br />
 <br></p>
 <p>We can figure this out in just 3 steps with the code we currently
-have. But first, we’ll pass <code>slots3</code> to
-<code>slots4</code>.</p>
-<pre class="r"><code>slots4=slots3</code></pre>
+have. But first, we’ll pass <code>slots2</code> to
+<code>slots3</code>.</p>
+<pre class="r"><code>slots3=slots2</code></pre>
 <p><br> Step 1: We’re going to create two new columns called
 <code>total</code> and <code>one</code>. <code>total</code> will count
 how many of each morpheme appears in the data regardless of the slot.
 <code>one</code> will count the total number of each morpheme in slot 1
 and the divide to by the <code>total</code> value and multiply it by 100
 to get a percentage of frequency.</p>
-<pre class="r"><code>MOrderProb_1 &lt;- slots4 %&gt;%
+<pre class="r"><code>MOrderProb_1 &lt;- slots3 %&gt;%
   group_by(morphemes) %&gt;%
   mutate(
     total = sum(count),
