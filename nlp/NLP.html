@@ -2574,20 +2574,20 @@ maintaining that rolling state.<br />
 <em>Think of counter as the pen in your hand, keeping track of the next
 number to write.</em><br />
 <br> Here’s the loop.</p>
-<pre class="r"><code>for (i in seq_along(MO$slot)) { ToRows2
-  if (MO$slot[i] == 0) { ToRows2
-    counter &lt;- 0 ToRows2
-    out[i] &lt;- 0 ToRows2
-  } else { ToRows2
-    counter &lt;- counter + 1 ToRows2
-    out[i] &lt;- counter ToRows2
-  }
+<pre class="r"><code>for (i in seq_along(MO$slot)) {
+    if (MO$slot[i] == 0) {
+        counter &lt;- 0
+        out[i] &lt;- 0
+    } else {
+        counter &lt;- counter + 1
+        out[i] &lt;- counter
+    }
 }</code></pre>
 <ul>
 <li>Use <code>seq_along()</code> anytime you’re looping over a vector
 and want to safely index it (e.g., if there’s a blank row,
 <code>seq_along()</code> will jump over it without causing an
-issue.<br />
+issue).<br />
 </li>
 <li><code>MO$slot[i] == 0</code> means if the row number under analysis
 is <code>0</code>, go to the next step.<br />
