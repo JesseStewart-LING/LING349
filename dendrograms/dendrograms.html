@@ -438,11 +438,11 @@ solely on Ecuador, while maintaining Cuzco as a baseline.<br />
 <li>This sentence was specifically chosen because each word has a direct
 cognate in each dialect/ language.<br />
 </li>
-<li>The spellings used are based on pronunciation in each region.</li>
-</ul>
-<p><br>
+<li>The spellings used are based on pronunciation in each region.<br />
+<br>
 <img src="dendrograms_images/data2.jpg" alt="Ecuadorian Kichwa and others" width="400"/><br />
-<br></p>
+<br></li>
+</ul>
 </div>
 </div>
 <div id="introduction-to-the-distance-matrix" class="section level2"
@@ -523,8 +523,33 @@ Imbabura-Cañar matrices above.<br />
 <img src="dendrograms_images/LDA2_3.jpg" alt="Levenshtein Distance Algorithm Metrix - Example 2 Step 3" width="400"/><br />
 <br></p>
 </div>
-<div id="dialect-language-matrix" class="section level2" number="1.5">
-<h2><span class="header-section-number">1.5</span> Dialect/ Language
+<div id="your-turn" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Your turn!</h2>
+<p>I’ll give you a dialect/ language</p>
+<p>Make the following changes <strong>Note:</strong> I made a few
+modifications here to make the results more accurate.</p>
+<ul>
+<li>ch → ʧ (so that <code>c</code> and <code>h</code> are a single
+segment instead of two)</li>
+<li>ay → ai (<code>y</code> at the end of a vowel sequence is /i/.)</li>
+<li>k’ → K (so that <code>k</code> and <code>'</code> are a single
+segment instead of two)</li>
+<li>p’ → P (so that <code>p</code> and <code>'</code> are a single
+segment instead of two)</li>
+<li>r → ɾ (IPA convention for a tap rather than <code>r</code> which is
+a trill)</li>
+<li>sh → ʃ (so that <code>s</code> and <code>h</code> are a single
+segment instead of two)</li>
+<li>ll is ʒ in Imbabura and Calderon</li>
+<li>ll is ʎ elsewhere</li>
+<li>zh → Z is a bit confusing, but likely a retroflex
+(<code>[ʐ]</code>), but as long as we have something ‘different’, that’s
+all the computer cares about.</li>
+</ul>
+<p>Open Excel, do the Matrices for your assigned variety.</p>
+</div>
+<div id="dialect-language-matrix" class="section level2" number="1.6">
+<h2><span class="header-section-number">1.6</span> Dialect/ Language
 Matrix</h2>
 <p>The next step is a matrix containing all the languages/ dialects in
 your data.<br />
@@ -542,27 +567,7 @@ library.</p>
 <pre class="r"><code>library(stringdist)</code></pre>
 <p>After loading the library, we create a vector where each string under
 analysis is present between quotes and attached to its associated
-language.<br />
-<strong>Note:</strong> I made a few modifications here to make the
-results more accurate.</p>
-<ul>
-<li>ch → ʧ (so that <code>c</code> and <code>h</code> are a single
-segment instead of two)</li>
-<li>ay → ai (<code>y</code> at the end of a vowel sequence is /i/.)</li>
-<li>k’ → K (so that <code>k</code> and <code>'</code> are a single
-segment instead of two)</li>
-<li>p’ → P (so that <code>p</code> and <code>'</code> are a single
-segment instead of two)</li>
-<li>r → ɾ (IPA convention for a tap rather than <code>r</code> which is
-a trill)</li>
-<li>sh → ʃ (so that <code>s</code> and <code>h</code> are a single
-segment instead of two)</li>
-<li>ll is ʒ in Imbabura and Calderon</li>
-<li>ll is ʎ elsewhere</li>
-<li>zh is a bit confusing, but likely a retroflex (<code>ʐ</code>), but
-as long as we have something ‘different’, that’s all the computer cares
-about.</li>
-</ul>
+language.</p>
 <p><br> This will likely mean that we’ll end up with a different value
 than for the Imbabura-Cañar analysis we just did.<br />
 <br></p>
@@ -684,8 +689,8 @@ colnames(dm_mat) &lt;- names(lv_data)</code></pre>
 <br></p>
 </div>
 <div id="the-hierarchical-clustering-methods" class="section level2"
-number="1.6">
-<h2><span class="header-section-number">1.6</span> The Hierarchical
+number="1.7">
+<h2><span class="header-section-number">1.7</span> The Hierarchical
 Clustering Methods</h2>
 <p>There are numerous methods for clustering data into a tree
 structures.<br />
@@ -841,8 +846,8 @@ together.<br />
 <img src="dendrograms_images/cluster10.jpg" alt="cluster10" width="300"/><br />
 <br></p>
 </div>
-<div id="doing-this-with-r" class="section level2" number="1.7">
-<h2><span class="header-section-number">1.7</span> Doing this with
+<div id="doing-this-with-r" class="section level2" number="1.8">
+<h2><span class="header-section-number">1.8</span> Doing this with
 R</h2>
 <p>This process is obviously laborious. Let’s do this with the
 computer.<br />
@@ -922,8 +927,8 @@ potential accuracy.<br />
 <br></p></li>
 </ul>
 </div>
-<div id="discussion" class="section level2" number="1.8">
-<h2><span class="header-section-number">1.8</span> Discussion</h2>
+<div id="discussion" class="section level2" number="1.9">
+<h2><span class="header-section-number">1.9</span> Discussion</h2>
 <p>Obviously, clustering by proximity does not tell the whole story.
 Ecuador has two major Kichwa groups: Andean Kichwa and Amazonian Kichwa.
 This broad division is visible in the dendrogram.<br />
@@ -954,8 +959,8 @@ recover a structure that broadly reflects linguistic reality. With
 larger samples of text, the results would likely become even more
 accurate.</p>
 </div>
-<div id="the-entire-code" class="section level2" number="1.9">
-<h2><span class="header-section-number">1.9</span> The entire code</h2>
+<div id="the-entire-code" class="section level2" number="1.10">
+<h2><span class="header-section-number">1.10</span> The entire code</h2>
 <pre class="r"><code>library(stringdist)
 
 lv_data &lt;- c(
@@ -990,10 +995,10 @@ plot(hclust(d,&quot;single&quot;))</code></pre>
 </div>
 <div id="homework" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> HOMEWORK</h1>
-<p><strong>Translatons → Distances → Clusters (Romance)</strong><br />
+<p><strong>Translations → Distances → Clusters (Romance)</strong><br />
 Download this Excel file <a href="Romance.xlsx">Romance</a><br />
 <br> <strong>Part A — Build the dataset (58 varieties)</strong><br />
-1. Tokenise &amp; label the eight slots (Plus language name):<br />
+1. Tokenize &amp; label the eight slots (Plus language name):<br />
 <br></p>
 <table>
 <colgroup>
@@ -1063,18 +1068,22 @@ but it’s now obsolete and has been replaced by the contraction of
 <em>tous les jours</em> ‘all the days’ (<em>toujours</em>). Also,
 sometimes there are different word orders e.g., ‘always’ comes before
 ‘close’. When this happens, just move the word to the correct
-column.</li>
+column.<br />
+<br></li>
 </ul></li>
 </ul>
-<p><br> 3. Normalize the data (so distances aren’t inflated by noise):
+<ol start="3" style="list-style-type: decimal">
+<li>Normalize the data (so distances aren’t inflated by noise):
 lowercase, trim, keep diacritics, standardize apostrophes. You can do
 all of this in editPad lite.<br />
-<br> 4. Deliverable A: a table with 58 rows × 9 columns (Language name +
-8 word slots).<br />
+<br></li>
+<li>Deliverable A: a table with 58 rows × 9 columns (Language name + 8
+word slots).<br />
 <br> <strong>Part B — Manual Levenshtein (French ↔︎
 Spanish)</strong><br />
-For each word, show the full matrices for the French tokens vs the
-Spanish tokens (8 matrices total).</p>
+For each word, show the full matrices for the French tokens vs. the
+Spanish tokens (8 matrices total).</li>
+</ol>
 <ul>
 <li>Rows = characters of the first word (plus an initial ∅ row).<br />
 </li>
