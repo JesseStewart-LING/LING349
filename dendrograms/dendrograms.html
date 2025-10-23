@@ -316,28 +316,28 @@ Now, let’s compare the same words transcribed in IPA:</p>
 <ul>
 <li>English: /kæt/<br />
 </li>
-<li>Spanish: /ˈɡato/<br />
+<li>Spanish: /ɡato/<br />
 </li>
 <li>French: /ʃa/<br />
 </li>
-<li>Italian: /ˈɡatto/<br />
+<li>Italian: /ɡatto/<br />
 </li>
-<li>German: /ˈkatsə/</li>
+<li>German: /katsə/</li>
 </ul>
 <p><br> Pairwise distances (examples): <br></p>
 <ul>
 <li>/kæt/ → /ʃa/ = 3 edits (substitute k → ʃ, substitute æ → a, delete
 t).<br />
 </li>
-<li>/ˈɡato/ → /ˈɡatto/ = 1 edit (insert t).<br />
+<li>/ɡato/ → /ɡatto/ = 1 edit (insert t).<br />
 </li>
-<li>/ˈɡato/ → /ˈkatsə/ = 3 edits (substitute ɡ → k, substitute o → ə,
+<li>/ɡato/ → /katsə/ = 3 edits (substitute ɡ → k, substitute o → ə,
 insert s).<br />
 </li>
-<li>/kæt/ → /ˈɡato/ = 4 edits (substitute k → ɡ, substitute æ → a,
-insert t, insert o).<br />
+<li>/kæt/ → /ɡato/ = 4 edits (substitute k → ɡ, substitute æ → a, insert
+t, insert o).<br />
 </li>
-<li>/kæt/ → /ˈkatsə/ = 3 edits (substitute æ → a, insert s, insert
+<li>/kæt/ → /katsə/ = 3 edits (substitute æ → a, insert s, insert
 ə).</li>
 </ul>
 <p><br> Here the picture shifts:</p>
@@ -355,9 +355,7 @@ matters as well. For example, <em>gato</em>, <em>chat</em>,
 historical source (<em>cattus</em> in Vulgar Latin). But if you used the
 Latin word <em>felis</em> instead, the algorithm would see it as very
 distant — even though historically it refers to the same animal. <br>
-Equally, the type of data you use must match your research
-question:<br />
-<br></p>
+Equally, the type of data you use must match your research question:</p>
 <ul>
 <li>If you’re looking at pronunciation similarities, you need IPA
 transcriptions.<br />
@@ -386,6 +384,8 @@ also need to remove punctuation. We don’t want a comma to count in the
 formula. Also, you want to make sure that if you’re dealing with
 orthography, all capital letters should be made lowercase (<em>c</em> ≠
 <em>C</em>).<br />
+<br>
+<img src="dendrograms_images/align.jpg" alt="alignment" width="600"/><br />
 <br></p>
 <div id="data" class="section level3" number="1.3.1">
 <h3><span class="header-section-number">1.3.1</span> Data</h3>
@@ -397,6 +397,8 @@ Bolivia, and into parts of Argentina and Chile. Historically, Quechua
 rose to prominence as the administrative and trade language of the Inca
 Empire, and after the Spanish conquest it continued to serve as a major
 lingua franca throughout the region.<br />
+<br>
+<img src="dendrograms_images/QuechuanI.jpg" alt="Quechua map" width="500"/><br />
 <br> Over time, geographic isolation, contact with Spanish and other
 Indigenous languages has produced a rich variety of dialects, often
 differing considerably in vocabulary, sound patterns, and grammar.
@@ -404,20 +406,21 @@ Linguists typically divide the family into two major branches, Quechua I
 and Quechua II, with further sub-branches within each. However, not
 everyone agrees with this classification (see <a
 href="https://www.jbe-platform.com/content/journals/10.1075/jhl.22013.flo">Floyd,
-2024</a>) The varieties spoken in Ecuador belong to the Quechua IIB
+2024</a>). The varieties spoken in Ecuador belong to the Quechua IIB
 branch, which links them historically to neighbouring Peruvian dialects
 but also highlights the unique pathways that Ecuadorian Kichwa has
 taken.<br />
 <br>
 <img src="dendrograms_images/Quechuan.jpg" alt="Quechuan Language family" width="900"/><br />
 <br> Here we zoom in on one subgroup, Quechua IIB, which includes a
-number of dialects/languages spoken in Ecuador and northern Peru. This
-branch is especially important for our purposes, since it contains the
-Ecuadorian Kichwa varieties we’ll be working with. Alongside these,
-we’re also including Cuzco Quechua—often treated as the “standard”
-variety, though in reality it is distinct enough to be considered a
-separate language—and Unified Kichwa, an artificial standard that was
-developed in Ecuador for educational and political purposes.<br />
+number of dialects/languages spoken in Ecuador, Southern Colombia, and
+northern Peru. This branch is especially important for our purposes,
+since it contains the Ecuadorian Kichwa varieties we’ll be working with.
+Alongside these, we’re also including Cuzco Quechua—often treated as the
+“standard” variety, though in reality it is distinct enough to be
+considered a separate language—and Unified Kichwa, an artificial
+standard that was developed in Ecuador for educational and political
+purposes.<br />
 <br>
 <img src="dendrograms_images/QBII.jpg" alt="Ecuadorian Kichwa and others" width="150"/><br />
 <br> Our data comes via the FEDEPI (2006), which contains the same
