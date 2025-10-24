@@ -1444,6 +1444,7 @@ using <code>bind_rows</code>.</p>
 <p><br>
 <img src="NLP_images/dataPostLoop.jpg" alt="Data after processing it through the loop" width="1000"/><br />
 <br></p>
+<p><strong>Count: 16,755</strong></p>
 </div>
 <div id="clean-up" class="section level2" number="3.5">
 <h2><span class="header-section-number">3.5</span> Clean up</h2>
@@ -1485,8 +1486,8 @@ dataset object if the <code>MediaLengua</code> column does
 <strong>not</strong> contain NAs. We then do the same for the
 <code>Glosa</code> column.<br />
 <br> If you run <code>View(dataset)</code> now, you’ll notice that there
-are now 12,811 points; we’ve thus far lost 24% of the data, which is a
-bit much, but we’re going to trudge on.<br />
+are now <strong>12,545</strong> points; we’ve thus far lost 24% of the
+data, which is a bit much, but we’re going to trudge on.<br />
 <br> Some of the entries in the <code>MediaLengua</code> column seem to
 also contain the wrong data. In the image below, it appears the data
 from the <code>Glosa</code> column appears in the
@@ -1667,6 +1668,7 @@ sign (<code>[-=]</code>) in the <code>gloss</code> column does not (does
 not (<code>!</code>), remove that row OR (<code>|</code>) if the
 <code>segmentation</code> does not contain a dash or equals sign and
 <code>gloss</code> does, remove that row.</p>
+<p><strong>Count: 10,888</strong></p>
 <p>After I completed the entire analysis, I learned something about the
 morphology of the language.<br />
 In most documented cases of Kichwa and Media Lengua, the second person
@@ -1878,9 +1880,9 @@ ml_data_2=ml_data_2[!grepl(&quot;=COND(\\s|$)&quot;, ml_data_2$gloss), ]
 ml_data_2=ml_data_2[!grepl(&quot;-xun(\\s|$)&quot;, ml_data_2$gloss), ]
 ml_data_2=ml_data_2[!grepl(&quot;-ʒapita(\\s|$)&quot;, ml_data_2$gloss), ]</code></pre>
 <ul>
-<li>After removal there are 10,993 data points. If removing 812 points
-(7% of the data) is a concern, we’d want to go back and fix each one of
-these issues instead of just removing them.<br />
+<li>After removal there are <strong>10,101</strong> data points. If
+removing 812 points (7% of the data) is a concern, we’d want to go back
+and fix each one of these issues instead of just removing them.<br />
 </li>
 <li>This code is simple and reiterative as it replaces the
 <code>ToRows3</code> object on each pass.<br />
@@ -1910,11 +1912,12 @@ handy because our glosses already separate elements with spaces.<br />
 for clarity. Recall from LING 111 or LING 243, that morphemes can be
 independent (covering headwords) or bound (prefixes, suffixes, infixes,
 circumfixes). So, the word <code>morpheme</code> covers what’s contained
-in this column.<br />
-<br>
-<img src="NLP_images/ml_data_22.jpg" alt="Renaming the gloss column to morphemes" width="400"/><br />
-<br></li>
+in this column.</li>
 </ul>
+<p><strong>Count: 92,262</strong></p>
+<p><br>
+<img src="NLP_images/ml_data_22.jpg" alt="Renaming the gloss column to morphemes" width="400"/><br />
+<br></p>
 <p>Now we’re going to remove empty rows.</p>
 <pre class="r"><code>ToRows2 &lt;- ToRows %&gt;% filter(morphemes != &quot;&quot;)
 View(ToRows2)</code></pre>
@@ -1923,6 +1926,7 @@ View(ToRows2)</code></pre>
 (<code>""</code>) and place them in the new object
 <code>ToRows2</code>.</li>
 </ul>
+<p><strong>Count: 92,251</strong></p>
 <p>Our next step involves classifying each row as containing a bound
 morpheme (<code>-</code>), bound clitic (<code>=</code>) or headword
 (anything that’s not a dash or equals sign.)</p>
@@ -2205,7 +2209,8 @@ the number of times it shows up.<br />
 <p>It’s not needed, but if you want to see how many data points you’re
 dealing with, you can <code>sum</code> the count column.</p>
 <pre class="r"><code>sum(suffix_summary$count)</code></pre>
-<p>Next, we’re going to arrange the data in decending order.</p>
+<p><strong>Count: 40,984</strong></p>
+<p>Next, we’re going to arrange the data in descending order.</p>
 <pre class="r"><code>morpheme_counts &lt;- suffix_summary %&gt;%
   arrange(desc(count))
 View(morpheme_counts)</code></pre>
@@ -2543,11 +2548,11 @@ speech).</p>
 contains the cleaned data before we separated out the bound
 morphology.</p>
 <pre class="r"><code>MO=ToRows2</code></pre>
-<p><br> The next step involves creating a new column called
-<code>slots</code>, where the position of each bound morpheme will be
-counted. We begin by inserting a <code>0</code> for each headword. This
-way we can write code that says count incrementally until a
-<code>0</code> is encountered, which signals a new word.</p>
+<p><strong>Count: 92,251</strong> <br> The next step involves creating a
+new column called <code>slots</code>, where the position of each bound
+morpheme will be counted. We begin by inserting a <code>0</code> for
+each headword. This way we can write code that says count incrementally
+until a <code>0</code> is encountered, which signals a new word.</p>
 <pre class="r"><code>MO$slot=ifelse(str_detect(MO$morphemes, &quot;^[^-=]&quot;), 0,&quot;&quot;)</code></pre>
 <ul>
 <li>Here, we begin with an <code>ifelse</code> with <code>0</code> if
@@ -2635,6 +2640,7 @@ the <code>out</code> vector at row <code>i</code> if
 <br></p>
 <p>At this point, we’ll remove headwords.</p>
 <pre class="r"><code>MO=MO[grepl(&quot;^[-=]&quot;, MO$morphemes), ]</code></pre>
+<p><strong>Count: 40,984</strong></p>
 <p>Now we’re going to count morphemes in each position/ slot.</p>
 <pre class="r"><code>slots &lt;- MO %&gt;%
   count(slot, morphemes, sort = TRUE, name = &quot;count&quot;)
