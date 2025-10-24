@@ -1653,10 +1653,24 @@ to see if one exactly matches <code>Filename</code><br />
 </ul>
 <p>We’re going to back up the data again.</p>
 <pre class="r"><code>ml_data = dataset2</code></pre>
+<p>We’re going to remove some data now that was either segmented or
+glossed out but not both.</p>
+<pre class="r"><code>ml_data &lt;- ml_data[!(
+    (grepl(&quot;[-=]&quot;, ml_data$segmentation) &amp; !grepl(&quot;[-=]&quot;, ml_data$gloss)) |
+        (!grepl(&quot;[-=]&quot;, ml_data$segmentation) &amp; grepl(&quot;[-=]&quot;, ml_data$gloss))
+), ]</code></pre>
+<p>This code reads:<br />
+- Make a subset with the same name as the dataset (essentially override
+the ml_data dataset)<br />
+- If the the <code>segmentation</code> column contains a dash or equals
+sign (<code>[-=]</code>) in the <code>gloss</code> column does not (does
+not (<code>!</code>), remove that row OR (<code>|</code>) if the
+<code>segmentation</code> does not contain a dash or equals sign and
+<code>gloss</code> does, remove that row.</p>
 <p>After I completed the entire analysis, I learned something about the
 morphology of the language.<br />
 In most documented cases of Kichwa and Media Lengua, the second person
-plural marker (<code>-nguichi</code>) is dervied from historically
+plural marker (<code>-nguichi</code>) is derived from historically
 separate morphemes; second person <code>-ngui</code> and the plural
 pronoun marker <code>-chi</code> (as still seen in the first person
 plural marker e.g., <em>cominchi</em> <code>comi-nchi</code> eat-1p).
